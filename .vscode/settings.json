@@ -10,9 +10,10 @@
     "> 2%",
     "last 2 versions"
   ],
-  "liveServer.settings.port": 5700,
+  "liveServer.settings.port": 6100,
   "files.eol": "\n",
   "editor.tabSize": 2,
+  "editor.linkedEditing": true,
 
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // "editor.formatOnSave": true,
