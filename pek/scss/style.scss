@@ -1,0 +1,217 @@
+
+/*********font*********/
+.fs10 {
+    font-size:1rem !important;
+}
+.fs12 {
+    font-size:1.2rem !important;
+}
+.fs16 {
+    font-size:1.6rem !important;
+}
+.fs26 {
+    font-size:2.6rem !important;
+}
+.f_white{
+    color:#fff !important;
+}
+.f_pink{
+    color:#E94187 !important;
+}
+.f_gray{
+    color:#B0B0B0 !important;
+}
+.f_purple{
+    color:#5846FF !important;
+}
+.fwb{
+    font-weight: 900 !important;
+}
+/*******etc******/
+.tar{
+    text-align: right !important;
+}
+.tac{
+    text-align:center !important;
+}
+.tal{
+    text-align: left !important;
+}
+.block{
+    display:block !important;
+}
+/*****margin*****/
+.m0{
+    margin:0 !important;
+}
+.mt5{
+    margin-top:5px !important;
+}
+.mt10{
+    margin-top:10px !important;
+}
+.mb5{
+    margin-bottom:5px !important;
+}
+/*****padding*****/
+.p10{
+    padding:10px !important;
+}
+.pt10{
+    padding-top:10px !important;
+}
+
+
+
+/******header******/
+.main-header{
+    position: relative;
+    height:5rem;
+    padding:0px 1.6rem;
+    background-color:#fff;
+    box-shadow: -1px 3px 3px 1px rgba(0, 0, 0, 0.3);
+    box-sizing:border-box;
+    z-index: 99;
+    .pg_title{
+        display:inline-block;
+        line-height: 5rem;
+        color:#424242;
+        font-size:1.8rem;
+        font-weight: 900;
+    }
+    .ico_h_info{
+        display:inline-block;
+        width:16px;
+        height:16px;
+        background: url(../images/ic_into.png) no-repeat 50% 50%;
+    }
+}
+
+
+/*******contents********/
+.bg_total_wrap{
+    height:247px;
+    padding:0 2rem;
+    background:url(../images/bg_main_color.png) no-repeat 0 0 ;
+    background-size:100% 100%;
+    .bg_human{
+        width:17rem;
+        margin-top:-20px;
+    }
+    .total_box{
+        display:flex;
+        color:#fff;
+        justify-content: space-around;
+        dl{
+            padding-top:30px;
+        }
+        dd{
+            margin-top:5px;
+        }
+        .rised{
+            display:block;
+            margin-top:6px;
+            font-size:12px;
+            &::before{
+                content: "";
+                display:inline-block;
+                width: 0; 
+                height: 0;
+                margin-bottom:2px; 
+                border-left: 3.5px solid transparent;
+                border-right: 3.5px solid transparent;
+                border-bottom: 5px solid #fff;
+            }
+        }
+        i{
+            display:inline-block;
+            width:28px;
+            height:28px;
+            margin-bottom:4px;
+            background:url(../images/ic_trophy.png) no-repeat 50% 50%;
+            &.score{
+                background:url(../images/ic_crown.png) no-repeat 50% 50%;
+            }
+        }
+    }
+}
+.section_box{
+    position:relative;
+    top:-97px;
+    padding:1.6rem;
+    border-radius: 3.2rem 3.2rem 0 0;
+    background-color:#fff;
+    .current_box{
+        position:relative;
+        display:flex;
+        padding:0.8rem 0;
+        .inner{
+            position:absolute;
+            top:1.4rem;
+        }
+        .left{
+            width:40%;
+            height: 7.4rem;
+            img{
+                left:0;
+                width:16.4rem;
+            }
+        }
+        .right{
+            width:60%;
+            height: 8.4rem;
+            img{
+                right:0;
+                width:18.4rem;
+            }
+        }
+        img{
+            position:absolute;
+            top:0;
+            height:8.4rem;
+            z-index: 999;
+        }
+    }
+}
+
+/****title****/
+.df_box{
+    padding:1.6rem 0.6rem;
+    > .h4_tit, .h3_tit{
+        display:inline-block;
+        font-size:0;
+        letter-spacing: -0.1rem;
+    }
+    .h4_tit{
+        font-size:1.6rem;
+        font-weight: 100;
+        &:after{
+            content: "";
+            display: inline-block;
+            width:1.2rem;
+            height:1.2rem;
+            background:url(../images/ico_arrow_white.png) no-repeat 0 0;
+        }
+    }
+    .fr{
+        float:right;
+        .f_pink{
+            font-size:1.2rem;
+            .fwb{
+                font-size:1.4rem;
+            }
+        }
+    }
+    &:after{
+        content: "";
+        clear: both;
+    }
+}
+/***icon***/
+.ico_cmn_info{
+    display:inline-block;
+    width:1.6rem;
+    height:1.6rem;
+    vertical-align: sub;
+    background:url(../images/ic_cmn_tootip.png) no-repeat 0 0;
+}
