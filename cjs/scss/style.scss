@@ -53,7 +53,15 @@ body {
 
 .section {
     margin-bottom: 5rem;
+    padding-left: 2.4rem;
+    overflow: hidden;
+    > h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #212121;
+    }
     &.top {
+        padding-left: 0;
         .tt-box {
             position: relative;
             z-index: 2;
@@ -156,20 +164,21 @@ body {
             }
             .result {
                 display: flex;
+                justify-content: center;
+                align-items: center;
                 padding: 0 1.6rem;
                 .box {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    padding: 1.4rem 0 7.4rem 0;
+                    height: 7.3rem;
+                    padding-bottom: 2rem;
                     color: #fff;
                     > p {
+                        margin-top: 1.4rem;
                         margin-bottom: 1rem;
                         color: rgba(255, 255, 255, 0.7);
                     }
                     &.point {
+                        width: 16.4rem;
                         padding-left: 2.4rem;
-                        width: 52.1rem;
                         background: url(../image/has_point.png) center top / 100% no-repeat;
                         .point-wrap {
                             display: flex;
@@ -185,9 +194,9 @@ body {
                         }
                     }
                     &.match {
+                        width: 18.4rem;
                         padding-right: 2.4rem;
                         margin-left: -2rem;
-                        width: 58rem;
                         text-align: right;
                         background: url(../image/match_condition.png) center top / 100% no-repeat;
                         .match-wrap {
@@ -202,6 +211,107 @@ body {
                         }
                     }
                 }
+            }
+        }
+    }
+    .tag-box {
+        display: flex;
+        margin-top: 1.6rem;
+        gap: 1.2rem;
+        .tag {
+            display: inline-block;
+            padding: 0.7rem 1rem 0.8rem;
+            font-size: 1.3rem;
+            line-height: 1.9rem;
+            color: #979797;
+            background: #f2f4f6;
+            border-radius: 1.7rem;
+            &.ico {
+                padding: 0.8rem;
+                line-height: 1;
+                img {
+                    width: 1.8rem;
+                }
+            }
+        }
+    }
+    .card-box {
+        display: flex;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        margin-left: -2.4rem;
+        padding: 2.4rem 0 3.2rem 2.4rem;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        .card {
+            position: relative;
+            display: flex;
+            flex: 0 0 auto;
+            width: 30.6rem;
+            margin-right: 1.6rem;
+            padding: 2.4rem 2.1rem;
+            background-color: #fff;
+            border-radius: 1.6rem;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+            overflow: hidden;
+            &:after {
+                content: 'HOT';
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 0.75rem 1rem;
+                background: #fd7e64;
+                border-radius: 1.6rem;
+                border-bottom-right-radius: 0;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #fff;
+            }
+            .profile-image {
+                position: relative;
+                width: 7.5rem;
+                height: 7.5rem;
+                background: url(../image/profile.png) center center / 100% no-repeat;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    z-index: 2;
+                    width: 8rem;
+                    height: 8rem;
+                    background: url(../image/ico_influencer2.png) center center / 100% no-repeat;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    z-index: 1;
+                    bottom: -0.5rem;
+                    right: -0.5rem;
+                    width: 3.25rem;
+                    height: 3.25rem;
+                    border-radius: 50%;
+                    background: #fff;
+                }
+                .win {
+                    position: absolute;
+                    z-index: 3;
+                    top: -0.3rem;
+                    left: -0.6rem;
+                    padding: 0.6rem 0.7rem;
+                    background: #f2f4f6;
+                    border: 0.1rem solid #11ae89;
+                    border-radius: 1.15rem;
+                    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    color: #11ae89;
+                }
+            }
+            .summary {
+                flex: 1;
             }
         }
     }
@@ -224,3 +334,5 @@ body {
         }
     }
 }
+// 별 background-image: url("data:image/svg+xml,%0A%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_d_31_139)'%3E%3Cpath d='M17.2357 9.02839L13.2387 8.42008L11.4519 4.62679C11.4031 4.52293 11.3228 4.43886 11.2236 4.38775C10.9749 4.25917 10.6726 4.36632 10.5482 4.62679L8.76143 8.42008L4.76435 9.02839C4.65416 9.04488 4.5534 9.09928 4.47626 9.1817C4.38301 9.28208 4.33162 9.41712 4.33339 9.55715C4.33516 9.69717 4.38995 9.83074 4.48571 9.92849L7.37764 12.881L6.69441 17.0502C6.67839 17.1472 6.68864 17.2469 6.72399 17.3381C6.75935 17.4293 6.8184 17.5083 6.89445 17.5661C6.9705 17.624 7.0605 17.6583 7.15425 17.6653C7.24801 17.6723 7.34176 17.6517 7.42487 17.6057L11 15.6374L14.5752 17.6057C14.6728 17.6601 14.7862 17.6783 14.8948 17.6585C15.1687 17.609 15.3529 17.337 15.3057 17.0502L14.6224 12.881L17.5144 9.92849C17.5931 9.84771 17.645 9.74221 17.6608 9.62681C17.7033 9.33831 17.5112 9.07125 17.2357 9.02839Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d_31_139' x='0.333344' y='0.333344' width='21.3333' height='21.3333' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset/%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.4 0'/%3E%3CfeBlend mode='color-burn' in2='BackgroundImageFix' result='effect1_dropShadow_31_139'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_31_139' result='shape'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E%0A");
+// 리프레시 background-image: url("data:image/svg+xml,%0A%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.168 8C20.3892 6.21646 19.107 4.69884 17.4786 3.63311C15.8501 2.56738 13.9462 1.99983 12 2C6.81499 2 2.54999 5.947 2.04999 11' stroke='%23606060' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M17 8H21.4C21.4788 8 21.5568 7.98448 21.6296 7.95433C21.7024 7.92418 21.7685 7.87998 21.8243 7.82426C21.88 7.76855 21.9242 7.70241 21.9543 7.62961C21.9845 7.55682 22 7.47879 22 7.4V3' stroke='%23606060' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M2.88098 16C4.42498 19.532 7.94898 22 12.049 22C17.235 22 21.499 18.053 22 13' stroke='%23606060' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M7.04999 16H2.64999C2.49086 16 2.33825 16.0632 2.22572 16.1757C2.1132 16.2883 2.04999 16.4409 2.04999 16.6V21' stroke='%23606060' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
