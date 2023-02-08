@@ -60,6 +60,9 @@
 .pt10{
     padding-top:10px !important;
 }
+.pb5{
+    padding-bottom:0 !important;
+}
 
 
 
@@ -71,7 +74,7 @@
     background-color:#fff;
     box-shadow: -1px 3px 3px 1px rgba(0, 0, 0, 0.3);
     box-sizing:border-box;
-    z-index: 99;
+    z-index: 1;
     .pg_title{
         display:inline-block;
         line-height: 5rem;
@@ -143,15 +146,49 @@
     background-color:#fff;
     .current_box{
         position:relative;
-        display:flex;
-        padding:0.8rem 0;
+        display: flex;
+        min-width: 32.6rem;
+        width: 32.6rem;
+        margin: 2rem auto 3.4rem;
         .inner{
             position:absolute;
             top:1.4rem;
+            color:#fff;
+            .tit{
+                margin-bottom: 0.8rem;
+                font-size:1.2rem;
+            }
+            .point{
+                font-size:2.6rem;
+                font-weight: 900;
+                i{
+                    display: inline-block;
+                    width:2rem;
+                    height: 2rem;
+                    margin-right:0.6rem;
+                    background:url(../images/ph_trophy.png) no-repeat 0 0;
+                }
+            }
+            .score{
+                display:flex;
+                
+                .num{
+                    font-size: 2rem;
+                    font-weight:900;
+                }
+                .txt{
+                    font-size:1.6rem;
+                    margin-top:0.4rem;
+                    + .num{
+                        margin-left:1rem;
+                    }
+                }
+            }
         }
         .left{
             width:40%;
             height: 7.4rem;
+            padding-left:2.6rem;
             img{
                 left:0;
                 width:16.4rem;
@@ -160,6 +197,12 @@
         .right{
             width:60%;
             height: 8.4rem;
+            .inner{
+                right:2.6rem;
+            }
+            .tit{
+                text-align: right;
+            }
             img{
                 right:0;
                 width:18.4rem;
@@ -168,9 +211,11 @@
         img{
             position:absolute;
             top:0;
-            height:8.4rem;
-            z-index: 999;
+            height:8.6rem;
         }
+    }
+    .tab_box{
+
     }
 }
 
@@ -181,6 +226,9 @@
         display:inline-block;
         font-size:0;
         letter-spacing: -0.1rem;
+    }
+    .h3_tit{
+        font-size: 2.2rem;
     }
     .h4_tit{
         font-size:1.6rem;
