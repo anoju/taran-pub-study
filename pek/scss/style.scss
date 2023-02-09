@@ -214,8 +214,272 @@
             height:8.6rem;
         }
     }
-    .tab_box{
-
+    .filter_box{
+        display: flex;
+        .filter_btn{
+            margin-right:0.8rem;
+            padding:0.7rem 1rem;
+            background-color:#f2f4f6;
+            border-radius: 1.7rem;
+            line-height: 1.5;
+            font-size:1.3rem;
+            color:#979797;
+            &.-icon{
+                width:3.4rem;
+                height: 3.4rem;
+                margin-right:1.2rem;
+                background:#f2f4f6 url(../images/bx_filter-alt.png) no-repeat 50% 50%;
+                cursor:pointer;
+            }
+            &:last-child {
+                margin-right:0;
+            }
+        }
+    }
+    .slide_box{
+        width:100%;
+        overflow-x: scroll;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        ul{
+            display:inline-flex;
+        }
+        .profile_card{
+            position:relative;
+            display: inline-block;
+            width:30.6rem;
+            height:12.2rem;
+            margin:2.4rem 0.6rem 1rem 0.6rem;
+            padding:2.1rem 2.4rem;
+            border-radius:1.6rem;
+            background-color:#fff;
+            box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+            &:after{
+                content: "HOT";
+                position:absolute;
+                top:0;
+                right:0;
+                padding:0.75rem 1rem;
+                border-radius:1.6rem 1.6rem 0 1.6rem;
+                background-color:#fd7e64;
+                color:#fff;
+                font-size:1.2rem;
+                font-weight: bold;
+            }
+            + .profile_card{
+                margin-left:1.0rem;
+            }
+            a{
+                display: flex;
+                width:100%;
+                height:100%;
+                text-decoration: none;
+            }
+            .pic{
+                position: relative;
+                width:8rem;
+                height: 8rem;
+                margin-right: 1.1rem;
+                background:url(../images/customer_profile.png) no-repeat 0 0 / cover;
+                &.-win{
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        top:-0.3rem;
+                        left: -0.6rem;
+                        width:3.4rem;
+                        height: 2.4rem;
+                        background:url(../images/ico_win.png) no-repeat 0 0/cover;
+                    }
+                }
+                    &.-lose{
+                        &:before{
+                            content: "";
+                            position: absolute;
+                            top:-0.3rem;
+                            left: -0.6rem;
+                            width:3.4rem;
+                            height: 2.4rem;
+                            background:url(../images/ico_lose.png) no-repeat 0 0/cover;
+                        }
+                    }
+                    &.-revenge{
+                        &:before{
+                            content: "";
+                            position: absolute;
+                            top:-0.3rem;
+                            left: -0.6rem;
+                            width:3.4rem;
+                            height: 2.4rem;
+                            background:url(../images/ico_revenge.png) no-repeat 0 0/cover;
+                        }
+                    }
+                    &.-draw{
+                        &:before{
+                            content: "";
+                            position: absolute;
+                            top:-0.3rem;
+                            left: -0.6rem;
+                            width:3.4rem;
+                            height: 2.4rem;
+                            background:url(../images/ico_draw.png) no-repeat 0 0/cover;
+                        }
+                    }
+            }
+            .txt_box{
+                color:#606060;
+                letter-spacing: -0.1rem;
+                strong{
+                    font-size: 1.8rem;
+                }
+                p{
+                    margin: 1.5rem 0;
+                    font-size: 1.4rem;
+                    &:before{
+                        content: "“";
+                        padding-right:0.2em;
+                    }
+                    &:after{
+                        content: "”";
+                        padding-left:0.2rem;
+                    }
+                }
+                span{
+                    font-size:1.2rem;
+                    color:#979797;
+                    &:before{
+                        content: "#";
+                        color:#5846FF;
+                    }
+                }
+            }
+            }
+        &.type02{
+            .profile_card{
+                width:8.8rem;
+                height: auto;
+                margin:0;
+                padding:1.4rem 0;
+                box-shadow:none;
+                box-sizing: border-box;
+                &:after{
+                    display: none;
+                }
+                a{
+                    display: block;
+                }
+                p{
+                    width: 100%;
+                    margin-top: 0.8rem;
+                    text-align: center;
+                    color:#424242;
+                    font-size: 1.2rem;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+                .pic{
+                    width:6.4rem;
+                    height: 6.4rem;
+                    margin:0 auto;
+                    background: url(../images/img_man01.png) no-repeat 0 0 / cover;
+                    &.-win{
+                        &:before{
+                            top:-1rem;
+                            left:3.6rem;
+                        }
+                    }
+                    &.-lose{
+                        &:before{
+                            top:-1rem;
+                            left:3.6rem;
+                        }
+                    }
+                    &.-revenge{
+                        &:before{
+                            top:-1rem;
+                            left:3.6rem;
+                        }
+                    }
+                    &.-draw{
+                        &:before{
+                            top:-1rem;
+                            left:3.6rem;
+                        }
+                    }
+                }
+                &:nth-child(2){
+                    .pic{
+                        background-image:url(../images/img_man02.png);
+                    }
+                }
+                &:nth-child(3){
+                    .pic{
+                        background-image:url(../images/img_man03.png);
+                    }
+                }
+                &:nth-child(4){
+                    .pic{
+                        background-image:url(../images/img_man04.png);
+                    }
+                }
+                &:nth-child(5){
+                    .pic{
+                        background-image:url(../images/img_man05.png);
+                    }
+                }
+                &:nth-child(6){
+                    .pic{
+                        background-image:url(../images/img_man06.png);
+                    }
+                }
+                &:nth-child(7){
+                    .pic{
+                        background-image:url(../images/img_man03.png);
+                    }
+                }
+                &:last-child{
+                    a{
+                        height: auto;
+                    }
+                    .pic{
+                        width:2.4rem;
+                        height: 2.4rem;
+                        margin-top: 1.7rem;
+                        background-image:url(../images/ic_refresh.png);
+                    }
+                }
+            }
+        }
+        .ground_card{
+            position: relative;
+            height:31.2rem;
+            margin-bottom:2.2rem;
+            padding:1.6rem;
+            border-radius:1.6rem;
+            overflow: hidden;
+            box-shadow: 0.4rem 0.4rem 2rem rgba(0, 0, 0, 0.08);
+            + .ground_card{
+                margin-left:1.6rem;
+            }
+            a{
+                display: block;
+                text-decoration: none;
+            }
+            .pic{
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:17rem;
+                background: url(../images/bg_credit.jpg) no-repeat 0 0 / cover;
+            }
+            .txt
+        }
+        + .df_box{
+            margin-top: 3.4rem;
+        }
     }
 }
 
