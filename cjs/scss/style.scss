@@ -64,40 +64,41 @@ body {
         padding-left: 0;
         .tt-box {
             position: relative;
-            z-index: 2;
+            z-index: 11;
             background: #fff;
             box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
             padding: 1.6rem;
         }
         .main-bg {
-            z-index: -1;
             position: relative;
             height: 24.7rem;
             background-image: radial-gradient(#ff8a60, #fe7668);
-            &:before {
-                content: '';
-                position: absolute;
-                top: -1.7rem;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 1;
-                width: 17rem;
-                height: 17rem;
-                background: url(../image/main_image3x.png) no-repeat;
-                background-size: contain;
-            }
             .box-wrap {
                 display: flex;
-                justify-content: space-between;
+                position: relative;
+                z-index: 10;
+                justify-content: center;
                 margin: 0 auto;
                 padding-left: 2.3rem;
                 padding-right: 3.1rem;
                 color: #fff;
+                .character.boy {
+                    width: 17rem;
+                    height: 17rem;
+                    margin-top: -1.7rem;
+                    background: url(../image/main_image3x.png) center center / 100% no-repeat;
+                }
                 .box {
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     margin-top: 3rem;
+                    &.rangking {
+                        margin-right: -0.8rem;
+                    }
+                    &.score {
+                        margin-left: -0.1rem;
+                    }
                     .ico {
                         width: 2.8rem;
                         height: 2.8rem;
@@ -126,6 +127,7 @@ body {
             }
         }
         .view-box {
+            position: relative;
             width: 100%;
             margin-top: -9.4rem;
             padding-top: 1.6rem;
@@ -280,6 +282,16 @@ body {
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
             box-sizing: border-box;
             overflow: hidden;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            &:last-child {
+                margin-right: 2.4rem;
+            }
             &:after {
                 content: 'HOT';
                 position: absolute;
@@ -372,8 +384,16 @@ body {
         }
         .user {
             display: flex;
+            position: relative;
             flex-direction: column;
             align-items: center;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
             .user-image {
                 position: relative;
                 width: 6.4rem;
@@ -410,10 +430,19 @@ body {
         }
         .shuffle {
             display: flex;
+            position: relative;
             flex-direction: column;
             align-items: center;
+            margin-right: 2.4rem;
             padding: 1.7rem 2.8rem;
             text-align: center;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
             .ico {
                 width: 2.4rem;
                 height: 2.4rem;
@@ -437,6 +466,7 @@ body {
             display: none;
         }
         .main-card {
+            position: relative;
             flex-shrink: 0;
             width: 23.2rem;
             height: 31.2rem;
@@ -445,8 +475,18 @@ body {
             box-shadow: 0 0.4rem 2rem 0 rgba(0, 0, 0, 0.08);
             box-sizing: border-box;
             overflow: hidden;
+            &:last-child {
+                margin-right: 2.4rem;
+            }
             > div {
                 box-sizing: border-box;
+            }
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
             }
             .top {
                 position: relative;
@@ -550,6 +590,7 @@ body {
         }
         .sub-card {
             display: flex;
+            position: relative;
             flex-direction: column;
             justify-content: space-between;
             flex-shrink: 0;
@@ -562,6 +603,16 @@ body {
             box-sizing: border-box;
             font-size: 1.4rem;
             color: #818892;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            &:last-child {
+                margin-right: 2.4rem;
+            }
             &.lock {
                 position: relative;
                 overflow: hidden;
