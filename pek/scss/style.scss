@@ -251,9 +251,6 @@
             border-radius:1.6rem;
             background-color:#fff;
             box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.25);
-            &:last-child{
-                margin-right:2.4rem;
-            }
             &:after{
                 content: "HOT";
                 position:absolute;
@@ -472,7 +469,7 @@
                 z-index: 1;
             }
             &:last-child{
-                margin:0 2.4rem 2.2rem 0;
+                margin:0 0 2.2rem 0;
             }
             a{
                 display: block;
