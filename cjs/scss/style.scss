@@ -64,39 +64,41 @@ body {
         padding-left: 0;
         .tt-box {
             position: relative;
-            z-index: 2;
+            z-index: 11;
             background: #fff;
             box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
             padding: 1.6rem;
         }
         .main-bg {
-            z-index: -1;
             position: relative;
             height: 24.7rem;
             background-image: radial-gradient(#ff8a60, #fe7668);
-            &:before {
-                content: '';
+            .character.boy {
                 position: absolute;
-                top: -1.7rem;
+                top: calc(50% - 5rem);
                 left: 50%;
-                transform: translateX(-50%);
-                z-index: 1;
+                transform: translate(-50%, -50%);
                 width: 17rem;
                 height: 17rem;
-                background: url(../image/main_image3x.png) no-repeat;
-                background-size: contain;
+                background: url(../image/main_image3x.png) center center / cover no-repeat;
             }
             .box-wrap {
                 display: flex;
-                justify-content: space-between;
+                position: relative;
+                z-index: 10;
+                justify-content: center;
+                gap: 16.1rem;
                 margin: 0 auto;
                 padding-left: 2.3rem;
                 padding-right: 3.1rem;
                 color: #fff;
                 .box {
                     display: flex;
+                    position: relative;
+                    z-index: 0;
                     flex-direction: column;
                     align-items: center;
+
                     margin-top: 3rem;
                     .ico {
                         width: 2.8rem;
@@ -126,6 +128,7 @@ body {
             }
         }
         .view-box {
+            position: relative;
             width: 100%;
             margin-top: -9.4rem;
             padding-top: 1.6rem;
@@ -176,14 +179,24 @@ body {
                 padding: 0 1.6rem;
                 .box {
                     display: flex;
+                    position: relative;
                     flex-direction: column;
                     justify-content: space-between;
                     height: 7.3rem;
-                    padding-bottom: 2rem;
+                    padding-bottom: 2.4rem;
                     color: #fff;
                     > p {
                         margin-top: 1.4rem;
                         color: rgba(255, 255, 255, 0.7);
+                    }
+                    .wrap {
+                        position: absolute;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        top: 1.4rem;
+                        bottom: 1.4rem;
+                        padding-bottom: 1.4rem;
                     }
                     &.point {
                         width: 16.4rem;
@@ -192,7 +205,6 @@ body {
                         .point-wrap {
                             display: flex;
                             align-items: center;
-                            padding-bottom: 1.4rem;
                             font-weight: 700;
                             font-size: 2.6rem;
                             .icon {
@@ -209,10 +221,12 @@ body {
                         margin-left: -2rem;
                         text-align: right;
                         background: url(../image/match_condition.png) center top / 100% no-repeat;
+                        .wrap {
+                            right: 2.4rem;
+                        }
                         .match-wrap {
                             display: flex;
                             justify-content: right;
-                            padding-bottom: 1.4rem;
                             gap: 1rem;
                             font-size: 1.6rem;
                             .eng {
@@ -269,6 +283,16 @@ body {
             box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
             box-sizing: border-box;
             overflow: hidden;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            &:last-child {
+                margin-right: 2.4rem;
+            }
             &:after {
                 content: 'HOT';
                 position: absolute;
@@ -352,7 +376,8 @@ body {
         overflow-x: scroll;
         flex-wrap: nowrap;
         gap: 0.6rem;
-        padding-top: 1rem;
+        margin-left: -2.4rem;
+        padding: 1rem 0 0 2.4rem;
         -ms-overflow-style: none;
         scrollbar-width: none;
         &::-webkit-scrollbar {
@@ -360,8 +385,16 @@ body {
         }
         .user {
             display: flex;
+            position: relative;
             flex-direction: column;
             align-items: center;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
             .user-image {
                 position: relative;
                 width: 6.4rem;
@@ -398,10 +431,19 @@ body {
         }
         .shuffle {
             display: flex;
+            position: relative;
             flex-direction: column;
             align-items: center;
+            margin-right: 2.4rem;
             padding: 1.7rem 2.8rem;
             text-align: center;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
             .ico {
                 width: 2.4rem;
                 height: 2.4rem;
@@ -425,6 +467,7 @@ body {
             display: none;
         }
         .main-card {
+            position: relative;
             flex-shrink: 0;
             width: 23.2rem;
             height: 31.2rem;
@@ -433,8 +476,18 @@ body {
             box-shadow: 0 0.4rem 2rem 0 rgba(0, 0, 0, 0.08);
             box-sizing: border-box;
             overflow: hidden;
+            &:last-child {
+                margin-right: 2.4rem;
+            }
             > div {
                 box-sizing: border-box;
+            }
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
             }
             .top {
                 position: relative;
@@ -538,6 +591,7 @@ body {
         }
         .sub-card {
             display: flex;
+            position: relative;
             flex-direction: column;
             justify-content: space-between;
             flex-shrink: 0;
@@ -550,6 +604,16 @@ body {
             box-sizing: border-box;
             font-size: 1.4rem;
             color: #818892;
+            > a {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+            &:last-child {
+                margin-right: 2.4rem;
+            }
             &.lock {
                 position: relative;
                 overflow: hidden;

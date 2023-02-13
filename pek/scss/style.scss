@@ -141,7 +141,7 @@
 .section_box{
     position:relative;
     top:-97px;
-    padding:1.6rem 0 1.6rem 1.6rem;
+    padding:1.6rem 0;
     border-radius: 3.2rem 3.2rem 0 0;
     background-color:#fff;
     .current_box{
@@ -150,11 +150,11 @@
         min-width: 32.6rem;
         width: 32.6rem;
         margin: 2rem auto 3.4rem;
-        padding-right: 1.6rem;
         .inner{
             position:absolute;
             top:1.4rem;
             color:#fff;
+            padding-left:1.6rem;
             .tit{
                 margin-bottom: 0.8rem;
                 font-size:1.2rem;
@@ -187,26 +187,19 @@
             }
         }
         .left{
-            width:40%;
+            width:16.4rem;
             height: 7.4rem;
-            padding-left:1rem;
-            img{
-                left:-1.4rem;
-                width:16.8rem;
-            }
+            background:url(../images/Rectangle1278.png) no-repeat -1rem 0 / 111% 120%;
         }
         .right{
-            width:60%;
+            width:16.4rem;
             height: 8.4rem;
+            background:url(../images/Rectangle1279.png) no-repeat -1rem 0 / 110% 106%;
             .inner{
-                right:2.6rem;
+                right:1.6rem;
             }
             .tit{
                 text-align: right;
-            }
-            img{
-                right:0;
-                width:19.4rem;
             }
         }
         img{
@@ -217,6 +210,7 @@
     }
     .filter_box{
         display: flex;
+        margin:0 2.4rem;
         .filter_btn{
             margin-right:0.8rem;
             padding:0.7rem 1rem;
@@ -239,6 +233,7 @@
     }
     .slide_box{
         width:100%;
+        padding:0 2.4rem;
         overflow-x: scroll;
         &::-webkit-scrollbar{
             display: none;
@@ -251,7 +246,7 @@
             display: inline-block;
             width:30.6rem;
             height:12.2rem;
-            margin:2.4rem 0.6rem 1rem 0.6rem;
+            margin:2.4rem 0 1rem 0;
             padding:2.1rem 2.4rem;
             border-radius:1.6rem;
             background-color:#fff;
@@ -456,7 +451,7 @@
         .ground_card{
             position: relative;
             height:31.2rem;
-            margin-bottom:2.2rem;
+            margin:0 1.6rem 2.2rem 0;
             padding:1.6rem;
             border-radius:1.6rem;
             overflow: hidden;
@@ -473,8 +468,8 @@
                 font-size: 1.2rem;
                 z-index: 1;
             }
-            + .ground_card{
-                margin-left:1.6rem;
+            &:last-child{
+                margin:0 0 2.2rem 0;
             }
             a{
                 display: block;
@@ -556,7 +551,6 @@
                 }
                 .txt{
                     width:14.8rem;
-                    height: 8rem;
                     padding-top: 0;
                     strong{
                         display: inline-block;
@@ -594,7 +588,7 @@
 
 /****title****/
 .df_box{
-    padding:1.6rem 0.6rem;
+    padding:1.6rem 2.4rem;
     > .h4_tit, .h3_tit{
         display:inline-block;
         font-size:0;
@@ -616,7 +610,6 @@
     }
     .fr{
         float:right;
-        padding-right: 1.6rem;
         .f_pink{
             font-size:1.2rem;
             .fwb{
