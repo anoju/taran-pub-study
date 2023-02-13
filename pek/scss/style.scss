@@ -457,6 +457,7 @@
             position: relative;
             height:31.2rem;
             margin-bottom:2.2rem;
+            margin-right: 1.6rem;
             padding:1.6rem;
             border-radius:1.6rem;
             overflow: hidden;
@@ -472,9 +473,6 @@
                 color:#fff;
                 font-size: 1.2rem;
                 z-index: 1;
-            }
-            + .ground_card{
-                margin-left:1.6rem;
             }
             a{
                 display: block;
@@ -556,7 +554,6 @@
                 }
                 .txt{
                     width:14.8rem;
-                    height: 8rem;
                     padding-top: 0;
                     strong{
                         display: inline-block;
