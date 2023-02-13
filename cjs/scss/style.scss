@@ -73,32 +73,33 @@ body {
             position: relative;
             height: 24.7rem;
             background-image: radial-gradient(#ff8a60, #fe7668);
+            .character.boy {
+                position: absolute;
+                top: calc(50% - 5rem);
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 17rem;
+                height: 17rem;
+                background: url(../image/main_image3x.png) center center / cover no-repeat;
+            }
             .box-wrap {
                 display: flex;
                 position: relative;
                 z-index: 10;
                 justify-content: center;
+                gap: 16.1rem;
                 margin: 0 auto;
                 padding-left: 2.3rem;
                 padding-right: 3.1rem;
                 color: #fff;
-                .character.boy {
-                    width: 17rem;
-                    height: 17rem;
-                    margin-top: -1.7rem;
-                    background: url(../image/main_image3x.png) center center / 100% no-repeat;
-                }
                 .box {
                     display: flex;
+                    position: relative;
+                    z-index: 0;
                     flex-direction: column;
                     align-items: center;
+
                     margin-top: 3rem;
-                    &.rangking {
-                        margin-right: -0.8rem;
-                    }
-                    &.score {
-                        margin-left: -0.1rem;
-                    }
                     .ico {
                         width: 2.8rem;
                         height: 2.8rem;
