@@ -233,7 +233,7 @@
     }
     .slide_box{
         width:100%;
-        padding:0 1.6rem;
+        padding:0 2.4rem;
         overflow-x: scroll;
         &::-webkit-scrollbar{
             display: none;
@@ -251,6 +251,9 @@
             border-radius:1.6rem;
             background-color:#fff;
             box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.25);
+            &:last-child{
+                margin-right:2.4rem;
+            }
             &:after{
                 content: "HOT";
                 position:absolute;
@@ -468,6 +471,9 @@
                 font-size: 1.2rem;
                 z-index: 1;
             }
+            &:last-child{
+                margin:0 2.4rem 2.2rem 0;
+            }
             a{
                 display: block;
                 text-decoration: none;
@@ -585,7 +591,7 @@
 
 /****title****/
 .df_box{
-    padding:1.6rem;
+    padding:1.6rem 2.4rem;
     > .h4_tit, .h3_tit{
         display:inline-block;
         font-size:0;
