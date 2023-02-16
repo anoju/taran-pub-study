@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width= , initial-scale=1.0" />
     <link href="./css/style.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="./js/lib/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+    <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <title>메인 페이지 및 GNB 연습</title>
   </head>
   <body>
@@ -19,20 +22,21 @@
       </header>
       <main>
         <div class="main-banner">
-          <div class="slide first">
-            <p class="tt">이제 “트레이닝”도 직거래 하세요</p>
-            <p class="sub-tt">수수료내지 마시고<br />수업 비용만 결제하세요</p>
+          <div class="slidecontainer">
+            <div class="slide first">
+              <p class="tt">이제 “트레이닝”도 직거래 하세요</p>
+              <p class="sub-tt">수수료내지 마시고<br />수업 비용만 결제하세요</p>
+            </div>
+
+            <div class="slide second">
+              <p class="tt">PICKLES NEW UPDATE !</p>
+              <p class="sub-tt">결제 링크 생성 기능을 통해<br /><em>카드 결제 고객도 놓치지 마세요!</em></p>
+            </div>
+            <div class="slide third">
+              <p class="tt">헬스장&middot;필라테스샵&middot;GX룸&middot;요가원</p>
+              <p class="sub-tt">공간으로 추가 수익을 창출하실<br /><em>호스트를 신규 모집합니다.</em></p>
+            </div>
           </div>
-          <!-- 
-          <div class="slide second">
-            <p class="tt">PICKLES NEW UPDATE !</p>
-            <p class="sub-tt">결제 링크 생성 기능을 통해<br>카드 결제 고객도 놓치지 마세요!</p>
-          </div>
-          <div class="slide third">
-            <p class="tt">헬스장&middot;필라테스샵&middot;GX룸&middot;요가원</p>
-            <p class="sub-tt">수수료내지 마시고<br />수업 비용만 결제하세요</p>
-          </div>
-          -->
         </div>
         <section>
           <h2 class="sec-tt">피클스가 추천하는 공간 🏆</h2>
@@ -140,15 +144,16 @@
         </section>
         <section class="has-bg">
           <h2 class="sec-tt">이번 달 진행 중인 피클스 이벤트 🎁</h2>
-          <div class="card-box event">
-            <div class="card">
-              <a href="#none" title="해당 상세 페이지로 이동"></a>
+
+          <div class="slider-wrap">
+            <div class="cont">
+              <img src="./image/event1.png" alt="" />
             </div>
-            <div class="card">
-              <a href="#none" title="해당 상세 페이지로 이동"></a>
+            <div class="cont">
+              <img src="./image/event2.png" alt="" />
             </div>
-            <div class="card">
-              <a href="#none" title="해당 상세 페이지로 이동"></a>
+            <div class="cont">
+              <img src="./image/event3.png" alt="" />
             </div>
           </div>
           <button class="more">모든 이벤트 보기</button>
@@ -276,5 +281,53 @@
       </footer>
     </div>
   </body>
-  <script></script>
+  <script>
+    var sildeWrapper = $('.main-banner'),
+      slideContainer = sildeWrapper.find('.slidecontainer'),
+      slides = slideContainer.find('.slide'),
+      slideCount = slides.length,
+      currentIdx = 0,
+      timer,
+      duration = 500,
+      intervalTimer = 4500;
+
+    slideContainer.prepend(slides.clone().addClass('clone'));
+    slideContainer.append(slides.eq(0).clone().addClass('clone'));
+    slideContainer.find('.slide').each(function (idx) {
+      $(this).css({ left: idx * 100 + '%' });
+    });
+    slideContainer.css({ transform: 'translateX(' + slideCount * -100 + '%)' });
+    function moveSlide(num) {
+      slideContainer.stop().animate({ left: -100 * num + '%' }, duration, function () {
+        currentIdx = num;
+        if (currentIdx == slideCount || currentIdx == -slideCount) {
+          slideContainer.css({ left: '0%' });
+          currentIdx = 0;
+        }
+      });
+    }
+    sildeWrapper
+      .mouseover(function () {
+        clearInterval(timer);
+      })
+      .mouseout(function () {
+        autoSlide();
+      });
+    autoSlide();
+
+    function autoSlide() {
+      timer = setInterval(function () {
+        moveSlide(currentIdx + 1);
+      }, intervalTimer);
+    }
+
+    $('.slider-wrap').slick({
+      slide: 'div', //슬라이드 되어야 할 태그
+      arrows: false,
+      slidesToShow: 1, // 한 화면에 보여질 컨텐츠 개수
+      slidesToScroll: 1, //스크롤 한번에 움직일 컨텐츠 개수
+      centerMode: true,
+      centerPadding: '60px'
+    });
+  </script>
 </html>
