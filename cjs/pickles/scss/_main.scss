@@ -1,6 +1,7 @@
 body {
   overflow-x: hidden;
   #wrap {
+    position: relative;
     font-family: 'Noto Sans KR', sans-serif;
     #header {
       display: flex;
@@ -25,7 +26,7 @@ body {
           margin-right: 2rem;
           background: url("data:image/svg+xml,%0A%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.8989 17.7978C14.2613 17.7978 17.7978 14.2613 17.7978 9.8989C17.7978 5.53646 14.2613 2 9.8989 2C5.53646 2 2 5.53646 2 9.8989C2 14.2613 5.53646 17.7978 9.8989 17.7978Z' stroke='%2349AA85' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M21.9999 21.9999L15.5544 15.5544' stroke='%2349AA85' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") no-repeat;
         }
-        .gnb {
+        .gnb-button {
           position: relative;
           display: inline-block;
           width: 5rem;
