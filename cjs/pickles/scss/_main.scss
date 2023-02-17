@@ -1,8 +1,26 @@
 body {
   overflow-x: hidden;
+  &.gnb-open {
+    #wrap {
+      .gnb_bg {
+        display: block;
+      }
+    }
+  }
   #wrap {
+    overflow-x: hidden;
     position: relative;
     font-family: 'Noto Sans KR', sans-serif;
+    .gnb_bg {
+      display: none;
+      position: absolute;
+      z-index: 99;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba($color: #000000, $alpha: 0.3);
+    }
     #header {
       display: flex;
       justify-content: space-between;
