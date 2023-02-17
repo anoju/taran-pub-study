@@ -35,32 +35,36 @@
           </div>
         </div>
         <div class="boundary"></div>
-        <div class="info detail">
-          <p>내 정보</p>
-          <ul>
-            <li><a href="#none" title="구매 내역 페이지로 이동">구매 내역</a></li>
-            <li><a href="#none" title="나의 리뷰 페이지로 이동">나의 리뷰</a></li>
-            <li><a href="#none" title="내 정보 수정 페이지로 이동">내 정보 수정</a></li>
-            <li><a href="#none" title="로그아웃">로그아웃</a></li>
-          </ul>
-        </div>
-        <div class="active detail">
-          <p class="new">코치 활동</p>
-          <ul>
-            <li><a href="#none" title="코치 인증 페이지로 이동">코치 인증</a></li>
-            <li><a href="#none" title="코치 이력서 페이지로 이동">코치 이력서</a></li>
-            <li><a href="#none" title="코치 상품 페이지로 이동">코치 상품</a></li>
-            <li><a href="#none" title="판매 내역 페이지로 이동">판매 내역</a></li>
-          </ul>
-        </div>
-        <div class="cs detail">
-          <p>고객센터</p>
-          <ul>
-            <li><a href="#none" title="카카오톡으로 문의하기 페이지로 이동">카카오톡으로 문의하기</a></li>
-            <li><a href="#none" title="내 지역에 공간 요청하기 페이지로 이동">내 지역에 공간 요청하기</a></li>
-            <li><a href="#none" title="피클스와 제휴 맺기 페이지로 이동">피클스와 제휴 맺기</a></li>
-            <li><a href="#none" title="서비스 소개 페이지로 이동">서비스 소개</a></li>
-          </ul>
+        <div class="list-wrap">
+          <div class="info detail">
+            <p>내 정보</p>
+            <ul>
+              <li><a href="#none" title="구매 내역 페이지로 이동">구매 내역</a></li>
+              <li><a href="#none" title="나의 리뷰 페이지로 이동">나의 리뷰</a></li>
+              <li><a href="#none" title="내 정보 수정 페이지로 이동">내 정보 수정</a></li>
+              <li><a href="#none" title="로그아웃">로그아웃</a></li>
+            </ul>
+          </div>
+
+          <div class="active detail">
+            <p class="new">코치 활동</p>
+            <ul>
+              <li><a href="#none" title="코치 인증 페이지로 이동">코치 인증</a></li>
+              <li><a href="#none" title="코치 이력서 페이지로 이동">코치 이력서</a></li>
+              <li><a href="#none" title="코치 상품 페이지로 이동">코치 상품</a></li>
+              <li><a href="#none" title="판매 내역 페이지로 이동">판매 내역</a></li>
+            </ul>
+          </div>
+
+          <div class="cs detail">
+            <p>고객센터</p>
+            <ul>
+              <li><a href="#none" title="카카오톡으로 문의하기 페이지로 이동">카카오톡으로 문의하기</a></li>
+              <li><a href="#none" title="내 지역에 공간 요청하기 페이지로 이동">내 지역에 공간 요청하기</a></li>
+              <li><a href="#none" title="피클스와 제휴 맺기 페이지로 이동">피클스와 제휴 맺기</a></li>
+              <li><a href="#none" title="서비스 소개 페이지로 이동">서비스 소개</a></li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="gnb_bg"></div>
@@ -386,6 +390,9 @@
       $('body').addClass('gnb-open');
     });
     $('.close-button').click(function () {
+      $('body').removeClass('gnb-open');
+    });
+    $('.gnb_bg').click(function () {
       $('body').removeClass('gnb-open');
     });
   </script>
