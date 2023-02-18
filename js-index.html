@@ -70,7 +70,7 @@
         $td.each(function () {
           const $this = $(this);
           const $html = $this.data('html');
-          const $after = `<td><a href=".\_js_mission\${$html}.html" target="_blank" class="fc-primary underline">${$html}.html</a></td><td><a href=".\_js_mission_complete\${$html}.html" target="_blank" class="fc-primary underline">${$html}.html</a></td>`;
+          const $after = '<td><a href="./_js_mission/' + $html + '.html" target="_blank" class="fc-primary underline">' + $html + '.html</a></td><td><a href="./_js_mission_complete/' + $html + '.html" target="_blank" class="fc-primary underline">' + $html + '.html</a></td>';
           $this.after($after);
         });
       }
