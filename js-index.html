@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./_js_static/css/front.min.css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="container">
+        <div class="section">
+          <div class="table">
+            <table>
+              <thead>
+                <tr>
+                  <th>내용</th>
+                  <th>미션</th>
+                  <th>완료</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-html="tab-1">탭메뉴1</td>
+                </tr>
+                <tr>
+                  <td data-html="tab-2">탭메뉴2</td>
+                </tr>
+                <tr>
+                  <td data-html="tab-3">탭메뉴3</td>
+                </tr>
+                <tr>
+                  <td data-html="tab-4">탭메뉴4</td>
+                </tr>
+                <tr>
+                  <td data-html="accordion-1">아코디언1</td>
+                </tr>
+                <tr>
+                  <td data-html="accordion-2">아코디언2</td>
+                </tr>
+                <tr>
+                  <td data-html="accordion-3">아코디언3</td>
+                </tr>
+                <tr>
+                  <td data-html="scroll-1">스크롤1</td>
+                </tr>
+                <tr>
+                  <td data-html="scroll-2">스크롤2</td>
+                </tr>
+                <tr>
+                  <td data-html="scroll-accodian">아코디언+스크롤</td>
+                </tr>
+                <tr>
+                  <td data-html="scroll-tab-1">스파이 스크롤1</td>
+                </tr>
+                <tr>
+                  <td data-html="scroll-tab-2">스파이 스크롤2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="_js_static/js/jquery-3.6.0.min.js"></script>
+    <script>
+      function makeTd() {
+        const $td = $('table td');
+        $td.each(function () {
+          const $this = $(this);
+          const $html = $this.data('html');
+          const $after = '<td><a href="./_js_mission/' + $html + '.html" target="_blank" class="fc-primary underline">' + $html + '.html</a></td><td><a href="./_js_mission_complete/' + $html + '.html" target="_blank" class="fc-primary underline">' + $html + '.html</a></td>';
+          $this.after($after);
+        });
+      }
+      makeTd();
+    </script>
+  </body>
+</html>

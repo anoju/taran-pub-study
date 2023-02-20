@@ -5,34 +5,94 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width= , initial-scale=1.0" />
     <link href="./css/style.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="./js/lib/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+    <script type="text/javascript" src="./js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <title>메인 페이지 및 GNB 연습</title>
   </head>
   <body>
     <div id="wrap">
+      <div class="gnb">
+        <div class="close-button"></div>
+        <h2 class="user"><em class="name">이아름</em>님</h2>
+        <hr />
+        <div class="summary">
+          <div class="wrap">
+            <div>
+              <p>예약내역</p>
+            </div>
+            <div>
+              <p>예약현황</p>
+            </div>
+            <div>
+              <p>관심내역</p>
+            </div>
+          </div>
+          <div class="has-point">
+            <p>보유 포인트</p>
+            <span>0</span>
+          </div>
+        </div>
+        <div class="boundary"></div>
+        <div class="list-wrap">
+          <div class="info detail">
+            <p>내 정보</p>
+            <ul>
+              <li><a href="#none" title="구매 내역 페이지로 이동">구매 내역</a></li>
+              <li><a href="#none" title="나의 리뷰 페이지로 이동">나의 리뷰</a></li>
+              <li><a href="#none" title="내 정보 수정 페이지로 이동">내 정보 수정</a></li>
+              <li><a href="#none" title="로그아웃">로그아웃</a></li>
+            </ul>
+          </div>
+
+          <div class="active detail">
+            <p class="new">코치 활동</p>
+            <ul>
+              <li><a href="#none" title="코치 인증 페이지로 이동">코치 인증</a></li>
+              <li><a href="#none" title="코치 이력서 페이지로 이동">코치 이력서</a></li>
+              <li><a href="#none" title="코치 상품 페이지로 이동">코치 상품</a></li>
+              <li><a href="#none" title="판매 내역 페이지로 이동">판매 내역</a></li>
+            </ul>
+          </div>
+
+          <div class="cs detail">
+            <p>고객센터</p>
+            <ul>
+              <li><a href="#none" title="카카오톡으로 문의하기 페이지로 이동">카카오톡으로 문의하기</a></li>
+              <li><a href="#none" title="내 지역에 공간 요청하기 페이지로 이동">내 지역에 공간 요청하기</a></li>
+              <li><a href="#none" title="피클스와 제휴 맺기 페이지로 이동">피클스와 제휴 맺기</a></li>
+              <li><a href="#none" title="서비스 소개 페이지로 이동">서비스 소개</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="gnb_bg"></div>
       <header id="header">
         <h1 id="logo">로고</h1>
         <div class="gnb_box">
           <a href="#none" class="search"></a>
-          <a href="#none" class="gnb"></a>
+          <a href="#none" class="gnb-button"></a>
         </div>
       </header>
+
       <main>
         <div class="main-banner">
-          <div class="slide first">
-            <p class="tt">이제 “트레이닝”도 직거래 하세요</p>
-            <p class="sub-tt">수수료내지 마시고<br />수업 비용만 결제하세요</p>
+          <div class="slidecontainer">
+            <div class="slide first">
+              <p class="tt">이제 “트레이닝”도 직거래 하세요</p>
+              <p class="sub-tt">수수료내지 마시고<br />수업 비용만 결제하세요</p>
+            </div>
+
+            <div class="slide second">
+              <p class="tt">PICKLES NEW UPDATE !</p>
+              <p class="sub-tt">결제 링크 생성 기능을 통해<br /><em>카드 결제 고객도 놓치지 마세요!</em></p>
+            </div>
+            <div class="slide third">
+              <p class="tt">헬스장&middot;필라테스샵&middot;GX룸&middot;요가원</p>
+              <p class="sub-tt">공간으로 추가 수익을 창출하실<br /><em>호스트를 신규 모집합니다.</em></p>
+            </div>
           </div>
-          <!-- 
-          <div class="slide second">
-            <p class="tt">PICKLES NEW UPDATE !</p>
-            <p class="sub-tt">결제 링크 생성 기능을 통해<br>카드 결제 고객도 놓치지 마세요!</p>
-          </div>
-          <div class="slide third">
-            <p class="tt">헬스장&middot;필라테스샵&middot;GX룸&middot;요가원</p>
-            <p class="sub-tt">수수료내지 마시고<br />수업 비용만 결제하세요</p>
-          </div>
-          -->
         </div>
         <section>
           <h2 class="sec-tt">피클스가 추천하는 공간 🏆</h2>
@@ -140,15 +200,16 @@
         </section>
         <section class="has-bg">
           <h2 class="sec-tt">이번 달 진행 중인 피클스 이벤트 🎁</h2>
-          <div class="card-box event">
-            <div class="card">
-              <a href="#none" title="해당 상세 페이지로 이동"></a>
+
+          <div class="slider-wrap">
+            <div class="cont">
+              <img src="./image/event1.png" alt="" />
             </div>
-            <div class="card">
-              <a href="#none" title="해당 상세 페이지로 이동"></a>
+            <div class="cont">
+              <img src="./image/event2.png" alt="" />
             </div>
-            <div class="card">
-              <a href="#none" title="해당 상세 페이지로 이동"></a>
+            <div class="cont">
+              <img src="./image/event3.png" alt="" />
             </div>
           </div>
           <button class="more">모든 이벤트 보기</button>
@@ -276,5 +337,63 @@
       </footer>
     </div>
   </body>
-  <script></script>
+  <script>
+    var sildeWrapper = $('.main-banner'),
+      slideContainer = sildeWrapper.find('.slidecontainer'),
+      slides = slideContainer.find('.slide'),
+      slideCount = slides.length,
+      currentIdx = 0,
+      timer,
+      duration = 500,
+      intervalTimer = 4500;
+
+    slideContainer.prepend(slides.clone().addClass('clone'));
+    slideContainer.append(slides.eq(0).clone().addClass('clone'));
+    slideContainer.find('.slide').each(function (idx) {
+      $(this).css({ left: idx * 100 + '%' });
+    });
+    slideContainer.css({ transform: 'translateX(' + slideCount * -100 + '%)' });
+    function moveSlide(num) {
+      slideContainer.stop().animate({ left: -100 * num + '%' }, duration, function () {
+        currentIdx = num;
+        if (currentIdx == slideCount || currentIdx == -slideCount) {
+          slideContainer.css({ left: '0%' });
+          currentIdx = 0;
+        }
+      });
+    }
+    sildeWrapper
+      .mouseover(function () {
+        clearInterval(timer);
+      })
+      .mouseout(function () {
+        autoSlide();
+      });
+    autoSlide();
+
+    function autoSlide() {
+      timer = setInterval(function () {
+        moveSlide(currentIdx + 1);
+      }, intervalTimer);
+    }
+
+    $('.slider-wrap').slick({
+      slide: 'div',
+      arrows: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      centerMode: true,
+      centerPadding: '60px'
+    });
+
+    $('.gnb-button').click(function () {
+      $('body').addClass('gnb-open');
+    });
+    $('.close-button').click(function () {
+      $('body').removeClass('gnb-open');
+    });
+    $('.gnb_bg').click(function () {
+      $('body').removeClass('gnb-open');
+    });
+  </script>
 </html>
