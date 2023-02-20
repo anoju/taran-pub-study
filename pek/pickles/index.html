@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" href="./css/common.min.css">
 </head>
 <body>
@@ -15,12 +17,15 @@
                 <div class="ico_sch"><a href=""></a></div>
                 <div class="ico_menu"><a href=""></a></div>
             </div>
+            <div class="gnb">
+                
+            </div>
         </header>
         <section class="main">
             <div class="main_banner_box">
-                <ul>
-                    <li class="main_banner"><a href=""></a></li>
-                    <li class="main_banner"><a href=""></a></li>
+                <ul class="slides">
+                    <li class="main_banner"><a href="#none"><img src="./images/img_main_trainer_banner01.png" /></a></li>
+                    <li class="main_banner"><a href="#none"><img src="./images/img_main_trainer_banner02.png" /></a></li>
                 </ul>
             </div>
             <div class="df_box">
@@ -224,17 +229,60 @@
                     <div><a href="">Google Play</a></div>
                 </div>
             </div>
-                <div class="notice_list">
-                    <dl>
-                        <dt>피클스 파트너 가입하기</dt>
-                        <dd>내 피트니스 공간을 피클스에 올리고 싶다면?</dd>
-                    </dl>
-                    <dl>
-                        <dt>지역 요청하기</dt>
-                        <dd>우리 지역에도 이 공간이 있으면 좋겠어요!</dd>
-                    </dl>
-                </div>
+            <div class="notice_list">
+                    <div class="notice">
+                        <strong>피클스 파트너 가입하기</strong>
+                        <p>내 피트니스 공간을 피클스에 올리고 싶다면?</p>
+                    </div>
+                    <div class="notice">
+                        <strong>지역 요청하기</strong>
+                        <p>우리 지역에도 이 공간이 있으면 좋겠어요!</p>
+                    </div>
+            </div>
         </section>
+        <footer>
+            <div class="footer_logo"><div class="sym"></div><div class="txt"></div></div>
+            <ul class="footer_menu">
+                <li><a href="">(주)착한사람들컴퍼니</a></li>
+                <li><a href="">이용약관</a></li>
+                <li><a href="">개인정보처리방침</a></li>
+            </ul>
+            <div class="footer_info">
+                <dl>
+                    <dt>상호명</dt>
+                    <dd>(주)착한사람들컴퍼니</dd>
+                    <dt>대표</dt>
+                    <dd>권오중</dd>
+                </dl>
+                <address>서울특별시 마포구 백범로 31길 21, 본관812호</address>
+                <dl>
+                    <dt>사업자등록번호</dt>
+                    <dd>292-86-01882</dd>
+                    <dt>연락처</dt>
+                    <dd>010-2063-6402</dd>
+                </dl>
+                <dl>
+                    <dt>예금주</dt>
+                    <dd>(주)착한사람들컴퍼니</dd>
+                    <dt>계좌번호</dt>
+                    <dd>기업은행 047-117166-01-033</dd>
+                </dl>
+            </div>
+        </footer>
     </div>
 </body>
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<!-- Compiled and minified JavaScript -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        $('.slides').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplaySpeed: 2000,
+            autoplay: true,
+            arrows:false
+        });
+    });
+</script>
 </html>

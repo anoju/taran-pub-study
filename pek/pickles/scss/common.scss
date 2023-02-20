@@ -65,19 +65,13 @@
     margin-bottom: 1.5rem;
     ul{
         display: flex;
-        width:108rem;
     }
     .main_banner{
         width:36rem;
-        height: 20rem;
-        &:first-child{
-            a{
-                background:url(../images/img_main_trainer_banner01.png) no-repeat 0 0 /cover;
-            }
-        }
-        &:nth-child(2){
-            a{
-                background:url(../images/img_main_trainer_banner02.png) no-repeat 0 0 /cover;
+        a{
+            img{
+                width: 100%;
+                margin: auto;
             }
         }
     }
@@ -313,6 +307,9 @@
         margin-bottom: 3rem;
         border-radius: 0.4rem;
         background: url(../images/img_s_banner01.png) no-repeat 0 0 / cover;
+        &:last-child{
+            margin-right: 0;
+        }
     }
 }
 .btn_more{
@@ -393,7 +390,7 @@
     display: flex;
     flex-direction: column;
     padding: 2.4rem 0.4rem;
-    dl{
+    .notice{
         height: 7.6rem;
         padding: 1.6rem 2.4rem;
         margin: 1.6rem;
@@ -401,15 +398,16 @@
         background-color: #e2f3ed;
         cursor: pointer;
         box-sizing: border-box;
-        + dl{
+        + .notice{
             margin-top:0;
         }
-        dt{
+        strong{
+            display:inline-block;
             font-size: 1.6rem;
             font-weight: 900;
             line-height: 2.6rem;
         }
-        dd{
+        p{
             margin-top: 0.4rem;
             font-size: 1.1rem;
             line-height: 1.6rem;
@@ -427,7 +425,76 @@
     }
 }
 
-
+/****footer*****/
+.footer_logo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:3.2rem;
+    margin-bottom: 1.6rem;
+    .sym{
+        width:3.43rem;
+        height: 3.07rem;
+        background:url(../images/logo_simbol.png) no-repeat 0 0 / cover;
+    }
+    .txt{
+        width:9.34rem;
+        height: 2.77rem;
+        margin-left: 0.7rem;
+        background: url(../images/logo_text.png) no-repeat 0 0 / 98% 100%;
+    }
+}
+.footer_menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    line-height: 1.6rem;
+    font-weight: 400;
+    a{
+        color:#616562;
+    }
+    li{
+        display: flex;
+        align-items: center;
+    }
+    li + li::before{
+        content: "";
+        display: inline-block;
+        height: 1rem;
+        width:0.1rem;
+        background-color: #bdc1be;
+        margin:0 0.9rem;
+    }
+}
+.footer_info{
+    margin-top:1.6rem;
+    margin-bottom: 3.2rem;
+    text-align: center;
+    color:#9ea3a0;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    dl{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 3.1rem;
+        dt{
+            margin-right: 0.4rem;
+        }
+        dd{
+            + dt::before{
+                content: "";
+                display: inline-block;
+                width:0.1rem;
+                height: 0.9rem;
+                margin: 0 0.5rem;
+                background-color: #dfe4e1;
+                vertical-align: middle;   
+            }
+        }
+    }
+}
 
 /*title*/
 .df_box{
