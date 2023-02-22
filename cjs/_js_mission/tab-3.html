@@ -86,6 +86,26 @@
       // parent(), closest(), siblings(), find(), children()
       // outerWidth(), position()
       // stop(), animate()
+
+      $('.tab > a').click(function () {
+        var _this = $(this),
+          _tab = _this.parents('.tab'),
+          _panel = _this.closest('.tab-inner').parent().next('br').nextUntil('br');
+
+        _this.parents('.tab').addClass('active');
+        _this.parents('.tab').siblings().removeClass('active');
+        _panel.removeClass('active');
+
+        if (_tab.is(':nth-child(1)')) {
+          _panel.eq(0).addClass('active');
+        } else if (_tab.is(':nth-child(2)')) {
+          _panel.eq(1).addClass('active');
+        } else if (_tab.is(':nth-child(3)')) {
+          _panel.eq(2).addClass('active');
+        } else {
+          _panel.eq(3).addClass('active');
+        }
+      });
     </script>
   </body>
 </html>
