@@ -44,32 +44,17 @@
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       $(document).ready(function () {
 
-          
-          //$(this).parent().addClass('active').siblings().removeClass('active');
+          $(".tab-list > li").click(function() {
 
-          //$('.tab-panel').hide();
-          //$('.tab-panel:first').show();
-          $('.tab a').click(function(e){
-            e.preventDefault();
-            $(this).parent().addClass('active').siblings().removeClass('active');
-            
-            var $this = $(this),
-                tabgroup = '#'+ "tab" + $this.parents('.tab').index(),
-                others = $this.closest('li').siblings(),
-                target = $this.attr('href');
-            
-                console.log(tabgroup);
-                
-            others.removeClass('active');
-            $this.addClass('active');
+            var tab_id = $(this).index() + 1;
+            //console.log(tab_id);
 
-            $(tabgroup).hide();
-            $(target).show();
-  
+            $(".tab-list > li").removeClass('active');
+            $(".tab-panel").removeClass('active');
+
+            $(this).addClass('active');
+            $("#"+"tab"+tab_id).addClass('active');
           })
-
-          return false
-          
 
       });
     </script>
