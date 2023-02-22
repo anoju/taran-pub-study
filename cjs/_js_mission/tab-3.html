@@ -86,6 +86,17 @@
       // parent(), closest(), siblings(), find(), children()
       // outerWidth(), position()
       // stop(), animate()
+
+      $('.tab > a').click(function () {
+        $(this).parents('.tab').addClass('active');
+        $(this).parents('.tab').siblings().removeClass('active');
+
+        const tabMenu = $(this).parents('.tab-list').children().find(),
+          tabPanel = $(this).closest('.tab-inner').parent().next('br').nextUntil('br');
+        console.log(tabMenu);
+        // console.log(tabPanel);
+        // if eq().eq()
+      });
     </script>
   </body>
 </html>

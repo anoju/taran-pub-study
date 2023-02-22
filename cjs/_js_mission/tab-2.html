@@ -16,7 +16,7 @@
           <div class="tab-line-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
-              <ul class="tab-list">
+              <ul class="tab-list" data-tabgroup="fist-tab-group">
                 <li class="tab active"><a href="#tab1">텝메뉴1</a></li>
                 <li class="tab"><a href="#tab2">텝메뉴2</a></li>
                 <li class="tab"><a href="#tab3">텝메뉴3</a></li>
@@ -42,19 +42,15 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      const tabPanle = $('.tab-panel');
-      $('.tab > a').click(function () {
-        $(this).parents('.tab').addClass('active');
-        $(this).parents('.tab').siblings().removeClass('active');
 
-        const menuId = $(this).attr('href');
-        console.log(menuId);
-        tabPanle.hide();
-        tabPanle.each(function () {
-          if ('#' + $(this).attr('id') == menuId) {
-            $(this).show();
-          }
-        });
+      $('.tab a').click(function () {
+        $(this).parent().addClass('active').siblings().removeClass('active');
+
+        var $this = $(this),
+          target = $this.attr('href');
+
+        $('.tab-panel').hide();
+        $(target).show();
       });
     </script>
   </body>
