@@ -15,10 +15,102 @@
             <h1 class="logo">pickles</h1>
             <div class="lnb">
                 <div class="ico_sch"><a href=""></a></div>
-                <div class="ico_menu"><a href=""></a></div>
+                <div class="ico_menu"><a href="#none"></a></div>
             </div>
-            <div class="gnb">
-                
+            <div class="gnb_box">
+                <div class="dim"></div>
+                <div class="ico_close"><a href=""></a></div>
+                <div class="gnb">
+                    <div class="profile_box">
+                        <div class="name">
+                            <h3>이아름님</h3>
+                        </div>
+                        <div class="mymenu">
+                            <ul>
+                                <li><a href="">
+                                    <i></i>
+                                    <span>예약내역</span>
+                                </a></li>
+                                <li><a href="">
+                                    <i></i>
+                                    <span>예약현황</span>
+                                </a></li>
+                                <li><a href="">
+                                    <i></i>
+                                    <span>관심내역</span>
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="point">
+                            <span>보유포인트</span>
+                            <span class="num">0</span>
+                        </div>
+                    </div>
+                    <div class="menu_list">
+                        <ul>
+                            <li class="tit"><span>내 정보</span>
+                                <ul class="sub_menu">
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_cart"></i>
+                                        <span>구매 내역</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_review"></i>
+                                        <span>나의 리뷰</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_mypage"></i>
+                                        <span>내 정보 수정</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_logout"></i>
+                                        <span>로그아웃</span>
+                                    </a></li>
+                                </ul>
+                            </li>
+                            <li class="tit"><span>코치활동</span>
+                                <ul class="sub_menu">
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_certify"></i>
+                                        <span>코치 인증</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_resume"></i>
+                                        <span>코치 이력서</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_product"></i>
+                                        <span>코치 상품</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_store"></i>
+                                        <span>판매 내역</span>
+                                    </a></li>
+                                </ul>
+                            </li>
+                            <li class="tit"><span>고객센터</span>
+                                <ul class="sub_menu">
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_kakao"></i>
+                                        <span>카카오톡으로 문의하기</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_add_place"></i>
+                                        <span>내 지역에 공간 요청하기</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_contract"></i>
+                                        <span>피클스와 제휴 맺기</span>
+                                    </a></li>
+                                    <li class="sub_menu_tit"><a href="">
+                                        <i class="ico_service"></i>
+                                        <span>서비스 소개</span>
+                                    </a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </header>
         <section class="main">
@@ -282,6 +374,19 @@
             autoplaySpeed: 2000,
             autoplay: true,
             arrows:false
+        });
+
+        $('.ico_menu>a').click(function (e){
+            e.preventDefault(); //스크롤 상단으로 가는걸 막아줌
+            $('.gnb_box').addClass('block');
+            $('.ico_close').css({right: + 27 + 'rem'});
+            $('.gnb').css({right:0});
+        });
+        $('.ico_close>a').click(function (e){
+            e.preventDefault();
+            $('.gnb').css({right:+'-'+ 27 + 'rem'});
+            $('.ico_close').css({right:0});
+            $('.gnb_box').removeClass('block');
         });
     });
 </script>
