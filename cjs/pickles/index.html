@@ -94,6 +94,7 @@
             </div>
           </div>
         </div>
+        <!-- 
         <div class="main-banner main-banner2">
           <div class="slidecontainer">
             <div class="slide first">
@@ -111,11 +112,13 @@
             </div>
           </div>
         </div>
+         -->
         <section>
           <h2 class="sec-tt">피클스가 추천하는 공간 🏆</h2>
           <div class="card-box">
             <div class="card one">
-              <div class="card-image">
+              <div class="card-wrap">
+                <img class="card-image" src="./image/image 1.png" alt="추천공간1" />
                 <div class="right">바로승인</div>
                 <div class="enable">강습가능</div>
                 <div class="like"></div>
@@ -146,7 +149,8 @@
               <a href="#none" title="해당링크로 이동"></a>
             </div>
             <div class="card two">
-              <div class="card-image">
+              <div class="card-wrap">
+                <img class="card-image" src="./image/image 2.png" alt="추천공간2" />
                 <div class="right">바로승인</div>
                 <div class="enable">강습가능</div>
                 <div class="like"></div>
@@ -180,7 +184,9 @@
           <h2 class="sec-tt">원하는 선생님과 트레이닝 💪</h2>
           <div class="card-box teacher">
             <div class="card">
-              <div class="card-image"></div>
+              <div class="card-image">
+                <img src="./image/image 4.png" class="teacher_img" alt="트레이너 슈가보이" />
+              </div>
               <div class="card-explain">
                 <p>트레이너 슈가보이</p>
                 <div class="first-floor">
@@ -191,7 +197,9 @@
               <a href="#none" title="해당 상세 페이지로 이동"></a>
             </div>
             <div class="card">
-              <div class="card-image"></div>
+              <div class="card-image">
+                <img src="./image/image 5.png" class="teacher_img" alt="트레이너 슈가보이" />
+              </div>
               <div class="card-explain">
                 <p>트레이너 슈가보이</p>
                 <div class="first-floor">
@@ -202,7 +210,9 @@
               <a href="#none" title="해당 상세 페이지로 이동"></a>
             </div>
             <div class="card">
-              <div class="card-image"></div>
+              <div class="card-image">
+                <img src="./image/image 6.png" class="teacher_img" alt="트레이너 슈가보이" />
+              </div>
               <div class="card-explain">
                 <p>트레이너 슈가보이</p>
                 <div class="first-floor">
@@ -238,7 +248,8 @@
           </h2>
           <div class="card-box">
             <div class="card one">
-              <div class="card-image">
+              <div class="card-wrap">
+                <img class="card-image" src="./image/image 1.png" alt="추천공간1" />
                 <div class="right">바로승인</div>
                 <div class="enable">강습가능</div>
                 <div class="like"></div>
@@ -269,7 +280,8 @@
               <a href="#none" title="해당링크로 이동"></a>
             </div>
             <div class="card two">
-              <div class="card-image">
+              <div class="card-wrap">
+                <img class="card-image" src="./image/image 2.png" alt="추천공간2" />
                 <div class="right">바로승인</div>
                 <div class="enable">강습가능</div>
                 <div class="like"></div>
@@ -356,7 +368,7 @@
   </body>
   <script>
     function jsSlide(target, _duration, _interval) {
-      if (!$(target).length) return;
+      if (!$(target).length) return; // 여기서 return 은 스크립트 오류 방지
       const sildeWrapper = $(target);
       const slideContainer = sildeWrapper.find('.slidecontainer');
       const slides = slideContainer.find('.slide');
@@ -416,6 +428,16 @@
     });
     $('.gnb_bg').click(function () {
       $('body').removeClass('gnb-open');
+    });
+
+    window.addEventListener('scroll', function () {
+      const currentScroll = window.scrollY;
+      console.log(currentScroll);
+      if (currentScroll > 0) {
+        $('body').addClass('pos-fix');
+      } else {
+        $('body').removeClass('pos-fix');
+      }
     });
   </script>
 </html>

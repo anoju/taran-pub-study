@@ -1,5 +1,14 @@
 body {
   overflow-x: hidden;
+  &.pos-fix {
+    #header {
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      right: 0;
+      background: #fff;
+    }
+  }
   &.gnb-open {
     height: 100%;
     overflow-y: hidden;
@@ -329,26 +338,10 @@ body {
         }
         &.teacher {
           .card {
-            &:first-child {
-              width: 14.8rem;
-              .card-image {
-                height: 14.8rem;
-                background: url(../image/image\ 4.png) center center / 100% no-repeat;
-              }
-            }
-            &:nth-child(2) {
-              width: 14.8rem;
-              .card-image {
-                height: 14.8rem;
-                background: url(../image/image\ 5.png) center center / 100% no-repeat;
-              }
-            }
-            &:nth-child(3) {
-              width: 14.8rem;
-              .card-image {
-                height: 14.8rem;
-                background: url(../image/image\ 6.png) center center / 100% no-repeat;
-              }
+            width: 14.8rem;
+            .card-image .teacher_img {
+              height: 14.8rem;
+              border-radius: 0.4rem;
             }
           }
           .card-explain {
@@ -393,29 +386,24 @@ body {
           width: 22.3rem;
           margin-right: 1rem;
           flex-shrink: 0;
-          &.one {
-            .card-image {
-              background: url(../image/image\ 1.png) center center / cover no-repeat;
-            }
-          }
-          &.two {
-            .card-image {
-              background: url(../image/image\ 2.png) center center / 100% no-repeat;
-            }
-          }
           &:first-child {
             padding-left: 2rem;
           }
           &:last-child {
             margin-right: 2rem;
           }
-          .card-image {
+          .card-wrap {
             position: relative;
             height: 16.7rem;
             font-size: 1rem;
             font-weight: 700;
             line-height: 1.5rem;
-            border-radius: 0.4rem;
+            .card-image {
+              width: 22.3rem;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 0.4rem;
+            }
             .right {
               position: absolute;
               top: 0.8rem;
