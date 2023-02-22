@@ -77,7 +77,24 @@
       </header>
 
       <main>
-        <div class="main-banner">
+        <div class="main-banner main-banner1">
+          <div class="slidecontainer">
+            <div class="slide first">
+              <p class="tt">이제 “트레이닝”도 직거래 하세요</p>
+              <p class="sub-tt">수수료내지 마시고<br />수업 비용만 결제하세요</p>
+            </div>
+
+            <div class="slide second">
+              <p class="tt">PICKLES NEW UPDATE !</p>
+              <p class="sub-tt">결제 링크 생성 기능을 통해<br /><em>카드 결제 고객도 놓치지 마세요!</em></p>
+            </div>
+            <div class="slide third">
+              <p class="tt">헬스장&middot;필라테스샵&middot;GX룸&middot;요가원</p>
+              <p class="sub-tt">공간으로 추가 수익을 창출하실<br /><em>호스트를 신규 모집합니다.</em></p>
+            </div>
+          </div>
+        </div>
+        <div class="main-banner main-banner2">
           <div class="slidecontainer">
             <div class="slide first">
               <p class="tt">이제 “트레이닝”도 직거래 하세요</p>
@@ -338,44 +355,49 @@
     </div>
   </body>
   <script>
-    var sildeWrapper = $('.main-banner'),
-      slideContainer = sildeWrapper.find('.slidecontainer'),
-      slides = slideContainer.find('.slide'),
-      slideCount = slides.length,
-      currentIdx = 0,
-      timer,
-      duration = 500,
-      intervalTimer = 4500;
+    function jsSlide(target, _duration, _interval) {
+      if (!$(target).length) return;
+      const sildeWrapper = $(target);
+      const slideContainer = sildeWrapper.find('.slidecontainer');
+      const slides = slideContainer.find('.slide');
+      const slideCount = slides.length;
+      const duration = !!_duration ? _duration : 500;
+      const intervalTimer = !!_interval ? _interval : 4500;
+      let currentIdx = 0;
+      let timer;
 
-    slideContainer.prepend(slides.clone().addClass('clone'));
-    slideContainer.append(slides.eq(0).clone().addClass('clone'));
-    slideContainer.find('.slide').each(function (idx) {
-      $(this).css({ left: idx * 100 + '%' });
-    });
-    slideContainer.css({ transform: 'translateX(' + slideCount * -100 + '%)' });
-    function moveSlide(num) {
-      slideContainer.stop().animate({ left: -100 * num + '%' }, duration, function () {
-        currentIdx = num;
-        if (currentIdx == slideCount || currentIdx == -slideCount) {
-          slideContainer.css({ left: '0%' });
-          currentIdx = 0;
-        }
+      slideContainer.prepend(slides.clone().addClass('clone'));
+      slideContainer.append(slides.eq(0).clone().addClass('clone'));
+      slideContainer.find('.slide').each(function (idx) {
+        $(this).css({ left: idx * 100 + '%' });
       });
-    }
-    sildeWrapper
-      .mouseover(function () {
-        clearInterval(timer);
-      })
-      .mouseout(function () {
-        autoSlide();
-      });
-    autoSlide();
+      slideContainer.css({ transform: 'translateX(' + slideCount * -100 + '%)' });
+      function moveSlide(num) {
+        slideContainer.stop().animate({ left: -100 * num + '%' }, duration, function () {
+          currentIdx = num;
+          if (currentIdx == slideCount || currentIdx == -slideCount) {
+            slideContainer.css({ left: '0%' });
+            currentIdx = 0;
+          }
+        });
+      }
+      sildeWrapper
+        .mouseover(function () {
+          clearInterval(timer);
+        })
+        .mouseout(function () {
+          autoSlide();
+        });
+      autoSlide();
 
-    function autoSlide() {
-      timer = setInterval(function () {
-        moveSlide(currentIdx + 1);
-      }, intervalTimer);
+      function autoSlide() {
+        timer = setInterval(function () {
+          moveSlide(currentIdx + 1);
+        }, intervalTimer);
+      }
     }
+    jsSlide('.main-banner1');
+    jsSlide('.main-banner2', 300, 3000);
 
     $('.slider-wrap').slick({
       slide: 'div',
