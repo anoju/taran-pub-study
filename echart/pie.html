@@ -33,10 +33,8 @@
 
       function pieChart1() {
         var shlContent = document.getElementById('pie1');
-        /* echartsInstance 생성 */
         var shlDonutECharts = echarts.init(shlContent);
 
-        /* 차트를 구성할 컬러 */
         var chartName = '2023.01.01 ~ 01.21';
         var chartColor = ['#BC6EFF', '#826AF9', '#2D99FF', '#5066F7', '#2CD9C5', '#30BC86', '#FFC400', '#FE943A', '#F46271'];
         var chartData = [
@@ -51,19 +49,7 @@
           { name: '범례9', value: 10 }
         ];
 
-        /* 차트를 구성할 옵션 */
         var chartOption = {
-          /* 툴팁 */
-          tooltip: {
-            trigger: 'item',
-            className: 'echart-tooltip2',
-            formatter: function (params) {
-              var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-              return `<div class='tooltip-title'>${params.seriesName}</div><div class='tooltip-remark' style='--color:${params.color}'>${params.name} <span class="values">${addCommaValue}명(${params.percent}%)</span></div>`;
-            },
-            extraCssText: "font-size: 11px;font-family:'KBText', sans-serif;line-height: 23px;padding: 15px;border-color: #EFEFEF;box-shadow: 0px 5px 12px rgba(51,51,51,0.15);"
-          },
-          /* 차트 범례 */
           legend: {
             bottom: 0,
             itemGap: 15,
@@ -75,12 +61,20 @@
               fontFamily: 'KBText'
             }
           },
-          /* 차트 데이터 */
+          tooltip: {
+            trigger: 'item',
+            className: 'echart-tooltip2',
+            formatter: function (params) {
+              var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+              return `<div class='tooltip-title'>${params.seriesName}</div><div class='tooltip-remark' style='--color:${params.color}'>${params.name} <span class="values">${addCommaValue}명(${params.percent}%)</span></div>`;
+            },
+            extraCssText: "font-size: 11px;font-family:'KBText', sans-serif;line-height: 23px;padding: 15px;border-color: #EFEFEF;box-shadow: 0px 5px 12px rgba(51,51,51,0.15);"
+          },
           series: [
             {
               name: chartName,
               type: 'pie',
-              radius: ['55%', '70%'],
+              radius: ['52%', '70%'],
               clockwise: false,
               label: {
                 show: false
@@ -91,33 +85,28 @@
           ]
         };
 
-        /* echartsInstance에 작성한 데이터로 차트 구성 */
         shlDonutECharts.setOption(chartOption);
       }
 
       function pieChart2() {
         var shlContent = document.getElementById('pie2');
-
-        /* echartsInstance 생성 */
         var shlDonutECharts = echarts.init(shlContent);
 
-        var chartName = '2023년 01월 01일 ~ 01월 21일';
+        var chartName = '2023.01.01 ~ 01.21';
         var chartColor = ['#BC6EFF', '#826AF9', '#2D99FF', '#5066F7', '#2CD9C5', '#30BC86', '#FFC400', '#FE943A', '#F46271'];
         var chartData = [
-          { name: '범례1', value: 150 },
-          { name: '범례2', value: 180 },
-          { name: '범례3', value: 120 },
-          { name: '범례4', value: 80 },
-          { name: '범례5', value: 70 },
-          { name: '범례6', value: 50 },
-          { name: '범례7', value: 40 },
-          { name: '범례8', value: 20 },
-          { name: '범례9', value: 10 }
+          { name: '범례1', value: 150000 },
+          { name: '범례2', value: 180000 },
+          { name: '범례3', value: 120000 },
+          { name: '범례4', value: 80000 },
+          { name: '범례5', value: 70000 },
+          { name: '범례6', value: 50000 },
+          { name: '범례7', value: 40000 },
+          { name: '범례8', value: 20000 },
+          { name: '범례9', value: 10000 }
         ];
 
-        /* 차트를 구성할 옵션 */
         var chartOption = {
-          /* 차트 범례 */
           legend: {
             bottom: 0,
             itemGap: 15,
@@ -129,41 +118,29 @@
               fontFamily: 'KBText'
             }
           },
-          /* 툴팁 */
-          tooltip: {
-            show: false
-          },
           label: {
-            show: true,
-            position: 'outside',
-            // formatter: '{b}: {c}명 ({d}%)',
-            //			formatter: function(params) {
-            //				var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-            //				return `${params.name} ${addCommaValue}명(${params.percent}%)`;
-            //			},
             formatter: function (params) {
               var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-              return `<div class='tooltip-title'>${params.seriesName}</div><div class='tooltip-remark' style='--color:${params.color}'>${params.name} <span class="values">${addCommaValue}명(${params.percent}%)</span></div>`;
+              return '{a|' + params.name + '}  {b|' + addCommaValue + '명}\n {c|(▼' + params.percent + '%)}';
+            },
+            rich: {
+              a: {
+                fontWeight: 700
+              },
+              c: {
+                align: 'right'
+              }
             },
             fontSize: 11,
-            fontFamily: 'KBText'
+            lineHeight: 14,
+            fontFamily: 'KBText',
+            color: '#555'
           },
-          labelLine: {
-            show: true // label 이 밖에 있을 경우 label 까지 이어진 선
-          },
-          emphasis: {
-            // 가운데 타이틀
-            label: {
-              show: true,
-              fontWeight: 'bold'
-            }
-          },
-          /* 차트 데이터 */
           series: [
             {
               name: chartName,
               type: 'pie',
-              radius: ['55%', '70%'],
+              radius: ['52%', '70%'],
               clockwise: false,
               color: chartColor,
               data: chartData
@@ -171,7 +148,6 @@
           ]
         };
 
-        /* echartsInstance에 작성한 데이터로 차트 구성 */
         shlDonutECharts.setOption(chartOption);
       }
     </script>
