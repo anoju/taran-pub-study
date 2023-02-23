@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>echart bar</title>
+    <link rel="stylesheet" href="../js_static/css/front.min.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
+    <link rel="stylesheet" href="lib/chart.css" />
+    <script src="lib/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 이엑스 빌더에 적용할때 font-family는 'KBText' 에서 'KB금융 본문체' 바꿔서 적용예정 -->
+    <div class="page">
+      <div class="page-body">
+        <div class="section">
+          <h1 class="gd__h1">bar</h1>
+          <h2 class="gd__h2">type1 (진행중)</h2>
+
+          <div id="bar1" style="height: 686px"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      bar1();
+
+      function bar1() {
+        var bar1 = document.getElementById('bar1');
+
+        //var chartDom = document.getElementById('main');
+        var myChart = echarts.init(bar1);
+        var singleBardefaultOption = {
+          tooltip: {
+            borderColor: 'transparent',
+            textStyle: {
+              fontSize: 11,
+              fontFamily: 'KB금융 본문체'
+            }
+          },
+          xAxis: {
+            axisLabel: {
+              color: '#555555',
+              fontSize: 12,
+              fontFamily: 'KB금융 본문체'
+            },
+            axisTick: {
+              alignWithLabel: true
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#dddddd'
+              }
+            }
+          },
+          grid: {
+            show: false,
+            width: '280'
+          },
+          yAxis: [
+            {
+              type: 'value',
+              show: false
+            }
+          ],
+          series: [
+            {
+              type: 'bar',
+              itemStyle: {
+                borderRadius: [6, 6, 0, 0]
+              },
+              barWidth: 45,
+              label: {
+                show: true,
+                position: 'top',
+                fontSize: 14,
+                fontWeight: 'bold',
+                fontFamily: 'KB금융 본문체'
+              }
+            }
+          ]
+        };
+
+        var data = {
+          prev: 3000,
+          current: 2200
+        };
+
+        option = {
+          tooltip: {
+            className: 'echart-black',
+            formatter: function (params) {
+              console.log('params', params.tooltip);
+              if (params.tooltip) {
+                return params.tooltip;
+              } else {
+                return null;
+              }
+            }
+          },
+          xAxis: {
+            type: 'category',
+            data: ['01.20', '01.21'],
+            axisLabel: {
+              color: '#555555',
+              fontSize: 12,
+              fontFamily: 'KB금융 본문체'
+            },
+            axisTick: {
+              alignWithLabel: true
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#dddddd'
+              }
+            }
+          },
+          series: [
+            {
+              markPoint: {
+                data: [
+                  {
+                    type: data.prev > data.current ? 'min' : 'max',
+                    //coord: [1, 500], // 위치
+                    //symbol: 'image://https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfiR2_8fTxYlmA2owVJDZ-CwnpyxHp46VsFPHKrSUyA&s',
+                    symbol: 'roundRect',
+                    symbolSize: [80, 20],
+                    symbolOffset: [55, 50],
+                    label: {
+                      formatter: '20% 증가',
+                      backgroundColor: '#333333',
+                      borderRadius: 5,
+                      padding: [10, 5, 10, 5],
+                      width: 100
+                    }
+                  }
+                ]
+              },
+              data: [
+                {
+                  value: data.prev,
+                  itemStyle: {
+                    color: '#ddd'
+                  },
+                  tooltip: '전일 대비 10%증가'
+                },
+                {
+                  value: data.current,
+                  itemStyle: {
+                    color: '#FEB23A'
+                  },
+                  tooltip: '20%증가'
+                }
+              ],
+              label: {
+                formatter: function (d) {
+                  return d.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                }
+              }
+            }
+          ]
+        };
+        singleBardefaultOption && myChart.setOption(singleBardefaultOption);
+        option && myChart.setOption(option);
+      }
+    </script>
+  </body>
+</html>
