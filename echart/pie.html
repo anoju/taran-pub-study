@@ -27,7 +27,6 @@
 
           <hr class="hr-line mg-50y" />
           <h2 class="gd__h2">type2 (완료)</h2>
-          <p class="">※ label의 line에 대한 <strong class="fc-red">거리조정</strong> 및 <strong class="fc-red">라인컬러수정</strong> 옵션이 없는듯합니다.</p>
 
           <div id="pie2" style="height: 686px"></div>
 
@@ -132,42 +131,7 @@
               fontFamily: 'KBText'
             }
           },
-          label: {
-            formatter: function (params) {
-              var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-              return '{a|' + params.name + '}  {b|' + addCommaValue + '명}\n {c|(▼' + params.percent + '%)}';
-            },
-            rich: {
-              a: {
-                fontWeight: 700,
-                fontSize: 11,
-                lineHeight: 14,
-                fontFamily: 'KBText',
-                color: '#555'
-              },
-              b: {
-                align: 'right',
-                fontSize: 11,
-                lineHeight: 14,
-                fontFamily: 'KBText',
-                color: '#555'
-              },
-              c: {
-                align: 'right',
-                fontSize: 11,
-                lineHeight: 14,
-                fontFamily: 'KBText',
-                color: '#555'
-              }
-            }
-          },
-          labelLine: {
-            length: 100,
-            lineStyle: {
-              width: 1,
-              type: 'solid'
-            }
-          },
+
           series: [
             {
               name: chartName,
@@ -175,6 +139,42 @@
               position: 'outside',
               radius: ['52%', '70%'],
               clockwise: false,
+              label: {
+                formatter: function (params) {
+                  var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                  return '{a|' + params.name + '}  {b|' + addCommaValue + '명}\n {c|(▼' + params.percent + '%)}';
+                },
+                rich: {
+                  a: {
+                    fontWeight: 700,
+                    fontSize: 11,
+                    lineHeight: 14,
+                    fontFamily: 'KBText',
+                    color: '#555'
+                  },
+                  b: {
+                    align: 'right',
+                    fontSize: 11,
+                    lineHeight: 14,
+                    fontFamily: 'KBText',
+                    color: '#555'
+                  },
+                  c: {
+                    align: 'right',
+                    fontSize: 11,
+                    lineHeight: 14,
+                    fontFamily: 'KBText',
+                    color: '#555'
+                  }
+                }
+              },
+              labelLine: {
+                length: 20,
+                length2: 50,
+                lineStyle: {
+                  color: '#bbb'
+                }
+              },
               color: chartColor,
               data: chartData
             }
