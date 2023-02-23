@@ -88,25 +88,17 @@
       // outerWidth(), position()
       // stop(), animate()
 
-      // 배열 선언 및 초기화
-      // var arr = ['item1', 'item2', 'item3', 'item4'];
-
-      // 배열에서 'active' 클래스를 가진 항목의 인덱스를 찾기
-      // var index = arr.findIndex((item) => item.classList.contains('active'));
-
-      // 'active' 클래스를 가진 항목이 없는 경우 -1을 반환하므로, 이에 대한 예외 처리가 필요합니다.
-      // if (index === -1) {
-      //   console.log("'active' 클래스를 가진 항목이 없습니다.");
-      // } else {
-      //   console.log("'active' 클래스를 가진 항목의 인덱스는 " + index + '입니다.');
-      // }
       $('.tab-list').each(function () {
         var tabActive = $(this).find('.tab.active');
         var activeWidth = tabActive.outerWidth();
         var activeLeft = tabActive.offset().left;
         var tabLine = $(this).prev();
         tabLine.css('width', activeWidth);
-        tabLine.css('left', activeLeft);
+        tabLine.css('left', activeLeft - 48 + 'px');
+        // console.log(tabActive);
+        // console.log(activeWidth);
+        console.log(activeLeft);
+        console.log(tabLine);
       });
 
       $('.tab > a').click(function (e) {
@@ -118,14 +110,14 @@
           tabContent = tabMenu.closest('.tab-inner').parent().next('br').nextUntil('br'),
           targetLeft = tabMenu.offset().left,
           targetWidth = tabMenu.outerWidth();
-
+        console.log(targetLeft);
         $(this).parent().addClass('active').siblings().removeClass('active');
         tabContent.removeClass('active');
         tabContent.eq(tabIndex).addClass('active');
 
         tabHighlight.animate(
           {
-            left: targetLeft
+            left: targetLeft - 48 + 'px'
           },
           300
         );
