@@ -7,9 +7,11 @@
     <title>echart pie</title>
     <link rel="stylesheet" href="../_js_static/css/front.min.css" />
     <link rel="stylesheet" href="lib/chart.css" />
+    <link rel="stylesheet" href="css/stylesheet.css" />
     <script src="lib/echarts.min.js"></script>
   </head>
   <body>
+    <!-- 이엑스 빌더에 적용할때 font-family는 'KBText' 에서 'KB금융 본문체' 바꿔서 적용예정 -->
     <div class="page">
       <div class="page-body">
         <div class="section">
@@ -59,7 +61,7 @@
               var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
               return `<div class='tooltip-title'>${params.seriesName}</div><div class='tooltip-remark' style='--color:${params.color}'>${params.name} <span class="values">${addCommaValue}명(${params.percent}%)</span></div>`;
             },
-            extraCssText: "font-size: 11px;font-family:'KB금융 본문체', sans-serif;line-height: 23px;padding: 15px;border-color: #EFEFEF;box-shadow: 0px 5px 12px rgba(51,51,51,0.15);"
+            extraCssText: "font-size: 11px;font-family:'KBText', sans-serif;line-height: 23px;padding: 15px;border-color: #EFEFEF;box-shadow: 0px 5px 12px rgba(51,51,51,0.15);"
           },
           /* 차트 범례 */
           legend: {
@@ -70,7 +72,7 @@
             textStyle: {
               color: '#555',
               fontSize: 13,
-              fontFamily: 'KB금융 본문체'
+              fontFamily: 'KBText'
             }
           },
           /* 차트 데이터 */
@@ -124,7 +126,7 @@
             textStyle: {
               color: '#555',
               fontSize: 13,
-              fontFamily: 'KB금융 본문체'
+              fontFamily: 'KBText'
             }
           },
           /* 툴팁 */
@@ -144,7 +146,7 @@
               return `<div class='tooltip-title'>${params.seriesName}</div><div class='tooltip-remark' style='--color:${params.color}'>${params.name} <span class="values">${addCommaValue}명(${params.percent}%)</span></div>`;
             },
             fontSize: 11,
-            fontFamily: 'KB금융 본문체'
+            fontFamily: 'KBText'
           },
           labelLine: {
             show: true // label 이 밖에 있을 경우 label 까지 이어진 선
