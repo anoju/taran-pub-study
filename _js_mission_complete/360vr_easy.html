@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
     <title>테스트</title>
-    <link href="../_js_static/css/front.min.css" rel="stylesheet" />
+    <link href="../js_static/css/front.min.css" rel="stylesheet" />
     <style>
       .range-slider {
         display: none;
@@ -50,7 +50,7 @@
         <div class="section">
           <!-- 이미지출처 https://www.hyundai.com/kr/ko/e/vehicles/the-all-new-grandeur/intro -->
           <div class="img-area">
-            <!-- <img src="../_js_static/images/360/001.png" alt="" /> -->
+            <!-- <img src="../js_static/images/360/001.png" alt="" /> -->
           </div>
           <!-- 이미지는 001부터 061까지 -->
           <div class="range-slider">
@@ -64,8 +64,8 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="../_js_static/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../_js_static/js/jquery-ui.1.12.1.min.js"></script>
+    <script type="text/javascript" src="../js_static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../js_static/js/jquery-ui.1.12.1.min.js"></script>
     <script>
       const $area = $('.img-area');
       const $input = $('.range-slider input');
@@ -78,7 +78,7 @@
           let $num = '' + i;
           if ($num.length == 1) $num = '00' + $num;
           else if ($num.length == 2) $num = '0' + $num;
-          $html += '<img src="../_js_static/images/360/' + $num + '.png" alt="" />';
+          $html += '<img src="../js_static/images/360/' + $num + '.png" alt="" />';
         }
         $area.html($html);
         $area
