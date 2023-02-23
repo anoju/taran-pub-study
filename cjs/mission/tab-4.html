@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="../js_static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
@@ -88,53 +88,46 @@
       // outerWidth(), position()
       // stop(), animate()
 
-      let line = $('.tab-inner').find('.tab-line'),
-        tabWidth = $('.tab-list').find('.tab').outerWidth(),
-        lineWidth = line.css('width', tabWidth);
-      console.log(tabWidth);
-      console.log(lineWidth);
+      // 배열 선언 및 초기화
+      var arr = ['item1', 'item2', 'item3', 'item4'];
 
-      var tabMenu = document.querySelectorAll('.tab-menu li');
-      var tabHighlight = document.querySelector('.highlight');
-      var tabContent = document.querySelectorAll('#tab-content > div');
-      /*
-for(i=0; i<tabMenu.length; i++){
-	tabMenu[i].addEventListener('click',function(e){
-		e.preventDefault();
-		var targetLeft = this.offsetLeft;
-		var targetWidth = this.offsetWidth;
-		tabHighlight.style.left = targetLeft +'px'
-		tabHighlight.style.width = targetWidth +'px'
-		/*
-		tabContent 모두 안보이도록 display none
-		클릭한 그 요소의 자식요소 a의 속성명 중 href값을 변수
-		targetContent 에 저장해서
-		document.querySelector('#tabs-2') 보이도록
-		*/
-      /*
-		for(tc of tabContent){
-			tc.style.display = 'none';
-		}
-		var targetContent = this.querySelector('a').getAttribute('href');
-		document.querySelector(targetContent).style.display ='block';
+      // 배열에서 'active' 클래스를 가진 항목의 인덱스를 찾기
+      var index = arr.findIndex((item) => item.classList.contains('active'));
 
-	}); //tabMenu Click
-	
-}*/
+      // 'active' 클래스를 가진 항목이 없는 경우 -1을 반환하므로, 이에 대한 예외 처리가 필요합니다.
+      if (index === -1) {
+        console.log("'active' 클래스를 가진 항목이 없습니다.");
+      } else {
+        console.log("'active' 클래스를 가진 항목의 인덱스는 " + index + '입니다.');
+      }
+      $('.tab-list').each(function () {
+        var tabMenu = $(this).find('.tab');
+        if (tabMenu.hasClass('active') === true) {
+          console.log('hellow');
+        }
+      });
 
-      tabMenu.forEach(function (item, index) {
-        item.addEventListener('click', function (e) {
-          e.preventDefault();
-          var targetLeft = this.offsetLeft;
-          var targetWidth = this.offsetWidth;
-          tabHighlight.style.left = targetLeft + 'px';
-          tabHighlight.style.width = targetWidth + 'px';
+      $('.tab > a').click(function (e) {
+        e.preventDefault();
 
-          tabContent.forEach(function (item) {
-            item.style.display = 'none';
-          });
-          tabContent[index].style.display = 'block';
-        });
+        let tabMenu = $(this),
+          tabIndex = tabMenu.parent().index(),
+          tabHighlight = tabMenu.parent().parent().prev(),
+          tabContent = tabMenu.closest('.tab-inner').parent().next('br').nextUntil('br'),
+          targetLeft = tabMenu.offset().left,
+          targetWidth = tabMenu.outerWidth();
+
+        $(this).parent().addClass('active').siblings().removeClass('active');
+        tabContent.removeClass('active');
+        tabContent.eq(tabIndex).addClass('active');
+
+        tabHighlight.animate(
+          {
+            left: targetLeft
+          },
+          300
+        );
+        tabHighlight.css('width', targetWidth + 'px');
       });
     </script>
   </body>
