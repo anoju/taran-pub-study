@@ -94,7 +94,7 @@
         var activeLeft = tabActive.offset().left;
         var tabLine = $(this).prev();
         tabLine.css('width', activeWidth);
-        tabLine.css('left', activeLeft - 48 + 'px');
+        tabLine.css('left', activeLeft);
         // console.log(tabActive);
         // console.log(activeWidth);
         console.log(activeLeft);
@@ -110,18 +110,18 @@
           tabContent = tabMenu.closest('.tab-inner').parent().next('br').nextUntil('br'),
           targetLeft = tabMenu.offset().left,
           targetWidth = tabMenu.outerWidth();
-        console.log(targetLeft);
+
         $(this).parent().addClass('active').siblings().removeClass('active');
         tabContent.removeClass('active');
         tabContent.eq(tabIndex).addClass('active');
 
         tabHighlight.animate(
           {
-            left: targetLeft - 48 + 'px'
+            left: targetLeft
           },
           300
         );
-        tabHighlight.css('width', targetWidth + 'px');
+        tabHighlight.css('width', targetWidth);
       });
     </script>
   </body>
