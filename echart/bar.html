@@ -30,56 +30,6 @@
 
         //var chartDom = document.getElementById('main');
         var myChart = echarts.init(bar1);
-        var singleBardefaultOption = {
-          tooltip: {
-            borderColor: 'transparent',
-            textStyle: {
-              fontSize: 11,
-              fontFamily: 'KB금융 본문체'
-            }
-          },
-          xAxis: {
-            axisLabel: {
-              color: '#555555',
-              fontSize: 12,
-              fontFamily: 'KB금융 본문체'
-            },
-            axisTick: {
-              alignWithLabel: true
-            },
-            axisLine: {
-              lineStyle: {
-                color: '#dddddd'
-              }
-            }
-          },
-          grid: {
-            show: false,
-            width: '280'
-          },
-          yAxis: [
-            {
-              type: 'value',
-              show: false
-            }
-          ],
-          series: [
-            {
-              type: 'bar',
-              itemStyle: {
-                borderRadius: [6, 6, 0, 0]
-              },
-              barWidth: 45,
-              label: {
-                show: true,
-                position: 'top',
-                fontSize: 14,
-                fontWeight: 'bold',
-                fontFamily: 'KB금융 본문체'
-              }
-            }
-          ]
-        };
 
         var data = {
           prev: 1000,
@@ -87,6 +37,10 @@
         };
 
         option = {
+          grid: {
+            show: false,
+            width: '280' //바별 간격
+          },
           tooltip: {
             className: 'echart-black',
             formatter: function (params) {
@@ -98,6 +52,12 @@
               }
             }
           },
+          yAxis: [
+            {
+              type: 'value',
+              show: false
+            }
+          ],
           xAxis: {
             type: 'category',
             data: ['01.20', '01.21'],
@@ -117,11 +77,23 @@
           },
           series: [
             {
+              type: 'bar',
+              itemStyle: {
+                borderRadius: [10, 10, 0, 0]
+              },
+              barWidth: 45,
+              label: {
+                show: true,
+                position: 'top',
+                fontSize: 14,
+                fontWeight: 'bold',
+                fontFamily: 'KB금융 본문체'
+              },
               markPoint: {
                 data: [
                   {
                     type: data.prev > data.current ? 'min' : 'max',
-                    //coord: [1, 500], // 위치
+                    coord: [1, 500], // 위치
                     //symbol: 'image://https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfiR2_8fTxYlmA2owVJDZ-CwnpyxHp46VsFPHKrSUyA&s',
                     symbol: 'path://M84,0L11,0C7.690000057220459,0,5,2.690000057220459,5,6l0,5.199999809265137l-4.430000007152557,4.430000305175781c-0.75,0.7499990463256836,-0.75,1.9800004959106445,0,2.7300004959106445L5,22.799999237060547L5,28c0,3.309999465942383,2.690000057220459,6,6,6l73,0c3.30999755859375,0,6,-2.690000534057617,6,-6L90,6C90,2.690000057220459,87.30999755859375,0,84,0Z',
                     symbolSize: [100, 50],
@@ -161,8 +133,7 @@
             }
           ]
         };
-        singleBardefaultOption && myChart.setOption(singleBardefaultOption);
-        option && myChart.setOption(option);
+        myChart.setOption(option);
       }
     </script>
   </body>
