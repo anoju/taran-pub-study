@@ -82,7 +82,7 @@
         };
 
         var data = {
-          prev: 3000,
+          prev: 1000,
           current: 2200
         };
 
@@ -123,15 +123,16 @@
                     type: data.prev > data.current ? 'min' : 'max',
                     //coord: [1, 500], // 위치
                     //symbol: 'image://https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfiR2_8fTxYlmA2owVJDZ-CwnpyxHp46VsFPHKrSUyA&s',
-                    symbol: 'roundRect',
-                    symbolSize: [80, 20],
-                    symbolOffset: [55, 50],
+                    symbol: 'path://M84,0L11,0C7.690000057220459,0,5,2.690000057220459,5,6l0,5.199999809265137l-4.430000007152557,4.430000305175781c-0.75,0.7499990463256836,-0.75,1.9800004959106445,0,2.7300004959106445L5,22.799999237060547L5,28c0,3.309999465942383,2.690000057220459,6,6,6l73,0c3.30999755859375,0,6,-2.690000534057617,6,-6L90,6C90,2.690000057220459,87.30999755859375,0,84,0Z',
+                    symbolSize: [100, 50],
+                    symbolOffset: [85, 50],
+                    backgroundColor: 'rgb(0, 0, 0)',
                     label: {
-                      formatter: '20% 증가',
-                      backgroundColor: '#333333',
-                      borderRadius: 5,
-                      padding: [10, 5, 10, 5],
-                      width: 100
+                      formatter: '20% 증가'
+                      // backgroundColor: '#333333'
+                      // borderRadius: 5,
+                      // padding: [10, 5, 10, 5],
+                      // width: 100
                     }
                   }
                 ]
