@@ -87,6 +87,55 @@
       // parent(), closest(), siblings(), find(), children()
       // outerWidth(), position()
       // stop(), animate()
+
+      let line = $('.tab-inner').find('.tab-line'),
+        tabWidth = $('.tab-list').find('.tab').outerWidth(),
+        lineWidth = line.css('width', tabWidth);
+      console.log(tabWidth);
+      console.log(lineWidth);
+
+      var tabMenu = document.querySelectorAll('.tab-menu li');
+      var tabHighlight = document.querySelector('.highlight');
+      var tabContent = document.querySelectorAll('#tab-content > div');
+      /*
+for(i=0; i<tabMenu.length; i++){
+	tabMenu[i].addEventListener('click',function(e){
+		e.preventDefault();
+		var targetLeft = this.offsetLeft;
+		var targetWidth = this.offsetWidth;
+		tabHighlight.style.left = targetLeft +'px'
+		tabHighlight.style.width = targetWidth +'px'
+		/*
+		tabContent 모두 안보이도록 display none
+		클릭한 그 요소의 자식요소 a의 속성명 중 href값을 변수
+		targetContent 에 저장해서
+		document.querySelector('#tabs-2') 보이도록
+		*/
+      /*
+		for(tc of tabContent){
+			tc.style.display = 'none';
+		}
+		var targetContent = this.querySelector('a').getAttribute('href');
+		document.querySelector(targetContent).style.display ='block';
+
+	}); //tabMenu Click
+	
+}*/
+
+      tabMenu.forEach(function (item, index) {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          var targetLeft = this.offsetLeft;
+          var targetWidth = this.offsetWidth;
+          tabHighlight.style.left = targetLeft + 'px';
+          tabHighlight.style.width = targetWidth + 'px';
+
+          tabContent.forEach(function (item) {
+            item.style.display = 'none';
+          });
+          tabContent[index].style.display = 'block';
+        });
+      });
     </script>
   </body>
 </html>

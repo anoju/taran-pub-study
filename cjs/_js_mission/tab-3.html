@@ -96,14 +96,29 @@
         _this.parents('.tab').siblings().removeClass('active');
         _panel.removeClass('active');
 
-        if (_tab.is(':nth-child(1)')) {
-          _panel.eq(0).addClass('active');
-        } else if (_tab.is(':nth-child(2)')) {
-          _panel.eq(1).addClass('active');
-        } else if (_tab.is(':nth-child(3)')) {
-          _panel.eq(2).addClass('active');
-        } else {
-          _panel.eq(3).addClass('active');
+        // if (_tab.is(':nth-child(1)')) {
+        //   _panel.eq(0).addClass('active');
+        // } else if (_tab.is(':nth-child(2)')) {
+        //   _panel.eq(1).addClass('active');
+        // } else if (_tab.is(':nth-child(3)')) {
+        //   _panel.eq(2).addClass('active');
+        // } else {
+        //   _panel.eq(3).addClass('active');
+        // }
+
+        switch (_tab.index()) {
+          case 0:
+            _panel.eq(0).addClass('active');
+            break;
+          case 1:
+            _panel.eq(1).addClass('active');
+            break;
+          case 2:
+            _panel.eq(2).addClass('active');
+            break;
+          default:
+            _panel.eq(3).addClass('active');
+            break;
         }
       });
     </script>
