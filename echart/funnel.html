@@ -81,7 +81,6 @@
                 fontSize: 13,
                 fontFamily: 'KBText',
                 formatter: function (params) {
-                  var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                   return '  {a|' + params.name + '} {b|(' + params.percent + '%)}';
                 },
                 rich: {
@@ -167,7 +166,6 @@
                 fontSize: 13,
                 fontFamily: 'KBText',
                 formatter: function (params) {
-                  var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                   return '  {a|' + params.name + '} {b|(' + params.percent + '%)}';
                 },
                 rich: {
