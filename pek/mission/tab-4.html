@@ -88,7 +88,26 @@
       // outerWidth(), position()
       // stop(), animate()
       $(document).ready(function(){
+        /* 초기 화면 부분 */
         $.fn.menuBar = function(){
+          this.each(function(item){
+            //var $base = $(this).hasClass('active');
+            //console.log(item);
+            var $width = $('.active').outerWidth();
+            //console.log($width);
+            var $local = $(this).find('.active').position().left;
+            //console.log($local);
+            var $line = $(this).closest('.tab-inner').find('.tab-line').css({'width': $width, 'left': $local});
+
+            
+              $(this).closest('.tab-inner').find('.tab-line').css({'width': $width + 'px', 'left': $local + 'px'});
+            
+
+          });
+
+          /* end */
+
+          
           this.each(function(index){
             var $menuBar = null,
                 $menuList = null,
@@ -100,9 +119,9 @@
               $menuList = $menuBar.find('li');
               $actionBar = $menuBar.find('.tab-line');
             }
-
             function event(){
-              $menuList.on('click', function(){
+              $menuList.on('click', function(e){
+                e.preventDefault();
                 if($menuSelect)
                   $menuSelect.removeClass('active');
                   $menuList.removeClass('active');
