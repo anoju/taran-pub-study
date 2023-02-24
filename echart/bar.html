@@ -11,30 +11,126 @@
     <script src="lib/echarts.min.js"></script>
   </head>
   <body>
-    <!-- 이엑스 빌더에 적용할때 font-family는 'KBText' 에서 'KB금융 본문체' 바꿔서 적용예정 -->
+    <!-- 이엑스 빌더에 적용할때 font-family는 'KBText' 에서 'KBText' 바꿔서 적용예정 -->
     <div class="page">
       <div class="page-body">
         <div class="section">
           <h1 class="gd__h1">bar</h1>
           <h2 class="gd__h2">type1 (진행중)</h2>
 
-          <div id="bar1" style="height: 686px"></div>
+          <div id="bar1" style="height: 250px"></div>
         </div>
       </div>
     </div>
     <script>
-      bar1();
+      barChart1();
+      function barChart1() {
+        var shlContent = document.getElementById('bar1');
+        var shlDonutECharts = echarts.init(shlContent);
+
+        var chartName = '고객실적';
+        var chartColor = ['#dddddd', '#FEB23A'];
+        var chartLabel = ['01.20', '01.21'];
+        var chartData = [1000, 2200];
+
+        var data = {
+          prev: 1000,
+          current: 2200
+        };
+
+        var chartOption = {
+          grid: {
+            show: false,
+            width: 280
+          },
+          tooltip: {
+            className: 'echart-black',
+            formatter: function (params) {
+              console.log('params', params.tooltip);
+              if (params.tooltip) {
+                return params.tooltip;
+              } else {
+                return null;
+              }
+            }
+          },
+          yAxis: [
+            {
+              type: 'value',
+              show: false
+            }
+          ],
+          xAxis: {
+            type: 'category',
+            data: chartLabel,
+            axisLabel: {
+              color: '#555555',
+              fontSize: 12,
+              fontFamily: 'KBText'
+            },
+            axisTick: {
+              alignWithLabel: true
+            },
+            axisLine: {
+              lineStyle: {
+                color: '#dddddd'
+              }
+            }
+          },
+          series: [
+            {
+              type: 'bar',
+              itemStyle: {
+                borderRadius: [10, 10, 0, 0]
+              },
+              barWidth: 45,
+              label: {
+                show: true,
+                position: 'top',
+                fontSize: 14,
+                fontWeight: 'bold',
+                fontFamily: 'KBText',
+                formatter: function (params) {
+                  var addCommaValue = params.data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                  return addCommaValue;
+                }
+              },
+              markPoint: {
+                data: [
+                  {
+                    type: data.prev > data.current ? 'min' : 'max',
+                    coord: [1, 500], // 위치
+                    //symbol: 'image://https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfiR2_8fTxYlmA2owVJDZ-CwnpyxHp46VsFPHKrSUyA&s',
+                    symbol: 'path://M84,0L11,0C7.690000057220459,0,5,2.690000057220459,5,6l0,5.199999809265137l-4.430000007152557,4.430000305175781c-0.75,0.7499990463256836,-0.75,1.9800004959106445,0,2.7300004959106445L5,22.799999237060547L5,28c0,3.309999465942383,2.690000057220459,6,6,6l73,0c3.30999755859375,0,6,-2.690000534057617,6,-6L90,6C90,2.690000057220459,87.30999755859375,0,84,0Z',
+                    symbolSize: [100, 50],
+                    symbolOffset: [85, 50],
+                    backgroundColor: 'rgb(0, 0, 0)',
+                    label: {
+                      formatter: '20% 증가'
+                      // backgroundColor: '#333333'
+                      // borderRadius: 5,
+                      // padding: [10, 5, 10, 5],
+                      // width: 100
+                    }
+                  }
+                ]
+              },
+              color: chartColor,
+              data: chartData
+            }
+          ]
+        };
+
+        shlDonutECharts.setOption(chartOption);
+      }
+
+      // bar1();
 
       function bar1() {
         var bar1 = document.getElementById('bar1');
 
         //var chartDom = document.getElementById('main');
         var myChart = echarts.init(bar1);
-
-        var data = {
-          prev: 1000,
-          current: 2200
-        };
 
         option = {
           grid: {
@@ -64,7 +160,7 @@
             axisLabel: {
               color: '#555555',
               fontSize: 12,
-              fontFamily: 'KB금융 본문체'
+              fontFamily: 'KBText'
             },
             axisTick: {
               alignWithLabel: true
@@ -87,7 +183,7 @@
                 position: 'top',
                 fontSize: 14,
                 fontWeight: 'bold',
-                fontFamily: 'KB금융 본문체'
+                fontFamily: 'KBText'
               },
               markPoint: {
                 data: [
