@@ -77,7 +77,7 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="../js_static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
@@ -88,53 +88,41 @@
       // outerWidth(), position()
       // stop(), animate()
 
-      let line = $('.tab-inner').find('.tab-line'),
-        tabWidth = $('.tab-list').find('.tab').outerWidth(),
-        lineWidth = line.css('width', tabWidth);
-      console.log(tabWidth);
-      console.log(lineWidth);
+      $('.tab-list').each(function () {
+        var tabActive = $(this).find('.tab.active');
 
-      var tabMenu = document.querySelectorAll('.tab-menu li');
-      var tabHighlight = document.querySelector('.highlight');
-      var tabContent = document.querySelectorAll('#tab-content > div');
-      /*
-for(i=0; i<tabMenu.length; i++){
-	tabMenu[i].addEventListener('click',function(e){
-		e.preventDefault();
-		var targetLeft = this.offsetLeft;
-		var targetWidth = this.offsetWidth;
-		tabHighlight.style.left = targetLeft +'px'
-		tabHighlight.style.width = targetWidth +'px'
-		/*
-		tabContent 모두 안보이도록 display none
-		클릭한 그 요소의 자식요소 a의 속성명 중 href값을 변수
-		targetContent 에 저장해서
-		document.querySelector('#tabs-2') 보이도록
-		*/
-      /*
-		for(tc of tabContent){
-			tc.style.display = 'none';
-		}
-		var targetContent = this.querySelector('a').getAttribute('href');
-		document.querySelector(targetContent).style.display ='block';
+        var activeWidth = tabActive.outerWidth();
+        var activeLeft = tabActive.offset().left;
+        var tabLine = $(this).prev();
+        tabLine.css('width', activeWidth);
+        tabLine.css('left', activeLeft);
+        // console.log(tabActive);
+        // console.log(activeWidth);
+        console.log(activeLeft);
+        console.log(tabLine);
+      });
 
-	}); //tabMenu Click
-	
-}*/
+      $('.tab > a').click(function (e) {
+        e.preventDefault();
 
-      tabMenu.forEach(function (item, index) {
-        item.addEventListener('click', function (e) {
-          e.preventDefault();
-          var targetLeft = this.offsetLeft;
-          var targetWidth = this.offsetWidth;
-          tabHighlight.style.left = targetLeft + 'px';
-          tabHighlight.style.width = targetWidth + 'px';
+        let tabMenu = $(this),
+          tabIndex = tabMenu.parent().index(),
+          tabHighlight = tabMenu.parent().parent().prev(),
+          tabContent = tabMenu.closest('.tab-inner').parent().next('br').nextUntil('br'),
+          targetLeft = tabMenu.offset().left,
+          targetWidth = tabMenu.outerWidth();
 
-          tabContent.forEach(function (item) {
-            item.style.display = 'none';
-          });
-          tabContent[index].style.display = 'block';
-        });
+        $(this).parent().addClass('active').siblings().removeClass('active');
+        tabContent.removeClass('active');
+        tabContent.eq(tabIndex).addClass('active');
+
+        tabHighlight.animate(
+          {
+            left: targetLeft
+          },
+          300
+        );
+        tabHighlight.css('width', targetWidth);
       });
     </script>
   </body>
