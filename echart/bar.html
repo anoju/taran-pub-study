@@ -18,7 +18,7 @@
           <h1 class="gd__h1">bar</h1>
           <h2 class="gd__h2">type1 (진행중)</h2>
 
-          <div id="bar1" style="height: 250px"></div>
+          <div id="bar1" style="width: 340px; height: 320px"></div>
         </div>
       </div>
     </div>
@@ -29,30 +29,39 @@
         var shlDonutECharts = echarts.init(shlContent);
 
         var chartName = '고객실적';
-        var chartColor = ['#dddddd', '#FEB23A'];
         var chartLabel = ['01.20', '01.21'];
-        var chartData = [1000, 2200];
-
-        var data = {
-          prev: 1000,
-          current: 2200
+        var chartValue = [1000, 2200];
+        var chartColor = ['#dddddd', '#FEB23A'];
+        var chartData = function () {
+          var rtnAry = [];
+          for (var i = 0; i < chartValue.length; i += 1) {
+            var item = { value: chartValue[i] };
+            if (chartColor[i]) {
+              item.itemStyle = {};
+              item.itemStyle.color = chartColor[i];
+            }
+            rtnAry.push(item);
+          }
+          return rtnAry;
         };
 
         var chartOption = {
           grid: {
             show: false,
-            width: 280
+            width: 280,
+            height: 280,
+            left: 50,
+            top: 20
           },
           tooltip: {
-            className: 'echart-black',
+            trigger: 'item',
+            className: 'echart-tooltip2',
             formatter: function (params) {
-              console.log('params', params.tooltip);
-              if (params.tooltip) {
-                return params.tooltip;
-              } else {
-                return null;
-              }
-            }
+              if (params.componentType === 'markPoint') return null;
+              var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+              return `<div class='tooltip-remark' style='--color:${params.color}'>${params.name} <span class="values"> ${addCommaValue}</span></div>`;
+            },
+            extraCssText: "font-size: 11px;font-family:'KBText', sans-serif;line-height: 23px;padding: 15px;border-color: #EFEFEF;box-shadow: 0px 5px 12px rgba(51,51,51,0.15);"
           },
           yAxis: [
             {
@@ -88,148 +97,43 @@
                 show: true,
                 position: 'top',
                 fontSize: 14,
-                fontWeight: 'bold',
+                fontWeight: 700,
                 fontFamily: 'KBText',
                 formatter: function (params) {
-                  var addCommaValue = params.data.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                  var addCommaValue = params.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                   return addCommaValue;
                 }
               },
               markPoint: {
+                label: {
+                  formatter: '20% 증가',
+                  backgroundColor: '#333333',
+                  color: '#fff',
+                  fontWeight: 500,
+                  fontFamily: 'KBText',
+                  fontSize: 14,
+                  liheHeight: 18,
+                  borderRadius: 5,
+                  padding: [8, 12, 8, 12]
+                },
+                symbolSize: [80, 44],
                 data: [
                   {
-                    type: data.prev > data.current ? 'min' : 'max',
-                    coord: [1, 500], // 위치
-                    //symbol: 'image://https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfiR2_8fTxYlmA2owVJDZ-CwnpyxHp46VsFPHKrSUyA&s',
-                    symbol: 'path://M84,0L11,0C7.690000057220459,0,5,2.690000057220459,5,6l0,5.199999809265137l-4.430000007152557,4.430000305175781c-0.75,0.7499990463256836,-0.75,1.9800004959106445,0,2.7300004959106445L5,22.799999237060547L5,28c0,3.309999465942383,2.690000057220459,6,6,6l73,0c3.30999755859375,0,6,-2.690000534057617,6,-6L90,6C90,2.690000057220459,87.30999755859375,0,84,0Z',
-                    symbolSize: [100, 50],
-                    symbolOffset: [85, 50],
-                    backgroundColor: 'rgb(0, 0, 0)',
-                    label: {
-                      formatter: '20% 증가'
-                      // backgroundColor: '#333333'
-                      // borderRadius: 5,
-                      // padding: [10, 5, 10, 5],
-                      // width: 100
-                    }
+                    type: chartValue[0] > chartValue[1] ? 'min' : 'max',
+                    itemStyle: {
+                      color: '#333'
+                    },
+                    y: '50%'
                   }
                 ]
               },
               color: chartColor,
-              data: chartData
+              data: chartData()
             }
           ]
         };
 
         shlDonutECharts.setOption(chartOption);
-      }
-
-      // bar1();
-
-      function bar1() {
-        var bar1 = document.getElementById('bar1');
-
-        //var chartDom = document.getElementById('main');
-        var myChart = echarts.init(bar1);
-
-        option = {
-          grid: {
-            show: false,
-            width: '280' //바별 간격
-          },
-          tooltip: {
-            className: 'echart-black',
-            formatter: function (params) {
-              console.log('params', params.tooltip);
-              if (params.tooltip) {
-                return params.tooltip;
-              } else {
-                return null;
-              }
-            }
-          },
-          yAxis: [
-            {
-              type: 'value',
-              show: false
-            }
-          ],
-          xAxis: {
-            type: 'category',
-            data: ['01.20', '01.21'],
-            axisLabel: {
-              color: '#555555',
-              fontSize: 12,
-              fontFamily: 'KBText'
-            },
-            axisTick: {
-              alignWithLabel: true
-            },
-            axisLine: {
-              lineStyle: {
-                color: '#dddddd'
-              }
-            }
-          },
-          series: [
-            {
-              type: 'bar',
-              itemStyle: {
-                borderRadius: [10, 10, 0, 0]
-              },
-              barWidth: 45,
-              label: {
-                show: true,
-                position: 'top',
-                fontSize: 14,
-                fontWeight: 'bold',
-                fontFamily: 'KBText'
-              },
-              markPoint: {
-                data: [
-                  {
-                    type: data.prev > data.current ? 'min' : 'max',
-                    coord: [1, 500], // 위치
-                    //symbol: 'image://https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCfiR2_8fTxYlmA2owVJDZ-CwnpyxHp46VsFPHKrSUyA&s',
-                    symbol: 'path://M84,0L11,0C7.690000057220459,0,5,2.690000057220459,5,6l0,5.199999809265137l-4.430000007152557,4.430000305175781c-0.75,0.7499990463256836,-0.75,1.9800004959106445,0,2.7300004959106445L5,22.799999237060547L5,28c0,3.309999465942383,2.690000057220459,6,6,6l73,0c3.30999755859375,0,6,-2.690000534057617,6,-6L90,6C90,2.690000057220459,87.30999755859375,0,84,0Z',
-                    symbolSize: [100, 50],
-                    symbolOffset: [85, 50],
-                    backgroundColor: 'rgb(0, 0, 0)',
-                    label: {
-                      formatter: '20% 증가'
-                      // backgroundColor: '#333333'
-                      // borderRadius: 5,
-                      // padding: [10, 5, 10, 5],
-                      // width: 100
-                    }
-                  }
-                ]
-              },
-              data: [
-                {
-                  value: data.prev,
-                  itemStyle: {
-                    color: '#ddd'
-                  },
-                  tooltip: '전일 대비 10%증가'
-                },
-                {
-                  value: data.current,
-                  itemStyle: {
-                    color: '#FEB23A'
-                  },
-                  tooltip: '20%증가'
-                }
-              ],
-              label: {
-                formatter: function (d) {
-                  return d.data.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                }
-              }
-            }
-          ]
-        };
-        myChart.setOption(option);
       }
     </script>
   </body>
