@@ -37,8 +37,7 @@
           for (var i = 0; i < chartValue.length; i += 1) {
             var item = { value: chartValue[i] };
             if (chartColor[i]) {
-              item.itemStyle = {};
-              item.itemStyle.color = chartColor[i];
+              item.itemStyle = { color: chartColor[i] };
             }
             rtnAry.push(item);
           }
