@@ -18,7 +18,7 @@
           <h1 class="gd__h1">bar</h1>
           <h2 class="gd__h2">type1 (진행중)</h2>
 
-          <div id="bar1" style="width: 340px; height: 320px"></div>
+          <div id="bar1" style="width: 360px; height: 340px; background-color: #fafafa"></div>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
 
         var chartName = '고객실적';
         var chartLabel = ['01.20', '01.21'];
-        var chartValue = [1000, 2200];
+        var chartValue = [1500, 1000];
         var chartColor = ['#dddddd', '#FEB23A'];
         var chartData = function () {
           var rtnAry = [];
@@ -43,14 +43,48 @@
           }
           return rtnAry;
         };
+        var chartMarkPointLabel = function () {
+          var rtnTxt;
+          var val1 = chartValue[0];
+          var val2 = chartValue[1];
+          var ratio = Math.round((val2 / val1) * 100);
+          if (ratio < 100) rtnTxt = 100 - ratio + '% 감소';
+          else rtnTxt = ratio - 100 + '% 증가';
+          return rtnTxt;
+        };
+        var chartWidth = 280;
+        var chartHeight = 280;
+        var chartLeft = (shlContent.offsetWidth - chartWidth) / 2;
+        var chartTop = (shlContent.offsetHeight - chartHeight) / 2;
+        var setMarkPoint = {
+          width: 80,
+          type: function () {
+            chartValue[0] > chartValue[1] ? 'min' : 'max';
+          },
+          x: function () {
+            return chartLeft + (chartWidth / 4) * 3 + setMarkPoint.width / 2 - 14;
+          },
+          y: function () {
+            var rtnVal = '50%';
+            if (chartValue[0] > chartValue[1]) {
+              var val1 = chartValue[0];
+              var val2 = chartValue[1];
+              var ratioH = (chartHeight * val2) / val1;
+              rtnVal = chartHeight - ratioH / 2 + chartTop;
+            }
+            return rtnVal;
+          }
+        };
 
         var chartOption = {
           grid: {
             show: false,
-            width: 280,
-            height: 280,
-            left: 50,
-            top: 20
+            width: chartWidth,
+            height: chartHeight,
+            // left: 'center',
+            // top: 'center',
+            left: chartLeft,
+            top: chartTop
           },
           tooltip: {
             trigger: 'item',
@@ -105,24 +139,28 @@
               },
               markPoint: {
                 label: {
-                  formatter: '20% 증가',
+                  formatter: chartMarkPointLabel(),
                   backgroundColor: '#333333',
                   color: '#fff',
+                  align: 'center',
                   fontWeight: 500,
                   fontFamily: 'KBText',
                   fontSize: 14,
                   liheHeight: 18,
                   borderRadius: 5,
-                  padding: [8, 12, 8, 12]
+                  padding: [8, 0, 8, 0],
+                  width: setMarkPoint.width
                 },
-                symbolSize: [80, 44],
+                symbolSize: 30,
+                symbolRotate: -90,
                 data: [
                   {
-                    type: chartValue[0] > chartValue[1] ? 'min' : 'max',
+                    type: setMarkPoint.type(),
                     itemStyle: {
                       color: '#333'
                     },
-                    y: '50%'
+                    x: setMarkPoint.x(),
+                    y: setMarkPoint.y()
                   }
                 ]
               },
