@@ -24,11 +24,42 @@
           <h2 class="gd__h2">type1 ()</h2>
 
           <div id="relation1" style="height: 686px"></div>
+
+          <hr class="hr-line mg-50y" />
+          <h2 class="gd__h2">type2 (json 받아오는 형태)</h2>
+
+          <div id="relation2" style="height: 686px"></div>
         </div>
       </div>
     </div>
     <script>
-      relation1();
+      //relation1();
+      relation();
+      //relation2();
+      function relation() {
+        var shlContent = document.getElementById('relation1');
+        var shlRelationECharts = echarts.init(shlContent);
+
+        var itemStyles = {
+          root: {
+            size: 140,
+            color: '#e1820c'
+          }, // 본인
+          depth1: {
+            size: 100,
+            color: ['rgba(255, 196, 0, 0.9)', 'rgba(87, 131, 253, 0.9)', 'rgba(54, 213, 152, 0.9)']
+          }, // 노랑계열, 블루계열, 그린
+          depth2: {
+            size: 80,
+            color: ['rgba(255, 217, 91, 0.9)', 'rgba(87, 131, 253, 0.7)', 'rgba(54, 213, 152, 0.7)']
+          }, // 노랑계열, 블루계열, 그린
+          leaf: {
+            size: 60,
+            color: ['#fff1c3', '#fff1c3', '#fff1c3'],
+            borderColor: ['#dddddd', '#dddddd', '#dddddd']
+          }
+        };
+      }
 
       function relation1() {
         var shlContent = document.getElementById('relation1');
@@ -498,6 +529,70 @@
           ]
         };
         shlRelationECharts.setOption(chartOption);
+      }
+
+      function relation2() {
+        var shlContent = document.getElementById('relation2');
+        var shlRelationECharts = echarts.init(shlContent);
+
+        shlRelationECharts.showLoading();
+        fetch('lib/dummy.json')
+          .then((response) => response.json())
+          .then((graph) => {
+            console.log(graph);
+            shlRelationECharts.hideLoading();
+            graph.nodes.forEach(function (node) {
+              node.label = {
+                show: node.symbolSize > 30
+              };
+            });
+            var chartOption = {
+              title: {
+                text: 'Les Miserables',
+                subtext: 'Default layout',
+                top: 'bottom',
+                left: 'right'
+              },
+              tooltip: {},
+              legend: [
+                {
+                  // selectedMode: 'single',
+                  data: graph.categories.map(function (a) {
+                    return a.name;
+                  })
+                }
+              ],
+              animationDuration: 1500,
+              animationEasingUpdate: 'quinticInOut',
+              series: [
+                {
+                  name: 'Les Miserables',
+                  type: 'graph',
+                  layout: 'none',
+                  data: graph.nodes,
+                  links: graph.links,
+                  categories: graph.categories,
+                  roam: true,
+                  label: {
+                    position: 'right',
+                    formatter: '{b}'
+                  },
+                  lineStyle: {
+                    color: 'source',
+                    curveness: 0
+                  },
+                  emphasis: {
+                    focus: 'adjacency',
+                    lineStyle: {
+                      width: 10
+                    }
+                  }
+                }
+              ]
+            };
+            shlRelationECharts.setOption(chartOption);
+          })
+          .catch((error) => console.error(error));
       }
     </script>
   </body>
