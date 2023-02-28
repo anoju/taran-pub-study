@@ -688,6 +688,8 @@
                   if (!!params.data.value.total) rtnTxt += '\n{' + _c + '|(' + params.data.value.total + ')}';
                   else if (!!params.data.value.old || !!params.data.value.sex) rtnTxt += '\n{' + _c + '|(' + params.data.value.old + ',' + params.data.value.sex + ')}';
                   return rtnTxt;
+                  if (!!params.data.value.date) rtnTxt += '\n{' + _c + '|(' + params.data.value.date + ')}';
+                  if (!!params.data.value.txt) rtnTxt += '\n{' + _c + '|' + params.data.value.txt + '}';
                 },
                 rich: {
                   a: {
