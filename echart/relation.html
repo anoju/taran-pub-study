@@ -33,33 +33,8 @@
       </div>
     </div>
     <script>
-      //relation1();
-      relation();
-      //relation2();
-      function relation() {
-        var shlContent = document.getElementById('relation1');
-        var shlRelationECharts = echarts.init(shlContent);
-
-        var itemStyles = {
-          root: {
-            size: 140,
-            color: '#e1820c'
-          }, // 본인
-          depth1: {
-            size: 100,
-            color: ['rgba(255, 196, 0, 0.9)', 'rgba(87, 131, 253, 0.9)', 'rgba(54, 213, 152, 0.9)']
-          }, // 노랑계열, 블루계열, 그린
-          depth2: {
-            size: 80,
-            color: ['rgba(255, 217, 91, 0.9)', 'rgba(87, 131, 253, 0.7)', 'rgba(54, 213, 152, 0.7)']
-          }, // 노랑계열, 블루계열, 그린
-          leaf: {
-            size: 60,
-            color: ['#fff1c3', '#fff1c3', '#fff1c3'],
-            borderColor: ['#dddddd', '#dddddd', '#dddddd']
-          }
-        };
-      }
+      relation1();
+      relation2();
 
       function relation1() {
         var shlContent = document.getElementById('relation1');
