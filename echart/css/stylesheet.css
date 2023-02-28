@@ -37,4 +37,44 @@
     font-display: swap;
 }
 
-body{font-family: 'KBText';}
+@font-face {
+    font-family: 'KBDisplay';
+    src: url('../fontsKBFGDisplay-Light.eot');
+    src: url('../fontsKBFGDisplay-Light.eot?#iefix') format('embedded-opentype'),
+        url('../fontsKBFGDisplay-Light.woff2') format('woff2'),
+        url('../fontsKBFGDisplay-Light.woff') format('woff'),
+        url('../fontsKBFGDisplay-Light.ttf') format('truetype'),
+        url('../fontsKBFGDisplay-Light.svg#KBFGDisplay-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'KBDisplay';
+    src: url('../fontsKBFGDisplay-Medium.eot');
+    src: url('../fontsKBFGDisplay-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fontsKBFGDisplay-Medium.woff2') format('woff2'),
+        url('../fontsKBFGDisplay-Medium.woff') format('woff'),
+        url('../fontsKBFGDisplay-Medium.ttf') format('truetype'),
+        url('../fontsKBFGDisplay-Medium.svg#KBFGDisplay-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'KBDisplay';
+    src: url('../fontsKBFGDisplay-Bold.eot');
+    src: url('../fontsKBFGDisplay-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../fontsKBFGDisplay-Bold.woff2') format('woff2'),
+        url('../fontsKBFGDisplay-Bold.woff') format('woff'),
+        url('../fontsKBFGDisplay-Bold.ttf') format('truetype'),
+        url('../fontsKBFGDisplay-Bold.svg#KBFGDisplay-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+body{font-family: 'KBDisplay', 'KBText';}
