@@ -90,8 +90,8 @@
 }
 
 /* s: 안효주 추가 */
-.echart-tooltip2{}
 .echart-tooltip2 .tooltip-title{font-weight:700;color:#333;}
 .echart-tooltip2 .tooltip-remark{color:#555;}
+.echart-tooltip2 .tooltip-remark+.tooltip-remark{margin-top:3px;}
 .echart-tooltip2 .values{padding-left:8px;font-weight:500;}
 /* e: 안효주 추가 */
