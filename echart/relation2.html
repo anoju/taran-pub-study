@@ -13,6 +13,23 @@
       .section > div {
         background-color: #fafafa;
       }
+      .chart_box {
+        position: relative;
+      }
+      .chart_box .popup {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+      .chart_box .popup .pop-wrap {
+        border: 1px solid #000;
+        max-width: 400px;
+      }
+      .chart_box .popup .pop-head h1 {
+        padding-right: 30px;
+      }
+      .chart_box .popup .pop-head .pop-close {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -21,8 +38,34 @@
       <div class="page-body">
         <div class="section">
           <h1 class="gd__h1">graph</h1>
+          <div class="chart_box">
+            <div id="relation1" style="height: 800px"></div>
 
-          <div id="relation1" style="height: 800px"></div>
+            <!-- 임시 팝업 -->
+            <article id="popup1" class="popup modal">
+              <div class="pop-wrap">
+                <header class="pop-head">
+                  <div>
+                    <h1>무배당 함께크는 종신보험</h1>
+                    <button type="button" class="pop-close" aria-label="팝업창 닫기"></button>
+                  </div>
+                </header>
+                <section class="pop-body">
+                  <div class="section">
+                    <ul class="txt-list">
+                      <li class="dot">가입금액: 1,000만원</li>
+                      <li class="dot">보험기간: 2009.07.28 ~ 2029.07.28</li>
+                      <li class="dot">계약자: 홍길동(본인)</li>
+                      <li class="dot">피보험자: 홍길동(본인)</li>
+                      <li class="dot">만기수익자: 이모모(배우자), 홍길금(자녀)</li>
+                      <li class="dot">모집설계사: 설계자1 / 수금설계사: 설계자2</li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </article>
+            <!-- //임시 팝업 -->
+          </div>
         </div>
       </div>
     </div>
@@ -335,6 +378,7 @@
             {
               name: '무배당 KB스타 재해사망보험',
               value: {
+                type: 'product',
                 tag: '건강/상해',
                 code: '0123456789'
               },
@@ -365,6 +409,7 @@
             {
               name: '무배당 KB스타 재해사망보험II',
               value: {
+                type: 'product',
                 tag: '연금/저축',
                 code: '0123456789'
               },
@@ -392,6 +437,7 @@
             {
               name: '무배당 함께크는 종신보험',
               value: {
+                type: 'product',
                 tag: '종신/정기',
                 code: '0123456789'
               },
@@ -409,6 +455,7 @@
             {
               name: '무)KB국민 wise상해보험II',
               value: {
+                type: 'product',
                 tag: '건강/상해',
                 code: '0123456789'
               },
@@ -769,7 +816,20 @@
           ]
         };
         shlRelationECharts.setOption(chartOption);
+
+        shlRelationECharts.on('click', function (params) {
+          var value = params.data.value;
+          if (value.type && value.type === 'product') {
+            document.querySelector('#popup1').classList.add('show');
+          }
+        });
       }
+
+      document.querySelector('.pop-close').addEventListener('click', function (e) {
+        const target = e.target;
+        const popup = target.closest('.popup');
+        popup.classList.remove('show');
+      });
     </script>
   </body>
 </html>
