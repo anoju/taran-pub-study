@@ -22,7 +22,7 @@
         <div class="section">
           <h1 class="gd__h1">graph</h1>
 
-          <div id="relation1" style="height: 686px"></div>
+          <div id="relation1" style="height: 800px"></div>
         </div>
       </div>
     </div>
@@ -539,6 +539,20 @@
               source: '유지',
               target: '무배당 함께크는 종신보험'
             },
+            /*
+            {
+              source: '무배당 함께크는 종신보험',
+              target: '설계사3'
+            },
+            {
+              source: '무배당 함께크는 종신보험',
+              target: '이모모'
+            },
+            {
+              source: '무배당 함께크는 종신보험',
+              target: '홍길금'
+            },
+            */
             {
               source: '유지',
               target: '무)KB국민 wise상해보험II'
@@ -652,8 +666,8 @@
               // draggable: false,
               symbol: 'circle',
               force: {
-                // gravity: 0.08,
-                repulsion: 250,
+                gravity: 0.05,
+                repulsion: 300,
                 edgeLength: 40
               },
               emphasis: {
