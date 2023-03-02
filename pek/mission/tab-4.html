@@ -89,7 +89,7 @@
             const $menuList = $menuBar.find('a');
             const $actionBar = $menuBar.find('.tab-line');
 
-            function linePos(notAnimation) {
+            function linePosition(notAnimation) {
               const $active = $menuBar.find('.active');
               const $width = $active.outerWidth();
               const $left = $active.position().left;
@@ -103,7 +103,7 @@
               }
             }
 
-            function event() {
+            function clickEvent() {
               $menuList.on('click', function (e) {
                 e.preventDefault();
                 const $this = $(this);
@@ -115,10 +115,10 @@
                 if ($li.hasClass('active')) linePos();
               });
             }
-            linePos(true);
-            event();
+            linePosition(true);
+            clickEvent();
 
-            $(window).resize(linePos);
+            $(window).resize(linePosition);
           });
         };
 
