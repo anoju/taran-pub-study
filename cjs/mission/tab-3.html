@@ -13,7 +13,7 @@
         <div class="section">
           <h1 class="gd__h1">탭메뉴</h1>
 
-          <div class="tab-line-menu">
+          <div class="tab-line-menu ui-tab">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -31,7 +31,7 @@
           <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-line-menu">
+          <div class="tab-line-menu ui-tab">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -49,7 +49,7 @@
           <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-round-menu">
+          <div class="tab-round-menu ui-tab">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -72,6 +72,7 @@
           <p>하나의 탭메뉴만 활성화 되어야합니다.</p>
           <p>다수의 탭메뉴가 있지만 클릭 시 서로 영향이 없어야합니다.</p>
           <p><u>1개의 스크립트로 모든 탭을 서로 영향없이 작동해야합니다.</u></p>
+          <div style="height: 2000px"></div>
         </div>
       </div>
     </div>
@@ -80,47 +81,20 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+      function jqTab() {
+        $('.ui-tab a').click(function (e) {
+          e.preventDefault();
+          const _this = $(this);
+          const _tab = _this.parents('.tab');
+          const _panel = _this.closest('.ui-tab').next('br').nextUntil('br');
 
-      // 힌트 제이쿼리함수:
-      // addClass(), removeClass(), toggleClass(), hasClass()
-      // parent(), closest(), siblings(), find(), children()
-      // outerWidth(), position()
-      // stop(), animate()
-
-      $('.tab > a').click(function () {
-        var _this = $(this),
-          _tab = _this.parents('.tab'),
-          _panel = _this.closest('.tab-inner').parent().next('br').nextUntil('br');
-
-        _this.parents('.tab').addClass('active');
-        _this.parents('.tab').siblings().removeClass('active');
-        _panel.removeClass('active');
-
-        // if (_tab.is(':nth-child(1)')) {
-        //   _panel.eq(0).addClass('active');
-        // } else if (_tab.is(':nth-child(2)')) {
-        //   _panel.eq(1).addClass('active');
-        // } else if (_tab.is(':nth-child(3)')) {
-        //   _panel.eq(2).addClass('active');
-        // } else {
-        //   _panel.eq(3).addClass('active');
-        // }
-
-        switch (_tab.index()) {
-          case 0:
-            _panel.eq(0).addClass('active');
-            break;
-          case 1:
-            _panel.eq(1).addClass('active');
-            break;
-          case 2:
-            _panel.eq(2).addClass('active');
-            break;
-          default:
-            _panel.eq(3).addClass('active');
-            break;
-        }
-      });
+          _this.parents('.tab').addClass('active').siblings().removeClass('active');
+          _panel.removeClass('active');
+          _panel.eq(_tab.index()).addClass('active');
+          // return false;
+        });
+      }
+      jqTab();
     </script>
   </body>
 </html>
