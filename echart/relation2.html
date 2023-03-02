@@ -858,7 +858,6 @@
               var _dataIndex = [0, params.dataIndex];
               graphData.nodes.forEach(function (el, i) {
                 var _name = el.name;
-                console.log(params.data.value.depth2);
                 if (params.data.value.depth2 && _name.indexOf(params.data.value.depth2) >= 0) _dataIndex.push(i);
                 if (params.data.value.planner && _name.indexOf(params.data.value.planner) >= 0) _dataIndex.push(i);
                 if (params.data.value.plannerDepth2 && _name.indexOf(params.data.value.plannerDepth2) >= 0) _dataIndex.push(i);
