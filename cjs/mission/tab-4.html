@@ -83,39 +83,47 @@
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
 
       function tab4() {
-        $('.tab-list').each(function () {
-          const tabActive = $(this).find('.tab.active');
+        function linePosition(wrap, notAnimation) {
+          const $wrap = $(wrap);
+          const tabActive = $wrap.find('.tab.active');
           const activeWidth = tabActive.outerWidth();
           const activeLeft = tabActive.offset().left;
-          const tabLine = $(this).prev();
+          const tabLine = $wrap.find('.tab-line');
           tabLine.css('width', activeWidth);
-          tabLine.css('left', activeLeft);
+          if (notAnimation) {
+            tabLine.css('left', activeLeft);
+          } else {
+            tabLine.stop().animate({ left: activeLeft }, 300);
+          }
+        }
+
+        $('.pub-tab').each(function () {
+          linePosition(this, true);
         });
 
-        $('.tab > a').click(function (e) {
+        $('.pub-tab a').click(function (e) {
           e.preventDefault();
 
           const tabMenu = $(this);
           const tabIndex = tabMenu.parent().index();
-          const tabHighlight = tabMenu.parent().parent().prev();
-          const tabContent = tabMenu.closest('.pub-tab').next('br').nextUntil('br');
-          const targetLeft = tabMenu.offset().left;
-          const targetWidth = tabMenu.outerWidth();
+          const wrap = tabMenu.closest('.pub-tab');
+          const tabContent = wrap.next('br').nextUntil('br');
 
           $(this).parent().addClass('active').siblings().removeClass('active');
           tabContent.removeClass('active');
           tabContent.eq(tabIndex).addClass('active');
 
-          tabHighlight.animate(
-            {
-              left: targetLeft
-            },
-            300
-          );
-          tabHighlight.css('width', targetWidth);
+          linePosition(wrap);
+        });
+        $(window).on('resize', function () {
+          $('.pub-tab').each(function () {
+            linePosition(this);
+          });
         });
       }
-      tab4();
+      $(window).on('load', function () {
+        tab4();
+      });
     </script>
   </body>
 </html>
