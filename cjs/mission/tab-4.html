@@ -82,48 +82,40 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
 
-      // 힌트 제이쿼리함수:
-      // addClass(), removeClass(), toggleClass(), hasClass()
-      // parent(), closest(), siblings(), find(), children()
-      // outerWidth(), position()
-      // stop(), animate()
+      function tab4() {
+        $('.tab-list').each(function () {
+          const tabActive = $(this).find('.tab.active');
+          const activeWidth = tabActive.outerWidth();
+          const activeLeft = tabActive.offset().left;
+          const tabLine = $(this).prev();
+          tabLine.css('width', activeWidth);
+          tabLine.css('left', activeLeft);
+        });
 
-      $('.tab-list').each(function () {
-        var tabActive = $(this).find('.tab.active');
+        $('.tab > a').click(function (e) {
+          e.preventDefault();
 
-        var activeWidth = tabActive.outerWidth();
-        var activeLeft = tabActive.offset().left;
-        var tabLine = $(this).prev();
-        tabLine.css('width', activeWidth);
-        tabLine.css('left', activeLeft);
-        // console.log(tabActive);
-        // console.log(activeWidth);
-        console.log(activeLeft);
-        console.log(tabLine);
-      });
+          const tabMenu = $(this);
+          const tabIndex = tabMenu.parent().index();
+          const tabHighlight = tabMenu.parent().parent().prev();
+          const tabContent = tabMenu.closest('.tab-inner').parent().next('br').nextUntil('br');
+          const targetLeft = tabMenu.offset().left;
+          const targetWidth = tabMenu.outerWidth();
 
-      $('.tab > a').click(function (e) {
-        e.preventDefault();
+          $(this).parent().addClass('active').siblings().removeClass('active');
+          tabContent.removeClass('active');
+          tabContent.eq(tabIndex).addClass('active');
 
-        let tabMenu = $(this),
-          tabIndex = tabMenu.parent().index(),
-          tabHighlight = tabMenu.parent().parent().prev(),
-          tabContent = tabMenu.closest('.tab-inner').parent().next('br').nextUntil('br'),
-          targetLeft = tabMenu.offset().left,
-          targetWidth = tabMenu.outerWidth();
-
-        $(this).parent().addClass('active').siblings().removeClass('active');
-        tabContent.removeClass('active');
-        tabContent.eq(tabIndex).addClass('active');
-
-        tabHighlight.animate(
-          {
-            left: targetLeft
-          },
-          300
-        );
-        tabHighlight.css('width', targetWidth);
-      });
+          tabHighlight.animate(
+            {
+              left: targetLeft
+            },
+            300
+          );
+          tabHighlight.css('width', targetWidth);
+        });
+      }
+      tab4();
     </script>
   </body>
 </html>
