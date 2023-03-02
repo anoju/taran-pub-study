@@ -37,6 +37,20 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+      function accordion1() {
+        $('.folding-btn').click(function (e) {
+          e.preventDefault();
+          const _this = $(this);
+          const _panel = _this.parents('.folding-head').siblings();
+          _this.toggleClass('open');
+          if (_this.hasClass('open')) {
+            _panel.css('display', 'block');
+          } else {
+            _panel.css('display', 'none');
+          }
+        });
+      }
+      accordion1();
     </script>
   </body>
 </html>
