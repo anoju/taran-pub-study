@@ -13,7 +13,7 @@
         <div class="section">
           <h1 class="gd__h1">아코디언</h1>
           <h2 class="gd__h2">토글 없이</h2>
-          <ul class="folding-list">
+          <ul class="folding-list non-toggle">
             <li>
               <div class="folding-head">
                 <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
@@ -69,7 +69,7 @@
           <br />
           <br />
           <h2 class="gd__h2">토글 되게</h2>
-          <ul class="folding-list">
+          <ul class="folding-list pub-toggle">
             <li>
               <div class="folding-head">
                 <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
@@ -135,6 +135,45 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
       // jquery
+      function accordion1() {
+        $('.non-toggle')
+          .find('.folding-btn')
+          .click(function (e) {
+            e.preventDefault();
+            const _this = $(this);
+            const _panel = _this.parents('.folding-head').siblings();
+            _this.toggleClass('open');
+            if (_this.hasClass('open')) {
+              _panel.stop().css('display', 'block');
+            } else {
+              _panel.stop().css('display', 'none');
+            }
+          });
+      }
+
+      function accordion2() {
+        $('.pub-toggle')
+          .find('.folding-btn')
+          .click(function (e) {
+            e.preventDefault();
+            const _this = $(this);
+            const _sibling = _this.closest('li').siblings().find('.folding-btn');
+            const _panel = _this.parents('.folding-head').siblings();
+            const _siblingPanel = _this.closest('li').siblings().find('.folding-panel');
+
+            _sibling.removeClass('open');
+            _this.toggleClass('open');
+
+            if (_this.hasClass('open')) {
+              _panel.stop().css('display', 'block');
+              _siblingPanel.stop().css('display', 'none');
+            } else {
+              _panel.stop().css('display', 'none');
+            }
+          });
+      }
+      accordion1();
+      accordion2();
     </script>
   </body>
 </html>

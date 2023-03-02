@@ -69,7 +69,7 @@
           <br />
           <br />
           <h2 class="gd__h2">토글 되게</h2>
-          <ul class="folding-list">
+          <ul class="folding-list pub-toggle">
             <li>
               <div class="folding-head">
                 <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
@@ -137,6 +137,34 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+      function accordion() {
+        $('.folding-btn').click(function (e) {
+          e.preventDefault();
+          const _this = $(this);
+          const _panel = _this.parents('.folding-head').siblings();
+          const _sibling = _this.closest('li').siblings().find('.folding-btn');
+          const _siblingPanel = _this.closest('li').siblings().find('.folding-panel');
+
+          if (_this.closest('.folding-list').hasClass('pub-toggle') == false) {
+            _this.toggleClass('open');
+            if (_this.hasClass('open')) {
+              _panel.stop().css('display', 'block');
+            } else {
+              _panel.stop().css('display', 'none');
+            }
+          } else if (_this.closest('.folding-list').hasClass('pub-toggle')) {
+            _sibling.removeClass('open');
+            _this.toggleClass('open');
+            if (_this.hasClass('open')) {
+              _panel.stop().css('display', 'block');
+              _siblingPanel.stop().css('display', 'none');
+            } else {
+              _panel.stop().css('display', 'none');
+            }
+          }
+        });
+      }
+      accordion();
     </script>
   </body>
 </html>
