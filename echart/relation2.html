@@ -810,6 +810,11 @@
                 // color: '#555555',
                 curveness: 0.5
               },
+              select: {
+                lineStyle: {
+                  color: 'red'
+                }
+              },
               data: graphData.nodes,
               links: graphData.links
             }
@@ -822,6 +827,21 @@
           if (value.type && value.type === 'product') {
             document.querySelector('#popup1').classList.add('show');
           }
+        });
+
+        // 캡쳐 2페이지 기능구현
+        shlRelationECharts.on('mouseover', function (params) {
+          var _category = params.data.category;
+          if (!_category) return;
+          if (_category.indexOf('-') >= 0) _category = _category.split('-')[0];
+          var _dataIndex = [];
+          graphData.nodes.forEach(function (el, i) {
+            if (el.category.indexOf(_category) >= 0) _dataIndex.push(i);
+          });
+          shlRelationECharts.dispatchAction({
+            type: 'highlight',
+            dataIndex: _dataIndex
+          });
         });
       }
 
