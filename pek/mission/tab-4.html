@@ -82,66 +82,43 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
 
-      // 힌트 제이쿼리함수:
-      // addClass(), removeClass(), toggleClass(), hasClass()
-      // parent(), closest(), siblings(), find(), children()
-      // outerWidth(), position()
-      // stop(), animate()
       $(document).ready(function () {
-        $('.tab-list').each(function (item) {
-          //var $base = $(this).hasClass('active');
-          //console.log(item);
-          const $width = $('.active').outerWidth();
-          //console.log($width);
-          const $local = $(this).find('.active').position().left;
-          //console.log($local);
-          const $line = $(this).closest('.tab-inner').find('.tab-line').css({ width: $width, left: $local });
-
-          $(this)
-            .closest('.tab-inner')
-            .find('.tab-line')
-            .css({ width: $width + 'px', left: $local + 'px' });
-        });
-
         $.fn.menuBar = function () {
           this.each(function (index) {
-            var $menuBar = null,
-              $menuList = null,
-              $menuSelect = null;
-            $actionBar = null;
+            const $menuBar = $(this);
+            const $menuList = $menuBar.find('a');
+            const $actionBar = $menuBar.find('.tab-line');
 
-            function init(el) {
-              $menuBar = $(el);
-              $menuList = $menuBar.find('li');
-              $actionBar = $menuBar.find('.tab-line');
+            function linePos(notAnimation) {
+              const $active = $menuBar.find('.active');
+              const $width = $active.outerWidth();
+              const $left = $active.position().left;
+              if (notAnimation) {
+                $actionBar.css({ width: $width, left: $left });
+              } else {
+                $actionBar.stop().animate({
+                  width: $width,
+                  left: $left
+                });
+              }
             }
+
             function event() {
               $menuList.on('click', function (e) {
                 e.preventDefault();
-                if ($menuSelect) $menuSelect.removeClass('active');
-                $menuList.removeClass('active');
-                $menuSelect = $(this);
-                $menuSelect.addClass('active');
-                $menuSelect.closest('.tab-inner').parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active');
+                const $this = $(this);
+                const $li = $this.closest('li');
+                const $idx = $li.index();
+                $li.addClass('active').siblings().removeClass('active');
+                $this.closest('.tab-inner').parent().next().children().eq($idx).addClass('active').siblings().removeClass('active');
 
-                if ($menuSelect.hasClass('active')) {
-                  var lengh = $($menuList).outerWidth();
-                  var pos = $($menuSelect).offset().left;
-                  //console.log(pos);
-
-                  $($menuSelect)
-                    .closest('.tab-inner')
-                    .find('.tab-line')
-                    .stop()
-                    .animate({
-                      width: lengh + 'px',
-                      left: pos + 'px'
-                    });
-                }
+                if ($li.hasClass('active')) linePos();
               });
             }
-            init($(this));
+            linePos(true);
             event();
+
+            $(window).resize(linePos);
           });
         };
 
