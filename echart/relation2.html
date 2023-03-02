@@ -18,7 +18,8 @@
       }
       .chart_box .popup {
         position: absolute;
-        background-color: rgba(255, 255, 255, 0.4);
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: none;
       }
       .chart_box .popup .pop-wrap {
         border: 1px solid #000;
@@ -58,7 +59,7 @@
                       <li class="dot">계약자: 홍길동(본인)</li>
                       <li class="dot">피보험자: 홍길동(본인)</li>
                       <li class="dot">만기수익자: 이모모(배우자), 홍진영(자녀)</li>
-                      <li class="dot">모집설계사: 설계자1 / 수금설계사: 설계자2</li>
+                      <li class="dot">모집설계사: 설계사1 / 수금설계사: 설계사2</li>
                     </ul>
                   </div>
                 </section>
@@ -380,7 +381,12 @@
               value: {
                 type: 'product',
                 tag: '건강/상해',
-                code: '0123456789'
+                code: '0123456789',
+                depth2: '해지',
+                planner: '설계사1',
+                plannerDepth2: 'GA',
+                family: '이모모',
+                familyDepth2: '0촌'
               },
               category: '계약-leaf',
 
@@ -411,7 +417,12 @@
               value: {
                 type: 'product',
                 tag: '연금/저축',
-                code: '0123456789'
+                code: '0123456789',
+                depth2: '만기',
+                planner: '설계사2',
+                plannerDepth2: 'GA',
+                family: '홍진영',
+                familyDepth2: '1촌'
               },
               category: '계약-leaf',
               label: {
@@ -439,7 +450,12 @@
               value: {
                 type: 'product',
                 tag: '종신/정기',
-                code: '0123456789'
+                code: '0123456789',
+                depth2: '유지',
+                planner: '설계사1',
+                plannerDepth2: 'GA',
+                family: '김엄마',
+                familyDepth2: '1촌'
               },
               category: '계약-leaf',
               label: {
@@ -457,7 +473,12 @@
               value: {
                 type: 'product',
                 tag: '건강/상해',
-                code: '0123456789'
+                code: '0123456789',
+                depth2: '유지',
+                planner: '설계사3',
+                plannerDepth2: 'LP',
+                family: '홍길은',
+                familyDepth2: '2촌'
               },
               category: '계약-leaf',
               label: {
@@ -824,8 +845,26 @@
 
         shlRelationECharts.on('click', function (params) {
           var value = params.data.value;
+          console.log(params);
           if (value.type && value.type === 'product') {
             document.querySelector('#popup1').classList.add('show');
+
+            setTimeout(function () {
+              var _dataIndex = [0, params.dataIndex];
+              graphData.nodes.forEach(function (el, i) {
+                var _name = el.name;
+                console.log(params.data.value.depth2);
+                if (params.data.value.depth2 && _name.indexOf(params.data.value.depth2) >= 0) _dataIndex.push(i);
+                if (params.data.value.planner && _name.indexOf(params.data.value.planner) >= 0) _dataIndex.push(i);
+                if (params.data.value.plannerDepth2 && _name.indexOf(params.data.value.plannerDepth2) >= 0) _dataIndex.push(i);
+                if (params.data.value.family && _name.indexOf(params.data.value.family) >= 0) _dataIndex.push(i);
+                if (params.data.value.familyDepth2 && _name.indexOf(params.data.value.familyDepth2) >= 0) _dataIndex.push(i);
+              });
+              shlRelationECharts.dispatchAction({
+                type: 'highlight',
+                dataIndex: _dataIndex
+              });
+            }, 100);
           }
         });
 
@@ -846,8 +885,8 @@
       }
 
       document.querySelector('.pop-close').addEventListener('click', function (e) {
-        const target = e.target;
-        const popup = target.closest('.popup');
+        var target = e.target;
+        var popup = target.closest('.popup');
         popup.classList.remove('show');
       });
     </script>
