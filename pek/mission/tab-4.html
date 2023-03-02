@@ -25,10 +25,10 @@
             </div>
           </div>
           <div class="tab_contents">
-          <div id="tab1-1" class="tab-panel active"><h2>탭내용입니다. 111</h2></div>
-          <div id="tab1-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
-          <div id="tab1-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
-          <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
+            <div id="tab1-1" class="tab-panel active"><h2>탭내용입니다. 111</h2></div>
+            <div id="tab1-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
+            <div id="tab1-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
+            <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           </div>
           <br />
           <div class="tab-line-menu tab_menu">
@@ -43,10 +43,10 @@
             </div>
           </div>
           <div class="tab_contents">
-          <div id="tab2-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
-          <div id="tab2-2" class="tab-panel active"><h2>탭내용입니다. 222</h2></div>
-          <div id="tab2-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
-          <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
+            <div id="tab2-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
+            <div id="tab2-2" class="tab-panel active"><h2>탭내용입니다. 222</h2></div>
+            <div id="tab2-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
+            <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           </div>
           <br />
           <div class="tab-box-menu tab_menu">
@@ -61,10 +61,10 @@
             </div>
           </div>
           <div class="tab_contents">
-          <div id="tab3-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
-          <div id="tab3-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
-          <div id="tab3-3" class="tab-panel active"><h2>탭내용입니다. 333</h2></div>
-          <div id="tab3-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
+            <div id="tab3-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
+            <div id="tab3-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
+            <div id="tab3-3" class="tab-panel active"><h2>탭내용입니다. 333</h2></div>
+            <div id="tab3-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           </div>
           <br />
           <p>탭메뉴(.tab-line-menu)를 클릭하여 해당메뉴를 활성화 시켜보세요.</p>
@@ -87,59 +87,63 @@
       // parent(), closest(), siblings(), find(), children()
       // outerWidth(), position()
       // stop(), animate()
-      $(document).ready(function(){
+      $(document).ready(function () {
+        $('.tab-list').each(function (item) {
+          //var $base = $(this).hasClass('active');
+          //console.log(item);
+          const $width = $('.active').outerWidth();
+          //console.log($width);
+          const $local = $(this).find('.active').position().left;
+          //console.log($local);
+          const $line = $(this).closest('.tab-inner').find('.tab-line').css({ width: $width, left: $local });
 
-        $('.tab-list').each(function(item){
-            //var $base = $(this).hasClass('active');
-            //console.log(item);
-            var $width = $('.active').outerWidth();
-            //console.log($width);
-            var $local = $(this).find('.active').position().left;
-            //console.log($local);
-            var $line = $(this).closest('.tab-inner').find('.tab-line').css({'width': $width, 'left': $local});
-            
-              $(this).closest('.tab-inner').find('.tab-line').css({'width': $width + 'px', 'left': $local + 'px'});
-            
-          });
+          $(this)
+            .closest('.tab-inner')
+            .find('.tab-line')
+            .css({ width: $width + 'px', left: $local + 'px' });
+        });
 
-        $.fn.menuBar = function(){                                        
-          this.each(function(index){
+        $.fn.menuBar = function () {
+          this.each(function (index) {
             var $menuBar = null,
-                $menuList = null,
-                $menuSelect = null;
-                $actionBar = null;
+              $menuList = null,
+              $menuSelect = null;
+            $actionBar = null;
 
-            function init(el){
+            function init(el) {
               $menuBar = $(el);
               $menuList = $menuBar.find('li');
               $actionBar = $menuBar.find('.tab-line');
             }
-            function event(){
-              $menuList.on('click', function(e){
+            function event() {
+              $menuList.on('click', function (e) {
                 e.preventDefault();
-                if($menuSelect)
-                  $menuSelect.removeClass('active');
-                  $menuList.removeClass('active');
-                  $menuSelect = $(this);
-                  $menuSelect.addClass('active');
-                  $menuSelect.closest('.tab-inner').parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active');
+                if ($menuSelect) $menuSelect.removeClass('active');
+                $menuList.removeClass('active');
+                $menuSelect = $(this);
+                $menuSelect.addClass('active');
+                $menuSelect.closest('.tab-inner').parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active');
 
-                  if($menuSelect.hasClass('active')){
+                if ($menuSelect.hasClass('active')) {
                   var lengh = $($menuList).outerWidth();
                   var pos = $($menuSelect).offset().left;
                   //console.log(pos);
 
-                  $($menuSelect).closest('.tab-inner').find('.tab-line').stop().animate({
-                    width: lengh + 'px',
-                    left: pos + 'px',
-                  });
+                  $($menuSelect)
+                    .closest('.tab-inner')
+                    .find('.tab-line')
+                    .stop()
+                    .animate({
+                      width: lengh + 'px',
+                      left: pos + 'px'
+                    });
                 }
               });
             }
             init($(this));
             event();
           });
-        }
+        };
 
         $('.tab_menu').menuBar();
       });

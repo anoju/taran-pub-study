@@ -43,8 +43,9 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       $(document).ready(function () {
-        $('.tab-list > li').click(function () {
-          var tab_id = $(this).index() + 1;
+        $('.tab-list > li').click(function (e) {
+          e.preventDefault();
+          const tab_id = $(this).index() + 1;
           //console.log(tab_id);
 
           $('.tab-list > li').removeClass('active');

@@ -25,10 +25,10 @@
             </div>
           </div>
           <div class="tab_contents">
-          <div id="tab1-1" class="tab-panel active"><h2>탭내용입니다. 111</h2></div>
-          <div id="tab1-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
-          <div id="tab1-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
-          <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
+            <div id="tab1-1" class="tab-panel active"><h2>탭내용입니다. 111</h2></div>
+            <div id="tab1-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
+            <div id="tab1-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
+            <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           </div>
           <br />
           <div class="tab-line-menu tab_menu">
@@ -43,10 +43,10 @@
             </div>
           </div>
           <div class="tab_contents">
-          <div id="tab2-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
-          <div id="tab2-2" class="tab-panel active"><h2>탭내용입니다. 222</h2></div>
-          <div id="tab2-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
-          <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
+            <div id="tab2-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
+            <div id="tab2-2" class="tab-panel active"><h2>탭내용입니다. 222</h2></div>
+            <div id="tab2-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
+            <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           </div>
           <br />
           <div class="tab-round-menu tab_menu">
@@ -61,10 +61,10 @@
             </div>
           </div>
           <div class="tab_contents">
-          <div id="tab3-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
-          <div id="tab3-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
-          <div id="tab3-3" class="tab-panel active"><h2>탭내용입니다. 333</h2></div>
-          <div id="tab3-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
+            <div id="tab3-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
+            <div id="tab3-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
+            <div id="tab3-3" class="tab-panel active"><h2>탭내용입니다. 333</h2></div>
+            <div id="tab3-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           </div>
           <br />
           <p>탭메뉴(.tab-line-menu)를 클릭하여 해당메뉴를 활성화 시켜보세요.</p>
@@ -86,32 +86,32 @@
       // outerWidth(), position()
       // stop(), animate()
 
-      $(document).ready(function(){
-        $.fn.menuBar = function(){
-          this.each(function(index){
+      $(document).ready(function () {
+        $.fn.menuBar = function () {
+          this.each(function (index) {
             var $menuBar = null,
-                $menuList = null,
-                $menuSelect = null;
+              $menuList = null,
+              $menuSelect = null;
 
-            function init(el){
+            function init(el) {
               $menuBar = $(el);
               $menuList = $menuBar.find('li');
             }
 
-            function event(){
-              $menuList.on('click', function(){
-                if($menuSelect)
-                  $menuSelect.removeClass('active');
-                  $menuList.removeClass('active');
-                  $menuSelect = $(this);
-                  $menuSelect.addClass('active');
-                  $menuSelect.closest('.tab-inner').parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active');
+            function event() {
+              $menuList.on('click', function (e) {
+                e.preventDefault();
+                if ($menuSelect) $menuSelect.removeClass('active');
+                $menuList.removeClass('active');
+                $menuSelect = $(this);
+                $menuSelect.addClass('active');
+                $menuSelect.closest('.tab-inner').parent().next().children().eq($(this).index()).addClass('active').siblings().removeClass('active');
               });
             }
             init($(this));
             event();
           });
-        }
+        };
 
         $('.tab_menu').menuBar();
       });
