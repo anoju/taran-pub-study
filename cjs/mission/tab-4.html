@@ -13,7 +13,7 @@
         <div class="section">
           <h1 class="gd__h1">탭메뉴</h1>
 
-          <div class="tab-line-menu">
+          <div class="tab-line-menu pub-tab">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -31,7 +31,7 @@
           <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-line-menu">
+          <div class="tab-line-menu pub-tab">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -49,7 +49,7 @@
           <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-box-menu">
+          <div class="tab-box-menu pub-tab">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -98,7 +98,7 @@
           const tabMenu = $(this);
           const tabIndex = tabMenu.parent().index();
           const tabHighlight = tabMenu.parent().parent().prev();
-          const tabContent = tabMenu.closest('.tab-inner').parent().next('br').nextUntil('br');
+          const tabContent = tabMenu.closest('.pub-tab').next('br').nextUntil('br');
           const targetLeft = tabMenu.offset().left;
           const targetWidth = tabMenu.outerWidth();
 
