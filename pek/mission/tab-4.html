@@ -88,9 +88,8 @@
       // outerWidth(), position()
       // stop(), animate()
       $(document).ready(function(){
-        /* 초기 화면 부분 */
-        $.fn.menuBar = function(){
-          this.each(function(item){
+
+        $('.tab-list').each(function(item){
             //var $base = $(this).hasClass('active');
             //console.log(item);
             var $width = $('.active').outerWidth();
@@ -98,16 +97,12 @@
             var $local = $(this).find('.active').position().left;
             //console.log($local);
             var $line = $(this).closest('.tab-inner').find('.tab-line').css({'width': $width, 'left': $local});
-
             
               $(this).closest('.tab-inner').find('.tab-line').css({'width': $width + 'px', 'left': $local + 'px'});
             
-
           });
 
-          /* end */
-
-          
+        $.fn.menuBar = function(){                                        
           this.each(function(index){
             var $menuBar = null,
                 $menuList = null,
