@@ -69,7 +69,7 @@
           <br />
           <br />
           <h2 class="gd__h2">토글 되게</h2>
-          <ul class="folding-list acc-list toggle">
+          <ul class="folding-list acc-list _toggle">
             <li>
               <div class="folding-head">
                 <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
@@ -138,24 +138,22 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       $(document).ready(function () {
-        const toggleList = $('.acc-list.toggle').find('.folding-btn');
-        const baseList = $('.acc-list').find('.folding-btn');
-        const content = $(this).parent().next();
-
-        function $accordian() {
-          $('.folding-btn').on('click', function (e) {
-            e.preventDefault();
-            if ($(this) == toggleList) {
-              $(this).toggleClass('open').closest('li').siblings().find('.folding-btn').removeClass('open');
-              $(content).stop().slideDown(300).closest('li').siblings().find('.folding-panel').stop().slideUp(300);
-            } else if ($(this) == baseList) {
-              $(this).toggleClass('open');
-              $(content).stop().slideDown(300);
-            }
-          });
-        }
         $accordian();
       });
+
+      function $accordian() {
+        $('.acc-list .folding-btn').on('click', function (e) {
+          e.preventDefault();
+          const $wrap = $(this).closest('.acc-list');
+          const $siblings = $(this).closest('li').siblings();
+          $(this).toggleClass('open');
+          $(this).parent().next().stop().slideToggle(300);
+          if ($wrap.hasClass('_toggle')) {
+            $siblings.find('.folding-btn').removeClass('open');
+            $siblings.find('.folding-panel').stop().slideUp(300);
+          }
+        });
+      }
     </script>
   </body>
 </html>
