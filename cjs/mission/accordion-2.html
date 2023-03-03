@@ -141,13 +141,14 @@
           .click(function (e) {
             e.preventDefault();
             const _this = $(this);
-            const _panel = _this.parents('.folding-head').siblings();
+            const _panel = _this.closest('.folding-head').siblings('.folding-panel');
             _this.toggleClass('open');
-            if (_this.hasClass('open')) {
-              _panel.stop().slideDown();
-            } else {
-              _panel.stop().slideUp();
-            }
+            _panel.stop().slideToggle();
+            // if (_this.hasClass('open')) {
+            //   _panel.stop().slideDown();
+            // } else {
+            //   _panel.stop().slideUp();
+            // }
           });
       }
 
@@ -158,17 +159,14 @@
             e.preventDefault();
             const _this = $(this);
             const _sibling = _this.closest('li').siblings().find('.folding-btn');
-            const _panel = _this.parents('.folding-head').siblings();
+            const _panel = _this.closest('.folding-head').siblings('.folding-panel');
             const _siblingPanel = _this.closest('li').siblings().find('.folding-panel');
 
-            _sibling.removeClass('open');
             _this.toggleClass('open');
-
+            _panel.stop().slideToggle();
             if (_this.hasClass('open')) {
-              _panel.stop().slideDown();
+              _sibling.removeClass('open');
               _siblingPanel.stop().slideUp();
-            } else {
-              _panel.stop().slideUp();
             }
           });
       }
