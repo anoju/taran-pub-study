@@ -38,17 +38,21 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       $(document).ready(function () {
-        const $accTit = $(this).find('.folding-head').children('a');
+        folding();
+      });
+
+      function folding() {
+        const $accTit = $('.acc-list .folding-head').children('a');
         $accTit.on('click', function (e) {
           e.preventDefault();
           $(this).toggleClass('open');
           if ($accTit.hasClass('open')) {
-            $(this).closest('.folding-head').next().slideDown(200);
+            $(this).closest('.folding-head').next().stop().slideDown(200);
           } else {
-            $(this).closest('.folding-head').next().slideUp(200);
+            $(this).closest('.folding-head').next().stop().slideUp(200);
           }
         });
-      });
+      }
     </script>
   </body>
 </html>

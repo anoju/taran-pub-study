@@ -135,35 +135,33 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
-        const $accBasic = $('.acc_list').find('.folding-head').children('a');
-        const $accToggle = $('.acc_list_toggle').find('.folding-head').children('a');
-
-        const accToggle = function (target) {
-          const con = '.folding-panel';
-
-          target.on('click', function (e) {
-            e.preventDefault();
-            $(this).parent().next(con).stop().slideToggle(300);
-            $(this).toggleClass('open').closest('li').siblings().find('.folding-btn').removeClass('open');
-            $(this).parent().closest('li').siblings().find(con).stop().slideUp(300);
-          });
-        };
-
-        const accBasic = function () {
-          $accBasic.on('click', function (e) {
-            e.preventDefault();
-            $(this).toggleClass('open');
-            if ($(this).hasClass('open')) {
-              $(this).closest('.folding-head').next().slideDown(200);
-            } else {
-              $(this).closest('.folding-head').next().slideUp(200);
-            }
-          });
-        };
-
-        accToggle($accToggle);
-        accBasic($accBasic);
+        accToggle('.acc_list_toggle .folding-head a');
+        accBasic('.acc_list .folding-head a');
       });
+
+      const accToggle = function (target) {
+        const con = '.folding-panel';
+
+        $(target).on('click', function (e) {
+          e.preventDefault();
+          $(this).parent().next(con).stop().slideToggle(300);
+          $(this).toggleClass('open').closest('li').siblings().find('.folding-btn').removeClass('open');
+          $(this).parent().closest('li').siblings().find(con).stop().slideUp(300);
+        });
+      };
+
+      const accBasic = function (target) {
+        $(target).on('click', function (e) {
+          e.preventDefault();
+          $(this).toggleClass('open');
+          // $(this).closest('.folding-head').next().stop().slideToggle(200);
+          if ($(this).hasClass('open')) {
+            $(this).closest('.folding-head').next().stop().slideDown(200);
+          } else {
+            $(this).closest('.folding-head').next().stop().slideUp(200);
+          }
+        });
+      };
     </script>
   </body>
 </html>
