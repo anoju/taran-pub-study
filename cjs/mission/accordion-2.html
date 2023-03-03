@@ -144,9 +144,9 @@
             const _panel = _this.parents('.folding-head').siblings();
             _this.toggleClass('open');
             if (_this.hasClass('open')) {
-              _panel.stop().css('display', 'block');
+              _panel.stop().slideDown();
             } else {
-              _panel.stop().css('display', 'none');
+              _panel.stop().slideUp();
             }
           });
       }
@@ -165,10 +165,10 @@
             _this.toggleClass('open');
 
             if (_this.hasClass('open')) {
-              _panel.stop().css('display', 'block');
-              _siblingPanel.stop().css('display', 'none');
+              _panel.stop().slideDown();
+              _siblingPanel.stop().slideUp();
             } else {
-              _panel.stop().css('display', 'none');
+              _panel.stop().slideUp();
             }
           });
       }

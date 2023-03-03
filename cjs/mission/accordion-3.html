@@ -148,18 +148,18 @@
           if (_this.closest('.folding-list').hasClass('pub-toggle') == false) {
             _this.toggleClass('open');
             if (_this.hasClass('open')) {
-              _panel.stop().css('display', 'block');
+              _panel.stop().slideDown();
             } else {
-              _panel.stop().css('display', 'none');
+              _panel.stop().slideUp();
             }
           } else if (_this.closest('.folding-list').hasClass('pub-toggle')) {
             _sibling.removeClass('open');
             _this.toggleClass('open');
             if (_this.hasClass('open')) {
-              _panel.stop().css('display', 'block');
-              _siblingPanel.stop().css('display', 'none');
+              _panel.stop().slideDown();
+              _siblingPanel.stop().slideUp();
             } else {
-              _panel.stop().css('display', 'none');
+              _panel.stop().slideUp();
             }
           }
         });
