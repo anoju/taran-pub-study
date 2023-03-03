@@ -44,9 +44,9 @@
           const _panel = _this.parents('.folding-head').siblings();
           _this.toggleClass('open');
           if (_this.hasClass('open')) {
-            _panel.css('display', 'block');
+            _panel.stop().slideDown();
           } else {
-            _panel.css('display', 'none');
+            _panel.stop().slideUp();
           }
         });
       }
