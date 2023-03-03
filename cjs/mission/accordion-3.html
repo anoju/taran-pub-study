@@ -13,59 +13,7 @@
         <div class="section">
           <h1 class="gd__h1">아코디언</h1>
           <h2 class="gd__h2">토글 없이</h2>
-          <ul class="folding-list ui-folding">
-            <li>
-              <div class="folding-head">
-                <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
-              </div>
-              <div class="folding-panel">
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-              </div>
-            </li>
-            <li>
-              <div class="folding-head">
-                <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
-              </div>
-              <div class="folding-panel">
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-              </div>
-            </li>
-            <li>
-              <div class="folding-head">
-                <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
-              </div>
-              <div class="folding-panel">
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-              </div>
-            </li>
-          </ul>
+          <div id="list"></div>
           <br />
           <br />
           <h2 class="gd__h2">토글 되게</h2>
@@ -138,7 +86,8 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       function accordion() {
-        $('.ui-folding .folding-btn').click(function (e) {
+        // $('.ui-folding .folding-btn').click(function (e) {
+        $(document).on('click', '.ui-folding .folding-btn', function (e) {
           e.preventDefault();
           const _this = $(this);
           const _panel = _this.closest('.folding-head').siblings('.folding-panel');
@@ -158,7 +107,64 @@
           }
         });
       }
+
+      function appendlist() {
+        const li = `<ul class="folding-list ui-folding"><li>
+          <div class="folding-head">
+            <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
+          </div>
+          <div class="folding-panel">
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+          </div>
+        </li>
+        <li>
+          <div class="folding-head">
+            <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
+          </div>
+          <div class="folding-panel">
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+          </div>
+        </li>
+        <li>
+          <div class="folding-head">
+            <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
+          </div>
+          <div class="folding-panel">
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+            내용<br />
+          </div>
+        </li></ul>`;
+        $('#list').append(li);
+      }
       accordion();
+
+      appendlist();
     </script>
   </body>
 </html>
