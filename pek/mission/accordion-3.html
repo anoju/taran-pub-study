@@ -138,19 +138,18 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       $(document).ready(function () {
-        const toggleList = $('.acc-list.toggle').find('.folding-btn');
-        const baseList = $('.acc-list').find('.folding-btn');
-        const content = $(this).parent().next();
+        // const baseList = $(this).closest('.acc-list');
+        // const content = $(this).parent().next();
 
         function $accordian() {
           $('.folding-btn').on('click', function (e) {
             e.preventDefault();
-            if ($(this) == toggleList) {
+            if ($(this).closest('.acc-list').hasClass('toggle')) {
               $(this).toggleClass('open').closest('li').siblings().find('.folding-btn').removeClass('open');
-              $(content).stop().slideDown(300).closest('li').siblings().find('.folding-panel').stop().slideUp(300);
-            } else if ($(this) == baseList) {
+              $(this).parent().next().stop().slideToggle(300).closest('li').siblings().find('.folding-panel').stop().slideUp(300);
+            } else if ($(this).closest('.acc-list').hasClass('toggle') == false) {
               $(this).toggleClass('open');
-              $(content).stop().slideDown(300);
+              $(this).parent().next().stop().slideToggle(300);
             }
           });
         }
