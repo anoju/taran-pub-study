@@ -50,7 +50,22 @@
           }
         });
       }
-      accordion1();
+      // accordion1();
+      function accordion() {
+        const btn = document.querySelector('.folding-btn');
+
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const _panel = this.parentNode.childNodes;
+
+          if (this.classList.contains('open')) {
+            this.classList.remove('open');
+          } else {
+            this.classList.add('open');
+          }
+        });
+      }
+      accordion();
     </script>
   </body>
 </html>
