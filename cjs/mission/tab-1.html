@@ -58,7 +58,41 @@
           });
         });
       }
-      jqTab();
+      // jqTab();
+      function jqTab1() {
+        const tabPanle = document.querySelectorAll('.tab-panel');
+        const tabLinks = document.querySelectorAll('.tab > a');
+
+        function handleClick(e) {
+          e.preventDefault();
+
+          const clickedTab = event.currentTarget.parentElement;
+          const menuId = event.currentTarget.getAttribute('href');
+          const correspondingTabPanel = document.querySelector(menuId);
+
+          clickedTab.classList.add('active');
+          Array.from(clickedTab.parentElement.children).forEach((tab) => {
+            if (tab !== clickedTab) {
+              tab.classList.remove('active');
+            }
+          });
+
+          tabPanle.forEach((panel) => {
+            if (panel !== correspondingTabPanel) {
+              panel.classList.remove('active');
+            } else {
+              correspondingTabPanel.classList.add('active');
+            }
+          });
+        }
+
+        tabLinks.forEach((link) => {
+          link.addEventListener('click', handleClick);
+        });
+      }
+
+      jqTab1();
+
       // 2023 - 02 -23 review
       const $idx = $this.parent().index();
       $this.parent().addClass('active').siblings().removeClass('active');
