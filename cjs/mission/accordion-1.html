@@ -53,15 +53,19 @@
       // accordion1();
       function accordion() {
         const btn = document.querySelector('.folding-btn');
-
         btn.addEventListener('click', function (e) {
           e.preventDefault();
-          const _panel = this.parentNode.childNodes;
+
+          const _panel = this.parentNode.nextElementSibling;
+          _panel.style.display = 'block';
+          const _height = _panel.offsetHeight;
 
           if (this.classList.contains('open')) {
             this.classList.remove('open');
+            _panel.style.display = 'none';
           } else {
             this.classList.add('open');
+            _panel.style.Height = _height;
           }
         });
       }
