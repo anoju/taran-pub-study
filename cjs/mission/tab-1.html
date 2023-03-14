@@ -58,11 +58,73 @@
           });
         });
       }
-      jqTab();
+      // jqTab();
+      function javaTab1() {
+        const tabPanle = document.querySelectorAll('.tab-panel');
+        const tabLinks = document.querySelectorAll('.tab > a');
+
+        function handleClick(e) {
+          e.preventDefault();
+
+          const clickedTab = e.currentTarget.parentElement;
+          const menuId = e.currentTarget.getAttribute('href');
+          const TabPanel = document.querySelector(menuId);
+
+          clickedTab.classList.add('active');
+          Array.from(clickedTab.parentElement.children).forEach((tab) => {
+            if (tab !== clickedTab) {
+              tab.classList.remove('active');
+            }
+          });
+
+          tabPanle.forEach((panel) => {
+            if (panel !== TabPanel) {
+              panel.classList.remove('active');
+            } else {
+              TabPanel.classList.add('active');
+            }
+          });
+        }
+
+        tabLinks.forEach((link) => {
+          link.addEventListener('click', handleClick);
+        });
+      }
+
+      // javaTab1();
+
       // 2023 - 02 -23 review
-      const $idx = $this.parent().index();
-      $this.parent().addClass('active').siblings().removeClass('active');
-      $('.tab-panel').eq($idx).addClass('active').siblings().removeClass('active');
+      function jqReview() {
+        $(document).on('click', '.tab > a', function (e) {
+          e.preventDefault();
+          const $idx = $(this).parent().index();
+          $(this).parent().addClass('active').siblings().removeClass('active');
+          $('.tab-panel').eq($idx).addClass('active').siblings().removeClass('active');
+        });
+      }
+
+      // jqReview();
+
+      function javaTab2() {
+        document.addEventListener('click', function (event) {
+          const target = event.target;
+          event.preventDefault();
+          const parent = target.parentNode;
+          const idx = Array.from(parent.parentNode.children).indexOf(parent);
+          const panel = document.querySelectorAll('.tab-panel')[idx];
+          console.log(panel);
+          parent.classList.add('active');
+          panel.classList.add('active');
+          console.log(panel.sibling());
+          Array.from(parent.parentNode.children).forEach(function (sibling) {
+            if (sibling !== parent) {
+              sibling.classList.remove('active');
+            }
+          });
+        });
+      }
+
+      javaTab2();
     </script>
   </body>
 </html>

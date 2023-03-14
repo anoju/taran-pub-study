@@ -10,6 +10,13 @@
     "> 2%",
     "last 2 versions"
   ],
+  "stylusCompile.settings.formats": [
+    {
+      // "format": "compressed",
+      "extensionName": ".min.css",
+      "savePath": "~/../css/"
+    }
+  ],
   "liveServer.settings.port": 6100,
   "files.eol": "\n",
   "editor.tabSize": 2,
