@@ -184,24 +184,37 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      $('.folding-head').click(function(e){
-        $(this).find('.folding-btn').toggleClass('open')
-       
-        const panel = $(this).siblings('.folding-panel');
-        const idx = $(this).parent().index() + 1;
-        const headHeight = $(this).height() * idx;
-        const panelHeight = panel.height();
-        const scrollAmt = parseInt($('html, body').scrollTop()); 
-        const sum = scrollAmt + panelHeight + headHeight;    
-        console.log(headHeight)
-        if($(this).find('.folding-btn').hasClass('open')){
-          panel.stop().slideDown();
-          $('html, body').animate({scrollTop : sum},300);   
-        }else{
-          panel.stop().slideUp();
-        }           
-        
-      })
+
+      function scrollTo(){
+        $('.folding-head').click(function(e){
+          $(this).find('.folding-btn').toggleClass('open')
+          
+          const panel = $(this).siblings('.folding-panel');
+          const openPanel = $('.folding-btn.open').parent().siblings('.folding-panel');
+          const opLength = openPanel.length;
+          const opHeight = openPanel.height() * opLength;
+          const idx = $(this).parent().index() + 1;
+          const headHeight = parseInt($(this).height() * idx);    
+  
+          if($(this).find('.folding-btn').hasClass('open')){
+            panel.stop().slideDown();
+          }else{
+            panel.stop().slideUp();
+          }  
+  
+          if(opLength > 1 && idx === 1){
+            $('html, body').animate({scrollTop: openPanel.height() * 1 + headHeight});
+          }else if(opLength > 1 && idx === 2){
+            $('html, body').animate({scrollTop: openPanel.height() * 2 + headHeight});
+          }else if(opLength > 1 && idx === 3){
+            $('html, body').animate({scrollTop: openPanel.height() * 3 + headHeight});
+          }else{
+            $('html, body').animate({scrollTop: opHeight + headHeight});
+          }                        
+        })
+      }
+
+      scrollTo();
     </script>
   </body>
 </html>
