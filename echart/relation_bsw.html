@@ -13,6 +13,29 @@
       .section > div {
         background-color: #fafafa;
       }
+      .chart_box {
+        position: relative;
+      }
+      .chart_box .popup {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: none;
+      }
+      .chart_box .popup .pop-wrap {
+        border: 1px solid #000;
+        max-width: 400px;
+        background-color: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(1px);
+      }
+      .chart_box .popup .pop-head {
+        background: none;
+      }
+      .chart_box .popup .pop-head h1 {
+        padding-right: 30px;
+      }
+      .chart_box .popup .pop-head .pop-close {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -21,58 +44,61 @@
       <div class="page-body">
         <div class="section">
           <h1 class="gd__h1">graph</h1>
-          <h2 class="gd__h2">type1 ()</h2>
+          <div class="chart_box">
+            <div id="relation1" style="height: 800px"></div>
 
-          <div id="relation1" style="height: 686px"></div>
-
-          <hr class="hr-line mg-50y" />
-          <h2 class="gd__h2">type2 (json 받아오는 형태)</h2>
-
-          <div id="relation2" style="height: 686px"></div>
+            <!-- 임시 팝업 -->
+            <article id="popup1" class="popup modal">
+              <div class="pop-wrap">
+                <header class="pop-head">
+                  <div>
+                    <h1>무배당 함께크는 종신보험</h1>
+                    <button type="button" class="pop-close" aria-label="팝업창 닫기"></button>
+                  </div>
+                </header>
+                <section class="pop-body">
+                  <div class="section">
+                    <ul class="txt-list">
+                      <li class="dot">가입금액: 1,000만원</li>
+                      <li class="dot">보험기간: 2009.07.28 ~ 2029.07.28</li>
+                      <li class="dot">계약자: 홍길동(본인)</li>
+                      <li class="dot">피보험자: 홍길동(본인)</li>
+                      <li class="dot">만기수익자: 이모모(배우자), 홍진영(자녀)</li>
+                      <li class="dot">모집설계사: 설계사1 / 수금설계사: 설계사2</li>
+                    </ul>
+                  </div>
+                </section>
+              </div>
+            </article>
+            <!-- //임시 팝업 -->
+          </div>
         </div>
       </div>
     </div>
     <script>
       relation1();
-      document.querySelectorAll('path')?.forEach((el) => {
-        el.addEventListener('click', function (e) {
-          const circle = e.target;
-          if (circle.getAttribute('fill') === 'rgba(247,143,13,1)') {
-            alert('본인');
-          }
-
-          // alert("some description (using JS)");
-        });
-      });
-      //relation2();
 
       function relation1() {
         var shlContent = document.getElementById('relation1');
-        var shlRelationECharts = echarts.init(shlContent, null, {
-          renderer: 'svg' //렌더를 svg로 변경
-        });
+        var shlRelationECharts = echarts.init(shlContent);
 
+        var chartColor = ['#ffc400', '#5783fd', '#36d598'];
         var itemStyles = {
           root: {
             size: 140,
-            color: '#e1820c'
+            color: '#FE943A'
           }, // 본인
           depth1: {
-            size: 100,
-            color: ['rgba(255, 196, 0, 0.9)', 'rgba(87, 131, 253, 0.9)', 'rgba(54, 213, 152, 0.9)']
+            size: 110,
+            color: chartColor
           }, // 노랑계열, 블루계열, 그린
           depth2: {
             size: 80,
-            color: ['rgba(255, 217, 91, 0.9)', 'rgba(87, 131, 253, 0.7)', 'rgba(54, 213, 152, 0.7)']
-          }, // 노랑계열, 블루계열, 그린
-          depth3: {
-            size: 60,
-            color: ['rgba(255, 217, 91, 0.9)', 'rgba(87, 131, 253, 0.5)', 'rgba(54, 213, 152, 0.5)']
+            color: chartColor
           }, // 노랑계열, 블루계열, 그린
           leaf: {
             size: 60,
-            color: ['#fff1c3', '#fff1c3', '#fff1c3', '#dddee'],
-            borderColor: ['#dddddd', '#dddddd', '#dddddd']
+            color: chartColor
           }
         };
 
@@ -81,182 +107,420 @@
             {
               name: '홍길동',
               value: {
-                type: 'person',
                 tag: '고객',
                 old: 41,
-                sex: '남'
+                sex: '남',
+                alarm: true
               },
-              category: '본인'
+              category: '본인',
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '가족',
               value: {
-                type: 'category',
-                total: 10
+                total: 9,
+                alarm: true
               },
-              category: '가족'
+              category: '가족',
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '0촌',
               value: {
-                type: 'category',
-                total: 10
+                total: 2,
+                alarm: false
               },
-              category: '가족-sub'
-            },
-            {
-              name: '박말순',
-              value: {
-                type: 'person',
-                tag: '배우자1',
-                old: 41,
-                sex: '여'
-              },
-              category: '가족-leaf'
+              category: '가족-sub',
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '김나나',
               value: {
-                type: 'person',
-                tag: '배우자2',
+                tag: '배우자',
                 old: 39,
-                sex: '여'
+                sex: '여',
+                alarm: false
               },
-              category: '가족-leaf'
+              category: '가족-leaf',
+
+              // 비활성화
+              label: {
+                color: '#ccc'
+              },
+              itemStyle: {
+                color: '#f1f1f1',
+                borderColor: '#ccc',
+                borderType: 'dashed',
+                borderDashOffset: 20
+              }
             },
             {
-              name: '이영희',
+              name: '이모모',
               value: {
-                type: 'person',
-                tag: '배우자3',
-                old: 40,
-                sex: '여'
+                tag: '배우자',
+                old: 35,
+                sex: '여',
+                alarm: false
               },
-              category: '가족-leaf'
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
             },
             {
               name: '1촌',
               value: {
-                type: 'category',
-                total: 5
+                total: 4,
+                alarm: false
               },
-              category: '가족-sub'
+              category: '가족-sub',
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '홍경래',
               value: {
-                type: 'person',
                 tag: '자녀',
                 old: 16,
-                sex: '남'
+                sex: '남',
+                alarm: false
               },
-              category: '가족-leaf'
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
             },
             {
               name: '홍진영',
               value: {
-                type: 'person',
                 tag: '자녀',
                 old: 12,
-                sex: '여'
+                sex: '여',
+                alarm: false
               },
-              category: '가족-leaf'
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
             },
             {
               name: '홍아빠',
               value: {
-                type: 'person',
                 tag: '부모',
                 old: 72,
-                sex: '남'
+                sex: '남',
+                alarm: false
               },
-              category: '가족-leaf'
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
             },
             {
               name: '김엄마',
               value: {
-                type: 'person',
                 tag: '부모',
                 old: 69,
-                sex: '여'
+                sex: '여',
+                alarm: false
               },
-              category: '가족-leaf'
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
             },
             {
               name: '2촌',
               value: {
-                type: 'category',
-                total: null
+                total: 2,
+                alarm: true
               },
-              category: '가족-sub'
+              category: '가족-sub',
+              label: {
+                color: '#fff'
+              }
+            },
+            {
+              name: '홍길금',
+              value: {
+                tag: '형제',
+                old: 43,
+                sex: '남',
+                alarm: false
+              },
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
+            },
+            {
+              name: '홍길은',
+              value: {
+                tag: '형제',
+                old: 43,
+                sex: '남',
+                alarm: false
+              },
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
             },
             {
               name: '예외',
               value: {
-                type: 'category',
-                total: null
+                total: 1,
+                alarm: true
               },
-              category: '가족-sub'
+              category: '가족-sub',
+              label: {
+                color: '#fff'
+              },
+              itemStyle: {
+                color: '#ff2800'
+              }
+            },
+            {
+              name: '이건희',
+              value: {
+                tag: '후견인',
+                old: 60,
+                sex: '남',
+                alarm: true
+              },
+              category: '가족-leaf',
+              label: {
+                color: itemStyles.leaf.color[0]
+              }
             },
             {
               name: '설계사',
               value: {
-                type: 'category',
-                total: 5
+                total: 5,
+                alarm: false
               },
-              category: '설계사'
+              category: '설계사',
+              label: {
+                color: '#fff'
+              }
+            },
+            {
+              name: 'DM',
+              value: {
+                total: 0,
+                alarm: false
+              },
+              category: '설계사-sub',
+              label: {
+                color: '#fff'
+              }
+            },
+            {
+              name: 'GA',
+              value: {
+                total: 2,
+                alarm: false
+              },
+              category: '설계사-sub',
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '설계사1',
               value: {
-                type: 'person',
-                tag: null,
+                tag: 'GA',
                 old: 46,
-                sex: '여'
+                sex: '남',
+                alarm: false
               },
-              category: '설계사-sub'
+              category: '설계사-leaf',
+              label: {
+                color: itemStyles.leaf.color[1]
+              }
             },
             {
               name: '설계사2',
               value: {
-                type: 'person',
-                tag: null,
+                tag: 'GA',
                 old: 42,
-                sex: '여'
+                sex: '여',
+                alarm: false
               },
-              category: '설계사-sub'
+              category: '설계사-leaf',
+              label: {
+                color: itemStyles.leaf.color[1]
+              }
+            },
+            {
+              name: 'LP',
+              value: {
+                total: 1,
+                alarm: true
+              },
+              category: '설계사-sub',
+              label: {
+                color: '#fff'
+              }
+            },
+            {
+              name: '설계사3',
+              value: {
+                tag: 'LP',
+                old: 39,
+                sex: '여',
+                alarm: false
+              },
+              category: '설계사-leaf',
+              label: {
+                color: itemStyles.leaf.color[1]
+              }
             },
             {
               name: '계약',
               value: {
-                type: 'category',
-                total: 5
+                total: 5,
+                alarm: false
               },
-              category: '계약'
+              category: '계약',
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '해지',
               value: {
-                type: 'category',
-                total: 2
+                total: 2,
+                alarm: true
               },
-              category: '계약-sub'
+              category: '계약-sub',
+              label: {
+                color: '#fff'
+              }
+            },
+            {
+              name: '무배당 KB스타 재해사망보험',
+              value: {
+                type: 'product',
+                tag: '건강/상해',
+                code: '0123456789',
+                depth2: '해지',
+                planner: '설계사1',
+                plannerDepth2: 'GA',
+                family: '이모모',
+                familyDepth2: '0촌'
+              },
+              category: '계약-leaf',
+
+              // 비활성화
+              label: {
+                color: '#ccc',
+                borderColor: '#ccc',
+                borderType: 'dashed',
+                backgroundColor: '#f1f1f1',
+                padding: [10, 15],
+                borderWidth: 1,
+                borderRadius: 10
+                // opacity: 0.9
+              }
             },
             {
               name: '만기',
               value: {
-                type: 'category',
-                total: null
+                total: 1,
+                alarm: true
               },
-              category: '계약-sub'
+              category: '계약-sub',
+              label: {
+                color: '#fff'
+              }
+            },
+            {
+              name: '무배당 KB스타 재해사망보험II',
+              value: {
+                type: 'product',
+                tag: '연금/저축',
+                code: '0123456789',
+                depth2: '만기',
+                planner: '설계사2',
+                plannerDepth2: 'GA',
+                family: '홍진영',
+                familyDepth2: '1촌'
+              },
+              category: '계약-leaf',
+              label: {
+                color: itemStyles.leaf.color[2],
+                borderColor: itemStyles.leaf.color[2],
+                backgroundColor: '#fff',
+                // backgroundColor: '#000',
+                padding: [10, 15],
+                borderWidth: 1,
+                borderRadius: 10
+              }
             },
             {
               name: '유지',
               value: {
-                type: 'category',
-                total: null
+                total: 2,
+                alarm: true
               },
-              category: '계약-sub'
+              category: '계약-sub',
+              label: {
+                color: '#fff'
+              }
+            },
+            {
+              name: '무배당 함께크는 종신보험',
+              value: {
+                type: 'product',
+                tag: '종신/정기',
+                code: '0123456789',
+                depth2: '유지',
+                planner: '설계사1',
+                plannerDepth2: 'GA',
+                family: '김엄마',
+                familyDepth2: '1촌'
+              },
+              category: '계약-leaf',
+              label: {
+                color: itemStyles.leaf.color[2],
+                borderColor: itemStyles.leaf.color[2],
+                backgroundColor: '#fff',
+                padding: [10, 15],
+                borderWidth: 1,
+                borderRadius: 10
+                // opacity: 0.9
+              }
+            },
+            {
+              name: '무)KB국민 wise상해보험II',
+              value: {
+                type: 'product',
+                tag: '건강/상해',
+                code: '0123456789',
+                depth2: '유지',
+                planner: '설계사3',
+                plannerDepth2: 'LP',
+                family: '홍길은',
+                familyDepth2: '2촌'
+              },
+              category: '계약-leaf',
+              label: {
+                color: itemStyles.leaf.color[2],
+                borderColor: itemStyles.leaf.color[2],
+                backgroundColor: '#fff',
+                padding: [10, 15],
+                borderWidth: 1,
+                borderRadius: 10
+                // opacity: 0.9
+              }
             }
           ],
           links: [
@@ -270,15 +534,15 @@
             },
             {
               source: '0촌',
-              target: '박말순'
-            },
-            {
-              source: '0촌',
               target: '김나나'
             },
             {
               source: '0촌',
-              target: '이영희'
+              target: '이모모'
+            },
+            {
+              source: '예외',
+              target: '이건희'
             },
             {
               source: '가족',
@@ -305,6 +569,15 @@
               source: '가족',
               target: '2촌'
             },
+
+            {
+              source: '2촌',
+              target: '홍길금'
+            },
+            {
+              source: '2촌',
+              target: '홍길은'
+            },
             {
               source: '가족',
               target: '예외'
@@ -315,11 +588,27 @@
             },
             {
               source: '설계사',
-              target: '설계사1'
+              target: 'DM'
             },
             {
               source: '설계사',
+              target: 'GA'
+            },
+            {
+              source: 'GA',
+              target: '설계사1'
+            },
+            {
+              source: 'GA',
               target: '설계사2'
+            },
+            {
+              source: '설계사',
+              target: 'LP'
+            },
+            {
+              source: 'LP',
+              target: '설계사3'
             },
             {
               source: '홍길동',
@@ -336,123 +625,149 @@
             {
               source: '계약',
               target: '유지'
+            },
+            {
+              source: '해지',
+              target: '무배당 KB스타 재해사망보험'
+            },
+            {
+              source: '만기',
+              target: '무배당 KB스타 재해사망보험II'
+            },
+            {
+              source: '유지',
+              target: '무배당 함께크는 종신보험'
+            },
+            /*
+            {
+              source: '무배당 함께크는 종신보험',
+              target: '설계사3'
+            },
+            {
+              source: '무배당 함께크는 종신보험',
+              target: '이모모'
+            },
+            {
+              source: '무배당 함께크는 종신보험',
+              target: '홍길금'
+            },
+            */
+            {
+              source: '유지',
+              target: '무)KB국민 wise상해보험II'
             }
           ],
           categories: [
             {
               name: '본인', // 0
+              symbolSize: itemStyles.root.size,
               itemStyle: {
                 color: itemStyles.root.color
-              },
-              symbolSize: itemStyles.root.size
+              }
             },
             {
               name: '가족', // 1
+              symbolSize: itemStyles.depth1.size,
               itemStyle: {
                 color: itemStyles.depth1.color[0]
-              },
-              symbolSize: itemStyles.depth1.size
+              }
             },
             {
               name: '가족-sub', // 1
+              symbolSize: itemStyles.depth2.size,
               itemStyle: {
-                color: itemStyles.depth2.color[0]
-              },
-              symbolSize: itemStyles.depth2.size
+                color: itemStyles.depth2.color[0],
+                opacity: 0.7
+              }
             },
             {
               name: '가족-leaf', // 1
+              symbolSize: itemStyles.leaf.size,
               itemStyle: {
-                color: itemStyles.leaf.color,
-                borderColor: itemStyles.leaf.borderColor[0]
-              },
-              symbolSize: itemStyles.leaf.size
+                color: 'rgba(255,255,255,0.8)',
+                borderColor: itemStyles.leaf.color[0]
+              }
             },
+
             {
               name: '설계사', // 1-0
+              symbolSize: itemStyles.depth1.size,
               itemStyle: {
                 color: itemStyles.depth1.color[1]
               },
-              symbolSize: itemStyles.depth1.size
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '설계사-sub', // 1-0
+              symbolSize: itemStyles.depth2.size,
               itemStyle: {
-                color: itemStyles.depth2.color[1]
+                color: itemStyles.depth2.color[1],
+                opacity: 0.7
               },
-              symbolSize: itemStyles.depth2.size
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '설계사-leaf', // 1-0
+              symbolSize: itemStyles.leaf.size,
               itemStyle: {
-                color: itemStyles.leaf.color[1]
+                color: 'rgba(255,255,255,0.8)',
+                borderColor: itemStyles.leaf.color[1]
               },
-              symbolSize: itemStyles.leaf.size
+              label: {
+                color: itemStyles.leaf.color[1]
+              }
             },
+
             {
               name: '계약', // 1-1
+              symbolSize: itemStyles.depth1.size,
               itemStyle: {
                 color: itemStyles.depth1.color[2]
               },
-              symbolSize: itemStyles.depth1.size
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '계약-sub', // 1-1
+              symbolSize: itemStyles.depth2.size,
               itemStyle: {
-                color: itemStyles.depth2.color[2]
+                color: itemStyles.depth2.color[2],
+                opacity: 0.7
               },
-              symbolSize: itemStyles.depth2.size
+              label: {
+                color: '#fff'
+              }
             },
             {
               name: '계약-leaf', // 1-1
-              itemStyle: {
-                color: itemStyles.leaf.color[1]
-              },
-              symbolSize: itemStyles.leaf.size
+              // symbol: 'rect',
+              symbolSize: 0
+              // symbolOffset: ['-50%', '-50%']
+              // itemStyle: {
+              //   color: 'rgba(255,255,255,0)',
+              //   borderColor: itemStyles.leaf.color[2]
+              // }
             }
           ]
         };
 
         var chartOption = {
-          title: {
-            text: '관계도 테스트',
-            subtext: 'Default layout',
-            top: 'bottom',
-            left: 'right'
-          },
-          animationDuration: 500,
-          animationEasingUpdate: 'quinticInOut',
-          tooltip: {},
-          legend: {
-            show: true,
-            data: ['본인', '가족', '설계사', '계약']
-          },
           series: [
             {
               type: 'graph',
               layout: 'force',
               roam: true, // 마우스 scale, move
-              draggable: false,
+              // draggable: false,
               symbol: 'circle',
-              symbolSize: function (value, params) {
-                // console.log("params", params);
-                var category = params.data.category;
-                switch (category) {
-                  case '본인':
-                    return itemStyles.root.size;
-                  case '가족':
-                  case '설계사':
-                  case '계약':
-                    return itemStyles.depth1.size;
-                  default:
-                    return itemStyles.depth2.size;
-                }
-              },
-              focusNodeAdjacency: true,
               force: {
-                repulsion: 250,
-                layoutAnimation: true,
-                edgeLength: 80
+                gravity: 0.005,
+                repulsion: 240
+                // edgeLength: 40
               },
               emphasis: {
                 focus: 'adjacency', // 마우스 오버시 opacity 적용됨.
@@ -460,19 +775,121 @@
                   width: 2
                 }
               },
+              itemStyle: {
+                opacity: 0.9
+              },
               categories: graphData.categories,
               label: {
                 show: true,
-                fontFamily: 'PingFangSC-Regular'
-                //	formatter: '{b}, {c}' // a: series 이름, b: name, c: value
-                //				color: "#ㄹㄹㄹ",
+                align: 'center',
+                formatter: function (params) {
+                  var rtnTxt = '';
+                  var _a = 'aa';
+                  var _b = 'bb';
+                  var _c = 'cc';
+                  var _alarm = 'alarm';
+
+                  if (params.data.category.indexOf('-root') >= 0) {
+                    _a = 'root'; //본인(고객 영역색상)
+                  }
+
+                  if (!!params.data.value.alarm == true) rtnTxt += '{' + _alarm + '|' + '!' + '}\n\n'; //알람영역 ! 추가
+
+                  if (params.data.category.indexOf('-sub') >= 0 || params.data.category.indexOf('-leaf') >= 0) {
+                    _a = 'a';
+                    _b = 'b';
+                    _c = 'c';
+                  }
+                  if (!!params.data.value.code) (_a = 'aaa'), (_b = 'bbb');
+                  if (!!params.data.value.tag) rtnTxt += '{' + _a + '|' + params.data.value.tag + '}\n';
+                  if (!!params.data.value.code) rtnTxt += '{cd|' + params.data.value.code + '}\n';
+
+                  rtnTxt += '{' + _b + '|' + params.name + '}';
+                  if (!!params.data.value.total) rtnTxt += '\n{' + _c + '|(' + params.data.value.total + ')}';
+                  else if (!!params.data.value.old || !!params.data.value.sex) rtnTxt += '\n{' + _c + '|(' + params.data.value.old + ',' + params.data.value.sex + ')}';
+                  return rtnTxt;
+                  if (!!params.data.value.date) rtnTxt += '\n{' + _c + '|(' + params.data.value.date + ')}';
+                  if (!!params.data.value.txt) rtnTxt += '\n{' + _c + '|' + params.data.value.txt + '}';
+                },
+                rich: {
+                  //root(본인)
+                  root: {
+                    backgroundColor: '#22adb1',
+                    padding: [3, 5],
+                    fontFamily: 'KBText'
+                  },
+                  //알람
+                  alarm: {
+                    fontSize: 14,
+                    fontWeight: 'bold',
+                    backgroundColor: '#f05e5e',
+                    borderRadius: 20,
+                    padding: [2, 10],
+                    color: '#fff',
+                    height: 20,
+                    fontFamily: 'KBText'
+                  },
+                  a: {
+                    fontSize: 11,
+                    lineHeight: 14,
+                    fontFamily: 'KBText'
+                  },
+                  b: {
+                    fontSize: 14,
+                    lineHeight: 20,
+                    fontWeight: 500,
+                    fontFamily: 'KBText'
+                  },
+                  c: {
+                    fontSize: 10,
+                    lineHeight: 14,
+                    fontFamily: 'KBText'
+                  },
+                  aa: {
+                    fontSize: 14,
+                    lineHeight: 20,
+                    fontFamily: 'KBText'
+                  },
+                  bb: {
+                    fontSize: 18,
+                    lineHeight: 28,
+                    fontWeight: 500,
+                    fontFamily: 'KBText'
+                  },
+                  cc: {
+                    fontSize: 13,
+                    lineHeight: 20,
+                    fontFamily: 'KBText'
+                  },
+                  aaa: {
+                    fontSize: 14,
+                    lineHeight: 20,
+                    align: 'left',
+                    fontFamily: 'KBText'
+                  },
+                  cd: {
+                    fontSize: 14,
+                    lineHeight: 20,
+                    align: 'left',
+                    fontFamily: 'KBText'
+                  },
+                  bbb: {
+                    fontSize: 16,
+                    lineHeight: 24,
+                    align: 'left',
+                    fontWeight: 500,
+                    fontFamily: 'KBText'
+                  }
+                }
               },
               lineStyle: {
-                width: 1,
-                type: 'dashed', // solid, dashed, dotted
-                dashOffset: 10, //선이 dashed일 경우
-                color: '#555555',
-                curveness: 0.2
+                // color: '#555555',
+                curveness: 0.5
+              },
+              select: {
+                lineStyle: {
+                  color: 'blue'
+                }
               },
               data: graphData.nodes,
               links: graphData.links
@@ -480,7 +897,52 @@
           ]
         };
         shlRelationECharts.setOption(chartOption);
+
+        shlRelationECharts.on('click', function (params) {
+          var value = params.data.value;
+          console.log(params);
+          if (value.type && value.type === 'product') {
+            document.querySelector('#popup1').classList.add('show');
+
+            setTimeout(function () {
+              var _dataIndex = [0, params.dataIndex];
+              graphData.nodes.forEach(function (el, i) {
+                var _name = el.name;
+                if (params.data.value.depth2 && _name.indexOf(params.data.value.depth2) >= 0) _dataIndex.push(i);
+                if (params.data.value.planner && _name.indexOf(params.data.value.planner) >= 0) _dataIndex.push(i);
+                if (params.data.value.plannerDepth2 && _name.indexOf(params.data.value.plannerDepth2) >= 0) _dataIndex.push(i);
+                if (params.data.value.family && _name.indexOf(params.data.value.family) >= 0) _dataIndex.push(i);
+                if (params.data.value.familyDepth2 && _name.indexOf(params.data.value.familyDepth2) >= 0) _dataIndex.push(i);
+              });
+              shlRelationECharts.dispatchAction({
+                type: 'highlight',
+                dataIndex: _dataIndex
+              });
+            }, 100);
+          }
+        });
+
+        // 캡쳐 2페이지 기능구현
+        shlRelationECharts.on('click', function (params) {
+          var _category = params.data.category;
+          if (!_category) return;
+          if (_category.indexOf('-') >= 0) _category = _category.split('-')[0];
+          var _dataIndex = [];
+          graphData.nodes.forEach(function (el, i) {
+            if (el.category.indexOf(_category) >= 0) _dataIndex.push(i);
+          });
+          shlRelationECharts.dispatchAction({
+            type: 'highlight',
+            dataIndex: _dataIndex
+          });
+        });
       }
+
+      document.querySelector('.pop-close').addEventListener('click', function (e) {
+        var target = e.target;
+        var popup = target.closest('.popup');
+        popup.classList.remove('show');
+      });
     </script>
   </body>
 </html>
