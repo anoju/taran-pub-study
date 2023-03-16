@@ -14,6 +14,9 @@ $mainColor: #222;
 .slides > * {
   background-color: #fff;
 }
+.fc-red {
+  color: #d00;
+}
 .wrap {
   position: relative;
   padding-top: math.div(2480, 3508) * 100%;
@@ -107,29 +110,79 @@ $mainColor: #222;
 .list-page {
 }
 .sub-page {
-  .sub-tit {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    font-weight: 900;
-    span {
-      background: $mainColor;
-      color: #fff;
-      font-size: 0.75em;
-      padding: 0.4em 0.6em;
-      border-radius: 0.7em;
-      margin-right: 1em;
-    }
-  }
-  .origin-info {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    font-size: 0.8rem;
-    opacity: 0.8;
-  }
   a {
     color: $mainColor;
     text-decoration: underline;
+  }
+  .inner.v-center {
+    padding-top: 5rem;
+  }
+}
+.sub-tit {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-weight: 900;
+  span {
+    background: $mainColor;
+    color: #fff;
+    font-size: 0.75em;
+    padding: 0.4em 0.6em;
+    border-radius: 0.7em;
+    margin-right: 1em;
+  }
+  .inner.v-center & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.origin-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 !important;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.intro-dl {
+  --radius-size: 2rem;
+  position: relative;
+  padding: 0 calc(var(--radius-size) * 1.5) calc(var(--radius-size) / 2);
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: var(--radius-size);
+    height: 100%;
+    border: 1px solid $mainColor;
+  }
+  &:before {
+    left: 0;
+    border-right: 0 none;
+    border-radius: var(--radius-size) 0 0 var(--radius-size);
+  }
+  &:after {
+    right: 0;
+    border-left: 0 none;
+    border-radius: 0 var(--radius-size) var(--radius-size) 0;
+  }
+  > dt {
+    text-align: center;
+    strong {
+      display: block;
+      font-size: 5rem;
+    }
+    sub {
+      display: block;
+    }
+  }
+  > dd {
+    text-align: center;
+    margin: 3rem 0 0;
+    font-size: 1.2rem;
   }
 }
