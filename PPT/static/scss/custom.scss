@@ -16,7 +16,7 @@ html {
   .code-wrapper {
     margin-left: 0;
     margin-right: 0;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     width: 100%;
   }
 }
@@ -25,6 +25,9 @@ html {
 }
 [data-auto-animate] {
   background-color: #fff;
+}
+.bg-yellow {
+  background-color: #ff0;
 }
 .fc-red {
   color: #d00 !important;
@@ -219,12 +222,14 @@ html {
   align-items: center;
   text-align: left;
   font-weight: 900;
-  margin: 0;
+  .reveal & {
+    margin-bottom: 3rem;
+  }
   span {
     background: $baseTxtColor;
     color: #fff;
     font-size: 0.75em;
-    padding: 0.4em 0.6em;
+    padding: 0.3em 0.5em;
     border-radius: 0.7em;
     margin-right: 1em;
   }
@@ -309,10 +314,19 @@ html {
 .box-dl-wrap {
   display: flex;
   .box-dl {
+    width: calc(50% - 1.5rem);
     flex-shrink: 0;
     box-sizing: border-box;
     + .box-dl {
       margin-left: 3rem;
+    }
+  }
+  &.col-3 {
+    .box-dl {
+      width: calc(33.33% - 1rem);
+      + .box-dl {
+        margin-left: 1.5rem;
+      }
     }
   }
 }
@@ -334,8 +348,59 @@ dl.box-dl {
   p {
     margin: 0;
   }
+  &.ty2 {
+    padding: 0;
+    border: 0 none;
+    background-color: #eee;
+    > dt {
+      padding: 1rem 2.5rem;
+      border-bottom: 0 none;
+      color: #fff;
+      background-color: $baseTxtColor;
+    }
+    > dd {
+      padding: 2rem 2.5rem;
+    }
+  }
 }
-
+ul.list-txt,
+ol.list-txt {
+  display: block;
+  margin: 0;
+}
+ol.list-txt {
+  list-style: none;
+  .list-tit {
+    text-indent: -1.2em;
+  }
+}
+.list-txt {
+  font-size: 1.8rem;
+  > li {
+    + li {
+      margin-top: 3rem;
+    }
+  }
+  p,
+  ol {
+    margin: 0;
+  }
+  .list-tit {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+  .list-summary {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  .hljs {
+    padding: 1rem 1.5rem;
+  }
+}
+.ul-list-1 {
+  margin: 3rem 0;
+  font-size: 1.8rem;
+}
 /* content */
 .sample-1 {
   display: flex;
@@ -353,5 +418,17 @@ dl.box-dl {
   ul {
     margin: 0;
     padding-left: 2rem;
+  }
+}
+.sample-2 {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 30rem;
+  transform: translateY(-50%);
+  text-align: right;
+  img {
+    max-width: 100%;
+    margin-bottom: 0.5rem;
   }
 }
