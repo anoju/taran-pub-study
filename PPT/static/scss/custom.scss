@@ -5,7 +5,7 @@
   --main-color: #854eff;
 }
 .reveal .controls {
-  color: var(--main-color);
+  color: var(--main-color) !important;
 }
 .slide-background-content {
   background-color: #fafafa;
@@ -31,7 +31,7 @@
     }
   }
 }
-.main-visual {
+.main-page {
   color: #fff;
   .inner {
     text-align: left;
@@ -87,4 +87,6 @@
   }
 }
 .ppt-list {
+}
+.sub-page {
 }
