@@ -1,15 +1,24 @@
 @use 'sass:math';
 
-$mainColor: #222;
+$baseTxtColor: #222;
+$mainColor: #854eff;
 :root {
   --inner-margin: 4rem;
-  --main-color: #854eff;
+  --main-color: #{$mainColor};
 }
 html {
   font-size: 62.5%;
 }
-.reveal .controls {
-  color: var(--main-color) !important;
+.reveal {
+  .controls {
+    color: var(--main-color) !important;
+  }
+  .code-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1.2rem;
+    width: 100%;
+  }
 }
 .slide-background-content {
   background-color: #fafafa;
@@ -35,6 +44,10 @@ html {
 .lh-15 {
   line-height: 1.5;
 }
+.bg-line {
+  background: linear-gradient(180deg, transparent 70%, lighten($mainColor, 20%) 70%, lighten($mainColor, 20%) 90%, transparent 90%);
+}
+
 .wrap {
   line-height: 1.4;
   position: relative;
@@ -194,7 +207,7 @@ html {
 }
 .sub-page {
   a {
-    color: $mainColor;
+    color: $baseTxtColor;
     text-decoration: underline;
   }
   .inner.v-center {
@@ -208,7 +221,7 @@ html {
   font-weight: 900;
   margin: 0;
   span {
-    background: $mainColor;
+    background: $baseTxtColor;
     color: #fff;
     font-size: 0.75em;
     padding: 0.4em 0.6em;
@@ -263,7 +276,7 @@ html {
     top: 0;
     width: var(--radius-size);
     height: 100%;
-    border: 1px solid $mainColor;
+    border: 1px solid $baseTxtColor;
   }
   &:before {
     left: 0;
@@ -293,9 +306,38 @@ html {
     font-size: 1.8rem;
   }
 }
+.box-dl-wrap {
+  display: flex;
+  .box-dl {
+    flex-shrink: 0;
+    box-sizing: border-box;
+    + .box-dl {
+      margin-left: 3rem;
+    }
+  }
+}
+dl.box-dl {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  margin: 0;
+  padding: 0 2rem;
+  > dt {
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+  }
+  > dd {
+    margin: 0;
+    padding: 1.5rem 0;
+    font-size: 1.6rem;
+  }
+  ul,
+  p {
+    margin: 0;
+  }
+}
 
 /* content */
-.sample1 {
+.sample-1 {
   display: flex;
   font-size: 1.6rem;
   margin: 3rem 0;
