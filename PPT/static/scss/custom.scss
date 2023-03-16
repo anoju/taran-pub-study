@@ -1,12 +1,17 @@
 @use 'sass:math';
-// html {
-//   font-size: 62.5%;
-// }
+
 :root {
   --inner-margin: 3rem;
+  --main-color: #854eff;
 }
-p {
-  margin: 0;
+.reveal .controls {
+  color: var(--main-color);
+}
+.slide-background-content {
+  background-color: #fafafa;
+}
+.slides > * {
+  background-color: #fff;
 }
 .wrap {
   position: relative;
