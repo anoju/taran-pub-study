@@ -89,6 +89,27 @@
   }
 }
 .list-page {
+  background: url(../images/1/img1-1.svg) no-repeat center / contain;
+  .index-half {
+    display: flex;
+    > div {
+      flex: 1;
+    }
+    .bg {
+      background: url(../images/1/img1-2.jpg) no-repeat center / contain;
+    }
+    .index-tt {
+      position: relative;
+    }
+    .index-list {
+      li {
+        list-style: none;
+        .index-num {
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
 .sub-page {
 }
