@@ -1,5 +1,6 @@
 @use 'sass:math';
 
+$mainColor: #222;
 :root {
   --inner-margin: 3rem;
   --main-color: #854eff;
@@ -63,27 +64,6 @@
     p {
       margin: 1rem 0 0;
     }
-    .logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100px;
-      background: url(../images/logo.png) no-repeat center / contain;
-      overflow: hidden;
-      font-size: 0;
-      &:before {
-        content: '';
-        display: block;
-        padding-top: math.div(56, 178) * 100%;
-      }
-      &.white {
-        background-image: url(../images/logo-w.png);
-      }
-      &.ty2 {
-        right: 0;
-        left: auto;
-      }
-    }
     .img {
       position: absolute;
       top: 0;
@@ -102,7 +82,52 @@
     }
   }
 }
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  background: url(../images/logo.png) no-repeat center / contain;
+  overflow: hidden;
+  font-size: 0;
+  margin: 0 !important;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: math.div(56, 178) * 100%;
+  }
+  &.white {
+    background-image: url(../images/logo-w.png);
+  }
+  &.ty2 {
+    right: 0;
+    left: auto;
+  }
+}
 .list-page {
 }
 .sub-page {
+  .sub-tit {
+    text-align: left;
+    font-weight: 900;
+    span {
+      background: $mainColor;
+      color: #fff;
+      font-size: 0.75em;
+      padding: 0.15em 0.5em;
+      border-radius: 0.7em;
+      margin-right: 1em;
+    }
+  }
+  .origin-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  a {
+    color: $mainColor;
+    text-decoration: underline;
+  }
 }
