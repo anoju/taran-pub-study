@@ -21,7 +21,7 @@ p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    > * {
+    > div {
       width: 100%;
     }
   }
@@ -72,6 +72,12 @@ p {
         margin: 0;
         width: 100%;
       }
+    }
+    .writer {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      font-weight: 900;
     }
   }
 }
