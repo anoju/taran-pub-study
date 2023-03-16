@@ -1,5 +1,6 @@
 @use 'sass:math';
 
+$mainColor: #222;
 :root {
   --inner-margin: 3rem;
   --main-color: #854eff;
@@ -12,6 +13,9 @@
 }
 .slides > * {
   background-color: #fff;
+}
+.fc-red {
+  color: #d00;
 }
 .wrap {
   position: relative;
@@ -34,6 +38,7 @@
   }
 }
 .main-page {
+  --r-heading-text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   color: #fff;
   .inner {
     text-align: left;
@@ -53,22 +58,14 @@
         background: #fff;
       }
     }
+    h2 {
+      color: #fff;
+      strong {
+        margin-left: 1em;
+      }
+    }
     p {
       margin: 1rem 0 0;
-    }
-    .logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100px;
-      background: url(../images/logo-w.png) no-repeat center / contain;
-      overflow: hidden;
-      font-size: 0;
-      &:before {
-        content: '';
-        display: block;
-        padding-top: math.div(56, 178) * 100%;
-      }
     }
     .img {
       position: absolute;
@@ -86,6 +83,28 @@
       right: 0;
       font-weight: 900;
     }
+  }
+}
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  background: url(../images/logo.png) no-repeat center / contain;
+  overflow: hidden;
+  font-size: 0;
+  margin: 0 !important;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: math.div(56, 178) * 100%;
+  }
+  &.white {
+    background-image: url(../images/logo-w.png);
+  }
+  &.ty2 {
+    right: 0;
+    left: auto;
   }
 }
 .list-page {
@@ -112,4 +131,79 @@
   }
 }
 .sub-page {
+  a {
+    color: $mainColor;
+    text-decoration: underline;
+  }
+  .inner.v-center {
+    padding-top: 5rem;
+  }
+}
+.sub-tit {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-weight: 900;
+  span {
+    background: $mainColor;
+    color: #fff;
+    font-size: 0.75em;
+    padding: 0.4em 0.6em;
+    border-radius: 0.7em;
+    margin-right: 1em;
+  }
+  .inner.v-center & {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+.origin-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 !important;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.intro-dl {
+  --radius-size: 2rem;
+  position: relative;
+  padding: 0 calc(var(--radius-size) * 1.5) calc(var(--radius-size) / 2);
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: var(--radius-size);
+    height: 100%;
+    border: 1px solid $mainColor;
+  }
+  &:before {
+    left: 0;
+    border-right: 0 none;
+    border-radius: var(--radius-size) 0 0 var(--radius-size);
+  }
+  &:after {
+    right: 0;
+    border-left: 0 none;
+    border-radius: 0 var(--radius-size) var(--radius-size) 0;
+  }
+  > dt {
+    text-align: center;
+    strong {
+      display: block;
+      font-size: 5rem;
+    }
+    sub {
+      display: block;
+    }
+  }
+  > dd {
+    text-align: center;
+    margin: 3rem 0 0;
+    font-size: 1.2rem;
+  }
 }
