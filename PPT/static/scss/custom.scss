@@ -11,7 +11,7 @@ $mainColor: #222;
 .slide-background-content {
   background-color: #fafafa;
 }
-.slides > * {
+[data-auto-animate] {
   background-color: #fff;
 }
 .fc-red {
