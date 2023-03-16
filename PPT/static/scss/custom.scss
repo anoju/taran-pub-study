@@ -2,8 +2,11 @@
 
 $mainColor: #222;
 :root {
-  --inner-margin: 3rem;
+  --inner-margin: 4rem;
   --main-color: #854eff;
+}
+html {
+  font-size: 62.5%;
 }
 .reveal .controls {
   color: var(--main-color) !important;
@@ -15,9 +18,25 @@ $mainColor: #222;
   background-color: #fff;
 }
 .fc-red {
-  color: #d00;
+  color: #d00 !important;
+}
+.fc-main {
+  color: var(--main-color) !important;
+}
+.t-center {
+  text-align: center !important;
+}
+.t-left {
+  text-align: left !important;
+}
+.underline {
+  text-decoration: underline;
+}
+.lh-15 {
+  line-height: 1.5;
 }
 .wrap {
+  line-height: 1.4;
   position: relative;
   padding-top: math.div(2480, 3508) * 100%;
   > .inner {
@@ -71,7 +90,7 @@ $mainColor: #222;
       position: absolute;
       top: 0;
       right: 0;
-      width: 250px;
+      width: 25rem;
       img {
         margin: 0;
         width: 100%;
@@ -82,6 +101,7 @@ $mainColor: #222;
       bottom: 0;
       right: 0;
       font-weight: 900;
+      font-size: 2.4rem;
     }
   }
 }
@@ -89,7 +109,7 @@ $mainColor: #222;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100px;
+  width: 10rem;
   background: url(../images/logo.png) no-repeat center / contain;
   overflow: hidden;
   font-size: 0;
@@ -134,7 +154,7 @@ $mainColor: #222;
     background: #333;
     width: 50%;
     color: #fff;
-    padding: 1rem;
+    padding: 1.2rem 1.5rem;
     align-items: flex-end;
     box-sizing: border-box;
     h2 {
@@ -142,10 +162,10 @@ $mainColor: #222;
       line-height: 1;
       margin: 0;
       font-weight: normal;
-      font-size: 1.6rem;
+      font-size: 2.4rem;
     }
     p {
-      font-size: 0.8rem;
+      font-size: 1.2rem;
       line-height: 1;
       margin: 0;
       margin-left: 0.5em;
@@ -158,6 +178,7 @@ $mainColor: #222;
     justify-content: space-evenly;
     margin-left: 0;
     padding-left: 3em;
+    font-size: 2.2rem;
     li {
       position: relative;
       width: 100%;
@@ -185,6 +206,7 @@ $mainColor: #222;
   align-items: center;
   text-align: left;
   font-weight: 900;
+  margin: 0;
   span {
     background: $mainColor;
     color: #fff;
@@ -200,16 +222,37 @@ $mainColor: #222;
     right: 0;
   }
 }
+
+.img-link {
+  position: relative;
+  display: inline-block;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 10px solid transparent;
+    border-top-color: var(--main-color);
+    border-left-color: var(--main-color);
+  }
+  img {
+    vertical-align: top;
+    margin: 0;
+    max-width: none;
+    max-height: none;
+  }
+}
 .origin-info {
   position: absolute;
   right: 0;
   bottom: 0;
   margin: 0 !important;
-  font-size: 0.8rem;
+  font-size: 1rem;
   opacity: 0.8;
 }
 .intro-dl {
-  --radius-size: 2rem;
+  --radius-size: 3rem;
   position: relative;
   padding: 0 calc(var(--radius-size) * 1.5) calc(var(--radius-size) / 2);
   &:before,
@@ -236,15 +279,37 @@ $mainColor: #222;
     text-align: center;
     strong {
       display: block;
-      font-size: 5rem;
+      font-size: 5.6rem;
     }
     sub {
       display: block;
+      font-weight: bold;
+      font-size: 2.4rem;
     }
   }
   > dd {
     text-align: center;
     margin: 3rem 0 0;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+  }
+}
+
+/* content */
+.sample1 {
+  display: flex;
+  font-size: 1.6rem;
+  margin: 3rem 0;
+  .box {
+    width: 100%;
+    background: #f1f1f1;
+    padding: 4rem 3rem;
+    border-radius: 4rem;
+    + .box {
+      margin-left: 4rem;
+    }
+  }
+  ul {
+    margin: 0;
+    padding-left: 2rem;
   }
 }
