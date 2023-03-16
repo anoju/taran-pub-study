@@ -1,0 +1,77 @@
+@use 'sass:math';
+// html {
+//   font-size: 62.5%;
+// }
+:root {
+  --inner-margin: 3rem;
+}
+p {
+  margin: 0;
+}
+.wrap {
+  position: relative;
+  padding-top: math.div(2480, 3508) * 100%;
+  > .inner {
+    position: absolute;
+    left: var(--inner-margin);
+    right: var(--inner-margin);
+    top: calc(var(--inner-margin) / 2);
+    bottom: calc(var(--inner-margin) / 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > * {
+      width: 100%;
+    }
+  }
+}
+.main-visual {
+  color: #fff;
+  .inner {
+    text-align: left;
+    h1 {
+      position: relative;
+      color: #fff;
+      margin: 0;
+      padding-top: 1rem;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: calc(var(--inner-margin) * -1);
+        display: block;
+        height: 1px;
+        background: #fff;
+      }
+    }
+    p {
+      margin: 1rem 0 0;
+    }
+    .logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100px;
+      background: url(../images/logo-w.png) no-repeat center / contain;
+      overflow: hidden;
+      font-size: 0;
+      &:before {
+        content: '';
+        display: block;
+        padding-top: math.div(56, 178) * 100%;
+      }
+    }
+    .img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 250px;
+      img {
+        margin: 0;
+        width: 100%;
+      }
+    }
+  }
+}

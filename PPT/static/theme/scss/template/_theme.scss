@@ -16,6 +16,7 @@
   font-size: var(--r-main-font-size);
   font-weight: normal;
   color: var(--r-main-color);
+  word-break: keep-all; //추가
 }
 
 .reveal ::selection {
