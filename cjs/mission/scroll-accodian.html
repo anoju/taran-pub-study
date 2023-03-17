@@ -53,15 +53,7 @@
                 내용<br />
                 내용<br />
                 내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
+
                 내용<br />
                 내용<br />
                 내용<br />
@@ -188,28 +180,32 @@
         $('.folding-head').click(function (e) {
           const this_ = $(this);
           const panel = $(this).siblings('.folding-panel');
-          const panelHeight = panel.height();
+          const panelHeight = panel.outerHeight();
           const btSiblings = this_.parent('li').siblings().find('.folding-btn');
           const pnSiblings = this_.parent('li').siblings().find('.folding-panel');
-          const winHeight = $(window).height();
+          const headHeight = $('.page-head').height();
+          const tabHeight = $('.tab-line-menu').height();
+          const headOffset = this_.offset().top;
 
-          btSiblings.removeClass('open');
-          this_.find('.folding-btn').toggleClass('open');
-          pnSiblings.slideUp();
+          if (!this_.find('.folding-btn').hasClass('open')) {
+            btSiblings.removeClass('open');
+            pnSiblings.stop().slideUp();
+            panel.stop().slideDown(function () {
+              const dcHeight = panelHeight - headHeight - tabHeight;
+              const winHeight = $(window).height() - headHeight - tabHeight;
 
-          panel.stop().slideToggle({
-            done: function () {
-              const dcHeight = $(document).height();
-              const winHeight = $(window).height();
-              const headOffset = this_.offset().top;
-              const txtOffset = $('.txt-list').offset().top - $('.txt-list').height();
-
-              console.log(headOffset, txtOffset);
               if (dcHeight > winHeight) {
-                $('html, body').animate({ scrollTop: headOffset - txtOffset });
+                $('html, body').animate({ scrollTop: headOffset - (panelHeight - dcHeight) });
+              } else {
+                $('html, body').animate({ scrollTop: headOffset });
               }
-            }
-          });
+            });
+            this_.find('.folding-btn').addClass('open');
+          } else {
+            pnSiblings.stop().slideUp();
+            panel.stop().slideUp();
+            this_.find('.folding-btn').removeClass('open');
+          }
         });
       }
 
