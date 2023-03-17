@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../static/theme/css/white.min.css" id="theme" />
     <link rel="stylesheet" href="../static/plugin/highlight/monokai.css" />
     <link rel="stylesheet" href="../static/css/custom.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
   </head>
 
   <body>
@@ -140,8 +141,8 @@
                 <h3 class="sub-tit"><span>Part1-4</span>Markup Language</h3>
                 <div class="t-left">
                   <div class="lh-15">HTML에서 얘기하는 마크업 언어(Markup Language)도 C, JAVA 등의 언어와 마찬가지로 <span class="bg-line">컴퓨터와 의사소통하고 명령을 내리기 위한 언어</span>입니다. 우리가 웹 상에 표시하고 싶은 내용들을 <span class="bg-line">태그(tag)를 활용하여 HTML 문서</span>로 작성하면, 컴퓨터는 <span class="bg-line">웹브라우저를 통해 HTML 문서를 읽어 들이고 모니터에 표현</span>하여 우리에게 보여주는 것이죠.</div>
-                  <div class="box-dl-wrap" style="margin-top: 3rem">
-                    <dl class="box-dl">
+                  <div class="flex-item-wrap" style="margin-top: 3rem">
+                    <dl class="box-dl flex-item">
                       <dt>웹 브라우저(Web Browser)란?</dt>
                       <dd>
                         <p>웹을 둘러볼 수 있게 하는 응용 프로그램을 말합니.<br />웹 브라우저(크롬, 사파리, 오페라, 인터넷 익스플로러, 파이어폭스 등) 이렇게 우리는 HTML의 마크업 언어를 통하여 웹 브라우저에게 '이렇게 표현해달라', '저렇게 표현해달라'라고 명령을 내리는 것입니다.</p>
@@ -150,7 +151,7 @@
                         </div>
                       </dd>
                     </dl>
-                    <dl class="box-dl">
+                    <dl class="box-dl flex-item">
                       <dt>태그(Tag)란?</dt>
                       <dd>
                         <p>태그(Tag)는 영어사전에서는 어떤 표시를 하기 위해 붙인 꼬리표라고 명시되어 있습니다.</p>
@@ -205,8 +206,8 @@
               <div class="inner v-center">
                 <p class="logo ty2">타란UX컨설팅</p>
                 <h3 class="sub-tit"><span>Part2-2</span>CSS 사용법</h3>
-                <div class="box-dl-wrap col-3">
-                  <dl class="box-dl">
+                <div class="flex-item-wrap col-3">
+                  <dl class="box-dl flex-item">
                     <dt>태그 내에 스타일 지정<br />(Inline Style)</dt>
                     <dd>
                       <p>태그에 직접 스타일(CSS)를 적용하는 방법이다</p>
@@ -215,7 +216,7 @@
                       </code></pre>
                     </dd>
                   </dl>
-                  <dl class="box-dl">
+                  <dl class="box-dl flex-item">
                     <dt>내부 스타일 시트<br />(Internal Style Sheet)</dt>
                     <dd>
                       <p>HTML 문서에 style태그를 사용하여 CSS 코드를 작성하는 방법이다.</p>
@@ -226,7 +227,7 @@
                       </code></pre>
                     </dd>
                   </dl>
-                  <dl class="box-dl">
+                  <dl class="box-dl flex-item">
                     <dt>외부 스타일 시트<br />(External Style Sheet)</dt>
                     <dd>
                       <p>HTML 문서에 link 태그를 사용하여 CSS 확장명을 갖은 파일과 연결하고 그 CSS파일안에서 CSS 코드를 작성하는 방법이다.</p>
@@ -449,9 +450,215 @@
                 <h3 class="sub-tit"><span>Part4-1</span>CSS Pre-processor</h3>
                 <dl class="intro-dl">
                   <dt><strong>CSS Pre-processor</strong><sub>CSS 전처리기</sub></dt>
-                  <dd>자신만의 특별한 구문(Syntax)을 가지고 CSS를 생성하는 프로그램입니다. CSS의 문제점을 프로그래밍 방식, 즉 변수·함수·상속 등 일반적인 프로그래밍 개념을 사용하여 보완합니다. CSS 전처리기에는 다양한 모듈이 존재하는데 그 중에서도 Sass·Less·Stylus가 가장 많이 사용됩니다.<br /><br />CSS 전처리기는 공통 요소 또는 반복적인 항목을 변수 또는 함수로 대체할 수 있는 재사용성, 임의 함수 및 내장 함수로 인해 개발 시간과 비용 절약, 중첩·상속과 같은 요소로 인해 구조화된 코드 유지 및 관리 용이 등의 장점이 있습니다. 반면 전처리기를 위한 도구가 필요하고 다시 컴파일하는데 시간이 소요된다는 단점도 존재합니다.</dd>
+                  <dd>자신만의 특별한 구문(Syntax)을 가지고 CSS를 생성하는 프로그램입니다. CSS의 문제점을 프로그래밍 방식, 즉 변수·함수·상속 등 일반적인 프로그래밍 개념을 사용하여 보완합니다. CSS 전처리기에는 다양한 모듈이 존재하는데 그 중에서도 Sass·Less·Stylus가 가장 많이 사용됩니다.<br /><br />CSS 전처리기는 <span class="bg-line">공통 요소 또는 반복적인 항목을 변수 또는 함수로 대체할 수 있는 재사용성, 임의 함수 및 내장 함수로 인해 개발 시간과 비용 절약, 중첩·상속과 같은 요소로 인해 구조화된 코드 유지 및 관리 용이 등의 장점</span>이 있습니다. 반면 <span class="bg-line">전처리기를 위한 도구가 필요하고 다시 컴파일하는데 시간이 소요된다는 단점</span>도 존재합니다.</dd>
                 </dl>
                 <p class="origin-info">출처: <a href="https://www.samsungsds.com/kr/insights/web_component.html" target="_blank">samsung sds</a></p>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner t-left">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-2</span>CSS Pre-processor 종류</h3>
+                <ol class="list-txt">
+                  <li>
+                    <p class="list-tit">
+                      <strong>1. <a href="https://sass-lang.com/" target="_blank">Sass</a> (Syntactically Awesome Style Sheets)</strong>
+                    </p>
+                    <ul>
+                      <li>Sass는 가장 널리 사용되는 CSS 전처리기입니다. Sass는 Ruby 언어로 작성되어 있으며,</li>
+                      <li>문법은 <strong class="bg-line fc-main">Sass(들여쓰기)</strong>와 <strong class="bg-line fc-main">Scss(중괄호)</strong> 두 가지로 나뉘어 있습니다.</li>
+                    </ul>
+                  </li>
+                </ol>
+                <div class="flex-item-wrap" style="margin-top: 4rem">
+                  <div class="flex-item" data-id="4-2-1">
+                    <div class="code-box">
+                      <p class="tit">style.sass</p>
+                      <pre><code data-line-numbers class="hljs" data-trim>
+                        $main-color: #d00
+                        @mixin pad($x, $y) 
+                          padding: $y $x
+                        nav
+                          ul
+                            display: flex
+                          @for $i from 1 through 3
+                            li:nth-child(#{$i})
+                              margin-left: $i * 5px
+                          a
+                            display: block
+                            @include pad(5px, 10px)
+                            color: $main-color
+                      </code></pre>
+                    </div>
+                    <div class="down-arrow">
+                      <i class="fa-solid fa-down-long fa-3x fc-main" data-id="4-2-2"></i>
+                    </div>
+                  </div>
+                  <div class="flex-item">
+                    <div class="code-box">
+                      <p class="tit">style.scss</p>
+                      <pre><code data-line-numbers class="hljs css" data-trim>
+                        $main-color: #d00;
+                        @mixin pad($x, $y) {
+                          padding: $y $x;
+                        }
+                        nav {
+                          ul {
+                            display: flex;
+                          }
+                          @for $i from 1 through 3 {
+                            li:nth-child(#{$i}) {
+                              margin-left: $i * 5px;
+                            }
+                          }
+                          a {
+                            display: block;
+                            @include pad(5px, 10px);
+                            color: $main-color;
+                          }
+                        }
+                      </code></pre>
+                    </div>
+                    <div class="down-arrow">
+                      <i class="fa-solid fa-down-long fa-3x fc-main"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="code-box">
+                  <p class="tit">style.css</p>
+                  <pre><code data-line-numbers class="hljs not-pre" data-trim>
+                    nav ul{display:-webkit-box;display:-ms-flexbox;display:flex}nav li:nth-child(1){margin-left:5px}nav li:nth-child(2){margin-left:10px}nav li:nth-child(3){margin-left:15px}nav a{display:block;padding:10px 5px;color:#d00}
+                  </code></pre>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner t-left">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-2</span>CSS Pre-processor 종류</h3>
+                <ol class="list-txt">
+                  <li>
+                    <p class="list-tit">
+                      <strong>2. <a href="https://lesscss.org/" target="_blank">Less</a> (Leaner CSS) </strong>
+                    </p>
+                    <ul>
+                      <li>Less는 JavaScript를 기반으로한 CSS 전처리기입니다.</li>
+                      <li>문법은 Scss와 유사하지만, <strong class="bg-line">변수나 믹스인 등을 정의할 때 @를 사용하는 등의 문법적 차이</strong>가 있습니다.</li>
+                    </ul>
+                  </li>
+                </ol>
+                <div class="flex-item-wrap" style="margin-top: 4rem">
+                  <div class="flex-item" data-id="4-2-1" style="width: 100%">
+                    <div class="code-box">
+                      <p class="tit">style.less</p>
+                      <pre><code data-line-numbers class="hljs" data-trim>
+                        @main-color: #d00;
+                        .pad(@x, @y) {
+                          padding: @y @x;
+                        }
+                        nav {
+                          ul {
+                            display: flex;
+                          }
+                          each(range(3), {
+                            li:nth-child(@{value}) {
+                              margin-left: (@value * 5px);
+                            }
+                          });
+                          a {
+                            display: block;
+                            .pad(5px, 10px);
+                            color: @main-color;
+                          }
+                        }
+                      </code></pre>
+                    </div>
+                    <div class="down-arrow">
+                      <i class="fa-solid fa-down-long fa-3x fc-main" data-id="4-2-2"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="code-box">
+                  <p class="tit">style.css</p>
+                  <pre><code data-line-numbers class="hljs not-pre" data-trim>
+                    nav ul{display:-webkit-box;display:-ms-flexbox;display:flex}nav li:nth-child(1){margin-left:5px}nav li:nth-child(2){margin-left:10px}nav li:nth-child(3){margin-left:15px}nav a{display:block;padding:10px 5px;color:#d00}
+                  </code></pre>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner t-left">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-2</span>CSS Pre-processor 종류</h3>
+                <ol class="list-txt">
+                  <li>
+                    <p class="list-tit">
+                      <strong>3. <a href="https://stylus-lang.com/" target="_blank">Stylus</a></strong>
+                    </p>
+                    <ul>
+                      <li>Stylus는 Node.js를 기반으로한 CSS 전처리기입니다.</li>
+                      <li>Scss와 Less와는 문법이 다르며, Sass처럼 들여쓰기로 블록을 구분합니다.</li>
+                    </ul>
+                  </li>
+                </ol>
+                <div class="flex-item-wrap" style="margin-top: 4rem">
+                  <div class="flex-item" data-id="4-2-1" style="width: 100%">
+                    <div class="code-box">
+                      <p class="tit">style.styl</p>
+                      <pre><code data-line-numbers class="hljs" data-trim>
+                        main-color = #d00
+                        pad(y, x)
+                          padding: y x
+                        nav
+                          ul
+                            display: flex
+                          for i in 1..3
+                            li:nth-child({i})
+                              margin-left: (5px * i)
+                          a
+                            display: block
+                            pad(5px, 10px)
+                            color: main-color
+                      </code></pre>
+                    </div>
+                    <div class="down-arrow">
+                      <i class="fa-solid fa-down-long fa-3x fc-main" data-id="4-2-2"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="code-box">
+                  <p class="tit">style.css</p>
+                  <pre><code data-line-numbers class="hljs not-pre" data-trim>
+                    nav ul{display:-webkit-box;display:-ms-flexbox;display:flex}nav li:nth-child(1){margin-left:5px}nav li:nth-child(2){margin-left:10px}nav li:nth-child(3){margin-left:15px}nav a{display:block;padding:10px 5px;color:#d00}
+                  </code></pre>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner v-center">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-2</span>CSS Pre-processor 종류</h3>
+                <div>
+                  <dl class="box-dl ty2">
+                    <dt>왜 Sass는 종류가 2가지(Sass와 Scss) 일까요?</dt>
+                    <dd>Sass(Syntactically Awesome Style Sheets)는 원래 Ruby 기반으로 작성된 CSS 전처리기로, 인기를 얻기 시작했습니다. 그러나 Sass의 문법은 CSS와는 매우 다르기 때문에 Sass를 처음 사용하는 개발자들에게는 학습 곡선이 꽤 높을 수 있습니다. 이러한 이유로 Sass의 개발자는 Sass의 문법이 CSS와 유사하도록 Sass의 새로운 버전을 만들기로 결정하였습니다. 이로 인해 Scss(Sassy CSS)가 개발되었습니다.<br /><br />Scss는 CSS와 거의 동일한 구문을 사용하며, 중괄호(<strong class="fc-red bg-yellow">{}</strong>)와 세미콜론(<strong class="fc-red bg-yellow">;</strong>)을 사용하여 속성을 정의합니다. 이전 버전의 Sass와 비교하면 Scss는 보다 간단하고 직관적인 구문을 사용하므로 CSS에 익숙한 개발자도 쉽게 학습할 수 있습니다.</dd>
+                  </dl>
+                </div>
               </div>
             </div>
           </section>
@@ -463,8 +670,107 @@
                 <h3 class="sub-tit"><span>Part4-3</span>CSS Post-processor</h3>
                 <dl class="intro-dl">
                   <dt><strong>CSS Post-processor</strong><sub>CSS 후처리기</sub></dt>
-                  <dd>CSS 후처리기의 가장 대표적인 언어는 PostCSS입니다. JS 플러그인을 사용하여 CSS를 변환하는 도구로 CSS의 Babel로 볼수 있습니다. <br /><br />장점은 모쥴식 사용으로 필요한 플러그인만 포함하여 사용할수 있고, 전체를 다 포함하지 않아도 되므로 속도가 빠릅니다. JavaScript 기반으로 플러그인을 직접 개발 할 수도 있으며 CSS표준문법을 기반으로 하기때문에 별도의 학습이 필요가 없습니다.<br />단점은 전처리기에 비해 강력한 문법은 제공하지 않습니다. 필요한 플러그인은 직접 찾아서 조립해야하며 사용하는 플러그인 지원이 중단 될 수도 있습니다.</dd>
+                  <dd>CSS 후처리기의 가장 대표적인 언어는 PostCSS입니다. JS 플러그인을 사용하여 CSS를 변환하는 도구로 CSS의 Babel로 볼수 있습니다. <br /><br /><span class="bg-line">장점은 모쥴식 사용으로 필요한 플러그인만 포함하여 사용할수 있고, 전체를 다 포함하지 않아도 되므로 속도가 빠릅니다. JavaScript 기반으로 플러그인을 직접 개발 할 수도 있으며 CSS표준문법을 기반으로 하기때문에 별도의 학습이 필요가 없습니다.</span><br /><span class="bg-line">단점은 전처리기에 비해 강력한 문법은 제공하지 않습니다. 필요한 플러그인은 직접 찾아서 조립해야하며 사용하는 플러그인 지원이 중단 될 수도 있습니다.</span></dd>
                 </dl>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner t-left">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-4</span>CSS Post-processor 종류</h3>
+                <ol class="list-txt">
+                  <li>
+                    <p class="list-tit">
+                      <strong>1. <a href="https://postcss.org/" target="_blank">PostCSS</a></strong>
+                    </p>
+                    <ul>
+                      <li>PostCSS는 JavaScript 기반의 <strong class="bg-line">CSS 후처리기</strong>입니다.</li>
+                      <li>CSS 전처리기가 제공하는 다양한 기능을 플러그인 활용하여 이용 할 수 있습니다.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <p class="list-tit">
+                      <strong>2. <a href="https://asmcss.com/" target="_blank">assembler CSS</a></strong>
+                    </p>
+                    <ul>
+                      <li>새로나온 언어. 관련 정보가 현재 적음.</li>
+                      <li><strong class="bg-line">CSS 후처리기</strong>로 예상됨.</li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner v-center">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-5</span>CSS Pre/Post-processor 출시순서</h3>
+
+                <div class="sample-3">
+                  <p>Pre-processor</p>
+                  <p>Post-processor</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner v-center">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-6</span>CSS Pre/post-processor 선호도</h3>
+
+                <div class="sample-4">
+                  <div class="item">
+                    <div class="img">
+                      <a href="" class="img-link">
+                        <img src="../static/images/1/img6-1.png" alt="" />
+                      </a>
+                    </div>
+                    <div class="tit">
+                      <strong>2019년 ~ 2021년도까지<br />CSS 전/후처리기 사용량 변화 </strong>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="tit">
+                      <strong>2022년도<br />CSS 전/후처리기<br />사용량 통계</strong>
+                    </div>
+                    <div class="img">
+                      <a href="" class="img-link">
+                        <img src="../static/images/1/img6-2.png" alt="" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-auto-animate>
+            <div class="wrap sub-page">
+              <div class="inner t-left v-center">
+                <p class="logo ty2">타란UX컨설팅</p>
+                <h3 class="sub-tit"><span>Part4-7</span>Scss 추천하는 이유</h3>
+                <div class="lh-15">
+                  CSS 전/후처리기를 사용하려면 각각 언어마다<br />
+                  Grunt, gulp, webpack등등 을 이용하여 전처리기를 사용할 수 있도록 세팅하는 과정이 필요했는데 <br />
+                  처음 접하는 사람에게는 그 준비과정은 어려울 수 있습니다.<br />
+                  <br />
+                  지금은 개발툴의 발전으로 ( <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a><sup>[1]</sup>에서 1개의 확장프로그램(<a href="https://marketplace.visualstudio.com/items?itemName=glenn2223.live-sass" target="_blank">Live Sass Compiler</a>)만 설치 후 실행만 하면) 자동으로 css 파일로 컴파일되며, 실행 후 전처리기 파일을 수정 및 작성을 할 때 마다 실시간으로 CSS 파일로 컴파일 됩니다. <br />
+                  <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" target="_blank">Live server</a><sup>[2]</sup> 와 같이 사용하면 html 문서 작성 시 아주 편리하게 가능합니다.<br />
+                  <br />
+                  LESS나 Stylus도 지원하는 확장 프로그램이 있긴하지만 Sass 관련 확장프로그램이 우수하며, <br />
+                  Scss가 다른 언어에 비해 유저풀이 넓고, 학습 곡선이 낮기때문에 좀 더 추천하고 있습니다.
+                </div>
+                <div class="sub-txt" style="margin-top: 5rem">
+                  <p>[1]: Visual Studio Code : 마이크로 소프트사에서 무료 라이센스로 제공하며, 현재 개발자들이 제일 많이 사용하는 에디터(개발툴)</p>
+                  <p>[2]: html 수정 및 작성 시 실시간으로 브라우저에서 자동 새로 고침되어 해당 내용을 보여주는 vscode 확장프로그램</p>
+                </div>
               </div>
             </div>
           </section>
@@ -475,6 +781,7 @@
 
     <script src="../static/js/reveal.js"></script>
     <script src="../static/plugin/highlight/highlight.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"></script>
     <script>
       Reveal.initialize({
         center: true,
