@@ -184,37 +184,39 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-
-      function scrollTo(){
-        $('.folding-head').click(function(e){
-          $(this).find('.folding-btn').toggleClass('open')
-          
+      function scrollTo() {
+        $('.folding-head').click(function (e) {
+          const this_ = $(this);
           const panel = $(this).siblings('.folding-panel');
-          const openPanel = $('.folding-btn.open').parent().siblings('.folding-panel');
-          const opLength = openPanel.length;
-          const opHeight = openPanel.height() * opLength;
-          const idx = $(this).parent().index() + 1;
-          const headHeight = parseInt($(this).height() * idx);    
-  
-          if($(this).find('.folding-btn').hasClass('open')){
-            panel.stop().slideDown();
-          }else{
-            panel.stop().slideUp();
-          }  
-  
-          if(opLength > 1 && idx === 1){
-            $('html, body').animate({scrollTop: openPanel.height() * 1 + headHeight});
-          }else if(opLength > 1 && idx === 2){
-            $('html, body').animate({scrollTop: openPanel.height() * 2 + headHeight});
-          }else if(opLength > 1 && idx === 3){
-            $('html, body').animate({scrollTop: openPanel.height() * 3 + headHeight});
-          }else{
-            $('html, body').animate({scrollTop: opHeight + headHeight});
-          }                        
-        })
+          const panelHeight = panel.height();
+          const btSiblings = this_.parent('li').siblings().find('.folding-btn');
+          const pnSiblings = this_.parent('li').siblings().find('.folding-panel');
+          const winHeight = $(window).height();
+
+          btSiblings.removeClass('open');
+          this_.find('.folding-btn').toggleClass('open');
+          pnSiblings.slideUp();
+
+          panel.stop().slideToggle({
+            done: function () {
+              const dcHeight = $(document).height();
+              const winHeight = $(window).height();
+              const headOffset = this_.offset().top;
+              const txtOffset = $('.txt-list').offset().top - $('.txt-list').height();
+
+              console.log(headOffset, txtOffset);
+              if (dcHeight > winHeight) {
+                $('html, body').animate({ scrollTop: headOffset - txtOffset });
+              }
+            }
+          });
+        });
       }
 
       scrollTo();
+
+      //다 열리고 난 다음 스크롤을 시킴 콜백함수로 계산해서
+      //아코디언 높이값이 윈도우보다 크면 위에 걸리게
     </script>
   </body>
 </html>
