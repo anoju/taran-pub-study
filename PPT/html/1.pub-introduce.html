@@ -21,6 +21,7 @@
               <p class="logo white" data-id="1">타란UX컨설팅</p>
               <div>
                 <h1>Web page를 구성하는 기본 3요소</h1>
+                <!-- <h1 data-splitting class="spl-hidden-up">Web page를 구성하는 기본 3요소</h1> -->
               </div>
             </div>
           </div>
@@ -772,6 +773,16 @@
             </div>
           </section>
         </section>
+
+        <section data-auto-animate>
+          <div class="wrap end-page">
+            <div class="inner v-center">
+              <div>
+                <h2><small>끝까지 읽어주셔서</small><br />감사합니다.</h2>
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- //CSS Pre/Post-processor -->
       </div>
     </div>
@@ -779,12 +790,31 @@
     <script src="../static/js/reveal.js"></script>
     <script src="../static/plugin/highlight/highlight.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js"></script>
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <script src="../static/js/splitting-1.0.5.min.js"></script>
+    <script src="../static/js/common.js"></script>
     <script>
-      Reveal.initialize({
-        center: true,
-        hash: true,
-        plugins: [RevealHighlight]
-      });
+      const _sec = $('.slides>section');
+      const _secH = _sec.length - 1;
+      const _secV = _sec.last().find('>section').length ? _sec.last().find('>section').length - 1 : 0;
+      function RevealInit() {
+        Reveal.initialize({
+          // slideNumber: true,
+          hash: true,
+          // history: false,
+          keyboard: true,
+          plugins: [RevealHighlight]
+        });
+        Reveal.on('slidetransitionend', (event) => {
+          if (event.indexh === _secH && event.indexv === _secV) {
+            if (!$('#confettiCanvas').length) $('body').append('<canvas id="confettiCanvas" class="confetti-canvas"></canvas>');
+            const canvas = document.getElementById('confettiCanvas');
+            Conffeti.sideInit(30, canvas);
+          }
+        });
+      }
+      RevealInit();
+      Splitting();
     </script>
   </body>
 </html>
