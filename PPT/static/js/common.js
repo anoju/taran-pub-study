@@ -1,3 +1,27 @@
+function notCopy() {
+  function notSelection() {
+    console.log('notSelection');
+    window.getSelection().removeAllRanges();
+  }
+  document.addEventListener('onmousedown', notSelection);
+  document.addEventListener('onselectstart', notSelection);
+  document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
+    alert('우클릭 금지');
+  });
+
+  // document.addEventListener('keydown', function (event) {
+  //   // Ctrl+C, Ctrl+V, Shift+Insert
+  //   if (event.ctrlKey || (event.shiftKey && event.keyCode === 45)) {
+  //     event.preventDefault();
+  //   }
+  //   if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) {
+  //     event.preventDefault();
+  //   }
+  // });
+}
+notCopy();
+
 function loadScript(url, callback) {
   const script = document.createElement('script');
   script.type = 'text/javascript';
