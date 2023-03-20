@@ -42,16 +42,19 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      $('.primary').click(function (e) {
-        e.preventDefault();
-        $('html,body').stop().animate({ scrollTop: 0 });
-      });
-      $('.gray').click(function (e) {
-        e.preventDefault();
-        $('html,body')
-          .stop()
-          .animate({ scrollTop: $(document).height() });
-      });
+      function scroll() {
+        $('.primary').click(function (e) {
+          e.preventDefault();
+          $('html,body').stop().animate({ scrollTop: 0 });
+        });
+        $('.gray').click(function (e) {
+          e.preventDefault();
+          $('html,body')
+            .stop()
+            .animate({ scrollTop: $(document).height() - $(window).height() });
+        });
+      }
+      scroll();
     </script>
   </body>
 </html>

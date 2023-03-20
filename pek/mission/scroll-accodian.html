@@ -56,19 +56,6 @@
                 내용<br />
                 내용<br />
                 내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
-                내용<br />
               </div>
             </li>
             <li>
@@ -190,15 +177,31 @@
           const $wrap = $(this).closest('.acc-list');
           const $siblings = $(this).closest('li').siblings();
           $(this).toggleClass('open');
-          $(this).parent().next().stop().slideToggle(300);
+          $(this)
+            .parent()
+            .next()
+            .stop()
+            .slideToggle(300, function () {
+              if ($('.folding-btn').hasClass('open')) {
+                const offset = $(this).closest('li').offset().top;
+                const height = $(this).closest('li').outerHeight();
+                const window = $(window).height();
+
+                $('html, body')
+                  .stop()
+                  .animate(
+                    {
+                      scrollTop: offset + height - window
+                    },
+                    300
+                  );
+                console.log();
+              }
+            });
           if ($wrap.hasClass('_toggle')) {
             $siblings.find('.folding-btn').removeClass('open');
             $siblings.find('.folding-panel').stop().slideUp(300);
           }
-
-          const offset = $('.acc-list .open').parent().next().offset();
-
-          $('html,body').stop().animate({ scrollTop: offset.top }, 400);
         });
       }
 
