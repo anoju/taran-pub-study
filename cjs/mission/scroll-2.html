@@ -41,22 +41,21 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      function sclEvt() {
+      function scrollTo() {
         $('.primary').click(function (e) {
           e.preventDefault();
-          const inputValue = $('.input').children().val();
-
-<<<<<<< HEAD
-          //window.scrollTo({ left: 0, top: inputValue, behavior: 'smooth' });
-=======
-          // window.scrollTo({ left: 0, top: inputValue, behavior: 'smooth' });
->>>>>>> ad66f9c3542f6793d8632862f42d22931a5f067f
-          $('html,body')
-            .stop()
-            .animate({ scrollTop: '+=' + inputValue });
+          const scrollAmt = parseInt($('html, body').scrollTop());
+          const inputValue = parseInt($('.input input').val());
+          const sum = scrollAmt + inputValue;
+          // $('html, body').animate({ scrollTop: sum }, 300);
+          // $('html, body').animate({ scrollTop: '+=' + sum }, 300);
+          // $('html, body').animate({ scrollTop: '-=' + sum }, 300);
+          $('html, body').animate({ scrollTop: '+=500' }, 300);
         });
       }
-      sclEvt();
+      scrollTo();
+
+      // 유무확인할 때 $().length 로 많이한다
     </script>
   </body>
 </html>

@@ -41,22 +41,24 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
       // 스크립트 작성이 여기에
-      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱     
-      function scrollTo(){
+      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+      function scrollTo() {
         const body = document.body;
         const html = document.documentElement;
-        const height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 
-        $('.primary').click(function(e){
+        $('.primary').click(function (e) {
           e.preventDefault();
-          $('html, body').animate({scrollTop : 0},800);              
-        }); 
-        
-        $('.gray').click(function(e){
+          $('html, body').stop().animate({ scrollTop: 0 }, 800);
+        });
+
+        $('.gray').click(function (e) {
           e.preventDefault();
-          $('html, body').animate({scrollTop : height},800);              
-        }); 
-      } 
+          $('html, body')
+            .stop()
+            .animate({ scrollTop: height - window().height() }, 800);
+        });
+      }
 
       scrollTo();
     </script>
