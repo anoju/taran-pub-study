@@ -1,26 +1,39 @@
 function notCopy() {
+  // 글자선택 막기
   function notSelection() {
-    console.log('notSelection');
-    window.getSelection().removeAllRanges();
+    setTimeout(function () {
+      window.getSelection().removeAllRanges();
+    }, 1);
   }
-  document.addEventListener('onmousedown', notSelection);
-  document.addEventListener('onselectstart', notSelection);
+  // document.addEventListener('mousedown', notSelection);
+  document.addEventListener('selectstart', notSelection);
+
+  // 우클릭 막기
   document.addEventListener('contextmenu', function (event) {
     event.preventDefault();
     alert('우클릭 금지');
   });
 
-  // document.addEventListener('keydown', function (event) {
-  //   // Ctrl+C, Ctrl+V, Shift+Insert
-  //   if (event.ctrlKey || (event.shiftKey && event.keyCode === 45)) {
-  //     event.preventDefault();
-  //   }
-  //   if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) {
-  //     event.preventDefault();
-  //   }
-  // });
+  document.addEventListener('keydown', function (event) {
+    // console.log(event.keyCode);
+    // Ctrl+C, Ctrl+V, Shift+Insert 막기
+    if (event.ctrlKey || (event.shiftKey && event.keyCode === 45)) {
+      event.preventDefault();
+    }
+
+    //개발자도구 막기
+    if (event.keyCode === 123) {
+      event.preventDefault();
+    }
+    if (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74)) {
+      event.preventDefault();
+    }
+  });
 }
-notCopy();
+function checkDev() {
+  if (location.host && location.hostname !== '127.0.0.1') notCopy();
+}
+checkDev();
 
 function loadScript(url, callback) {
   const script = document.createElement('script');
