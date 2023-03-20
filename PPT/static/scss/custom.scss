@@ -90,7 +90,7 @@ html {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      > div {
+      > div:not(.not-full) {
         width: 100%;
       }
     }
@@ -146,9 +146,19 @@ html {
   }
 }
 .end-page {
-  h2 {
-    color: #fff;
-    line-height: 1;
+  .end-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($mainColor, 0.9) 0%, rgba($mainColor, 0.8) 40%, rgba($mainColor, 0) 70%);
+    // backdrop-filter: blur(2px);
+    h2 {
+      color: #fff;
+      line-height: 1;
+    }
   }
 }
 .logo {
