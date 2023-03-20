@@ -515,6 +515,77 @@ ol.list-txt {
   }
 }
 .sample-3 {
+  --item-size: 15rem;
+  .top {
+    display: flex;
+    > div {
+      position: relative;
+
+      &:before {
+        content: '';
+        display: block;
+        margin: 0 auto;
+        height: 3rem;
+        border: 1px solid #ddd;
+        border-bottom: 0 none;
+      }
+      strong {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        display: block;
+        font-size: 2rem;
+        padding: 0 0.5rem;
+        background: #fff;
+        transform: translate(-50%, -50%);
+      }
+    }
+    .pre {
+      width: 60%;
+      &:before {
+        width: 70%;
+      }
+    }
+    .post {
+      width: 40%;
+      margin-left: 2rem;
+      &:before {
+        width: 54%;
+      }
+    }
+  }
+  .list {
+    display: flex;
+    .item {
+      width: 100%;
+      text-align: center;
+      .circle {
+        display: inline-flex;
+        width: var(--item-size);
+        height: var(--item-size);
+        align-items: center;
+        justify-content: center;
+        background: #f1f1f1;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        font-weight: 900;
+        font-size: 2.4rem;
+        line-height: 1.1;
+        box-sizing: border-box;
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+    .arrow {
+      display: flex;
+      width: 2rem;
+      height: var(--item-size);
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 .sample-4 {
   .item {
