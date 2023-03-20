@@ -53,7 +53,27 @@
                 내용<br />
                 내용<br />
                 내용<br />
-
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
+                내용<br />
                 내용<br />
                 내용<br />
                 내용<br />
@@ -216,13 +236,13 @@
       function scrollTo() {
         $('.folding-btn').click(function (e) {
           const this_ = $(this);
-          const panel = $(this).parent('.folding-head').siblings('.folding-panel');
-          const panelHeight = panel.outerHeight();
+          const thisPanel = $(this).parent('.folding-head').siblings('.folding-panel');
+          const panelHeight = thisPanel.outerHeight();
           const btSiblings = this_.closest('li').siblings().find('.folding-btn');
           const pnSiblings = this_.closest('li').siblings().find('.folding-panel');
           const headHeight = $('.page-head').height() + $('.tab-line-menu').height();
 
-          if (!this_.hasClass('open')) {
+          /*   if (!this_.hasClass('open')) {
             this_.addClass('open');
             btSiblings.removeClass('open');
             pnSiblings.stop().slideUp(function () {
@@ -230,7 +250,7 @@
               const dcHeight = panelHeight - headHeight;
               const winHeight = $(window).height() - headHeight;
 
-              panel.stop().slideDown();
+              thisPanel.stop().slideDown();
               if (dcHeight > winHeight) {
                 $('html, body').animate({ scrollTop: headOffset - (panelHeight - dcHeight) });
               } else {
@@ -238,8 +258,27 @@
               }
             });
           } else {
+            thisPanel.stop().slideUp();
+            this_.removeClass('open');
+          } */
+
+          if (!this_.hasClass('open')) {
+            this_.addClass('open');
+            btSiblings.removeClass('open');
             pnSiblings.stop().slideUp();
-            panel.stop().slideUp();
+
+            thisPanel.stop().slideDown(function () {
+              const headOffset = this_.offset().top;
+              const dcHeight = panelHeight - headHeight;
+              const winHeight = $(window).height() - headHeight;
+              if (dcHeight > winHeight) {
+                $('html, body').animate({ scrollTop: headOffset - (panelHeight - dcHeight) });
+              } else {
+                $('html, body').animate({ scrollTop: headOffset });
+              }
+            });
+          } else {
+            thisPanel.stop().slideUp();
             this_.removeClass('open');
           }
         });
