@@ -1,0 +1,135 @@
+<section>
+  <section data-auto-animate class="full-bg3">
+    <div class="wrap main-page">
+      <div class="inner v-center">
+        <p class="logo ty2">타란UX컨설팅</p>
+        <div>
+          <h2>Part 2.<strong>CSS</strong></h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-auto-animate>
+    <div class="wrap sub-page">
+      <div class="inner v-center">
+        <p class="logo ty2">타란UX컨설팅</p>
+        <h3 class="sub-tit"><span>Part2-1</span>CSS</h3>
+        <dl class="intro-dl">
+          <dt><strong>CSS</strong><sub>Cascading Style Sheets</sub></dt>
+          <dd>종속형 시트 또는 캐스케이딩 스타일 시트(영어: Cascading Style Sheet)는 마크업 언어가 실제 표시되는 방법을 기술하는 스타일 언어(영어: Style sheet language 스타일 시트 랭귀지)로, W3C의 표준이고, 레이아웃과 스타일을 정의할 때의 자유도가 높다.<br /><br />마크업 언어(ex: HTML)가 웹사이트의 몸체를 담당한다면 CSS는 옷과 액세서리처럼 꾸미는 역할을 담당한다고 할 수 있다. 즉, HTML 구조는 그대로 두고 CSS 파일만 변경해도 전혀 다른 웹사이트처럼 꾸밀 수 있다.</dd>
+        </dl>
+        <p class="origin-info">출처: <a href="https://ko.wikipedia.org/wiki/CSS" target="_blank">위키백과</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section data-auto-animate>
+    <div class="wrap sub-page">
+      <div class="inner v-center">
+        <p class="logo ty2">타란UX컨설팅</p>
+        <h3 class="sub-tit"><span>Part2-2</span>CSS 사용법</h3>
+        <div class="flex-item-wrap col-3">
+          <dl class="box-dl flex-item">
+            <dt>태그 내에 스타일 지정<br />(Inline Style)</dt>
+            <dd>
+              <p>태그에 직접 스타일(CSS)를 적용하는 방법이다</p>
+              <pre><code data-line-numbers class="hljs" data-trim>
+                &lt;p style="color:blue;"&gt;타란유엑스디는 좀 짱인듯?&lt;/p&gt;
+              </code></pre>
+            </dd>
+          </dl>
+          <dl class="box-dl flex-item">
+            <dt>내부 스타일 시트<br />(Internal Style Sheet)</dt>
+            <dd>
+              <p>HTML 문서에 style태그를 사용하여 CSS 코드를 작성하는 방법이다.</p>
+              <pre><code data-line-numbers class="hljs" data-trim>
+                &lt;style type="text/css"&gt;
+                  p {color:red;} 
+                &lt;/style&gt;
+              </code></pre>
+            </dd>
+          </dl>
+          <dl class="box-dl flex-item">
+            <dt>외부 스타일 시트<br />(External Style Sheet)</dt>
+            <dd>
+              <p>HTML 문서에 link 태그를 사용하여 CSS 확장명을 갖은 파일과 연결하고 그 CSS파일안에서 CSS 코드를 작성하는 방법이다.</p>
+              <pre><code data-line-numbers class="hljs" data-trim>
+                &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
+              </code></pre>
+              <br />
+              style.css
+              <pre><code data-line-numbers class="hljs" data-trim>
+                p {color:yellow;}
+              </code></pre>
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-auto-animate>
+    <div class="wrap sub-page">
+      <div class="inner t-left">
+        <p class="logo ty2">타란UX컨설팅</p>
+        <h3 class="sub-tit"><span>Part2-3</span>CSS 작성법</h3>
+        <ul class="list-txt">
+          <li>
+            <p class="list-tit"><strong>기본작성법</strong></p>
+            <p>선택자 <strong class="bg-yellow fc-red">{</strong> 속성:속성값; 속성:속성값;…. 속성:속성값; <strong class="bg-yellow fc-red">}</strong></p>
+            <pre><code class="hljs" data-trim>
+              h2{display:inline-block;color:#fff;background:blue;}
+            </code></pre>
+            <p class="list-summary">선택자 작성에 대한 자세한 사용법은 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank">해당링크</a> 에서 확인</p>
+          </li>
+          <li>
+            <p class="list-tit"><strong>우선순위</strong></p>
+            <ol>
+              <li>명시도 점수가 높은 선언이 우선</li>
+              <li>점수가 같은 경우, 가장 마지막에 해석되는 선언이 우선</li>
+              <li>명시도는 상속 규칙보다 우선</li>
+              <li>!important가 적용된 선언 방식이 다른 모든 방식보다 우선(중요도)</li>
+            </ol>
+            <pre style="margin-bottom: 0.5rem"><code class="hljs" data-trim>
+              h2{background:blue !important;}
+            </code></pre>
+            <p class="list-summary">!important : 점수 무한대, important가 겹칠때는 그들끼리 명시도 점수를 다시 따진다.</p>
+
+            <pre style="margin-bottom: 0.5rem"><code class="hljs" data-trim>
+              &lt;h2 id="taran" class="title" style="background:yellow"&gt;타란유엑컨설팅&lt;/h2&gt;
+            </code></pre>
+            <p class="list-summary">인라인 선언 : 점수 1000점</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section data-auto-animate>
+    <div class="wrap sub-page">
+      <div class="inner t-left">
+        <p class="logo ty2">타란UX컨설팅</p>
+        <h3 class="sub-tit"><span>Part2-3</span>CSS 작성법</h3>
+        <ul class="list-txt">
+          <li style="list-style: none">
+            <pre style="margin-bottom: 0.5rem"><code class="hljs" data-trim>
+              #taran{background:#000;}
+            </code></pre>
+            <p class="list-summary">id선택자: 점수 100점</p>
+
+            <pre style="margin-bottom: 0.5rem"><code class="hljs" data-trim>
+              .title{background:red;}
+            </code></pre>
+            <p class="list-summary">class 선택자: 점수 10점</p>
+
+            <pre style="margin-bottom: 0.5rem"><code class="hljs" data-trim>
+              h1 {color: green;}
+            </code></pre>
+            <p class="list-summary">Tag 선택자: 점수 1점</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</section>

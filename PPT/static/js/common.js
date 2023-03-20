@@ -1,3 +1,71 @@
+$(function () {
+  const $elements = $.find('*[data-include-html]');
+  if ($elements.length) {
+    htmlInclude(pageInit);
+  } else {
+    pageInit();
+  }
+});
+
+function pageInit() {
+  const _sec = $('.slides>section');
+  const _secH = _sec.length - 1;
+  const _secV = _sec.last().find('>section').length ? _sec.last().find('>section').length - 1 : 0;
+  function RevealInit() {
+    Reveal.initialize({
+      // slideNumber: true,
+      hash: true,
+      // history: false,
+      keyboard: true,
+      plugins: [RevealHighlight]
+    });
+    Reveal.on('slidetransitionend', (event) => {
+      if (event.indexh === _secH && event.indexv === _secV) {
+        if (!$('#confettiCanvas').length) $('body').append('<canvas id="confettiCanvas" class="confetti-canvas"></canvas>');
+        const canvas = document.getElementById('confettiCanvas');
+        Conffeti.sideInit(30, canvas);
+      }
+    });
+  }
+  RevealInit();
+  Splitting();
+  checkDev();
+}
+
+function htmlInclude(fn) {
+  const $elements = $.find('*[data-include-html]');
+  // const $fileName = location.pathname.split('/').pop();
+  if ($elements.length) {
+    // const $url = location.href;
+    //if ($url.indexOf('http') >= 0) {
+    if (location.host) {
+      $.each($elements, function (i) {
+        const $this = $(this);
+        $this.empty();
+        const $html = $this.data('include-html');
+        const $htmlAry = $html.split('/');
+        const $htmlFile = $htmlAry[$htmlAry.length - 1];
+        const $docTitle = document.title;
+        let $title = null;
+        if ($docTitle.indexOf(' | ') > -1) {
+          $title = $docTitle.split(' | ')[0];
+        }
+        $this.load($html, function (res, sta, xhr) {
+          if (sta == 'success') {
+            if (!$this.attr('class') && !$this.attr('id')) $this.children().unwrap();
+            else $this.removeAttr('data-include-html');
+          }
+          if (i === $elements.length - 1) {
+            if (!!fn) fn();
+          }
+        });
+      });
+    } else {
+      if (!!fn) fn();
+    }
+  }
+}
+
 function notCopy() {
   // 글자선택 막기
   function notSelection() {
@@ -33,7 +101,6 @@ function notCopy() {
 function checkDev() {
   if (location.host && location.hostname !== '127.0.0.1') notCopy();
 }
-checkDev();
 
 function loadScript(url, callback) {
   const script = document.createElement('script');
