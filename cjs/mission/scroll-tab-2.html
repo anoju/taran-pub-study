@@ -31,6 +31,9 @@
       .box:nth-child(7) {
         background: purple;
       }
+      .tab-line {
+        transition: 0.3s;
+      }
     </style>
   </head>
   <body>
@@ -65,13 +68,13 @@
           </ul>
           <br />
           <div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+            <div class="box">test</div>
+            <div class="box">test</div>
+            <div class="box">test</div>
+            <div class="box">test</div>
+            <div class="box">test</div>
+            <div class="box">test</div>
+            <div class="box">test</div>
           </div>
         </div>
       </div>
@@ -81,8 +84,44 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      $('.section .box').each(function (index, item) {
-        console.log($(this).css('background-color'));
+
+      const headHeight = $('.page-head').outerHeight() + $('.tab-line-menu').outerHeight();
+      const tabWidth = $('.tab-list .tab').css('width');
+      $('.tab-line').css('width', tabWidth);
+      $('.tab-list .tab').eq(0).addClass('active');
+
+      $('.tab-list .tab').click(function (e) {
+        e.preventDefault();
+        const tabIndex = $(this).index();
+        const boxIndex = $('.section .box').eq(tabIndex);
+        const boxHeight = boxIndex.offset().top;
+        $('html, body')
+          .stop()
+          .animate({ scrollTop: boxHeight - headHeight }, 800);
+      });
+
+      let sectionIds = $('.tab-list .tab');
+
+      $(document).scroll(function () {
+        sectionIds.each(function () {
+          let container = $('.section .box').eq($(this).index());
+          let containerOffset = $(container).offset().top - headHeight;
+          let containerHeight = $(container).outerHeight();
+          let containerBottom = containerOffset + containerHeight;
+          let scrollPosition = $(document).scrollTop();
+
+          if (scrollPosition < $('.section .box').eq(0).offset().top - headHeight) {
+            $('.tab-list .tab').eq(0).addClass('active');
+          }
+          if (scrollPosition < containerBottom - 1 && scrollPosition >= containerOffset - 1) {
+            $(this).addClass('active');
+            let thisIndex = $(this).index();
+            let lineLeft = parseInt(tabWidth) * thisIndex + 'px';
+            $('.tab-line').css('left', lineLeft);
+          } else {
+            $(this).removeClass('active');
+          }
+        });
       });
     </script>
   </body>
