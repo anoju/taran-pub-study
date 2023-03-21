@@ -419,7 +419,9 @@ ol.list-txt {
 ol.list-txt {
   list-style: none;
   .list-tit {
-    text-indent: -1.2em;
+    > strong:first-child {
+      text-indent: -1.2em;
+    }
   }
 }
 .list-txt {
