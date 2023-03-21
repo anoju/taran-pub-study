@@ -188,14 +188,13 @@
                 const height = $(this).closest('li').outerHeight();
                 const windowHeight = $(window).height();
                 const _gap = $('.page-head').outerHeight() + $('.tab-fixed').outerHeight();
+                if (offset + height <= $(window).scrollTop() + windowHeight) return;
                 let _move = 0;
-
                 if (height > windowHeight - _gap) {
                   _move = offset - _gap;
                 } else {
                   _move = offset + height - windowHeight;
                 }
-
                 $('html, body').stop().animate({ scrollTop: _move }, 300);
               } else {
                 $(this).closest('li').find('.folding-panel').stop().slideUp(300);

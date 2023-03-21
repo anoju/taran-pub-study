@@ -68,7 +68,6 @@
                 내용<br />
                 내용<br />
                 내용<br />
-
                 내용<br />
                 내용<br />
                 내용<br />
@@ -238,11 +237,14 @@
               const dcHeight = liHeight - headHeight;
               const winHeight = $(window).height() - headHeight;
 
+              if (headOffset + liHeight <= $(window).scrollTop() + $(window).height()) return;
+              let _move = 0;
               if (dcHeight > winHeight) {
-                $('html, body').animate({ scrollTop: headOffset - headHeight });
+                _move = headOffset - headHeight;
               } else {
-                $('html, body').animate({ scrollTop: headOffset + liHeight - $(window).height() });
+                _move = headOffset + liHeight - $(window).height();
               }
+              $('html, body').animate({ scrollTop: _move });
             });
             pnSiblings.stop().slideUp(300);
           } else {
