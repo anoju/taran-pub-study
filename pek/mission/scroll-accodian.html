@@ -181,21 +181,33 @@
             .parent()
             .next()
             .stop()
-            .slideToggle(300, function () {
+            .slideDown(300, function () {
               if ($('.folding-btn').hasClass('open')) {
                 const offset = $(this).closest('li').offset().top;
                 const height = $(this).closest('li').outerHeight();
-                const window = $(window).height();
+                const windowHeight = $(window).height();
 
-                $('html, body')
-                  .stop()
-                  .animate(
-                    {
-                      scrollTop: offset + height - window
-                    },
-                    300
-                  );
-                console.log();
+                if (height > windowHeight) {
+                  $('html, body')
+                    .stop()
+                    .animate(
+                      {
+                        scrollTop: offset - $('.page-head').outerHeight() - $('.tab-fixed').outerHeight()
+                      },
+                      300
+                    );
+                } else {
+                  $('html, body')
+                    .stop()
+                    .animate(
+                      {
+                        scrollTop: offset + height - windowHeight
+                      },
+                      300
+                    );
+                }
+              } else {
+                $(this).closest('li').find('.folding-panel').stop().slideUp(300);
               }
             });
           if ($wrap.hasClass('_toggle')) {
