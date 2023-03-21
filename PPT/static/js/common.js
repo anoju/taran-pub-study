@@ -1,4 +1,4 @@
-$(function () {
+$(window).on('load', function () {
   const $elements = $.find('*[data-include-html]');
   if ($elements.length) {
     htmlInclude(pageInit);
@@ -83,9 +83,8 @@ function notCopy() {
   });
 
   document.addEventListener('keydown', function (event) {
-    // console.log(event.keyCode);
     // Ctrl+C, Ctrl+V, Shift+Insert 막기
-    if (event.ctrlKey || (event.shiftKey && event.keyCode === 45)) {
+    if ((event.ctrlKey && event.keyCode === 67) || (event.ctrlKey && event.keyCode === 86) || (event.shiftKey && event.keyCode === 45)) {
       event.preventDefault();
     }
 
@@ -99,6 +98,9 @@ function notCopy() {
   });
 }
 function checkDev() {
+  // document.addEventListener('keydown', function (event) {
+  //   console.log(event.keyCode);
+  // });
   if (location.host && location.hostname !== '127.0.0.1') notCopy();
 }
 
