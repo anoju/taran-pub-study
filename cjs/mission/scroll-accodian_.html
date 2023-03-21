@@ -244,7 +244,7 @@
               } else {
                 _move = headOffset + liHeight - $(window).height();
               }
-              $('html, body').animate({ scrollTop: _move });
+              $('html, body').stop().animate({ scrollTop: _move });
             });
             pnSiblings.stop().slideUp(300);
           } else {
