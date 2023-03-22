@@ -186,13 +186,15 @@
                 const offset = $(this).closest('li').offset().top;
                 const height = $(this).closest('li').outerHeight();
                 const windowHeight = $(window).height();
+                const _gap = $('.page-head').outerHeight() + $('.tab-fixed').outerHeight();
 
+                if (offset + height <= $(window).scrollTop() + windowHeight) return;
                 if (height > windowHeight) {
                   $('html, body')
                     .stop()
                     .animate(
                       {
-                        scrollTop: offset - $('.page-head').outerHeight() - $('.tab-fixed').outerHeight()
+                        scrollTop: offset - _gap
                       },
                       300
                     );
