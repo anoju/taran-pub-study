@@ -236,7 +236,7 @@
               const liHeight = li.outerHeight();
               const dcHeight = liHeight - headHeight;
               const winHeight = $(window).height() - headHeight;
-
+              // review
               if (headOffset + liHeight <= $(window).scrollTop() + $(window).height()) return;
               let _move = 0;
               if (dcHeight > winHeight) {
