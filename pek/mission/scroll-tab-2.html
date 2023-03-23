@@ -31,6 +31,9 @@
       .box:nth-child(7) {
         background: purple;
       }
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
   </head>
   <body>
@@ -65,11 +68,11 @@
           </ul>
           <br />
           <div>
-            <div class="box" id="box00"></div>
+            <div class="box" id="box00">dssdfs</div>
             <div class="box" id="box01"></div>
             <div class="box" id="box02"></div>
             <div class="box" id="box03"></div>
-            <div class="box" id="box04"></div>
+            <div class="box" id="box04">dsdfsdfsdf</div>
             <div class="box" id="box05"></div>
             <div class="box" id="box06"></div>
           </div>
@@ -82,33 +85,48 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       function spyScroll() {
-        const menuBtn = $('.tab-list .tab');
+        const menuBtn = $('.tab-list .tab a');
         const actMove = $('li.active');
 
         function clickEvent() {
-          menuBtn.on('click', function (tabline) {
+          menuBtn.on('click', function (e) {
             const tabLine = $('.tab-line');
+            const container = $(this).attr('href');
+            const boxHeight = $(container).outerHeight();
             const _liPos = $(this).position().left;
             const _liWidth = $(this).outerWidth();
+            const _headFix = $('.page-head').outerHeight() + $('.tab-fixed').outerHeight();
 
             $(this).addClass('active').siblings().removeClass('active');
             tabLine.stop().animate({ width: _liWidth, left: _liPos }, 300);
+            $('html, body').animate(
+              {
+                scrollTop: container.offset().top - _headFix
+              },
+              300
+            );
+            e.preventDefault();
           });
         }
 
         function scrollEvent() {
           $(document).scroll(function () {
             $('.tab a').each(function (index) {
+              const idx = $(this).parent('.tab').index();
               const container = $(this).attr('href');
               const boxOffset = $(container).offset().top;
               const boxHeight = $(container).outerHeight();
               const boxBottom = boxOffset + boxHeight;
               const scrollPos = $(document).scrollTop();
-              console.log(scrollPos);
+              const tabLine = $('.tab-line');
+              const _liPos = $(this).position().left;
+              const _liWidth = $(this).outerWidth();
+
               if (scrollPos < boxBottom - 20 && scrollPos >= boxOffset - 20) {
-                $(this).addClass('active');
+                $(this).parent('.tab').addClass('active');
+                tabLine.stop().animate({ width: _liWidth, left: _liWidth * idx }, 100);
               } else {
-                $(this).removeClass('active');
+                $(this).parent('.tab').removeClass('active');
               }
             });
           });
