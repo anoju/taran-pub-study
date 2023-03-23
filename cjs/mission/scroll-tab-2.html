@@ -84,46 +84,49 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+      function spyscroll() {
+        let tabs = $('.tab-list .tab');
+        const headHeight = $('.page-head').outerHeight() + $('.tab-line-menu').outerHeight();
+        const tabWidth = tabs.css('width');
 
-      let tabs = $('.tab-list .tab');
-      const headHeight = $('.page-head').outerHeight() + $('.tab-line-menu').outerHeight();
-      const tabWidth = tabs.css('width');
+        $('.tab-line').css('width', tabWidth);
+        tabs.eq(0).addClass('active');
 
-      $('.tab-line').css('width', tabWidth);
-      tabs.eq(0).addClass('active');
-
-      tabs.click(function (e) {
-        e.preventDefault();
-        const tabIndex = $(this).index();
-        const currentboxIndex = $('.section .box').eq(tabIndex);
-        const boxHeight = currentboxIndex.offset().top;
-        $('html, body')
-          .stop()
-          .animate({ scrollTop: boxHeight - headHeight }, 800);
-      });
-
-      $(document).scroll(function () {
-        tabs.each(function () {
-          let boxIndex = $('.section .box').eq($(this).index());
-          let boxOffset = parseInt($(boxIndex).offset().top - headHeight);
-          let boxHeight = parseInt($(boxIndex).outerHeight());
-          let boxBottom = boxOffset + boxHeight;
-          let currentScroll = $(document).scrollTop();
-
-          if (currentScroll < $('.section .box').eq(0).offset().top - headHeight) {
-            $('.tab-list .tab').eq(0).addClass('active');
-          }
-
-          if (currentScroll < boxBottom && currentScroll >= boxOffset) {
-            $(this).addClass('active');
-            let thisIndex = $(this).index();
-            let lineLeft = parseInt(tabWidth) * thisIndex + 'px';
-            $('.tab-line').css('left', lineLeft);
-          } else {
-            $(this).removeClass('active');
-          }
+        tabs.click(function (e) {
+          e.preventDefault();
+          const tabIndex = $(this).index();
+          const currentboxIndex = $('.section .box').eq(tabIndex);
+          const boxHeight = currentboxIndex.offset().top;
+          $('html, body')
+            .stop()
+            .animate({ scrollTop: boxHeight - headHeight }, 800);
         });
-      });
+
+        $(document).scroll(function () {
+          tabs.each(function () {
+            let boxIndex = $('.section .box').eq($(this).index());
+            let boxOffset = parseInt($(boxIndex).offset().top - headHeight);
+            let boxHeight = parseInt($(boxIndex).outerHeight());
+            let boxBottom = boxOffset + boxHeight;
+            let currentScroll = $(document).scrollTop();
+
+            if (currentScroll < $('.section .box').eq(0).offset().top - headHeight) {
+              $('.tab-list .tab').eq(0).addClass('active');
+            }
+
+            if (currentScroll < boxBottom && currentScroll >= boxOffset) {
+              $(this).addClass('active');
+              let thisIndex = $(this).index();
+              let lineLeft = parseInt(tabWidth) * thisIndex + 'px';
+              $('.tab-line').css('left', lineLeft);
+            } else {
+              $(this).removeClass('active');
+            }
+          });
+        });
+      }
+
+      spyscroll();
     </script>
   </body>
 </html>
