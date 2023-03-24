@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="page-body">
-        <div class="tab-line-menu tab-fixed">
+        <div class="tab-line-menu tab-fixed spy-scroll">
           <div class="tab-inner">
             <i class="tab-line" aria-hidden="true"></i>
             <ul class="tab-list">
@@ -85,12 +85,20 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       function spyscroll() {
-        let tabs = $('.tab-list .tab');
+        const wrap = $('.spy-scroll');
+        let tabs = wrap.find('.tab');
         const headHeight = $('.page-head').outerHeight() + $('.tab-line-menu').outerHeight();
-        const tabWidth = tabs.css('width');
 
-        $('.tab-line').css('width', tabWidth);
-        tabs.eq(0).addClass('active');
+        function lineMove() {
+          const active = wrap.find('.active');
+          if (!active.length) return;
+          const tabWidth = active.outerWidth();
+          const tabLeft = active.position().left;
+          wrap.find('.tab-line').stop().animate({ width: tabWidth, left: tabLeft }, 100);
+        }
+
+        tabs.first().addClass('active');
+        lineMove();
 
         tabs.click(function (e) {
           e.preventDefault();
@@ -111,19 +119,18 @@
             let currentScroll = $(document).scrollTop();
 
             if (currentScroll < $('.section .box').eq(0).offset().top - headHeight) {
-              $('.tab-list .tab').eq(0).addClass('active');
+              tabs.eq(0).addClass('active');
             }
 
             if (currentScroll < boxBottom && currentScroll >= boxOffset) {
               $(this).addClass('active');
-              let thisIndex = $(this).index();
-              let lineLeft = parseInt(tabWidth) * thisIndex + 'px';
-              $('.tab-line').css('left', lineLeft);
             } else {
               $(this).removeClass('active');
             }
+            lineMove();
           });
         });
+        $(window).resize(lineMove);
       }
 
       spyscroll();
