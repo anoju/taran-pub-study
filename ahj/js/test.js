@@ -29,3 +29,25 @@ function removeCommas(nStr) {
   }
   return x1 + x2;
 }
+
+//get velocity
+function getVelocity(x1, y1, x2, y2) {
+  return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+}
+
+// get swipe direction
+function getSwipeDirection(x1, y1, x2, y2) {
+  if (Math.abs(x1 - x2) > Math.abs(y1 - y2)) {
+    if (x1 - x2 > 0) {
+      return 'left';
+    } else {
+      return 'right';
+    }
+  } else {
+    if (y1 - y2 > 0) {
+      return 'up';
+    } else {
+      return 'down';
+    }
+  }
+}
