@@ -18,3 +18,11 @@ nav {
     color: $main-color;
   }
 }
+.radio-group {
+  display: flex;
+  .radio {
+    + .radio {
+      margin-left: 30px;
+    }
+  }
+}
