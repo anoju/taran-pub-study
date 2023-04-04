@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <title>Document</title>
+    <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-body">
+        <div class="section">
+          <h1>#아코디언</h1>
+          <strong>공지사항<i class="xi-angle-down"></i></strong>
+          <div class="hide-font">
+            <ul>
+              <li>내용입니다.</li>
+              <li>내용입니다.</li>
+              <li>내용입니다.</li>
+              <li>내용입니다.</li>
+              <li>내용입니다.</li>
+            </ul>
+          </div>
+          <p>
+            아코디언에서 '.folding-btn' 클릭하여 숨겨진 컨텐츠(.folding-panel)를 보여주세요<br />
+            .folding-btn에 open 클래스로 꺽새 방향이 바뀝니다.<br />
+            한번에 연속으로 다중 클릭 시를 고려해서 만들어주세요
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script>
+      let dropIcon = document.querySelector('.section strong i');
+      let list = document.querySelector('.section .hide-font ul');
+      let  = document.querySelector('.section .hide-font');
+
+      dropIcon.addEventListener('click', function (e) {
+        list.classList.toggle('on');
+        body.classList.toggle('on');
+      });
+    </script>
+  </body>
+</html>
