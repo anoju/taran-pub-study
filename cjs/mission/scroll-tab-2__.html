@@ -32,7 +32,7 @@
         background: purple;
       }
       .tab-line {
-        transition: 0.3s;
+        /* transition: 0.3s; */
       }
     </style>
   </head>
@@ -84,17 +84,22 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      function spyscroll() {
+      function spyScroll() {
         const wrap = $('.spy-scroll');
         let tabs = wrap.find('.tab');
         const headHeight = $('.page-head').outerHeight() + $('.tab-line-menu').outerHeight();
+        const winWidth = $(window).width() / 2;
 
         function lineMove() {
           const active = wrap.find('.active');
+          const tabInner = $('.tab-inner');
+
           if (!active.length) return;
           const tabWidth = active.outerWidth();
           const tabLeft = active.position().left;
+
           wrap.find('.tab-line').stop().animate({ width: tabWidth, left: tabLeft }, 100);
+          tabInner.stop().animate({ scrollLeft: tabLeft + tabWidth / 2 - winWidth });
         }
 
         tabs.first().addClass('active');
@@ -133,7 +138,11 @@
         $(window).resize(lineMove);
       }
 
-      spyscroll();
+      $(window).on('load', function () {
+        spyScroll();
+      });
+      //$(window).on('load', function () {
+      //사용하는 이유 : 폰트 로드 다 되구 나서 실행
     </script>
   </body>
 </html>

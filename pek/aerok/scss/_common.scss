@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+/*layout*/
+.wrap {
+  width: 100%;
+  height: auto;
+}
+.fr {
+  float: right;
+  &::after {
+    content: '';
+    clear: both;
+  }
+}
+
+/*margin*/
+.m0 {
+  margin: 0 !important;
+}
+
+.mt10 {
+  margin-top: 1rem !important;
+}
+
+.mt15 {
+  margin-top: 1.5rem !important;
+}
+
+.mb10 {
+  margin-bottom: 1rem !important;
+}
+
+/*padding*/
+.p0 {
+  padding: 0 !important;
+}
+
+/*font*/
+.fwb {
+  font-weight: bold !important;
+}
+
+/*content box*/
+.df_box {
+}
