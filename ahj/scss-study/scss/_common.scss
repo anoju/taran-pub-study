@@ -1,0 +1,96 @@
+@use 'sass:meta';
+
+$font-family: 'Noto Sans KR', -apple-system, Roboto;
+$padding: 2rem;
+$main-color: #00caca;
+:root {
+  --font-family: #{meta.inspect($font-family)};
+  --main-color: #{$main-color};
+  --base-padding: #{$padding};
+  --outer-padding: -#{$padding};
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.4rem;
+  font-family: var(--font-family);
+}
+
+.wrap {
+  padding: var(--base-padding);
+}
+.list {
+  margin: {
+    bottom: 10px;
+    top: 2px;
+  }
+  padding: 1rem 0;
+  background: red;
+  @include outer(true);
+  li {
+    float: left;
+    padding: 1rem;
+    list-style: none;
+    border: 1px solid #000;
+    background: #fff;
+  }
+  &:after {
+    @include clearfix;
+  }
+}
+.button {
+  background: none;
+  border: 0 none;
+  display: inline-block;
+  text-align: center;
+  color: #111;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  &.primary {
+    background-color: var(--main-color);
+    color: #fff;
+    &:active {
+      background-color: rgba($main-color, 0.8);
+    }
+  }
+  .btn-wrap & {
+    border: 1px solid #000;
+  }
+}
+// .btn-wrap {
+//   .button {
+//     border: 1px solid #000;
+//   }
+// }
+@include define-emoji('women-holding-hands', '👭');
+
+.tit-h {
+  &1 {
+    font-size: 2.4rem;
+  }
+  &2 {
+    font-size: 2rem;
+  }
+  &3 {
+    font-size: 1.8rem;
+  }
+  &4 {
+    font-size: 1.6rem;
+  }
+}
+
+.item-box {
+  .item {
+    border: 1px solid #000;
+    color: #fff;
+    @include unify-parent('div') {
+      background: blue;
+    }
+    @include unify-parent('p') {
+      background: green;
+    }
+  }
+}
