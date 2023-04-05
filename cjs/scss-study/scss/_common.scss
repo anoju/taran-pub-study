@@ -1,6 +1,15 @@
+@use 'sass:math';
 $padding: 2rem;
 $primary-color: #00caca;
+$button-colors: (
+  'success': #28a745,
+  'info': #17a2b8,
+  'warning': #ffc107
+);
 :root {
+  --switch-width: 3.5rem;
+  --switch-height: 2rem;
+  --switch-padding: 0.3rem;
   --main-color: #{$primary-color};
   --base-padding: #{$padding};
   --outer-padding: -#{$padding};
@@ -14,7 +23,28 @@ html {
 .wrap {
   padding: 8rem;
 }
+.img-box {
+  position: relative;
+  width: 200px;
+  &:before {
+    content: '';
+    display: block;
+    padding-top: math.div(133, 200) * 100%;
+    background: #ddd;
+  }
+  img {
+    position: absolute;
+    left: 0;
+    width: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* tip */
+  }
+}
 .button {
+  &:not(.not) {
+    font-size: 11rem;
+  }
   background: none;
   border: 0 none;
   display: inline-block;
@@ -27,6 +57,23 @@ html {
     color: #fff;
     &:active {
       background-color: red;
+    }
+    &:focus {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+  // &.warning {
+  //   background-color: map.get($button-colors, 'warning');
+  // }
+  @each $color-name, $color-value in $button-colors {
+    &.#{$color-name} {
+      background-color: $color-value;
+      @if ($color-name != 'warning') {
+        color: #fff;
+      }
+      &:active {
+        background-color: rgba($color-value, 0.8);
+      }
     }
   }
   .btn-wrap & {
@@ -67,6 +114,34 @@ html {
 .item-box {
   .item {
     border: 1px solid #000;
+  }
+}
+
+%btn {
+  background: none;
+  border: 0 none;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  &:active {
+    opacity: 0.8;
+  }
+}
+.btn-primary {
+  @extend %btn;
+  background-color: var(--main-color);
+}
+.btn-secondary {
+  @extend %btn;
+  background-color: #111;
+}
+:is(ul, ol) {
+  + :is(ul, ol) {
+    margin-top: 3rem;
   }
 }
 
