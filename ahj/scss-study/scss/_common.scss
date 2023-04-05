@@ -333,3 +333,22 @@ $i: 1;
   }
   $i: $i + 1;
 }
+
+$min-font-size: 14px;
+$max-font-size: 24px;
+$min-width: 300px;
+$max-width: 1200px;
+$step: 100;
+$j: $min-width;
+@while $j <= $max-width {
+  @media (min-width: $j) {
+    $ratio: math.div(($j - $min-width), ($max-width - $min-width));
+    $font-size: $min-font-size + $ratio * ($max-font-size - $min-font-size);
+
+    .font-box {
+      font-size: $font-size;
+    }
+  }
+
+  $j: $j + $step;
+}
