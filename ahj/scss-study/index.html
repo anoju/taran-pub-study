@@ -56,6 +56,11 @@
         <div class="img-box"><img src="../../js_static/images/thumb-temp5-2.jpg" alt="" /></div>
         <p>이미지입니다.</p>
       </div>
+
+      <button class="btn3 primary">버튼3</button>
+      <button class="btn3 secondary">버튼3</button>
+      <br />
+      <div class="fade-box fade-10"></div>
     </div>
     <script>
       const colors = {
@@ -64,6 +69,37 @@
         warning: '#ffc107'
       };
       console.log(colors.warning);
+
+      const fadeMax = 10;
+      const fadeMin = 1;
+      const fadeSpeed = 100;
+      let fadeStep = fadeMax;
+      let fadeIng = false;
+      let isfadeIn = false;
+      function fadeToggle(e) {
+        const el = e.target;
+        if (fadeIng || !el) return;
+        fadeIng = true;
+        if (fadeStep === fadeMax) {
+          isfadeIn = false;
+        } else {
+          isfadeIn = true;
+        }
+        const fadeTimer = setInterval(function () {
+          el.classList.remove('fade-' + fadeStep);
+          if (isfadeIn) {
+            fadeStep += 1;
+          } else {
+            fadeStep -= 1;
+          }
+          el.classList.add('fade-' + fadeStep);
+          if (fadeStep === fadeMax || fadeStep === fadeMin) {
+            clearInterval(fadeTimer);
+            fadeIng = false;
+          }
+        }, fadeSpeed);
+      }
+      document.querySelector('.fade-box').addEventListener('click', fadeToggle);
     </script>
   </body>
 </html>

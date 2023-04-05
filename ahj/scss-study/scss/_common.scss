@@ -8,6 +8,7 @@ $main-color: #00caca;
 :root {
   --font-family: #{meta.inspect($font-family)};
   --main-color: #{$main-color};
+  --main-color-rgb: #{hex-to-rgb($main-color)};
   --base-padding: #{$padding};
   --outer-padding: -#{$padding};
 
@@ -64,12 +65,14 @@ $button-colors: (
   font-weight: 500;
   border-radius: 0.5rem;
   cursor: pointer;
+  text-decoration: none;
   // }
   &.primary {
     background-color: var(--main-color);
     color: #fff;
     &:active {
-      background-color: rgba($main-color, 0.8);
+      // background-color: rgba($main-color, 0.8);
+      background-color: rgba(var(--main-color-rgb), 0.8);
     }
     // &:focus {
     //   // background-color: darken($main-color, 10%);
@@ -86,7 +89,8 @@ $button-colors: (
   @each $color-name, $color-value in $button-colors {
     &.#{$color-name} {
       background-color: $color-value;
-      @if ($color-name != 'warning') {
+      @if ($color-name == 'success' or $color-name == 'info') {
+        // @if ($color-name != 'warning') {
         color: #fff;
       }
       &:active {
@@ -97,6 +101,12 @@ $button-colors: (
 }
 .btn-wrap {
   --main-color: red;
+  --main-color-rgb: #{hex-to-rgb(red)};
+  // .button.primary {
+  //   &:active {
+  //     background-color: rgba(red, 0.8);
+  //   }
+  // }
 }
 // .btn-wrap {
 //   .button {
@@ -122,8 +132,9 @@ $button-colors: (
 
 .item-box {
   .item {
-    border: 1px solid #000;
+    border: 3px solid yellow;
     color: #fff;
+    padding: 1rem;
     @include unify-parent('div') {
       background: blue;
     }
@@ -202,4 +213,123 @@ ol {
   + ol {
     margin-top: 3rem;
   }
+}
+
+// 23-04-06
+//@if
+.ellipsis {
+  @include ellipsis;
+}
+.ellipsis-1 {
+  @include ellipsis(1);
+}
+.ellipsis-2 {
+  @include ellipsis(2);
+}
+
+//@each
+$btn3-states: (
+  'primary': (
+    'default': (
+      text: #ffffff,
+      background: #007bff,
+      border: #007bff
+    ),
+    'hover': (
+      text: #ff0000,
+      background: #007bff,
+      border: #0062cc
+    ),
+    'active': (
+      text: #ffff00,
+      background: #0062cc,
+      border: #000
+    )
+  ),
+  'secondary': (
+    'default': (
+      text: #111,
+      background: #ddd,
+      border: #999
+    ),
+    'hover': (
+      text: #ff0000,
+      background: #bbb,
+      border: #666
+    ),
+    'active': (
+      text: #ffff00,
+      background: #999,
+      border: #000
+    )
+  )
+);
+
+.btn3 {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid transparent;
+  @each $type, $option in $btn3-states {
+    &.#{$type} {
+      @each $state, $properties in $option {
+        $text-color: map-get($properties, 'text');
+        $background-color: map-get($properties, 'background');
+        $border-color: map-get($properties, 'border');
+        @if ($state == 'default') {
+          color: $text-color;
+          background-color: $background-color;
+          border-color: $border-color;
+        } @else {
+          &:#{$state} {
+            color: $text-color;
+            background-color: $background-color;
+            border-color: $border-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// @for
+@for $i from 0 through 40 {
+  .fz-#{$i} {
+    font-size: $i * 0.1rem !important;
+  }
+}
+@for $i from 1 through 9 {
+  .fw-#{$i}00 {
+    font-weight: $i * 100 !important;
+  }
+}
+@for $i from 0 through 200 {
+  .w-#{$i * 5} {
+    width: $i * 0.5rem !important;
+  }
+}
+
+//@while
+$number-of-boxes: 10;
+$opacity-step: math.div(1, $number-of-boxes);
+$box-width: 100px;
+$box-height: 100px;
+
+.fade-box {
+  width: $box-width;
+  height: $box-height;
+  display: inline-block;
+  background-color: #007bff;
+  margin-right: 10px;
+}
+
+$i: 1;
+@while $i <= $number-of-boxes {
+  .fade-#{$i} {
+    opacity: $i * $opacity-step;
+  }
+  $i: $i + 1;
 }
