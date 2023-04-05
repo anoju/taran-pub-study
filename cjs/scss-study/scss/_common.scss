@@ -1,0 +1,73 @@
+$padding: 2rem;
+$primary-color: #00caca;
+:root {
+  --main-color: #{$primary-color};
+  --base-padding: #{$padding};
+  --outer-padding: -#{$padding};
+}
+body {
+  font-size: 1.6rem;
+}
+html {
+  font-size: 62.5%;
+}
+.wrap {
+  padding: 8rem;
+}
+.button {
+  background: none;
+  border: 0 none;
+  display: inline-block;
+  text-align: center;
+  color: #111;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  &.primary {
+    background-color: var(--main-color);
+    color: #fff;
+    &:active {
+      background-color: red;
+    }
+  }
+  .btn-wrap & {
+    border: 1px solid #000;
+  }
+}
+.list {
+  padding: 1rem 0;
+  background: red;
+  @include outer(true);
+  li {
+    float: left;
+    padding: 1rem;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #000;
+    font-weight: 500;
+    border-radius: 0.5rem;
+  }
+  &:after {
+    @include clear;
+  }
+}
+.tit-h {
+  &1 {
+    font-size: 2.4rem;
+  }
+  &2 {
+    font-size: 2rem;
+  }
+  &3 {
+    font-size: 1.8rem;
+  }
+  &4 {
+    font-size: 1.6rem;
+  }
+}
+.item-box {
+  .item {
+    border: 1px solid #000;
+  }
+}
+
+@include define-emoji('women-holding-hands', '👭');
