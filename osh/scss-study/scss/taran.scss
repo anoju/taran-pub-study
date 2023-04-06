@@ -1,0 +1,6 @@
+@import url(../css/normalize.min.css);
+@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap);
+
+@import 'mixin', 'function', 'common';
+// 앞에 _안붙여도 됨...
+//_붙은 scss파일은 컴파일 안됨
