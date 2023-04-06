@@ -51,3 +51,12 @@ function getSwipeDirection(x1, y1, x2, y2) {
     }
   }
 }
+
+// element get style
+const getStyle = function (element, styleName) {
+  if (element.currentStyle) {
+    return element.currentStyle[styleName];
+  } else if (window.getComputedStyle) {
+    return document.defaultView.getComputedStyle(element, null).getPropertyValue(styleName);
+  }
+};
