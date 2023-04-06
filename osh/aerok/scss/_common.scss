@@ -1,0 +1,16 @@
+body {
+  font-family: 'NotoSans KR', 'NanumSquare Neo', sans-serif;
+  #wrap {
+    width: 100%;
+    #header {
+      width: 100%;
+      background: beige;
+    }
+  }
+  .inner {
+    position: relative;
+    width: 94%;
+    background: pink;
+    margin: auto;
+  }
+}

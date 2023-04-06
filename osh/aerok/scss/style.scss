@@ -1,1 +1,24 @@
-@import 'reset', 'layout';
+// font
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@font-face {
+  font-family: 'NanumSquare Neo';
+  font-weight: 300;
+  src: url('../font/NanumSquareNeoOTF-aLt.otf') format('opentype');
+}
+@font-face {
+  font-family: 'NanumSquare Neo';
+  font-weight: 400;
+  src: url('../font/NanumSquareNeoOTF-bRg.otf') format('opentype');
+}
+@font-face {
+  font-family: 'NanumSquare Neo';
+  font-weight: 700;
+  src: url('../font/NanumSquareNeoOTF-cBd.otf') format('opentype');
+}
+@font-face {
+  font-family: 'NanumSquare Neo';
+  font-weight: 800;
+  src: url('../font/NanumSquareNeoOTF-dEb.otf') format('opentype');
+}
+
+@import 'reset', 'common';
