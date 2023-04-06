@@ -5,9 +5,81 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.min.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
     <title>Aero_K</title>
   </head>
   <body>
-    <h1>Aero_K main page</h1>
+    <div class="wrap">
+      <header>
+        <div class="container">
+          <h1>Aero_K</h1>
+          <div class="gnb_botton"></div>
+        </div>
+      </header>
+
+      <main>
+        <section class="container">
+          <h2 class="hidden">새로운 여정의 시작</h2>
+          <div class="main_image"></div>
+          <div class="select_wrap">
+            <div class="select_box departure">
+              <p class="airport_code">CJJ</p>
+              <select name="departure" class="selectbox">
+                <option value="청주" class="departure_option" selected>청주</option>
+                <option value="제주" class="departure_option">제주</option>
+                <option value="오사카" class="departure_option">오사카</option>
+                <option value="다낭" class="departure_option">다낭</option>
+                <option value="대만" class="departure_option">대만</option>
+                <option value="상하이" class="departure_option">상하이</option>
+              </select>
+            </div>
+            <div class="switch_btn"></div>
+            <div class="select_box destination">
+              <p class="airport_code">CJU</p>
+              <select name="departure" class="destination">
+                <option value="청주" class="departure_option">청주</option>
+                <option value="제주" class="departure_option" selected>제주</option>
+                <option value="오사카" class="departure_option">오사카</option>
+                <option value="다낭" class="departure_option">다낭</option>
+                <option value="대만" class="departure_option">대만</option>
+                <option value="상하이" class="departure_option">상하이</option>
+              </select>
+            </div>
+          </div>
+          <div class="input_wrap">
+            <div class="calendar_box">
+              <div class="departure_day">
+                <input type="date" id="departure_day" name="departure_day" value="가는 날">                 
+                <label for="departure_day">가는 날</label>
+              </div>
+              <div class="arrival_day">
+                <input type="date" id="arrival_day" name="arrival_day" value="오는 날">                
+                <label for="arrival_day">오는 날</label>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+        <section class="container">
+          <h2></h2>
+        </section>
+        <section class="container">
+          <h2></h2>
+        </section>
+        <div class="banner"></div>
+        <section class="container">
+          <h2></h2>
+        </section>
+        <section class="container">
+          <h2></h2>
+        </section>
+        <div class="video_wrap"></div>
+      </main>
+
+      <footer>
+
+      </footer>      
+    </div>
+    <div class="bottom_nav"></div>
   </body>
 </html>

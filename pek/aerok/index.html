@@ -6,18 +6,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
     <link href="./css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <title>AeroK</title>
   </head>
   <body>
     <div class="wrap">
       <header class="header_dox">
-        <h1 class="logo"></h1>
-        <div class="fr"><a href="#none" class="ico_menu"></a></div>
+        <h1 class="logo"><a href="#"></a></h1>
+        <div class="menu"><a href="#none" class="ico_menu"></a></div>
       </header>
       <section>
-        <h2 class="h2_tit">새로운 여정의<i class="y_line"></i> 시작</h2>
-        <div class="booking_box"></div>
+        <h2 class="h2_tit"></h2>
+        <div class="sch_box">
+          <div class="trip_path">
+            <div class="leave">
+              <a href="#none">
+                <span class="code">CJJ</span>
+                <span class="city">청주</span>
+                <i class="ico_arr_down"></i>
+              </a>
+            </div>
+            <div class="ico_exchange"><a href="#none"></a></div>
+            <div class="arrive">
+              <a href="#none">
+                <span class="code">CJU</span>
+                <span class="city">제주</span>
+                <i class="ico_arr_down"></i>
+              </a>
+            </div>
+          </div>
+          <div class="date">
+            <div class="leave_date">
+              <i class="ico_cal"></i>
+              <input type="text" placeholder="가는 날" />
+            </div>
+            <div class="come_date">
+              <i class="ico_cal"></i>
+              <input type="text" placeholder="오는 날" />
+            </div>
+          </div>
+          <div class="headcount"><i class="ico_human"></i><input type="text" placeholder="성인 1" /></div>
+          <div class="apply">
+            <div class="check">
+              <input type="checkbox" id="trip_chk1" name="trip_chk1" value="왕복" />
+              <label for="trip_chk1">왕복</label>
+              <input type="checkbox" id="trip_chk2" name="trip_chk2" value="편도" />
+              <label for="trip_chk2">편도</label>
+            </div>
+            <div class="promo_code">
+              <label for="code_select">프로모션코드 입력</label>
+              <select name="promo_code" id="code_select">
+                <option value="">프로모션코드 입력</option>
+                <option value="code1">code1</option>
+                <option value="code2">code2</option>
+              </select>
+            </div>
+          </div>
+          <div class="btn_sch"><a href="#none">항공편 조회</a></div>
+        </div>
+        <div class="df_box">
+          <h4 class="h4_tit">에어로케이의 특별한 소식</h4>
+        </div>
+        <div class="slide_box">
+          <ul class="scroll_banner_box slick_scroll">
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_hotelscombine.png" alt="" /></a>
+            </li>
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_1.png" alt="" /></a>
+            </li>
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_2.png" alt="" /></a>
+            </li>
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_3.png" alt="" /></a>
+            </li>
+          </ul>
+          <div class="paging">
+            <span class="p_num">1</span>
+            <span class="slash">/</span>
+            <span class="p_total">4</span>
+            <a class="btn_pause" href=""></a>
+          </div>
+        </div>
+        <div class="df_box">
+          <h3 class="h3_tit"><span class="fc_sky">더 편안하게</span></h3>
+        </div>
       </section>
     </div>
   </body>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    $('.slick_scroll').slick({
+      prevArrow: false,
+      nextArrow: false,
+      slickPause: true,
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 2000
+    });
+  </script>
 </html>

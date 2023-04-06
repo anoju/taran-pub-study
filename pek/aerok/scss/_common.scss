@@ -1,7 +1,27 @@
 @charset "utf-8";
+@font-face {
+  font-family: 'subFont';
+  src: url('../font/NanumSquareNeo.ttf');
+}
+
+:root {
+  /*color*/
+  --main-color: #feb81e;
+  --sub-color: #002554;
+  --sub-font: 'NanumSquare Neo OTF';
+
+  --sky-color: #0070ff;
+  --orange-color: #ff8024;
+  --green-color: #1ba85c;
+  --purple-color: #8638ea;
+}
+body {
+  font-size: 1.6rem;
+}
 
 /*layout*/
 .wrap {
+  position: relative;
   width: 100%;
   height: auto;
 }
@@ -39,7 +59,47 @@
 .fwb {
   font-weight: bold !important;
 }
+.fc_sky {
+  color: var(--sky-color);
+}
+.fc_orange {
+  color: var(--orange-color);
+}
+.fc_green {
+  color: var(--green-color);
+}
+.fc_purple {
+  color: var(--purple-color);
+}
+
+/*title*/
+.h2_tit {
+  height: 10.6rem;
+  width: 17.2rem;
+  margin: 6.4rem 0 1rem 2.4rem;
+  background: url(../images/img_h2tit.png) 0 0 / cover;
+}
+.h4_tit {
+  margin-bottom: 2rem;
+  font-family: 'subFont';
+  font-size: 2rem;
+  color: var(--sub-color);
+  font-weight: 800;
+  letter-spacing: -2%;
+}
 
 /*content box*/
 .df_box {
+  width: 100%;
+  margin-top: 6rem;
+  padding: 0 2.4rem;
+  box-sizing: border-box;
+}
+
+.slide_box {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 6rem;
+  box-sizing: border-box;
 }
