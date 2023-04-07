@@ -1,0 +1,88 @@
+#header {
+  width: 100%;
+  .header-wrap {
+    display: flex;
+    position: relative;
+    height: 6rem;
+    h1 {
+      position: absolute;
+      left: 2.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      a {
+        img {
+          width: 9.4rem;
+          height: 2rem;
+        }
+      }
+    }
+    #nav {
+      display: none;
+    }
+    .all-menu {
+      position: absolute;
+      right: 2.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      img {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+  }
+}
+
+.section1 {
+  .title-area {
+    img {
+      width: 17.2rem;
+      height: 10.6rem;
+    }
+  }
+  .rv-wrap {
+    position: relative;
+    padding: 4.2rem 0 4.6rem 0;
+    .schedule {
+      height: 28.6rem;
+      background: bisque;
+      .btn-route {
+        width: 11rem;
+        height: 3rem;
+        line-height: 3rem;
+        .code {
+          display: inline-block;
+          font-size: 2.4rem;
+          font-weight: 900;
+          vertical-align: middle;
+        }
+        .name {
+          display: inline-block;
+          font-size: 1.8rem;
+          font-weight: 500;
+          vertical-align: middle;
+          &::after {
+            content: '';
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            line-height: 1.8rem;
+            background: url(../images/icon_more.png) no-repeat 0 0 / cover;
+            vertical-align: middle;
+          }
+        }
+      }
+      .spot-change {
+        width: 2.4rem;
+        height: 2.4rem;
+        background: url(../images/icon_repeat.png) no-repeat 0 0 / cover;
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

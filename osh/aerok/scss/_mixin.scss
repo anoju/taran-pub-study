@@ -1,0 +1,14 @@
+@mixin font-NotoSansKR($weight) {
+  font-family: 'NotoSans KR', sans-serif;
+  font-weight: $weight;
+}
+
+@mixin font-NaumSquareNeo($weight) {
+  font-family: 'NaumSquare Neo', sans-serif;
+  font-weight: $weight;
+}
+// 사용예시
+// .text {
+//   @include font-roboto(400);
+//   font-size: 16px;
+// }

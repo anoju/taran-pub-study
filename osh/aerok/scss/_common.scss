@@ -1,16 +1,45 @@
+@use 'sass:math';
+
+html {
+  font-size: 62.5%;
+}
 body {
-  font-family: 'NotoSans KR', 'NanumSquare Neo', sans-serif;
-  #wrap {
+  font-family: 'Noto Sans KR', sans-serif;
+  line-height: math.div(26, 18);
+  color: #222;
+}
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+#wrap {
+  width: 100%;
+}
+#container {
+  .main {
+    margin: auto;
+  }
+  .section {
     width: 100%;
-    #header {
-      width: 100%;
-      background: beige;
-    }
   }
   .inner {
     position: relative;
-    width: 94%;
-    background: pink;
-    margin: auto;
+    padding: 0 2.4rem;
+    .outer {
+      margin-left: -2.4rem;
+      margin-right: -2.4rem;
+    }
   }
+}
+
+//section
+//   .section1 {
+//     position: relative;
+//   }
+// }
+
+.ff-nanum {
+  font-family: 'NanumSquareNeo', sans-serif;
 }

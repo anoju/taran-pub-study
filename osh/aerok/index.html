@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>aerok</title>
+    <title>오선화 AeroK</title>
     <link rel="stylesheet" href="./css/style.min.css" />
   </head>
   <body>
     <div id="wrap">
+      <!-- skip nav 추가 -->
       <header id="header">
-        <div class="inner">
+        <div class="header-wrap">
           <h1>
             <a href="#"><img src="./images/header_logo.png" alt="AeroK" /></a>
           </h1>
@@ -31,10 +32,65 @@
               </ul>
             </div>
           </div>
-          <button class="all-menu"><img src="./images/icon_menu.png" alt="" /></button>
+          <button class="all-menu">
+            <img src="./images/icon_menu.png" alt="전체메뉴" />
+          </button>
         </div>
       </header>
       <!-- //header -->
+
+      <main id="container" class="main">
+        <div class="inner">
+          <div class="section section1">
+            <div class="title-area">
+              <img src="./images/img_title.png" alt="새로운 여정의 시작" />
+            </div>
+            <div class="rv-wrap">
+              <div class="schedule">
+                <button class="btn-route depart">
+                  <span class="code ff-nanum">CJJ</span>
+                  <span class="name">청주</span>
+                </button>
+                <button class="spot-change" aria-label="출발지/도착지 바꾸기"></button>
+                <button class="btn-route arrive">
+                  <span class="code ff-nanum">CJU</span>
+                  <span class="name">제주</span>
+                </button>
+              </div>
+              <!-- // 목적지 입력-->
+
+              <div class="date">
+                <div class="input-wrap">
+                  <input class="input" type="text" title="가는날을 입력하세요" placeholder="가는 날" />
+                  <input class="input" type="text" title="오는날을 입력하세요" placeholder="오는 날" />
+                </div>
+                <input type="text" class="input" title="인원수를 입력하세요" placeholder="성인 1" />
+              </div>
+            </div>
+          </div>
+          <!-- //end section1 -->
+
+          <div class="section section2">
+            <h2 class="main-tit-2">에어로케이의 특별한 소식</h2>
+            <div class="outer" style="height: 100px; background: #000"></div>
+          </div>
+          <div class="section section3">
+            <h2 class="main-tit-1">
+              <span class="point1">더 편안하게</span><br />
+              추천 숙소와 렌트카
+            </h2>
+          </div>
+          <div class="section section4">
+            <h2 class="main-tit-1">
+              <span class="point2">더 설레게</span><br />
+              추천 액티비티
+            </h2>
+          </div>
+          <div class="section section5"></div>
+          <div class="section section6"></div>
+          <div class="section section7"></div>
+        </div>
+      </main>
     </div>
     <script src="./js/jquery-3.6.0.min.js"></script>
   </body>

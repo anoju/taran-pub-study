@@ -1,0 +1,129 @@
+#header {
+  width: 100%;
+  .header-wrap {
+    display: flex;
+    position: relative;
+    height: 6rem;
+    h1 {
+      position: absolute;
+      left: 2.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      a {
+        img {
+          width: 9.4rem;
+          height: 2rem;
+        }
+      }
+    }
+    #nav {
+      display: none;
+    }
+    .all-menu {
+      position: absolute;
+      right: 2.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      img {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+  }
+}
+
+// section1 예약
+.section1 {
+  .title-area {
+    img {
+      width: 17.2rem;
+      height: 10.6rem;
+    }
+  }
+  .rv-wrap {
+    position: relative;
+    width: 100%;
+    height: 28.6rem;
+    margin-top: 4.2rem;
+    .schedule {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .btn-route {
+        .code {
+          display: inline-block;
+          font-size: 2.8rem;
+          font-weight: 900;
+          line-height: 3rem;
+          vertical-align: middle;
+          margin-right: 0.8rem;
+        }
+        .name {
+          display: inline-block;
+          font-size: 1.8rem;
+          line-height: 2.6rem;
+          vertical-align: middle;
+          &::after {
+            content: '';
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            background: url(../images/icon_more.png) 0 0 / cover;
+            vertical-align: middle;
+          }
+        }
+      }
+      .spot-change {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_repeat.png) 0 0 / cover;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+.main-tit-1 {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-family: 'NanumSquareNeo';
+  font-weight: 800;
+  .point1 {
+    color: #0070ff;
+  }
+  .point2 {
+    color: #ff8024;
+  }
+}
+.main-tit-2 {
+  font-size: 2rem;
+  line-height: 2.2rem;
+  font-family: 'NanumSquareNeo';
+  font-weight: 800;
+  color: #002554;
+}
+.input {
+  width: 100%;
+  height: 5.2rem;
+  font-size: 1.6rem;
+  background: #f4f8fa;
+  border: 0 none;
+  color: #000;
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.68);
+  }
+}
+.input-wrap {
+  display: flex;
+  .input + .input {
+    margin-top: 0;
+    margin-left: 0.4rem;
+  }
+}
+:is(.input-wrap, .input) + :is(.input-wrap, .input) {
+  margin-top: 0.4rem;
+}
