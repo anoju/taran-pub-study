@@ -49,6 +49,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 3.2rem;
       .btn-route {
         .code {
           display: inline-block;
@@ -73,6 +74,12 @@
           }
         }
       }
+      .route-btn1 {
+        padding-left: 2rem;
+      }
+      .route-btn2 {
+        padding-right: 2rem;
+      }
       .spot-change {
         &::after {
           content: '';
@@ -84,10 +91,129 @@
         }
       }
     }
-  }
+    .date-schedule {
+      display: flex;
+      width: 100%;
+      .departure {
+        position: relative;
+        width: 50%;
+        margin-right: 0.4rem;
+        input {
+          @include input-style;
+        }
+      }
+      .arrival {
+        position: relative;
+        width: 50%;
+        input {
+          @include input-style;
+        }
+      }
+      .icon-cal {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_calendar.png) 0 0 / cover;
+        }
+      }
+    }
+    .rv-icon {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      width: 2.4rem;
+      height: 2.4rem;
+      z-index: 10;
+      margin-left: 2rem;
+    }
+    .num-people {
+      margin-top: 0.4rem;
+      .icon-people {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_user.png) 0 0 / cover;
+        }
+      }
+      input {
+        @include input-style;
+      }
+    }
+    .select-wrap {
+      display: flex;
+      .round {
+        label {
+          font-size: 1.6rem;
+          font-weight: 500;
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            border: 0 none;
+            background: url(../images/icon_check.png) 0 0 / cover;
+            cursor: pointer;
+            border-radius: 0.4rem;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+        }
+      }
+      .oneway {
+        input {
+        }
+        label {
+          font-size: 1.6rem;
+          font-weight: 500;
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            border: 0 none;
+            background: url(../images/icon_check.png) 0 0 / cover;
+            cursor: pointer;
+            border-radius: 0.4rem;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    input[type='radio'] {
+      position: absolute;
+      left: -1000%;
+    }
+    input[type='radio']:checked {
+      & + label {
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_check_on.png) 0 0 / cover;
+          border: none;
+        }
+      }
+    }
+  } //sdajflsajfdl
 }
 
+// 타이틀 폰트 설정
 .main-tit-1 {
+  font-size: 2rem;
+  line-height: 2.2rem;
+  font-family: 'NanumSquareNeo';
+  font-weight: 800;
+  color: #002554;
+}
+.main-tit-2 {
   font-size: 2.4rem;
   line-height: 3.2rem;
   font-family: 'NanumSquareNeo';
@@ -98,32 +224,4 @@
   .point2 {
     color: #ff8024;
   }
-}
-.main-tit-2 {
-  font-size: 2rem;
-  line-height: 2.2rem;
-  font-family: 'NanumSquareNeo';
-  font-weight: 800;
-  color: #002554;
-}
-.input {
-  width: 100%;
-  height: 5.2rem;
-  font-size: 1.6rem;
-  background: #f4f8fa;
-  border: 0 none;
-  color: #000;
-  &::placeholder {
-    color: rgba(0, 0, 0, 0.68);
-  }
-}
-.input-wrap {
-  display: flex;
-  .input + .input {
-    margin-top: 0;
-    margin-left: 0.4rem;
-  }
-}
-:is(.input-wrap, .input) + :is(.input-wrap, .input) {
-  margin-top: 0.4rem;
 }
