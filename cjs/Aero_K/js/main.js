@@ -34,28 +34,74 @@ $(document).ready(function () {
       moveSlide(currentIdx + 1);
     }, intervalTimer);
   }
+
+  function slideControl() {
+    $('.slide_control')
+      .find($('.pause'))
+      .click(function (e) {
+        clearInterval(timer);
+        $(this).css('display', 'none');
+        $(this).siblings($('.play')).css('display', 'inline-block');
+      });
+    $('.slide_control')
+      .find($('.play'))
+      .click(function (e) {
+        autoSlide();
+        $(this).css('display', 'none');
+        $(this).siblings($('.pause')).css('display', 'inline-block');
+      });
+  }
+
+  function slick1() {
+    $('.accommodation .swiper').slick({
+      autoplay: true,
+      autoplaySpeed: 2500,
+      variableWidth: true,
+      infinite: true,
+      arrows: false
+    });
+    $('.accommodation .swiper').on('afterChange', function () {
+      $(this).addClass('zeroMargin');
+    });
+  }
+
+  function slick2() {
+    $('.activity .swiper').slick({
+      autoplay: true,
+      autoplaySpeed: 2500,
+      variableWidth: true,
+      infinite: true,
+      arrows: false
+    });
+  }
+
+  function slick3() {
+    $('.intro .swiper').slick({
+      autoplay: true,
+      autoplaySpeed: 2500,
+      variableWidth: true,
+      infinite: true,
+      arrows: false
+    });
+  }
+
+  function tab1() {
+    $('.tab a').click(function (e) {
+      e.preventDefault();
+      const tabMenu = $(this);
+      const tabIndex = tabMenu.parent().index();
+      const tabPanel = $('.tab_panel');
+
+      $(this).parent().addClass('active').siblings().removeClass('active');
+      $('.tab_panel').removeClass('active');
+      $('.tab_panel').eq(tabIndex).addClass('active');
+    });
+  }
+
+  tab1();
   autoSlide();
-
-  $('.slide_control')
-    .find($('.pause'))
-    .click(function (e) {
-      clearInterval(timer);
-      $(this).css('display', 'none');
-      $(this).siblings($('.play')).css('display', 'inline-block');
-    });
-  $('.slide_control')
-    .find($('.play'))
-    .click(function (e) {
-      autoSlide();
-      $(this).css('display', 'none');
-      $(this).siblings($('.pause')).css('display', 'inline-block');
-    });
-
-  $('.accommodation .swiper').slick({
-    autoplay: true,
-    autoplaySpeed: 2500,
-    variableWidth: true,
-    infinite: true,
-    arrows: false
-  });
+  // slick1();
+  // slick2();
+  // slick3();
+  slideControl();
 });
