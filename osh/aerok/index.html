@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>오선화 AeroK</title>
     <link rel="stylesheet" href="./css/style.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   </head>
   <body>
     <div id="wrap">
@@ -81,13 +82,16 @@
                   <label for="rad-oneway">편도</label>
                 </div>
                 <div class="promo">
-                  <label for="promo-code">프로모션 코드</label>
-                  <select id="promo-code" name="promotion">
-                    <option value="">ABCDEFG-123456</option>
-                    <option>HIJKLMN-987654</option>
-                    <option>OPQRSTU-123456</option>
-                  </select>
+                  <button class="toggle-option">프로모션 코드 입력</button>
+                  <ul class="promo-selectibox">
+                    <li><button type="button" class="option-btn">ABCDEFG-1234</button></li>
+                    <li><button type="button" class="option-btn">HIJKLM-5678</button></li>
+                    <li><button type="button" class="option-btn">NOPQRS-9101</button></li>
+                  </ul>
                 </div>
+              </div>
+              <div class="rv-complete">
+                <button class="rv-check">항공편 조회</button>
               </div>
             </div>
           </div>
@@ -95,14 +99,115 @@
 
           <div class="section section2">
             <h2 class="main-tit-1">에어로케이의 특별한 소식</h2>
-            <div class="outer" style="height: 100px; background: #000"></div>
+            <div class="outer">
+              <div class="swiper event">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/news0.png" alt="이벤트1" />
+                    </a>
+                  </div>
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/news1.png" alt="이벤트2" />
+                    </a>
+                  </div>
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/news2.png" alt="이벤트3" />
+                    </a>
+                  </div>
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/news3.png" alt="이벤트4" />
+                    </a>
+                  </div>
+                </div>
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-pagination"></div>
+              </div>
+            </div>
           </div>
+          <!-- //end section2 -->
+
           <div class="section section3">
             <h2 class="main-tit-2">
               <span class="point1">더 편안하게</span><br />
               추천 숙소와 렌트카
             </h2>
+            <div class="toggle-btn">
+              <button class="toggle-menu1">숙소</button>
+              <button class="toggle-menu1">렌트카</button>
+            </div>
+            <div class="slide-wrap outer">
+              <div class="slide1">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <img src="./images/image0.png" alt="숙소1" />
+                      <div class="txt-area">
+                        <em>서귀포시</em>
+                        <p>브라운 스위트 제주</p>
+                        <div class="price">
+                          <strong class="ff-nanum">4,250원~</strong>
+                          <span class="ff-nanum">5,000원</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="./images/image1.png" alt="숙소2" />
+                      <div class="txt-area">
+                        <em>제주시</em>
+                        <p>호텔 난타</p>
+                        <div class="price">
+                          <strong class="ff-nanum">71,081원~</strong>
+                          <span class="ff-nanum">88,000원</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="./images/image2.png" alt="숙소3" />
+                      <div class="txt-area">
+                        <em>제주시</em>
+                        <p>그라벨호텔</p>
+                        <div class="price">
+                          <strong class="ff-nanum">125,000원~</strong>
+                          <span class="ff-nanum">231,000원</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="./images/image3.png" alt="숙소4" />
+                      <div class="txt-area">
+                        <em>서귀포시</em>
+                        <p>파르나스 호텔제주</p>
+                        <div class="price">
+                          <strong class="ff-nanum">269,104원~</strong>
+                          <span class="ff-nanum">326,700원</span>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="slide2">
+                <h2>렌트카</h2>
+                <ul>
+                  <li style="background: pink"></li>
+                  <li style="background: beige"></li>
+                  <li style="background: skyblue"></li>
+                  <li style="background: green"></li>
+                </ul>
+              </div>
+            </div>
           </div>
+          <!-- end section3 -->
           <div class="section section4">
             <h2 class="main-tit-2">
               <span class="point2">더 설레게</span><br />
@@ -116,5 +221,7 @@
       </main>
     </div>
     <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   </body>
 </html>

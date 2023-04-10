@@ -147,7 +147,11 @@
     }
     .select-wrap {
       display: flex;
+      width: 100%;
+      margin-top: 2rem;
       .round {
+        width: 20%;
+        margin-right: 2rem;
         label {
           font-size: 1.6rem;
           font-weight: 500;
@@ -166,11 +170,10 @@
         }
       }
       .oneway {
-        input {
-        }
+        width: 20%;
+        margin-right: 3.5rem;
         label {
           font-size: 1.6rem;
-          font-weight: 500;
           &::before {
             content: '';
             display: inline-block;
@@ -185,7 +188,28 @@
           }
         }
       }
+      .promo {
+        .toggle-option {
+          position: relative;
+          font-size: 1.6em;
+          line-height: 2.3rem;
+          &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            right: -2.7rem;
+            top: 0;
+            width: 2.4rem;
+            height: 2.4rem;
+            background: url(../images/icon_more.png) 0 0 / cover;
+          }
+        }
+        .promo-selectibox {
+          display: none;
+        }
+      }
     }
+    //라디오 체크 박스
     input[type='radio'] {
       position: absolute;
       left: -1000%;
@@ -202,26 +226,155 @@
         }
       }
     }
+    .rv-complete {
+      width: 100%;
+      height: 5.2rem;
+      margin-top: 2rem;
+      background: #feb81e;
+      .rv-check {
+        width: 100%;
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-align: center;
+        line-height: 5.2rem;
+      }
+    }
   } //sdajflsajfdl
 }
 
-// 타이틀 폰트 설정
-.main-tit-1 {
-  font-size: 2rem;
-  line-height: 2.2rem;
-  font-family: 'NanumSquareNeo';
-  font-weight: 800;
-  color: #002554;
+//section2
+.section2 {
+  margin-top: 4.6rem;
 }
-.main-tit-2 {
-  font-size: 2.4rem;
-  line-height: 3.2rem;
-  font-family: 'NanumSquareNeo';
-  font-weight: 800;
-  .point1 {
-    color: #0070ff;
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  // &-swiper-pagination {
+  //   position: relative;
+  //   width: calc(100% - 150px);
+  //   height: 10px;
+  //   bottom: auto;
+  // }
+  .swiper-scrollbar {
+    margin-left: 2.4rem;
+    position: relative;
   }
-  .point2 {
-    color: #ff8024;
+  .swiper-pagination {
+    width: 3.4rem;
+    left: 33rem;
+    bottom: 0;
+    .swiper-pagination-current {
+      font-size: 1.3rem;
+      color: #002554;
+    }
+    .swiper-pagination-total {
+      font-size: 1.3rem;
+      color: #bfc5cf;
+    }
+  }
+}
+
+.event {
+  width: 100%;
+  height: 24.4rem;
+
+  // 스크롤바 커스텀
+  .swiper-scrollbar.swiper-scrollbar-horizontal {
+    width: 27.2rem;
+    height: 0.2rem;
+  }
+  .swiper-scrollbar-drag {
+    background: var(--swiper-scrollbar-drag-bg-color, #002554);
+  }
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide {
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 21rem;
+    img {
+      display: block;
+      width: 100%;
+      height: 21rem;
+    }
+  }
+}
+
+// section3
+.section3 {
+  margin-top: 6rem;
+}
+
+.slide-wrap {
+  height: 317px;
+  // overflow: hidden;
+}
+
+.slide1 {
+  width: 1200px;
+  height: 317px;
+  ul {
+    width: 100%;
+    height: 316px;
+    background: pink;
+    display: flex;
+    li {
+      width: 280px;
+      height: 316px;
+      margin-left: 2rem;
+      &:first-child {
+        margin-left: 2.4rem;
+      }
+      a {
+        img {
+          width: 280px;
+          height: 180px;
+        }
+      }
+      .txt-area {
+        margin-top: 1.7rem;
+        em {
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 20px;
+          color: #3d8aff;
+        }
+        p {
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 26px;
+          color: #222222;
+        }
+        .price {
+          margin-top: 2rem;
+          strong {
+            display: block;
+            font-weight: 900;
+            font-size: 2.2rem;
+            line-height: 24px;
+            color: #222222;
+            margin-bottom: 1rem;
+          }
+          span {
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 17px;
+            text-decoration-line: line-through;
+            opacity: 0.4;
+          }
+        }
+      }
+    }
   }
 }
