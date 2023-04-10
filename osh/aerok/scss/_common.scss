@@ -26,6 +26,7 @@ button {
     margin: auto;
   }
   .section {
+    position: relative;
     width: 100%;
   }
   .inner {
@@ -37,12 +38,6 @@ button {
     }
   }
 }
-
-//section
-//   .section1 {
-//     position: relative;
-//   }
-// }
 
 .ff-nanum {
   font-family: 'NanumSquareNeo', sans-serif;

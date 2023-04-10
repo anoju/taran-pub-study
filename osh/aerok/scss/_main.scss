@@ -314,65 +314,63 @@
 // section3
 .section3 {
   margin-top: 6rem;
+  width: 100%;
+  height: 317px;
 }
 
 .slide-wrap {
-  height: 317px;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 .slide1 {
-  width: 1200px;
+  position: relative;
+  display: flex;
+  background: pink;
   height: 317px;
-  ul {
-    width: 100%;
+  transition: transform 0.5s;
+  div {
+    // width: 100%;
     height: 316px;
-    background: pink;
-    display: flex;
-    li {
-      width: 280px;
-      height: 316px;
-      margin-left: 2rem;
-      &:first-child {
-        margin-left: 2.4rem;
+    margin-right: 2rem;
+    &:first-child {
+      margin-left: 2.4rem;
+    }
+    a {
+      img {
+        width: 280px;
+        height: 180px;
       }
-      a {
-        img {
-          width: 280px;
-          height: 180px;
-        }
+    }
+    .txt-area {
+      margin-top: 1.7rem;
+      em {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        color: #3d8aff;
       }
-      .txt-area {
-        margin-top: 1.7rem;
-        em {
-          font-weight: 700;
-          font-size: 14px;
-          line-height: 20px;
-          color: #3d8aff;
-        }
-        p {
-          font-weight: 500;
-          font-size: 18px;
-          line-height: 26px;
+      p {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 26px;
+        color: #222222;
+      }
+      .price {
+        margin-top: 2rem;
+        strong {
+          display: block;
+          font-weight: 900;
+          font-size: 2.2rem;
+          line-height: 24px;
           color: #222222;
+          margin-bottom: 1rem;
         }
-        .price {
-          margin-top: 2rem;
-          strong {
-            display: block;
-            font-weight: 900;
-            font-size: 2.2rem;
-            line-height: 24px;
-            color: #222222;
-            margin-bottom: 1rem;
-          }
-          span {
-            font-weight: 900;
-            font-size: 1.5rem;
-            line-height: 17px;
-            text-decoration-line: line-through;
-            opacity: 0.4;
-          }
+        span {
+          font-weight: 900;
+          font-size: 1.5rem;
+          line-height: 17px;
+          text-decoration-line: line-through;
+          opacity: 0.4;
         }
       }
     }
