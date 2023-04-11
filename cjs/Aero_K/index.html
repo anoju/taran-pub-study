@@ -15,123 +15,149 @@
   </head>
   <body>
     <div class="wrap">
-      <header>
+      <div class="header">
         <h1 class="logo"><a href="#none">Aero_K</a></h1>
         <div class="gnb_botton"><a href="#none">gnb_btn</a></div>
-      </header>
+      </div>
 
-      <main>
-        <section class="reservation">
-          <h2 class="hidden">새로운 여정의 시작</h2>
-          <div class="main_image"></div>
-          <div class="select_wrap">
-            <div class="select_box departure">
-              <p class="airport_code fz-28">CJJ</p>
-              <select name="departure" class="selectbox">
-                <option value="청주" class="departure_option" selected>청주</option>
-                <option value="제주" class="departure_option">제주</option>
-                <option value="오사카" class="departure_option">오사카</option>
-                <option value="다낭" class="departure_option">다낭</option>
-                <option value="대만" class="departure_option">대만</option>
-                <option value="상하이" class="departure_option">상하이</option>
-              </select>
+      <section class="reservation">
+        <h2 class="hidden">새로운 여정의 시작</h2>
+        <div class="main_image"></div>
+        <div class="select_wrap">
+          <div class="select_box departure">
+            <p class="airport_code fz-28">CJJ</p>
+            <select name="departure" class="selectbox">
+              <option value="청주" class="departure_option" selected>청주</option>
+              <option value="제주" class="departure_option">제주</option>
+              <option value="오사카" class="departure_option">오사카</option>
+              <option value="다낭" class="departure_option">다낭</option>
+              <option value="대만" class="departure_option">대만</option>
+              <option value="상하이" class="departure_option">상하이</option>
+            </select>
+          </div>
+          <div class="switch_btn"></div>
+          <div class="select_box destination">
+            <p class="airport_code fz-28">CJU</p>
+            <select name="departure" class="destination">
+              <option value="청주" class="departure_option fz-18">청주</option>
+              <option value="제주" class="departure_option" selected>제주</option>
+              <option value="오사카" class="departure_option">오사카</option>
+              <option value="다낭" class="departure_option">다낭</option>
+              <option value="대만" class="departure_option">대만</option>
+              <option value="상하이" class="departure_option">상하이</option>
+            </select>
+          </div>
+        </div>
+        <div class="input_wrap">
+          <div class="calendar_box">
+            <div class="departure_day">
+              <input type="date" id="departure_day" class="fz-16 fw-500" name="departure_day" value="가는 날" data-placeholder="가는 날" required />
+              <label for="departure_day">가는 날</label>
             </div>
-            <div class="switch_btn"></div>
-            <div class="select_box destination">
-              <p class="airport_code fz-28">CJU</p>
-              <select name="departure" class="destination">
-                <option value="청주" class="departure_option fz-18">청주</option>
-                <option value="제주" class="departure_option" selected>제주</option>
-                <option value="오사카" class="departure_option">오사카</option>
-                <option value="다낭" class="departure_option">다낭</option>
-                <option value="대만" class="departure_option">대만</option>
-                <option value="상하이" class="departure_option">상하이</option>
-              </select>
+            <div class="arrival_day">
+              <input type="date" id="arrival_day" class="fz-16 fw-500" name="arrival_day" value="오는 날" data-placeholder="오는 날" required />
+              <label for="arrival_day">오는 날</label>
             </div>
           </div>
-          <div class="input_wrap">
-            <div class="calendar_box">
-              <div class="departure_day">
-                <input type="date" id="departure_day" class="fz-16 fw-500" name="departure_day" value="가는 날" data-placeholder="가는 날" required />
-                <label for="departure_day">가는 날</label>
-              </div>
-              <div class="arrival_day">
-                <input type="date" id="arrival_day" class="fz-16 fw-500" name="arrival_day" value="오는 날" data-placeholder="오는 날" required />
-                <label for="arrival_day">오는 날</label>
-              </div>
-            </div>
-            <div class="number_box fz-16 fw-500">
-              <span class="classify">성인</span>
-              <span class="num">1</span>
-              <a href="#none"></a>
-            </div>
-            <div class="check_box fz-16 fw-500">
-              <div class="order_wrap">
-                <div class="for_order">
-                  <input type="checkbox" id="round_trip" />왕복
-                  <label for="round_trip"></label>
-                </div>
-                <div class="for_order">
-                  <input type="checkbox" id="one_way" />편도
-                  <label for="one_way"></label>
-                </div>
-              </div>
-              <div class="promotion_code">
-                <p>프로모션코드 입력</p>
-                <span class="icon drop_down"></span>
-              </div>
-            </div>
-            <button class="flight_view fz-18 fw-700">항공편 조회</button>
+          <div class="number_box fz-16 fw-500">
+            <span class="classify">성인</span>
+            <span class="num">1</span>
+            <a href="#none"></a>
           </div>
-          <div class="main_slide">
-            <h3 class="fz-20 fw-900">에어로케이의 특별한 소식</h3>
-            <div class="slidewrapper">
-              <div class="slidecontainer">
-                <div class="slide">
-                  <a href="#none">
-                    <img src="./image/banner3x.png" alt="" />
-                  </a>
-                </div>
-                <div class="slide" style="background: red">
-                  <a href="#none"></a>
-                </div>
-                <div class="slide" style="background: blue">
-                  <a href="#none"></a>
-                </div>
-                <div class="slide" style="background: green">
-                  <a href="#none"></a>
-                </div>
+          <div class="check_box fz-16 fw-500">
+            <div class="order_wrap">
+              <div class="for_order">
+                <input type="checkbox" id="round_trip" />왕복
+                <label for="round_trip"></label>
+              </div>
+              <div class="for_order">
+                <input type="checkbox" id="one_way" />편도
+                <label for="one_way"></label>
               </div>
             </div>
-            <div class="slide_control">
-              <div class="scroll_bar">
-                <span class="bar"></span>
+            <div class="promotion_code">
+              <p>프로모션코드 입력</p>
+              <span class="icon drop_down"></span>
+            </div>
+          </div>
+          <button class="flight_view fz-18 fw-700">항공편 조회</button>
+        </div>
+        <div class="main_slide">
+          <h3 class="fz-20 fw-900">에어로케이의 특별한 소식</h3>
+          <div class="slidewrapper">
+            <div class="slidecontainer">
+              <div class="slide">
+                <a href="#none">
+                  <img src="./image/banner3x.png" alt="" />
+                </a>
               </div>
-              <div class="control fz-14 fw-500">
-                <span class="current">1</span>
-                <span class="slash"></span>
-                <span class="all">4</span>
-                <span class="material-symbols-outlined play" style="color: #000">play_arrow</span>
-                <span class="pause"></span>
+              <div class="slide" style="background: red">
+                <a href="#none"></a>
+              </div>
+              <div class="slide" style="background: blue">
+                <a href="#none"></a>
+              </div>
+              <div class="slide" style="background: green">
+                <a href="#none"></a>
               </div>
             </div>
           </div>
-        </section>
-        <section class="accommodation">
-          <h2 class="fz-24 fw-800"><strong>더 편안하게</strong><br />추천 숙소와 렌트카</h2>
-          <div class="tab_menu">
-            <div class="tab_inner">
-              <ul class="tab_list fz-16 fw-700">
-                <li class="tab active"><a href="#none">숙소</a></li>
-                <li class="tab"><a href="#none">렌트카</a></li>
-              </ul>
+          <div class="slide_control">
+            <div class="scroll_bar">
+              <span class="bar"></span>
             </div>
-            <div id="tab1" class="tab_panel active">
-              <div class="swiper">
-                <div class="slide">
-                  <div class="card_image">
-                    <img src="./image/hotel3x.png" alt="" />
-                  </div>
+            <div class="control fz-14 fw-500">
+              <span class="current">1</span>
+              <span class="slash"></span>
+              <span class="all">4</span>
+              <span class="material-symbols-outlined play" style="color: #000">play_arrow</span>
+              <span class="pause"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="accommodation">
+        <h2 class="fz-24 fw-800"><strong>더 편안하게</strong><br />추천 숙소와 렌트카</h2>
+        <div class="tab_menu">
+          <div class="tab_inner">
+            <ul class="tab_list fz-16 fw-700">
+              <li class="tab active"><a href="#none">숙소</a></li>
+              <li class="tab"><a href="#none">렌트카</a></li>
+            </ul>
+          </div>
+          <div id="tab1" class="tab_panel active">
+            <div class="swiper">
+              <div class="slide">
+                <div class="card_image">
+                  <img src="./image/hotel3x.png" alt="" />
+                </div>
+                <div class="card_txt">
+                  <span class="local fz-14 fw-700">제주시</span>
+                  <span class="house_name fz-18 fw-500">그라벨호텔</span>
+                  <span class="cost fz-22 fw-700"><strong class="fw-900">125,000</strong>원~</span>
+                  <span class="prime cost fz-15 fw-700"><strong>231,000</strong>원</span>
+                </div>
+                <a href="#none" title="상세 페이지로 이동"></a>
+              </div>
+              <div class="slide">
+                <div class="card_image">
+                  <img src="./image/hotel2_3x.png" alt="" />
+                </div>
+                <div class="card_txt">
+                  <span class="local fz-14 fw-700">서귀포시</span>
+                  <span class="house_name fz-18 fw-500">파르나스호텔제주</span>
+                  <span class="cost fz-22 fw-700"><strong class="fw-900">269,104</strong>원~</span>
+                  <span class="prime cost fz-15 fw-700"><strong>326,700</strong>원</span>
+                </div>
+                <a href="#none" title="상세 페이지로 이동"></a>
+              </div>
+            </div>
+          </div>
+          <div id="tab2" class="tab_panel">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="card_image"></div>
                   <div class="card_txt">
                     <span class="local fz-14 fw-700">제주시</span>
                     <span class="house_name fz-18 fw-500">그라벨호텔</span>
@@ -140,10 +166,8 @@
                   </div>
                   <a href="#none" title="상세 페이지로 이동"></a>
                 </div>
-                <div class="slide">
-                  <div class="card_image">
-                    <img src="./image/hotel2_3x.png" alt="" />
-                  </div>
+                <div class="swiper-slide">
+                  <div class="card_image"></div>
                   <div class="card_txt">
                     <span class="local fz-14 fw-700">서귀포시</span>
                     <span class="house_name fz-18 fw-500">파르나스호텔제주</span>
@@ -154,108 +178,85 @@
                 </div>
               </div>
             </div>
-            <div id="tab2" class="tab_panel">
-              <div class="swiper">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="card_image"></div>
-                    <div class="card_txt">
-                      <span class="local fz-14 fw-700">제주시</span>
-                      <span class="house_name fz-18 fw-500">그라벨호텔</span>
-                      <span class="cost fz-22 fw-700"><strong class="fw-900">125,000</strong>원~</span>
-                      <span class="prime cost fz-15 fw-700"><strong>231,000</strong>원</span>
-                    </div>
-                    <a href="#none" title="상세 페이지로 이동"></a>
-                  </div>
-                  <div class="swiper-slide">
-                    <div class="card_image"></div>
-                    <div class="card_txt">
-                      <span class="local fz-14 fw-700">서귀포시</span>
-                      <span class="house_name fz-18 fw-500">파르나스호텔제주</span>
-                      <span class="cost fz-22 fw-700"><strong class="fw-900">269,104</strong>원~</span>
-                      <span class="prime cost fz-15 fw-700"><strong>326,700</strong>원</span>
-                    </div>
-                    <a href="#none" title="상세 페이지로 이동"></a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-        </section>
-        <div class="banner">
-          <a href="#none"></a>
         </div>
-        <section class="activity">
-          <h2><strong>더 설레게</strong><br />추천 액티비티</h2>
-          <a href="#none" class="more">더보기</a>
-          <div class="swiper_wrap">
-            <div class="swiper">
-              <div class="slide Hundertwasser">
-                <div class="txt_top">
-                  <span class="local">제주시</span>
-                  <p class="act_name fz-28 fw-700">훈데르트바서파크<br />입장권</p>
-                </div>
-                <div class="txt_bottom">
-                  <span class="prime cost fz-16"><strong>5,000</strong>원</span>
-                  <p class="cost fz-24"><strong>4,250</strong>원~</p>
-                </div>
-                <a href="#none" title="상세 페이지로 이동"></a>
+      </section>
+      <div class="banner">
+        <a href="#none"></a>
+      </div>
+      <section class="activity">
+        <h2><strong>더 설레게</strong><br />추천 액티비티</h2>
+        <a href="#none" class="more">더보기</a>
+        <div class="swiper_wrap">
+          <div class="swiper">
+            <div class="slide Hundertwasser">
+              <div class="txt_top">
+                <span class="local">제주시</span>
+                <p class="act_name fz-28 fw-700">훈데르트바서파크<br />입장권</p>
               </div>
-              <div class="slide camellia">
-                <div class="txt_top">
-                  <span class="local">서귀포시 서부</span>
-                  <p class="act_name fz-28 fw-700">카멜리아힐</p>
-                </div>
-                <div class="txt_bottom">
-                  <span class="prime cost fz-16"><strong>6,000</strong>원</span>
-                  <p class="cost fz-24"><strong>5,200</strong>원~</p>
-                </div>
-                <a href="#none" title="상세 페이지로 이동"></a>
+              <div class="txt_bottom">
+                <span class="prime cost fz-16"><strong>5,000</strong>원</span>
+                <p class="cost fz-24"><strong>4,250</strong>원~</p>
+              </div>
+              <a href="#none" title="상세 페이지로 이동"></a>
+            </div>
+            <div class="slide camellia">
+              <div class="txt_top">
+                <span class="local">서귀포시 서부</span>
+                <p class="act_name fz-28 fw-700">카멜리아힐</p>
+              </div>
+              <div class="txt_bottom">
+                <span class="prime cost fz-16"><strong>6,000</strong>원</span>
+                <p class="cost fz-24"><strong>5,200</strong>원~</p>
+              </div>
+              <a href="#none" title="상세 페이지로 이동"></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container intro">
+        <div class="pattern">
+          <div class="pattern1"></div>
+          <div class="pattern2"></div>
+          <div class="pattern3"></div>
+        </div>
+        <div class="inner_section">
+          <h2><strong>더 새롭게</strong><br />탑승객을 위한 서비스</h2>
+          <p>
+            고객의 여정이 더 새로울 수 있도록<br />
+            특별한 경험을 제공하기 위해<br />
+            에어로케이의 탑승객만 누릴 수 있는<br />
+            다양한 서비스와 프로덕트를 소개합니다
+          </p>
+          <div class="swiper intro">
+            <div class="swiper-slide seat">
+              <div class="txt">
+                <p class="fz-24 fw-700">가볍고<br />혁신적인 좌석</p>
+              </div>
+            </div>
+            <div class="swiper-slide covid">
+              <div class="txt">
+                <p class="fz-24 fw-700">코로나 19<br />방역수칙</p>
+              </div>
+            </div>
+            <div class="swiper-slide uniform">
+              <div class="txt">
+                <p class="fz-24 fw-700">젠더리스<br />유니폼</p>
               </div>
             </div>
           </div>
-        </section>
-        <section class="container intro">
-          <div class="pattern">
-            <div class="pattern1"></div>
-            <div class="pattern2"></div>
-            <div class="pattern3"></div>
+          <h3><strong>나다운 여정의 시작</strong><br />에어로케이와 함께</h3>
+          <div class="img_box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
-          <div class="inner_section">
-            <h2><strong>더 새롭게</strong><br />탑승객을 위한 서비스</h2>
-            <p>
-              고객의 여정이 더 새로울 수 있도록<br />
-              특별한 경험을 제공하기 위해<br />
-              에어로케이의 탑승객만 누릴 수 있는<br />
-              다양한 서비스와 프로덕트를 소개합니다
-            </p>
-            <div class="swiper intro">
-              <div class="swiper-slide seat">
-                <div class="txt">
-                  <p class="fz-24 fw-700">가볍고<br />혁신적인 좌석</p>
-                </div>
-              </div>
-              <div class="swiper-slide covid">
-                <div class="txt">
-                  <p class="fz-24 fw-700">코로나 19<br />방역수칙</p>
-                </div>
-              </div>
-              <div class="swiper-slide uniform">
-                <div class="txt">
-                  <p class="fz-24 fw-700">젠더리스<br />유니폼</p>
-                </div>
-              </div>
-            </div>
-            <h3><strong>나다운 여정의 시작</strong><br />에어로케이와 함께</h3>
-            <div class="img_box">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-        </section>
-        <div class="video_wrap">
+        </div>
+      </section>
+      <div class="video_wrap">
+        <video id="vid" src="https://framerusercontent.com/modules/assets/XDZDDuWikyNwCl9Ps1cB0Ju86Oc~UhKV1JH0Ht4x8zRLBCz5dVP_gHMKmPv9JsmKoV3EnT0.mp4" autoplay="autoplay" loop="loop" muted="muted" controls=""></video>
+        <div class="text_wrap">
           <p>
             끊임없는 도전과<br />
             신뢰할 수 있는 전문성으로<br />
@@ -267,41 +268,44 @@
           </h3>
           <button>Aero K Brand Story</button>
         </div>
-      </main>
+      </div>
 
-      <footer>
-        <div class="subscribe">
-          <div class="box">
-            <p>특가 및 소식을 확인하세요</p>
+      <div class="footer_back">
+        <div class="footer">
+          <div class="subscribe">
+            <div class="box white">
+              <p>특가 및 소식을 확인하세요</p>
+            </div>
+            <div class="box color">
+              <p>구독신청</p>
+              <a href="#none"></a>
+            </div>
+            <a href="#none"></a>
           </div>
-          <div class="box color">
-            <p>구독신청</p>
+          <div class="sns">
+            <div class="facebook">
+              <a href="#none"></a>
+            </div>
+            <div class="instagram">
+              <a href="#none"></a>
+            </div>
+            <div class="kakao">
+              <a href="#none"></a>
+            </div>
           </div>
-          <a href="#none"></a>
+          <div class="footer_logo"></div>
+
+          <h4 class="company_tt">에어로케이항공(주)</h4>
+          <div class="footer_txt">
+            <p><b>대표이사 </b>강병호<b class="vertical">사업자등록번호</b> 274-88-00540</p>
+            <address><b>주소 </b>충청북도 청주시 흥덕구 오송읍 오송생명3로 154</address>
+            <p><b>개인정보 보호 책임자 </b>이병호</p>
+            <p><b>고객센터 </b><a href="tel:1899-2299">1899-2299</a> 영업시간 08:00 ~ 20:00</p>
+          </div>
+          <p class="em">통신판매업신고번호 2020-충북청주-0518</p>
+          <small>&copy;2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</small>
         </div>
-
-        <div class="sns">
-          <div class="facebook">
-            <a href="#none"></a>
-          </div>
-          <div class="instagram">
-            <a href="#none"></a>
-          </div>
-          <div class="kakao">
-            <a href="#none"></a>
-          </div>
-        </div>
-
-        <div class="footer_logo"></div>
-
-        <h4 class="company_tt">에어로케이항공(주)</h4>
-        <p><b>대표이사</b>강병호 | <b>사업자등록번호</b> 274-88-00540</p>
-        <address><b>주소</b>충청북도 청주시 흥덕구 오송읍 오송생명3로 154</address>
-        <p><b>개인정보 보호 책임자</b>이병호</p>
-        <p><b>고객센터</b><a href="tel:1899-2299"></a> 영업시간 08:00 ~ 20:00</p>
-        <p class="em">통신판매업신고번호 2020-충북청주-0518</p>
-        <small>&copy;2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</small>
-      </footer>
+      </div>
     </div>
     <div class="bottom_nav">
       <ul>
