@@ -100,7 +100,7 @@
           <div class="section section2">
             <h2 class="main-tit-1">에어로케이의 특별한 소식</h2>
             <div class="outer">
-              <div class="swiper event">
+              <div class="swiper main-banner">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide">
                     <a href="#">
@@ -123,8 +123,11 @@
                     </a>
                   </div>
                 </div>
-                <div class="swiper-scrollbar"></div>
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination-wrap">
+                  <div class="swiper-scrollbar"></div>
+                  <div class="swiper-pagination"></div>
+                  <button class="swiper-auto-btn"><img src="./images/icon_pause.png" alt="정지 플레이 버튼" /></button>
+                </div>
               </div>
             </div>
           </div>
@@ -139,82 +142,133 @@
               <button class="toggle-menu1">숙소</button>
               <button class="toggle-menu1">렌트카</button>
             </div>
-            <div class="slide-wrap outer">
-              <div class="slide1">
-                <div>
-                  <a href="#">
-                    <img src="./images/image0.png" alt="숙소1" />
-                    <div class="txt-area">
-                      <em>서귀포시</em>
-                      <p>브라운 스위트 제주</p>
-                      <div class="price">
-                        <strong class="ff-nanum">4,250원~</strong>
-                        <span class="ff-nanum">5,000원</span>
+            <div class="outer">
+              <div class="swiper toggle-slide">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/image0.png" alt="숙소1" />
+                      <div class="txt-area">
+                        <em>서귀포시</em>
+                        <p>브라운 스위트 제주</p>
+                        <div class="price">
+                          <strong class="ff-nanum">4,250원~</strong>
+                          <span class="ff-nanum">5,000원</span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </div>
-                <div>
-                  <a href="#">
-                    <img src="./images/image1.png" alt="숙소2" />
-                    <div class="txt-area">
-                      <em>제주시</em>
-                      <p>호텔 난타</p>
-                      <div class="price">
-                        <strong class="ff-nanum">71,081원~</strong>
-                        <span class="ff-nanum">88,000원</span>
+                    </a>
+                  </div>
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/image1.png" alt="숙소2" />
+                      <div class="txt-area">
+                        <em>제주시</em>
+                        <p>호텔 난타</p>
+                        <div class="price">
+                          <strong class="ff-nanum">71,081원~</strong>
+                          <span class="ff-nanum">88,000원</span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </div>
-                <div>
-                  <a href="#">
-                    <img src="./images/image2.png" alt="숙소3" />
-                    <div class="txt-area">
-                      <em>제주시</em>
-                      <p>그라벨호텔</p>
-                      <div class="price">
-                        <strong class="ff-nanum">125,000원~</strong>
-                        <span class="ff-nanum">231,000원</span>
+                    </a>
+                  </div>
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/image2.png" alt="숙소3" />
+                      <div class="txt-area">
+                        <em>제주시</em>
+                        <p>그라벨호텔</p>
+                        <div class="price">
+                          <strong class="ff-nanum">125,000원~</strong>
+                          <span class="ff-nanum">231,000원</span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </div>
-                <div>
-                  <a href="#">
-                    <img src="./images/image3.png" alt="숙소4" />
-                    <div class="txt-area">
-                      <em>서귀포시</em>
-                      <p>파르나스 호텔제주</p>
-                      <div class="price">
-                        <strong class="ff-nanum">269,104원~</strong>
-                        <span class="ff-nanum">326,700원</span>
+                    </a>
+                  </div>
+                  <div class="swiper-slide">
+                    <a href="#">
+                      <img src="./images/image3.png" alt="숙소4" />
+                      <div class="txt-area">
+                        <em>서귀포시</em>
+                        <p>파르나스 호텔제주</p>
+                        <div class="price">
+                          <strong class="ff-nanum">269,104원~</strong>
+                          <span class="ff-nanum">326,700원</span>
+                        </div>
                       </div>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 </div>
               </div>
-              <div class="slide2">
-                <h2>렌트카</h2>
-                <ul>
-                  <li style="background: pink"></li>
-                  <li style="background: beige"></li>
-                  <li style="background: skyblue"></li>
-                  <li style="background: green"></li>
-                </ul>
+              <div class="banner">
+                <a href="#">
+                  <img src="./images/banner4.png" alt="제주 렌트카 특별할인" />
+                </a>
               </div>
             </div>
+
+            <!-- end section3 -->
+            <div class="section section4">
+              <h2 class="main-tit-2">
+                <span class="point2">더 설레게</span><br />
+                추천 액티비티
+              </h2>
+              <div class="btn-more">
+                <button class="more">더보기<i class="icon-more"></i></button>
+              </div>
+              <div class="swiper sec3-slide">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="./images/image4.png" alt="훈데르트바서파크 입장권" />
+                    <div class="sec3-txt">
+                      <p>제주시</p>
+                      <strong
+                        >훈데르트바서파크 <br />
+                        입장권</strong
+                      >
+                      <span class="price">5,000원</span>
+                      <span class="discount">4,250원~</span>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./images/image4.png" alt="훈데르트바서파크 입장권" />
+                    <div class="sec3-txt">
+                      <p>서귀포시 서부</p>
+                      <strong>카멜리아힐</strong>
+                      <span class="price">5,000원</span>
+                      <span class="discount">4,250원~</span>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./images/image4.png" alt="훈데르트바서파크 입장권" />
+                    <div class="sec3-txt">
+                      <p>제주시</p>
+                      <strong
+                        >훈데르트바서파크 <br />
+                        입장권</strong
+                      >
+                      <span class="price">5,000원</span>
+                      <span class="discount">4,250원~</span>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <img src="./images/image4.png" alt="훈데르트바서파크 입장권" />
+                    <div class="sec3-txt">
+                      <p>제주시</p>
+                      <strong
+                        >훈데르트바서파크 <br />
+                        입장권</strong
+                      >
+                      <span class="price">5,000원</span>
+                      <span class="discount">4,250원~</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section section5"></div>
+            <div class="section section6"></div>
+            <div class="section section7"></div>
           </div>
-          <!-- end section3 -->
-          <div class="section section4">
-            <h2 class="main-tit-2">
-              <span class="point2">더 설레게</span><br />
-              추천 액티비티
-            </h2>
-          </div>
-          <div class="section section5"></div>
-          <div class="section section6"></div>
-          <div class="section section7"></div>
         </div>
       </main>
     </div>
