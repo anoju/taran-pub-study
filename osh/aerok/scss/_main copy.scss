@@ -1,0 +1,383 @@
+#header {
+  width: 100%;
+  .header-wrap {
+    display: flex;
+    position: relative;
+    height: 6rem;
+    h1 {
+      position: absolute;
+      left: 2.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      a {
+        img {
+          width: 9.4rem;
+          height: 2rem;
+        }
+      }
+    }
+    #nav {
+      display: none;
+    }
+    .all-menu {
+      position: absolute;
+      right: 2.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      img {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+  }
+}
+
+// section1 예약
+.section1 {
+  .title-area {
+    img {
+      width: 17.2rem;
+      height: 10.6rem;
+    }
+  }
+  .rv-wrap {
+    position: relative;
+    width: 100%;
+    height: 28.6rem;
+    margin-top: 4.2rem;
+    .schedule {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3.2rem;
+      .btn-route {
+        .code {
+          display: inline-block;
+          font-size: 2.8rem;
+          font-weight: 900;
+          line-height: 3rem;
+          vertical-align: middle;
+          margin-right: 0.8rem;
+        }
+        .name {
+          display: inline-block;
+          font-size: 1.8rem;
+          line-height: 2.6rem;
+          vertical-align: middle;
+          &::after {
+            content: '';
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            background: url(../images/icon_more.png) 0 0 / cover;
+            vertical-align: middle;
+          }
+        }
+      }
+      .route-btn1 {
+        padding-left: 2rem;
+      }
+      .route-btn2 {
+        padding-right: 2rem;
+      }
+      .spot-change {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_repeat.png) 0 0 / cover;
+          vertical-align: middle;
+        }
+      }
+    }
+    .date-schedule {
+      display: flex;
+      width: 100%;
+      .departure {
+        position: relative;
+        width: 50%;
+        margin-right: 0.4rem;
+        input {
+          @include input-style;
+        }
+      }
+      .arrival {
+        position: relative;
+        width: 50%;
+        input {
+          @include input-style;
+        }
+      }
+      .icon-cal {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_calendar.png) 0 0 / cover;
+        }
+      }
+    }
+    .rv-icon {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      width: 2.4rem;
+      height: 2.4rem;
+      z-index: 10;
+      margin-left: 2rem;
+    }
+    .num-people {
+      margin-top: 0.4rem;
+      .icon-people {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_user.png) 0 0 / cover;
+        }
+      }
+      input {
+        @include input-style;
+      }
+    }
+    .select-wrap {
+      display: flex;
+      width: 100%;
+      margin-top: 2rem;
+      .round {
+        width: 20%;
+        margin-right: 2rem;
+        label {
+          font-size: 1.6rem;
+          font-weight: 500;
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            border: 0 none;
+            background: url(../images/icon_check.png) 0 0 / cover;
+            cursor: pointer;
+            border-radius: 0.4rem;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+        }
+      }
+      .oneway {
+        width: 20%;
+        margin-right: 3.5rem;
+        label {
+          font-size: 1.6rem;
+          &::before {
+            content: '';
+            display: inline-block;
+            width: 2.4rem;
+            height: 2.4rem;
+            border: 0 none;
+            background: url(../images/icon_check.png) 0 0 / cover;
+            cursor: pointer;
+            border-radius: 0.4rem;
+            vertical-align: middle;
+            margin-right: 10px;
+          }
+        }
+      }
+      .promo {
+        .toggle-option {
+          position: relative;
+          font-size: 1.6em;
+          line-height: 2.3rem;
+          &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            right: -2.7rem;
+            top: 0;
+            width: 2.4rem;
+            height: 2.4rem;
+            background: url(../images/icon_more.png) 0 0 / cover;
+          }
+        }
+        .promo-selectibox {
+          display: none;
+        }
+      }
+    }
+    //라디오 체크 박스
+    input[type='radio'] {
+      position: absolute;
+      left: -1000%;
+    }
+    input[type='radio']:checked {
+      & + label {
+        &::before {
+          content: '';
+          display: inline-block;
+          width: 2.4rem;
+          height: 2.4rem;
+          background: url(../images/icon_check_on.png) 0 0 / cover;
+          border: none;
+        }
+      }
+    }
+    .rv-complete {
+      width: 100%;
+      height: 5.2rem;
+      margin-top: 2rem;
+      background: #feb81e;
+      .rv-check {
+        width: 100%;
+        font-size: 1.8rem;
+        font-weight: 700;
+        text-align: center;
+        line-height: 5.2rem;
+      }
+    }
+  } //sdajflsajfdl
+}
+
+//section2
+.section2 {
+  margin-top: 4.6rem;
+}
+
+.swiper.main-banner {
+  width: 100%;
+  .swiper-slide {
+    a {
+      display: block;
+      img {
+        display: block;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .swiper-pagination-wrap {
+    display: flex;
+    padding: 0 2.4rem;
+    align-items: center;
+    margin-top: 1.6rem;
+    .swiper-scrollbar {
+      position: static;
+      height: 0.2rem;
+    }
+    .swiper-pagination {
+      position: static;
+      width: auto;
+      white-space: nowrap;
+      margin-left: 1.8rem;
+      .swiper-pagination-current {
+        font-size: 1.3rem;
+        color: #002554;
+      }
+      .swiper-pagination-total {
+        font-size: 1.3rem;
+        color: #bfc5cf;
+      }
+    }
+    .swiper-auto-btn {
+      white-space: nowrap;
+      margin-left: 1.8rem;
+      img {
+        width: 1.8rem;
+        height: 1.8rem;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  // 스크롤바 커스텀
+  .swiper-scrollbar-drag {
+    background: var(--swiper-scrollbar-drag-bg-color, #002554);
+  }
+}
+
+// section3
+.section3 {
+  margin-top: 6rem;
+  width: 100%;
+}
+
+.slide-wrap {
+  overflow: hidden;
+}
+
+.slide1,
+.slide2 {
+  display: flex;
+  height: 317px;
+  transition: transform 0.5s;
+  div {
+    height: 316px;
+    margin-right: 2rem;
+    &:first-child {
+      margin-left: 2.4rem;
+    }
+    a {
+      img {
+        width: 280px;
+        height: 180px;
+      }
+    }
+    .txt-area {
+      margin-top: 1.7rem;
+      em {
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        color: #3d8aff;
+      }
+      p {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 26px;
+        color: #222222;
+      }
+      .price {
+        margin-top: 2rem;
+        strong {
+          display: block;
+          font-weight: 900;
+          font-size: 2.2rem;
+          line-height: 24px;
+          color: #222222;
+          margin-bottom: 1rem;
+        }
+        span {
+          font-weight: 900;
+          font-size: 1.5rem;
+          line-height: 17px;
+          text-decoration-line: line-through;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+}
+.slide2 {
+  position: absolute;
+  bottom: 0;
+  display: none;
+}
+
+.banner {
+  margin: 6rem 0;
+  a {
+    display: block;
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+//section4
+.section4 {
+  position: relative;
+}

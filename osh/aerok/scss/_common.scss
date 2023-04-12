@@ -1,0 +1,66 @@
+@use 'sass:math';
+
+html {
+  font-size: 62.5%;
+  font-weight: 500;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  line-height: math.div(26, 18);
+  color: #222;
+}
+button {
+  font-family: 'Noto Sans KR';
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+#wrap {
+  width: 100%;
+}
+#container {
+  .main {
+    margin: auto;
+  }
+  .section {
+    position: relative;
+    width: 100%;
+  }
+  .inner {
+    position: relative;
+    padding: 0 2.4rem;
+    .outer {
+      margin-left: -2.4rem;
+      margin-right: -2.4rem;
+    }
+  }
+}
+
+.ff-nanum {
+  font-family: 'NanumSquareNeo', sans-serif;
+}
+
+// 타이틀 폰트 설정
+.main-tit-1 {
+  font-size: 2rem;
+  font-family: 'NanumSquareNeo';
+  font-weight: 800;
+  line-height: 2.2rem;
+  color: #002554;
+  margin-bottom: 2rem;
+}
+.main-tit-2 {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-family: 'NanumSquareNeo';
+  font-weight: 800;
+  .point1 {
+    color: #0070ff;
+  }
+  .point2 {
+    color: #ff8024;
+  }
+}
