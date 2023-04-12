@@ -28,13 +28,41 @@ $(document).ready(function () {
 
   plusBtn.click(function () {
     let amount = $(this).siblings('.data_num');
-    var currentAmount = amount.text();
+    let currentAmount = amount.text();
     currentAmount++;
     amount.text(currentAmount);
     if (currentAmount > 0) {
       $(this).siblings('.minus').removeClass('disabled');
-      var classes = $(this).parent().siblings().parent().attr('class');
-      $('.calculated').children().addClass('show');
+      let classes = $(this).parent().siblings().parent().attr('class');
+      $('.calculated')
+        .children('.' + classes)
+        .addClass('show');
+
+      let numberOfadult = $('.adult').find('.data_num').text();
+      let numberOfchild = $('.child').find('.data_num').text();
+      let numberOfbabe = $('.babe').find('.data_num').text();
+
+      if (
+        $('.calculated')
+          .children('.' + classes)
+          .is('.adult') == true
+      ) {
+        $('.calculated').find('.adult .num').text(numberOfadult);
+
+        $('.calculated').find('.babe .num').text(numberOfbabe);
+      } else if (
+        $('.calculated')
+          .children('.' + classes)
+          .is('.child') == true
+      ) {
+        $('.calculated').find('.child .num').text(numberOfchild);
+      } else if (
+        $('.calculated')
+          .children('.' + classes)
+          .is('.babe') == true
+      ) {
+        $('.calculated').find('.babe .num').text(numberOfbabe);
+      }
     }
   });
 
@@ -42,12 +70,45 @@ $(document).ready(function () {
     let amount = $(this).siblings('.data_num');
     var currentAmount = amount.text();
     console.log(currentAmount);
-
+    let classes = $(this).parent().siblings().parent().attr('class');
     if (currentAmount == 1) {
       $(this).addClass('disabled');
       amount.text(0);
+      $('.calculated')
+        .children('.' + classes)
+        .removeClass('show');
     } else if (currentAmount > 1) {
       amount.text(--currentAmount);
+      let classes = $(this).parent().siblings().parent().attr('class');
+      $('.calculated')
+        .children('.' + classes)
+        .addClass('show');
+
+      let numberOfadult = $('.adult').find('.data_num').text();
+      let numberOfchild = $('.child').find('.data_num').text();
+      let numberOfbabe = $('.babe').find('.data_num').text();
+
+      if (
+        $('.calculated')
+          .children('.' + classes)
+          .is('.adult') == true
+      ) {
+        $('.calculated').find('.adult .num').text(numberOfadult);
+
+        $('.calculated').find('.babe .num').text(numberOfbabe);
+      } else if (
+        $('.calculated')
+          .children('.' + classes)
+          .is('.child') == true
+      ) {
+        $('.calculated').find('.child .num').text(numberOfchild);
+      } else if (
+        $('.calculated')
+          .children('.' + classes)
+          .is('.babe') == true
+      ) {
+        $('.calculated').find('.babe .num').text(numberOfbabe);
+      }
     }
   });
 
