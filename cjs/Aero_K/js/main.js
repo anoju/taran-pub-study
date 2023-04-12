@@ -8,6 +8,49 @@ $(document).ready(function () {
     }
   });
 
+  $('.popup').click(function (e) {
+    e.preventDefault;
+    $('.popup_num').css({ display: 'block' });
+  });
+  $('.close').click(function (e) {
+    e.preventDefault;
+    $('.popup_num').css({ display: 'none' });
+  });
+  $('.popfooter')
+    .find('button')
+    .click(function (e) {
+      e.preventDefault;
+      $('.popup_num').css({ display: 'none' });
+    });
+
+  const plusBtn = $('.spin_box').find('.plus');
+  const minusBtn = $('.spin_box').find('.minus');
+
+  plusBtn.click(function () {
+    let amount = $(this).siblings('.data_num');
+    var currentAmount = amount.text();
+    currentAmount++;
+    amount.text(currentAmount);
+    if (currentAmount > 0) {
+      $(this).siblings('.minus').removeClass('disabled');
+      var classes = $(this).parent().siblings().parent().attr('class');
+      $('.calculated').children().addClass('show');
+    }
+  });
+
+  minusBtn.click(function (e) {
+    let amount = $(this).siblings('.data_num');
+    var currentAmount = amount.text();
+    console.log(currentAmount);
+
+    if (currentAmount == 1) {
+      $(this).addClass('disabled');
+      amount.text(0);
+    } else if (currentAmount > 1) {
+      amount.text(--currentAmount);
+    }
+  });
+
   function tab1() {
     $('.tab a').click(function (e) {
       e.preventDefault();

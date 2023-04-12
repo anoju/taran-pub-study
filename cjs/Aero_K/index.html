@@ -62,7 +62,7 @@
           <div class="number_box fz-16 fw-500">
             <span class="classify">성인</span>
             <span class="num">1</span>
-            <a href="#none"></a>
+            <a href="#none" class="popup"></a>
           </div>
           <div class="check_box fz-16 fw-500">
             <div class="order_wrap">
@@ -402,6 +402,85 @@
         <li><a href="#none" class="event">이벤트</a></li>
         <li><a href="#none" class="cs">고객센터</a></li>
       </ul>
+    </div>
+    <div class="popup_num">
+      <div class="wrap">
+        <div class="pophead">
+          <h2 class="fz-20 fw-900">인원 선택</h2>
+          <span class="close">close</span>
+        </div>
+        <div class="select_num">
+          <div class="adult">
+            <div class="classify">
+              <h3>성인</h3>
+              <p>만 13세 이상</p>
+            </div>
+            <div class="spin_box">
+              <div class="btn minus"></div>
+              <div class="data_num">1</div>
+              <div class="btn plus"></div>
+            </div>
+          </div>
+          <div class="child">
+            <div class="classify">
+              <h3>소아</h3>
+              <p>2세부터 만 13세 미만</p>
+            </div>
+            <div class="spin_box">
+              <div class="btn minus disabled"></div>
+              <div class="data_num">0</div>
+              <div class="btn plus"></div>
+            </div>
+          </div>
+          <div class="babe">
+            <div class="classify">
+              <h3>유아</h3>
+              <p>0세부터 만 2세 미만</p>
+            </div>
+            <div class="spin_box">
+              <div class="btn minus disabled"></div>
+              <div class="data_num">0</div>
+              <div class="btn plus"></div>
+            </div>
+          </div>
+        </div>
+        <div class="calculate">
+          <p>나이계산기</p>
+          <h4>생년월일을 입력해주세요.</h4>
+          <div class="calendar_box">
+            <div class="age_cal">
+              <input type="date" id="age" class="fz-16 fw-500" name="age" value="1999-11-04" data-placeholder="1999-11-04" required />
+              <label for="age">가는 날</label>
+            </div>
+          </div>
+          <button class="fz-16 fw-700">계산하기</button>
+          <p class="caution">국내선의 경우, 소아/유아의 나이 구분은 각 항공편의 탑승일 기준입니다.</p>
+          <p class="caution">탑승 수속 시 생년월일 확인 가능한 서류 지참이 필수입니다.</p>
+        </div>
+      </div>
+      <div class="popfooter">
+        <div class="top">
+          <p>인원</p>
+          <div class="calculated">
+            <div class="adult show">
+              <p class="classify">성인</p>
+              <p><span class="num">1</span>명</p>
+            </div>
+            <div class="child">
+              <p class="classify">소아</p>
+              <p><span class="num">1</span>명</p>
+            </div>
+            <div class="adult">
+              <p class="classify">유아</p>
+              <p><span class="num">1</span>명</p>
+            </div>
+          </div>
+        </div>
+        <div class="bottom">
+          <button class="prev">이전단계</button>
+          <button class="finish">선택완료</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
