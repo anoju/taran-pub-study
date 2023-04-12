@@ -9,6 +9,7 @@ function mainInit() {
   mainBanner();
   toggleSlide();
   sec4Slide();
+  sreviceSlide();
 }
 
 function mainBanner() {
@@ -59,6 +60,12 @@ function toggleSlide() {
 
 function sec4Slide() {
   var swiper = new Swiper('.sec4-slide', {
+    slidesPerView: 'auto'
+  });
+}
+
+function sreviceSlide() {
+  var swiper = new Swiper('.srevice', {
     slidesPerView: 'auto'
   });
 }
