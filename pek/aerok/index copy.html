@@ -8,7 +8,6 @@
     <link href="./css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <title>AeroK</title>
   </head>
   <body>
@@ -86,25 +85,20 @@
           <h4 class="h4_tit">에어로케이의 특별한 소식</h4>
         </div>
         <div class="slide_box">
-          <div class="swiper">
-            <div class="swiper-containe">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_hotelscombine.png" alt="" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_1.png" alt="" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_2.png" alt="" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_3.png" alt="" /></a>
-                </div>
-              </div>
-              <div class="swiper-pagination"></div>
-            </div>
-          </div>
+          <ul class="scroll_banner_box slick_scroll">
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_hotelscombine.png" alt="" /></a>
+            </li>
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_1.png" alt="" /></a>
+            </li>
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_2.png" alt="" /></a>
+            </li>
+            <li class="rolling_banner">
+              <a href=""><img src="./images/img_banner_3.png" alt="" /></a>
+            </li>
+          </ul>
           <div class="paging">
             <span class="p_num fwb">1</span>
             <span class="slash">/</span>
@@ -126,53 +120,50 @@
           </div>
           <div class="tab_content" id="tab_box00">
             <div class="row_scroll_box">
-              <div class="swiper">
-                <!-- space-between="20" slides-per-view="auto" pagination="false" -->
-                <div class="swiper-container">
-                  <div class="swiper-slide scroll_list">
-                    <a href="">
-                      <img src="./images/img_hotel.png" alt="" />
-                      <span class="location">제주시</span>
-                      <span class="place">그라벨호텔</span>
-                      <div class="sale_price"><strong>125,000</strong>원~</div>
-                      <span class="price"><strong>231,000</strong>원</span>
-                    </a>
-                  </div>
-                  <div class="swiper-slide scroll_list">
-                    <a href="">
-                      <img src="./images/img_hotel1.png" alt="" />
-                      <span class="location">서귀포시</span>
-                      <span class="place">파르나스 호텔제주</span>
-                      <div class="sale_price"><strong>269,104</strong>원~</div>
-                      <span class="price"><strong>326,700</strong>원</span>
-                    </a>
-                  </div>
-                  <div class="swiper-slide scroll_list">
-                    <a href="">
-                      <img src="./images/img_hotel2.png" alt="" />
-                      <span class="location">서귀포시</span>
-                      <span class="place">브라운 스위트 제주</span>
-                      <div class="sale_price"><strong>4,250</strong>원~</div>
-                      <span class="price"><strong>5,000</strong>원</span>
-                    </a>
-                  </div>
-                  <div class="swiper-slide scroll_list">
-                    <a href="">
-                      <img src="./images/img_hotel3.png" alt="" />
-                      <span class="location">제주시</span>
-                      <span class="place">호텔 난타</span>
-                      <div class="sale_price"><strong>71,081</strong>원~</div>
-                      <span class="price"><strong>88,000</strong>원</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              <ul>
+                <li class="scroll_list">
+                  <a href="">
+                    <img src="./images/img_hotel.png" alt="" />
+                    <span class="location">제주시</span>
+                    <span class="place">그라벨호텔</span>
+                    <div class="sale_price"><strong>125,000</strong>원~</div>
+                    <span class="price"><strong>231,000</strong>원</span>
+                  </a>
+                </li>
+                <li class="scroll_list">
+                  <a href="">
+                    <img src="./images/img_hotel1.png" alt="" />
+                    <span class="location">서귀포시</span>
+                    <span class="place">파르나스 호텔제주</span>
+                    <div class="sale_price"><strong>269,104</strong>원~</div>
+                    <span class="price"><strong>326,700</strong>원</span>
+                  </a>
+                </li>
+                <li class="scroll_list">
+                  <a href="">
+                    <img src="./images/img_hotel2.png" alt="" />
+                    <span class="location">서귀포시</span>
+                    <span class="place">브라운 스위트 제주</span>
+                    <div class="sale_price"><strong>4,250</strong>원~</div>
+                    <span class="price"><strong>5,000</strong>원</span>
+                  </a>
+                </li>
+                <li class="scroll_list">
+                  <a href="">
+                    <img src="./images/img_hotel3.png" alt="" />
+                    <span class="location">제주시</span>
+                    <span class="place">호텔 난타</span>
+                    <div class="sale_price"><strong>71,081</strong>원~</div>
+                    <span class="price"><strong>88,000</strong>원</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
           <div class="tab_content" id="tab_box01">
             <div class="row_scroll_box">
-              <!-- <swiper-container class="mySwiper" space-between="20" slides-per-view="auto" pagination="false">
-                <swiper-slide class="scroll_list">
+              <ul>
+                <li class="scroll_list">
                   <a href="">
                     <img src="./images/img_car00.png" alt="" />
                     <span class="location fc_orange">제주도렌터카</span>
@@ -180,8 +171,8 @@
                     <div class="sale_price"><strong>110,000</strong>원~</div>
                     <span class="price"><strong>231,000</strong>원</span>
                   </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
+                </li>
+                <li class="scroll_list">
                   <a href="">
                     <img src="./images/img_car01.png" alt="" />
                     <span class="location fc_orange">제주도렌터카</span>
@@ -189,8 +180,8 @@
                     <div class="sale_price"><strong>25,104</strong>원~</div>
                     <span class="price"><strong>16,7000</strong>원</span>
                   </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
+                </li>
+                <li class="scroll_list">
                   <a href="">
                     <img src="./images/img_car02.png" alt="" />
                     <span class="location fc_orange">제주도렌터카</span>
@@ -198,8 +189,8 @@
                     <div class="sale_price"><strong>40,250</strong>원~</div>
                     <span class="price"><strong>50,000</strong>원</span>
                   </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
+                </li>
+                <li class="scroll_list">
                   <a href="">
                     <img src="./images/img_car03.png" alt="" />
                     <span class="location fc_orange">제주도렌터카</span>
@@ -207,8 +198,8 @@
                     <div class="sale_price"><strong>71,081</strong>원~</div>
                     <span class="price"><strong>88,000</strong>원</span>
                   </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
+                </li>
+                <li class="scroll_list">
                   <a href="">
                     <img src="./images/img_car03.png" alt="" />
                     <span class="location fc_orange">제주도렌터카</span>
@@ -216,8 +207,8 @@
                     <div class="sale_price"><strong>71,081</strong>원~</div>
                     <span class="price"><strong>98,000</strong>원</span>
                   </a>
-                </swiper-slide>
-              </swiper-container> -->
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -231,55 +222,52 @@
           </div>
         </div>
         <div class="row_scroll_box -card">
-          <div class="swiper">
-            <!--space-between="20" slides-per-view="auto" pagination="false"-->
-            <div class="swiper-container">
-              <div class="swiper-slide scroll_list">
-                <a href="#none">
-                  <div class="dim"><img src="./images/img_activity00.png" alt="" /></div>
-                  <div class="txt_grp">
-                    <span class="location bg_a_green">제주시</span>
-                    <span class="item">훈데르트바서파크<br />입장권</span>
-                    <span class="price"><strong>5,000</strong>원</span>
-                    <div class="sale_price"><strong>4,250</strong>원~</div>
-                  </div>
-                </a>
-              </div>
-              <div class="swiper-slide scroll_list">
-                <a href="#none">
-                  <div class="dim"><img src="./images/img_activity01.png" alt="" /></div>
-                  <div class="txt_grp">
-                    <span class="location bg_purple">서귀포시 서부</span>
-                    <span class="item">카멜리아힐</span>
-                    <span class="price"><strong>6,000</strong>원</span>
-                    <div class="sale_price"><strong>5,200</strong>원~</div>
-                  </div>
-                </a>
-              </div>
-              <div class="swiper-slide scroll_list">
-                <a href="#none">
-                  <div class="dim"><img src="./images/img_activity02.png" alt="" /></div>
-                  <div class="txt_grp">
-                    <span class="location bg_purple">서귀포시 서부</span>
-                    <span class="item">무민랜드제주</span>
-                    <span class="price"><strong>10,500</strong>원</span>
-                    <div class="sale_price"><strong>15,000</strong>원~</div>
-                  </div>
-                </a>
-              </div>
-              <div class="swiper-slide scroll_list">
-                <a href="#none">
-                  <div class="dim"><img src="./images/img_activity03.png" alt="" /></div>
-                  <div class="txt_grp">
-                    <span class="location bg_sky">서귀포시 동부</span>
-                    <span class="item">아쿠아플라넷제주<br />종합권</span>
-                    <span class="price"><strong>39,000</strong>원</span>
-                    <div class="sale_price"><strong>32,000</strong>원~</div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
+          <ul>
+            <li class="scroll_list">
+              <a href="#none">
+                <div class="dim"><img src="./images/img_activity00.png" alt="" /></div>
+                <div class="txt_grp">
+                  <span class="location bg_a_green">제주시</span>
+                  <span class="item">훈데르트바서파크<br />입장권</span>
+                  <span class="price"><strong>5,000</strong>원</span>
+                  <div class="sale_price"><strong>4,250</strong>원~</div>
+                </div>
+              </a>
+            </li>
+            <li class="scroll_list">
+              <a href="#none">
+                <div class="dim"><img src="./images/img_activity01.png" alt="" /></div>
+                <div class="txt_grp">
+                  <span class="location bg_purple">서귀포시 서부</span>
+                  <span class="item">카멜리아힐</span>
+                  <span class="price"><strong>6,000</strong>원</span>
+                  <div class="sale_price"><strong>5,200</strong>원~</div>
+                </div>
+              </a>
+            </li>
+            <li class="scroll_list">
+              <a href="#none">
+                <div class="dim"><img src="./images/img_activity02.png" alt="" /></div>
+                <div class="txt_grp">
+                  <span class="location bg_purple">서귀포시 서부</span>
+                  <span class="item">무민랜드제주</span>
+                  <span class="price"><strong>10,500</strong>원</span>
+                  <div class="sale_price"><strong>15,000</strong>원~</div>
+                </div>
+              </a>
+            </li>
+            <li class="scroll_list">
+              <a href="#none">
+                <div class="dim"><img src="./images/img_activity03.png" alt="" /></div>
+                <div class="txt_grp">
+                  <span class="location bg_sky">서귀포시 동부</span>
+                  <span class="item">아쿠아플라넷제주<br />종합권</span>
+                  <span class="price"><strong>39,000</strong>원</span>
+                  <div class="sale_price"><strong>32,000</strong>원~</div>
+                </div>
+              </a>
+            </li>
+          </ul>
         </div>
         <div class="layer_box -letter">
           <div class="df_box">
@@ -287,27 +275,24 @@
           </div>
           <p class="txt_box">고객의 여정이 더 새로울 수 있도록 <br />특별한 경험을 제공하기 위해 <br />에어로케이의 탑승객만 누릴 수 있는 <br />다양한 서비스와 프로덕트를 소개합니다</p>
           <div class="row_scroll_box -pic">
-            <!-- space-between="20" slides-per-view="auto" pagination="false" -->
-            <div class="swiper">
-              <div class="swiper-container">
-                <div class="swiper-slide scroll_list">
-                  <div class="dim"><img src="./images/img_seat.png" alt="" /></div>
-                  <p class="info_txt">가볍고 <br />혁신적인 좌석</p>
-                </div>
-                <div class="swiper-slide scroll_list">
-                  <div class="dim"><img src="./images/img_service01.png" alt="" /></div>
-                  <p class="info_txt">코로나 19 <br />방역수칙</p>
-                </div>
-                <div class="swiper-slide scroll_list">
-                  <div class="dim"><img src="./images/img_service02.png" alt="" /></div>
-                  <p class="info_txt">젠더리스 <br />유니폼</p>
-                </div>
-                <div class="swiper-slide scroll_list">
-                  <div class="dim"><img src="./images/img_service03.png" alt="" /></div>
-                  <p class="info_txt">다양한 <br />기내 콘텐츠</p>
-                </div>
-              </div>
-            </div>
+            <ul>
+              <li class="scroll_list">
+                <div class="dim"><img src="./images/img_seat.png" alt="" /></div>
+                <p class="info_txt">가볍고 <br />혁신적인 좌석</p>
+              </li>
+              <li class="scroll_list">
+                <div class="dim"><img src="./images/img_service01.png" alt="" /></div>
+                <p class="info_txt">코로나 19 <br />방역수칙</p>
+              </li>
+              <li class="scroll_list">
+                <div class="dim"><img src="./images/img_service02.png" alt="" /></div>
+                <p class="info_txt">젠더리스 <br />유니폼</p>
+              </li>
+              <li class="scroll_list">
+                <div class="dim"><img src="./images/img_service03.png" alt="" /></div>
+                <p class="info_txt">다양한 <br />기내 콘텐츠</p>
+              </li>
+            </ul>
           </div>
           <div class="df_box mt189">
             <h3 class="h3_tit"><span class="fc_purple">나다운 여정의 시작</span><br />에어로케이와 함께</h3>
@@ -378,91 +363,64 @@
         </div>
       </footer>
     </div>
-
-    <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script>
-      function slickSlide() {
-        $('.slick_scroll').slick({
-          prevArrow: false,
-          nextArrow: false,
-          slickPause: true,
-          dots: true,
-          autoplay: true,
-          autoplaySpeed: 2000
-        });
-        $('.btn_play').hide();
-        $('.btn_pause').click(function () {
-          $('.slick_scroll').slick('slickPause');
-          $(this).hide().next().show();
-        });
-        $('.btn_play').click(function () {
-          $('.slick_scroll').slick('slickPlay');
-          $(this).hide().prev().show();
-        });
-      }
-
-      function tabMove() {
-        const $tab_li = $('.tab_list_box .tab_li a');
-
-        $('.tab_content').eq(1).hide();
-        $('.underline').css({
-          width: $tab_li.eq(0).width(),
-          left: $tab_li.eq(0).position().left + 1 + 'px'
-        });
-
-        $tab_li.click(function () {
-          const $this = $(this);
-          const $posX = $this.position().left;
-          const $liWidth = $this.width();
-
-          $('.tab_content').fadeOut(200);
-          $(this.hash).delay(100).fadeIn(100);
-
-          $('.underline').css({
-            width: $liWidth,
-            left: $posX + 1 + 'px'
-          });
-        });
-      }
-
-      function bottomMenu() {
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 100) {
-            $('.fixed_menu').addClass('on');
-          } else {
-            $('.fixed_menu').removeClass('on');
-          }
-        });
-      }
-
-      function swiperInit() {
-        console.log($('.slide_box .swiper').length);
-        const swiper = new Swiper('.slide_box .swiper', {
-          // Optional parameters
-          //loop: true,
-
-          // If we need pagination
-          pagination: {
-            el: '.swiper-pagination'
-          },
-
-          // Navigation arrows
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          },
-
-          // And if we need scrollbar
-          scrollbar: {
-            el: '.swiper-scrollbar'
-          }
-        });
-      }
-      // slickSlide();
-      // tabMove();
-      // bottomMenu();
-      swiperInit();
-    </script>
   </body>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script>
+    function slickSlide() {
+      $('.slick_scroll').slick({
+        prevArrow: false,
+        nextArrow: false,
+        slickPause: true,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 2000
+      });
+      $('.btn_play').hide();
+      $('.btn_pause').click(function () {
+        $('.slick_scroll').slick('slickPause');
+        $(this).hide().next().show();
+      });
+      $('.btn_play').click(function () {
+        $('.slick_scroll').slick('slickPlay');
+        $(this).hide().prev().show();
+      });
+    }
+
+    function tabMove() {
+      const $tab_li = $('.tab_list_box .tab_li a');
+
+      $('.tab_content').eq(1).hide();
+      $('.underline').css({
+        width: $tab_li.eq(0).width(),
+        left: $tab_li.eq(0).position().left + 1 + 'px'
+      });
+
+      $tab_li.click(function () {
+        const $this = $(this);
+        const $posX = $this.position().left;
+        const $liWidth = $this.width();
+
+        $('.tab_content').fadeOut(200);
+        $(this.hash).delay(100).fadeIn(100);
+
+        $('.underline').css({
+          width: $liWidth,
+          left: $posX + 1 + 'px'
+        });
+      });
+    }
+
+    function bottomMenu() {
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+          $('.fixed_menu').addClass('on');
+        } else {
+          $('.fixed_menu').removeClass('on');
+        }
+      });
+    }
+    slickSlide();
+    tabMove();
+    bottomMenu();
+  </script>
 </html>

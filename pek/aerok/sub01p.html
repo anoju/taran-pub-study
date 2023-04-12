@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+    <link href="./css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <title>AeroK</title>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="cd_popup" role="alert">
+      <div class="pop_container">
+        <header class="pop_header">
+          <h4 class="h4_tit">인원 선택</h4>
+          <button class="ico_closed"></button>
+        </header>
+        <div class="pop_content">
+          <div class="spinner_box">
+            <div class="spinner_obj">
+              <div class="tit">
+                <strong>성인</strong>
+                <span>만 13세 이상</span>
+              </div>
+              <div class="spinner">
+                <button class="ico_minus"></button>
+                <span class="num">0</span>
+                <button class="ico_plus"></button>
+              </div>
+            </div>
+            <div class="spinner_obj">
+              <div class="tit">
+                <strong>소아</strong>
+                <span>2세부터 만 13세 미만</span>
+              </div>
+              <div class="spinner">
+                <button class="ico_minus"></button>
+                <span class="num">0</span>
+                <button class="ico_plus"></button>
+              </div>
+            </div>
+            <div class="spinner_obj">
+              <div class="tit">
+                <strong>유아</strong>
+                <span>0세부터 만 2세 미만</span>
+              </div>
+              <div class="spinner">
+                <button class="ico_minus"></button>
+                <span class="num">0</span>
+                <button class="ico_plus"></button>
+              </div>
+            </div>
+          </div>
+          <div class="bg_box">
+            <div class="age_calc">
+              <div>나이계산기</div>
+              <p>생년월일을 입력해주세요.</p>
+              <input type="text" class="date" />
+              <a href="#none" class="btn_c -s">계산하기</a>
+              <ul class="info_list">
+                <li>국내선의 경우, 소아/유아의 나이 구분은 각 항공편의 탑승일 기준입니다.</li>
+                <li>탑승 수속 시 생년월일 확인 가능한 서류 지참이 필수입니다.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pop_btn_box">
+          <div class="total"></div>
+          <div class="btn_flex">
+            <button class="btn_g"></button>
+            <button class="btn_c"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

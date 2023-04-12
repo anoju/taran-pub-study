@@ -3,8 +3,9 @@
 // import
 @import 'reset';
 @import 'common';
+@import 'popup';
 
-/****header*****/
+/**********header***********/
 .header_dox {
   width: 100%;
   height: 6.4rem;
@@ -36,8 +37,49 @@
   }
 }
 
-/***section***/
-/*검색영역*/
+/*************하단메뉴*************/
+.fixed_menu {
+  position: fixed;
+  bottom: -10rem;
+  width: 100%;
+  padding: 0.6rem 1% 0.3rem;
+  background-color: #fff;
+  border-radius: 1.6rem 1.6rem 0 0;
+  backdrop-filter: blur(2.5px);
+  box-shadow: 0px -0.4rem 2.4rem rgba(0, 0, 0, 0.12);
+  transition: all 0.3s;
+  box-sizing: border-box;
+  z-index: 999;
+  &.on {
+    bottom: 0;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .menu_li {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      > a {
+        padding: 1rem 0 3rem 0;
+      }
+      img {
+        display: inline-block;
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+      span {
+        display: block;
+        font-size: 1.2rem;
+        line-height: 1.7rem;
+      }
+    }
+  }
+}
+/**********section********/
+/**검색영역**/
 .sch_box {
   display: flex;
   flex-direction: column;
@@ -111,10 +153,12 @@
   }
   .date {
     display: flex;
+    width: 100%;
     margin-bottom: 0.4rem;
     .leave_date,
     .come_date {
       position: relative;
+      width: 50%;
     }
     .come_date {
       margin-left: 0.4rem;
@@ -193,21 +237,32 @@
   }
 }
 
-/***슬라이드 영역***/
+/**슬라이드 영역**/
 //자동스크롤배너
-.scroll_banner_box {
+.scroll_banner_box,
+.swiper-container {
   display: flex;
-  .rolling_banner {
+  .rolling_banner,
+  .swiper-slide {
     width: 100%;
     height: auto;
     img {
       width: 100%;
     }
   }
+  //swiper bar
+  // .slide_box > .swiper-slide {
+  //   overflow: visible !important;
+  // }
+  // .slide_box > .swiper-slide .swiper-pagination {
+  //   width: calc(100% - 119.8px) !important;
+  //   transform: translate3d(2.4rem, 23.8rem, 0) !important;
+  // }
+
   //슬릭
   .slick-dots {
     display: flex;
-    width: 70%;
+    width: calc(100% - 119.8px);
     padding: 2.8rem 0 0 2.4rem;
     li {
       width: inherit;
@@ -236,7 +291,7 @@
     color: #bfc5cf;
     font-size: 1.3rem;
     font-family: 'subFont';
-    font-weight: 900;
+    font-weight: 600;
     .p_num {
       color: var(--sub-color);
     }
@@ -249,6 +304,375 @@
       height: 1.6rem;
       margin-left: 0.8rem;
       background: url(../images/icon_pause.png) no-repeat 0 0 / cover;
+      transition: all 0.3s;
+    }
+    .btn_play {
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-left: 0.8rem;
+      background: url(../images/icon_play.png) no-repeat 0 0 / cover;
+      transition: all 0.3s;
+    }
+  }
+}
+//가로 스크롤
+.row_scroll_box {
+  width: 100%;
+  height: auto;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .swiper-container {
+    padding: 0 2.4rem;
+    .scroll_list {
+      width: auto;
+      padding-top: 2rem;
+      a {
+        display: flex;
+        flex-direction: column;
+        height: 31.7rem;
+      }
+      img {
+        width: 28rem;
+        height: 18rem;
+        object-fit: cover;
+      }
+      .location {
+        margin-top: 1.7rem;
+        color: var(--sky-color);
+        font-weight: 700;
+        font-size: 1.4rem;
+        line-height: 20.27px;
+      }
+      .place,
+      .item {
+        margin-top: 0.2rem;
+        font-weight: 500;
+        font-size: 1.8rem;
+        line-height: 26px;
+      }
+      .sale_price {
+        margin-top: 2rem;
+        font: 600 2.2rem/2.4rem 'subFont';
+        letter-spacing: -2%;
+        strong {
+          font-weight: 900;
+        }
+      }
+      .price {
+        margin-top: 1rem;
+        font: 600 1.5rem/1.6rem 'subFont';
+        text-decoration: line-through;
+        opacity: 0.4;
+      }
+    }
+  }
+  &.-card {
+    .scroll_list {
+      a {
+        position: relative;
+        width: 28rem;
+        height: 36rem;
+      }
+      .dim {
+        position: absolute;
+        width: 100%;
+        height: 36rem;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+        img {
+          position: absolute;
+          height: 100%;
+          z-index: -1;
+        }
+      }
+      .txt_grp {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 2.8rem;
+        color: #fff;
+        box-sizing: border-box;
+      }
+      .location {
+        border-radius: 1.7rem;
+        padding: 0.5rem 1.5rem;
+        margin-top: 4rem;
+        font-weight: normal;
+        font-size: 1.3rem;
+        color: #fff;
+        line-height: 1.8rem;
+      }
+      .item,
+      .place {
+        margin-top: 0.8rem;
+        font-weight: 700;
+        font-size: 2.8rem;
+        line-height: 4.2rem;
+        letter-spacing: -1%;
+      }
+      .price {
+        position: absolute;
+        bottom: 7.7rem;
+        font: 500 1.6rem/1.8rem 'subFont';
+        opacity: 0.6;
+      }
+      .sale_price {
+        position: absolute;
+        bottom: 4rem;
+        font: 500 2.4rem/2.6rem 'subFont';
+      }
+    }
+  }
+  &.-pic {
+    .scroll_list {
+      position: relative;
+      padding-top: 3.2rem;
+      .dim {
+        position: relative;
+        width: 100%;
+        width: 28rem;
+        height: 28rem;
+        background-color: #000;
+        img {
+          position: absolute;
+          height: 100%;
+          opacity: 0.8;
+        }
+      }
+      .info_txt {
+        position: absolute;
+        left: 2.8rem;
+        bottom: 4rem;
+        display: inline-block;
+        color: #fff;
+        font-weight: 700;
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+        letter-spacing: -0.01em;
+        z-index: 10;
+      }
+    }
+  }
+}
+
+/***탭영역***/
+.tab_menu_list {
+  position: absolute;
+  right: 2.4rem;
+  top: -3.2rem;
+  ul {
+    display: flex;
+    .tab_li {
+      width: auto;
+      a {
+        font-family: 'subFont';
+        font-weight: 800;
+        line-height: 1.9rem;
+        margin-bottom: 0.3rem;
+      }
+      + li {
+        margin-left: 1.6rem;
+      }
+    }
+  }
+  .underline {
+    position: relative;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: all 0.5s;
+    transition-timing-function: cubic-bezier(0, 0.59, 0, 0.86);
+  }
+}
+.tab_content {
+  margin-top: 0.8rem;
+}
+
+/***갤러리영역***/
+.gallery_box {
+  width: 100%;
+  .pic_list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    .pic {
+      width: 19.5rem;
+      height: 19.5rem;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+/***brand story***/
+.brand_box {
+  position: relative;
+  width: 100%;
+  height: 60rem;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  .txt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    padding: 0 3.8rem;
+    word-break: keep-all;
+    box-sizing: border-box;
+    p {
+      margin: 0 2rem;
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 2.6rem;
+      color: rgba(255, 255, 255, 0.8);
+      white-space: break-spaces;
+    }
+    strong {
+      display: inline-block;
+      margin-top: 1.6rem;
+      font-family: 'subFont';
+      font-weight: 600;
+      font-size: 2.6rem;
+      line-height: 4rem;
+      white-space: break-spaces;
+    }
+  }
+}
+
+/****나이 계산기***/
+.age_calc {
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2rem;
+  color: rgba(0, 0, 0, 0.6);
+  p {
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: #000;
+    line-height: 2.3rem;
+  }
+  .date {
+    width: 100%;
+    margin: 2rem 0;
+    text-align: center;
+  }
+}
+
+/********footer*********/
+.footer_box {
+  width: 100%;
+  height: auto;
+  padding: 0 2.4rem;
+  background: rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  .social_box {
+    padding: 4rem 0 6rem 0;
+    .news_letter {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      input {
+        width: 3rem;
+        flex: 1;
+        padding: 1.6rem 2rem;
+      }
+      .btn_apply {
+        border: 0;
+        padding: 0 3rem;
+        background-color: var(--sub-color);
+        color: #fff;
+        font-weight: 500;
+        line-height: 2.31rem;
+      }
+    }
+    .sns_list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 4rem;
+      .sns {
+        width: 4.8rem;
+        height: 4.8rem;
+        border-radius: 50%;
+        background-color: #6a7385;
+        text-indent: -9999em;
+        + .sns {
+          margin-left: 2rem;
+        }
+        &:first-of-type {
+          background: #6a7385 url(../images/icon_facebook.png) no-repeat center / 1.1rem 2rem;
+        }
+        &:nth-of-type(2) {
+          background: #6a7385 url(../images/icon_ig.png) no-repeat center / 2.2rem 2.2rem;
+        }
+        &:last-of-type {
+          background: #6a7385 url(../images/icon_kakao.png) no-repeat center / 2.2rem 2.2rem;
+        }
+      }
+    }
+  }
+  .info {
+    .logo {
+      width: 11.2rem;
+      height: 2.4rem;
+      margin-bottom: 2.8rem;
+      background: url(../images/logo_gray.png) no-repeat 0 0 / cover;
+    }
+    .company {
+      display: block;
+      margin-bottom: 0.8rem;
+      line-height: 2.4rem;
+    }
+    .info_list {
+      display: flex;
+      flex-wrap: wrap;
+      width: 29rem;
+      font-size: 1.4rem;
+      line-height: 2.2rem;
+      color: #777;
+      dt {
+        font-weight: 500;
+      }
+      dd {
+        margin-left: 0.4rem;
+      }
+      a {
+        color: #777;
+      }
+      .letter_slash {
+        display: inline-block;
+        width: 1px;
+        height: 13px;
+        margin: 0.5rem 0.8rem 0 0.8rem;
+        background-color: #c5c5c5;
+      }
+    }
+    .legal_num {
+      display: block;
+      margin-top: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: 700;
+      color: #666;
+    }
+    .copyright {
+      padding-bottom: 15.4rem;
+      font-weight: 400;
+      line-height: 2rem;
+      font-size: 1.4rem;
     }
   }
 }
