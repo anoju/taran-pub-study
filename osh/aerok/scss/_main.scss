@@ -249,15 +249,6 @@
 
 .swiper.main-banner {
   width: 100%;
-  .swiper-slide {
-    a {
-      display: block;
-      img {
-        display: block;
-        max-width: 100%;
-      }
-    }
-  }
 
   .swiper-pagination-wrap {
     display: flex;
@@ -285,10 +276,11 @@
     .swiper-auto-btn {
       white-space: nowrap;
       margin-left: 1.8rem;
-      img {
-        width: 1.8rem;
-        height: 1.8rem;
-        vertical-align: middle;
+      width: 1.8rem;
+      height: 1.8rem;
+      background: url(../images/icon_pause.png) no-repeat center center / contain;
+      &._stop {
+        background-image: url(../images/icon_stop.png);
       }
     }
   }
@@ -305,15 +297,44 @@
 }
 
 .swiper.toggle-slide {
-  &:first-child {
-    margin-left: 2.4rem;
-  }
+  padding: 0 1.4rem;
   .swiper-slide {
-    a {
-      display: block;
-      img {
+    width: auto;
+    padding: 0 1rem;
+    > a {
+      width: 28rem;
+    }
+  }
+  .txt-area {
+    margin-top: 1.7rem;
+    em {
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 20px;
+      color: #3d8aff;
+    }
+    p {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 26px;
+      color: #222222;
+    }
+    .price {
+      margin-top: 2rem;
+      strong {
         display: block;
-        max-width: 100%;
+        font-weight: 900;
+        font-size: 2.2rem;
+        line-height: 24px;
+        color: #222222;
+        margin-bottom: 1rem;
+      }
+      span {
+        font-weight: 900;
+        font-size: 1.5rem;
+        line-height: 17px;
+        text-decoration-line: line-through;
+        opacity: 0.4;
       }
     }
   }
@@ -330,6 +351,58 @@
 }
 
 //section4
-.section4 {
-  position: relative;
+.tit-wrap {
+  display: flex;
+  justify-content: space-between;
+  .btn-more {
+    padding-top: 4rem;
+    .more {
+      font-size: 1.5rem;
+      line-height: 2.2rem;
+      color: #666666;
+      i {
+        &::after {
+          content: '';
+          display: inline-block;
+          width: 1.6rem;
+          height: 1.6rem;
+          background: url(../images/icon_plus.png) 0 0 / cover;
+          vertical-align: middle;
+          margin-left: 1.2rem;
+        }
+      }
+    }
+  }
+}
+
+.swiper.sec4-slide {
+  padding: 0 1rem;
+  .swiper-slide {
+    width: auto;
+    padding: 0 1.4rem;
+    .slide-inner {
+      position: relative;
+      width: 28rem;
+    }
+  }
+  .sec4-txt {
+    p {
+      display: inline-block;
+      background: #3ea58c;
+      height: 2.9rem;
+      line-height: 2.9rem;
+      text-align: center;
+      border-radius: 1.7rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 0.5rem 1.5rem;
+      color: #ffffff;
+    }
+    strong {
+    }
+    .price {
+    }
+    .discount {
+    }
+  }
 }

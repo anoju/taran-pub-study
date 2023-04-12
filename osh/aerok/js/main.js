@@ -8,6 +8,7 @@ $(function () {
 function mainInit() {
   mainBanner();
   toggleSlide();
+  sec4Slide();
 }
 
 function mainBanner() {
@@ -31,26 +32,33 @@ function mainBanner() {
   $('.swiper-auto-btn').click(function (e) {
     e.preventDefault();
     const $this = $(this);
-    const $stopImg = 'images/icon_pause.png';
-    const $playImg = 'images/icon_stop.png';
-    if tt($this.hasClass('playing')) {
-      mainSwiper.autoplay.stop();
-      $this.removeClass('playing').find('img').attr('src', $playImg);
-    } else {
+    const $stopTxt = '정지';
+    const $playTxt = '재생';
+    if ($this.hasClass('_stop')) {
       mainSwiper.autoplay.start();
-      $this.addClass('playing').find('img').attr('src', $stopImg);
+      $this.removeClass('_stop').attr('aria-label', $playTxt);
+    } else {
+      mainSwiper.autoplay.stop();
+      $this.addClass('_stop').attr('aria-label', $stopTxt);
     }
   });
 }
 
 function toggleSlide() {
   var swiper = new Swiper('.toggle-slide', {
-    breakpoints: {
-      320: {
-        slidesPerView: 1.3,
-        spaceBetween: 20
-      }
-    },
-    loop: true
+    slidesPerView: 'auto'
+    // breakpoints: {
+    //   320: {
+    //     slidesPerView: 1.3,
+    //     spaceBetween: 20
+    //   }
+    // }
+    // loop: true
+  });
+}
+
+function sec4Slide() {
+  var swiper = new Swiper('.sec4-slide', {
+    slidesPerView: 'auto'
   });
 }
