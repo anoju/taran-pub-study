@@ -56,11 +56,12 @@ body {
 }
 .popup_num {
   display: none;
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   left: 0;
   top: 0;
   right: 0;
+  height: 100%;
   padding-top: 1.6rem;
   background: #fff;
   .pophead {
@@ -395,7 +396,7 @@ section {
             color: #000;
           }
         }
-        .drop_down {
+        label {
           width: 2.4rem;
           height: 2.4rem;
           background-image: url("data:image/svg+xml,%0A%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10L12 16L18 10' stroke='black' stroke-linecap='square'/%3E%3C/svg%3E%0A");
