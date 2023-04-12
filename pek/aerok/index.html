@@ -87,30 +87,22 @@
         </div>
         <div class="slide_box">
           <div class="swiper">
-            <div class="swiper-containe">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_hotelscombine.png" alt="" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_1.png" alt="" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_2.png" alt="" /></a>
-                </div>
-                <div class="swiper-slide">
-                  <a href=""><img src="./images/img_banner_3.png" alt="" /></a>
-                </div>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href=""><img src="./images/img_banner_hotelscombine.png" alt="" /></a>
               </div>
-              <div class="swiper-pagination"></div>
+              <div class="swiper-slide">
+                <a href=""><img src="./images/img_banner_1.png" alt="" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href=""><img src="./images/img_banner_2.png" alt="" /></a>
+              </div>
+              <div class="swiper-slide">
+                <a href=""><img src="./images/img_banner_3.png" alt="" /></a>
+              </div>
             </div>
-          </div>
-          <div class="paging">
-            <span class="p_num fwb">1</span>
-            <span class="slash">/</span>
-            <span class="p_total">4</span>
-            <div class="btn_pause"></div>
-            <div class="btn_play"></div>
+            <div class="swiper-scrollbar"></div>
+            <div class="swiper-pagination"></div>
           </div>
         </div>
         <div class="df_box">
@@ -437,25 +429,14 @@
       }
 
       function swiperInit() {
-        console.log($('.slide_box .swiper').length);
         const swiper = new Swiper('.slide_box .swiper', {
           // Optional parameters
-          //loop: true,
-
-          // If we need pagination
+          loop: true,
           pagination: {
-            el: '.swiper-pagination'
+            el: '.slide_box .swiper-pagination'
           },
-
-          // Navigation arrows
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          },
-
-          // And if we need scrollbar
           scrollbar: {
-            el: '.swiper-scrollbar'
+            el: '.slide_box .swiper-scrollbar'
           }
         });
       }
