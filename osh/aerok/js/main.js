@@ -46,15 +46,26 @@ function mainBanner() {
 }
 
 function toggleSlide() {
-  var swiper = new Swiper('.toggle-slide', {
+  var swiper = new Swiper('.hotel', {
     slidesPerView: 'auto'
-    // breakpoints: {
-    //   320: {
-    //     slidesPerView: 1.3,
-    //     spaceBetween: 20
-    //   }
-    // }
-    // loop: true
+  });
+
+  $('.btn-toggle').click(function (e) {
+    $('.btn-toggle').removeClass('active');
+    $(this).addClass('active');
+  });
+
+  $('.menu1').click(function (e) {
+    $('.hotel').show();
+    $('.rental').hide();
+  });
+  $('.menu2').click(function (e) {
+    $('.rental').show();
+    $('.hotel').hide();
+  });
+
+  var swiper = new Swiper('.rental', {
+    slidesPerView: 'auto'
   });
 }
 
