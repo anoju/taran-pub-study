@@ -27,7 +27,6 @@ button {
   }
   .section {
     position: relative;
-    width: 100%;
   }
   .inner {
     position: relative;
@@ -57,10 +56,29 @@ button {
   line-height: 3.2rem;
   font-family: 'NanumSquareNeo';
   font-weight: 800;
+  margin-bottom: 2rem;
   .point1 {
     color: #0070ff;
   }
   .point2 {
     color: #ff8024;
+  }
+  .point3 {
+    color: #1ba85c;
+  }
+  .point4 {
+    color: #8638ea;
+  }
+}
+
+.swiper-slide {
+  > a {
+    display: block;
+    img {
+      display: block;
+    }
+  }
+  img {
+    max-width: 100%;
   }
 }
