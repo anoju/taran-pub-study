@@ -647,11 +647,14 @@
 .srch-wrap {
   text-align: center;
   display: flex;
+  justify-content: space-between;
   .srch-form {
+    width: 65%;
     padding: 1.6rem 2rem;
     font-weight: 500;
     font-size: 1.6rem;
     line-height: 2.3rem;
+    box-sizing: border-box;
     color: rgba(0, 0, 0, 0.3);
   }
   .srch-btn {
