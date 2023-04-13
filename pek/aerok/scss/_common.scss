@@ -140,6 +140,24 @@ button {
 }
 
 /*button*/
+button {
+  border: 0;
+  outline: 0;
+}
+.btn_c {
+  padding: 0.85rem 4.2rem;
+  background-color: var(--main-color);
+  text-align: center;
+  color: var(--sub-color);
+  font-weight: 700;
+  line-height: 2.3rem;
+  box-sizing: border-box;
+}
+.btn_g {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: -0.02em;
+}
 .btn_link {
   width: 28.6rem;
   height: auto;

@@ -19,59 +19,70 @@
           <button class="ico_closed"></button>
         </header>
         <div class="pop_content">
-          <div class="spinner_box">
-            <div class="spinner_obj">
-              <div class="tit">
-                <strong>성인</strong>
-                <span>만 13세 이상</span>
+          <div class="inner">
+            <div class="spinner_box">
+              <div class="spinner_obj">
+                <div class="tit">
+                  <strong>성인</strong>
+                  <span>만 13세 이상</span>
+                </div>
+                <div class="spinner">
+                  <button class="ico_minus"></button>
+                  <span class="num">0</span>
+                  <button class="ico_plus"></button>
+                </div>
               </div>
-              <div class="spinner">
-                <button class="ico_minus"></button>
-                <span class="num">0</span>
-                <button class="ico_plus"></button>
+              <div class="spinner_obj">
+                <div class="tit">
+                  <strong>소아</strong>
+                  <span>2세부터 만 13세 미만</span>
+                </div>
+                <div class="spinner">
+                  <button class="ico_minus"></button>
+                  <span class="num">0</span>
+                  <button class="ico_plus"></button>
+                </div>
+              </div>
+              <div class="spinner_obj">
+                <div class="tit">
+                  <strong>유아</strong>
+                  <span>0세부터 만 2세 미만</span>
+                </div>
+                <div class="spinner">
+                  <button class="ico_minus"></button>
+                  <span class="num">0</span>
+                  <button class="ico_plus"></button>
+                </div>
               </div>
             </div>
-            <div class="spinner_obj">
-              <div class="tit">
-                <strong>소아</strong>
-                <span>2세부터 만 13세 미만</span>
+            <div class="bg_box">
+              <div class="age_calc">
+                <div>나이계산기</div>
+                <p>생년월일을 입력해주세요.</p>
+                <input type="text" class="date" required maxlength="10" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                <a href="#none" class="btn_c">계산하기</a>
+                <ul class="info_list">
+                  <li>국내선의 경우, 소아/유아의 나이 구분은 각 항공편의 탑승일 기준입니다.</li>
+                  <li>탑승 수속 시 생년월일 확인 가능한 서류 지참이 필수입니다.</li>
+                </ul>
               </div>
-              <div class="spinner">
-                <button class="ico_minus"></button>
-                <span class="num">0</span>
-                <button class="ico_plus"></button>
-              </div>
-            </div>
-            <div class="spinner_obj">
-              <div class="tit">
-                <strong>유아</strong>
-                <span>0세부터 만 2세 미만</span>
-              </div>
-              <div class="spinner">
-                <button class="ico_minus"></button>
-                <span class="num">0</span>
-                <button class="ico_plus"></button>
-              </div>
-            </div>
-          </div>
-          <div class="bg_box">
-            <div class="age_calc">
-              <div>나이계산기</div>
-              <p>생년월일을 입력해주세요.</p>
-              <input type="text" class="date" />
-              <a href="#none" class="btn_c -s">계산하기</a>
-              <ul class="info_list">
-                <li>국내선의 경우, 소아/유아의 나이 구분은 각 항공편의 탑승일 기준입니다.</li>
-                <li>탑승 수속 시 생년월일 확인 가능한 서류 지참이 필수입니다.</li>
-              </ul>
             </div>
           </div>
         </div>
         <div class="pop_btn_box">
-          <div class="total"></div>
+          <div class="total">
+            <span class="subtit">인원</span>
+            <div class="result_grp">
+              <div class="result">
+                <span class="obj">성인</span>
+                <span class="num">1</span>
+                <span>명</span>
+              </div>
+            </div>
+          </div>
           <div class="btn_flex">
-            <button class="btn_g"></button>
-            <button class="btn_c"></button>
+            <button class="btn_g">이전단계</button>
+            <button class="btn_c">선택완료</button>
           </div>
         </div>
       </div>

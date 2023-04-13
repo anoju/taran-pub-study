@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
     <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
     <link href="./css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
@@ -86,7 +86,7 @@
           <h4 class="h4_tit">에어로케이의 특별한 소식</h4>
         </div>
         <div class="slide_box">
-          <div class="swiper">
+          <div class="swiper auto_ply_slide">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <a href=""><img src="./images/img_banner_hotelscombine.png" alt="" /></a>
@@ -101,8 +101,11 @@
                 <a href=""><img src="./images/img_banner_3.png" alt="" /></a>
               </div>
             </div>
-            <div class="swiper-scrollbar"></div>
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination-wrap">
+              <div class="swiper-scrollbar"></div>
+              <div class="swiper-pagination"></div>
+              <button class="swiper-auto-btn">정지</button>
+            </div>
           </div>
         </div>
         <div class="df_box">
@@ -120,7 +123,7 @@
             <div class="row_scroll_box">
               <div class="swiper">
                 <!-- space-between="20" slides-per-view="auto" pagination="false" -->
-                <div class="swiper-container">
+                <div class="swiper-wrapper">
                   <div class="swiper-slide scroll_list">
                     <a href="">
                       <img src="./images/img_hotel.png" alt="" />
@@ -163,53 +166,56 @@
           </div>
           <div class="tab_content" id="tab_box01">
             <div class="row_scroll_box">
-              <!-- <swiper-container class="mySwiper" space-between="20" slides-per-view="auto" pagination="false">
-                <swiper-slide class="scroll_list">
-                  <a href="">
-                    <img src="./images/img_car00.png" alt="" />
-                    <span class="location fc_orange">제주도렌터카</span>
-                    <span class="item">카니발</span>
-                    <div class="sale_price"><strong>110,000</strong>원~</div>
-                    <span class="price"><strong>231,000</strong>원</span>
-                  </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
-                  <a href="">
-                    <img src="./images/img_car01.png" alt="" />
-                    <span class="location fc_orange">제주도렌터카</span>
-                    <span class="item">레이</span>
-                    <div class="sale_price"><strong>25,104</strong>원~</div>
-                    <span class="price"><strong>16,7000</strong>원</span>
-                  </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
-                  <a href="">
-                    <img src="./images/img_car02.png" alt="" />
-                    <span class="location fc_orange">제주도렌터카</span>
-                    <span class="item">모닝</span>
-                    <div class="sale_price"><strong>40,250</strong>원~</div>
-                    <span class="price"><strong>50,000</strong>원</span>
-                  </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
-                  <a href="">
-                    <img src="./images/img_car03.png" alt="" />
-                    <span class="location fc_orange">제주도렌터카</span>
-                    <span class="item">아이오닉6</span>
-                    <div class="sale_price"><strong>71,081</strong>원~</div>
-                    <span class="price"><strong>88,000</strong>원</span>
-                  </a>
-                </swiper-slide>
-                <swiper-slide class="scroll_list">
-                  <a href="">
-                    <img src="./images/img_car03.png" alt="" />
-                    <span class="location fc_orange">제주도렌터카</span>
-                    <span class="item">카니발</span>
-                    <div class="sale_price"><strong>71,081</strong>원~</div>
-                    <span class="price"><strong>98,000</strong>원</span>
-                  </a>
-                </swiper-slide>
-              </swiper-container> -->
+              <div class="swiper">
+                <!-- space-between="20" slides-per-view="auto" pagination="false" -->
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide scroll_list">
+                    <a href="">
+                      <img src="./images/img_car00.png" alt="" />
+                      <span class="location fc_orange">제주도렌터카</span>
+                      <span class="item">카니발</span>
+                      <div class="sale_price"><strong>110,000</strong>원~</div>
+                      <span class="price"><strong>231,000</strong>원</span>
+                    </a>
+                  </div>
+                  <div class="swiper-slide scroll_list">
+                    <a href="">
+                      <img src="./images/img_car01.png" alt="" />
+                      <span class="location fc_orange">제주도렌터카</span>
+                      <span class="item">레이</span>
+                      <div class="sale_price"><strong>25,104</strong>원~</div>
+                      <span class="price"><strong>16,7000</strong>원</span>
+                    </a>
+                  </div>
+                  <div class="swiper-slide scroll_list">
+                    <a href="">
+                      <img src="./images/img_car02.png" alt="" />
+                      <span class="location fc_orange">제주도렌터카</span>
+                      <span class="item">모닝</span>
+                      <div class="sale_price"><strong>40,250</strong>원~</div>
+                      <span class="price"><strong>50,000</strong>원</span>
+                    </a>
+                  </div>
+                  <div class="swiper-slide scroll_list">
+                    <a href="">
+                      <img src="./images/img_car03.png" alt="" />
+                      <span class="location fc_orange">제주도렌터카</span>
+                      <span class="item">아이오닉6</span>
+                      <div class="sale_price"><strong>71,081</strong>원~</div>
+                      <span class="price"><strong>88,000</strong>원</span>
+                    </a>
+                  </div>
+                  <div class="swiper-slide scroll_list">
+                    <a href="">
+                      <img src="./images/img_car03.png" alt="" />
+                      <span class="location fc_orange">제주도렌터카</span>
+                      <span class="item">카니발</span>
+                      <div class="sale_price"><strong>71,081</strong>원~</div>
+                      <span class="price"><strong>98,000</strong>원</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -225,7 +231,7 @@
         <div class="row_scroll_box -card">
           <div class="swiper">
             <!--space-between="20" slides-per-view="auto" pagination="false"-->
-            <div class="swiper-container">
+            <div class="swiper-wrapper">
               <div class="swiper-slide scroll_list">
                 <a href="#none">
                   <div class="dim"><img src="./images/img_activity00.png" alt="" /></div>
@@ -281,7 +287,7 @@
           <div class="row_scroll_box -pic">
             <!-- space-between="20" slides-per-view="auto" pagination="false" -->
             <div class="swiper">
-              <div class="swiper-container">
+              <div class="swiper-wrapper">
                 <div class="swiper-slide scroll_list">
                   <div class="dim"><img src="./images/img_seat.png" alt="" /></div>
                   <p class="info_txt">가볍고 <br />혁신적인 좌석</p>
@@ -369,31 +375,108 @@
           <div class="copyright">Ⓒ2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</div>
         </div>
       </footer>
+      <div class="cd_popup head_count_popup">
+        <div class="pop_container">
+          <header class="pop_header">
+            <h4 class="h4_tit">인원 선택</h4>
+            <button class="ico_closed pop_close"></button>
+          </header>
+          <div class="pop_content">
+            <div class="inner">
+              <div class="spinner_box">
+                <div class="spinner_obj">
+                  <div class="tit">
+                    <strong>성인</strong>
+                    <span>만 13세 이상</span>
+                  </div>
+                  <div class="spinner">
+                    <button class="ico_minus"></button>
+                    <span class="num">0</span>
+                    <button class="ico_plus"></button>
+                  </div>
+                </div>
+                <div class="spinner_obj">
+                  <div class="tit">
+                    <strong>소아</strong>
+                    <span>2세부터 만 13세 미만</span>
+                  </div>
+                  <div class="spinner">
+                    <button class="ico_minus"></button>
+                    <span class="num">0</span>
+                    <button class="ico_plus"></button>
+                  </div>
+                </div>
+                <div class="spinner_obj">
+                  <div class="tit">
+                    <strong>유아</strong>
+                    <span>0세부터 만 2세 미만</span>
+                  </div>
+                  <div class="spinner">
+                    <button class="ico_minus"></button>
+                    <span class="num">0</span>
+                    <button class="ico_plus"></button>
+                  </div>
+                </div>
+              </div>
+              <div class="bg_box">
+                <div class="age_calc">
+                  <div>나이계산기</div>
+                  <p>생년월일을 입력해주세요.</p>
+                  <input type="text" class="date" required maxlength="10" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                  <a href="#none" class="btn_c">계산하기</a>
+                  <ul class="info_list">
+                    <li>국내선의 경우, 소아/유아의 나이 구분은 각 항공편의 탑승일 기준입니다.</li>
+                    <li>탑승 수속 시 생년월일 확인 가능한 서류 지참이 필수입니다.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pop_btn_box">
+            <div class="total">
+              <span class="subtit">인원</span>
+              <div class="result_grp">
+                <div class="result">
+                  <span class="obj">성인</span>
+                  <span class="num">1</span>
+                  <span>명</span>
+                </div>
+              </div>
+            </div>
+            <div class="btn_flex">
+              <button class="btn_g pop_close">이전단계</button>
+              <button class="btn_c">선택완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cd_popup popup2">
+        <div class="pop_container">
+          <header class="pop_header">
+            <h4 class="h4_tit">팝업제목</h4>
+            <button class="ico_closed pop_close"></button>
+          </header>
+          <div class="pop_content">
+            <div class="inner">
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+              <h2>팝업입니다.</h2>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
-      function slickSlide() {
-        $('.slick_scroll').slick({
-          prevArrow: false,
-          nextArrow: false,
-          slickPause: true,
-          dots: true,
-          autoplay: true,
-          autoplaySpeed: 2000
-        });
-        $('.btn_play').hide();
-        $('.btn_pause').click(function () {
-          $('.slick_scroll').slick('slickPause');
-          $(this).hide().next().show();
-        });
-        $('.btn_play').click(function () {
-          $('.slick_scroll').slick('slickPlay');
-          $(this).hide().prev().show();
-        });
-      }
-
       function tabMove() {
         const $tab_li = $('.tab_list_box .tab_li a');
 
@@ -429,21 +512,61 @@
       }
 
       function swiperInit() {
-        const swiper = new Swiper('.slide_box .swiper', {
+        const mainSwiper = new Swiper('.slide_box .swiper', {
           // Optional parameters
           loop: true,
+          autoplay: true,
           pagination: {
-            el: '.slide_box .swiper-pagination'
+            el: '.slide_box .swiper-pagination',
+            type: 'fraction'
           },
           scrollbar: {
             el: '.slide_box .swiper-scrollbar'
           }
         });
+
+        $('.slide_box .swiper-auto-btn').click(function (e) {
+          e.preventDefault();
+          const $this = $(this);
+          if ($this.hasClass('_stop')) {
+            mainSwiper.autoplay.start();
+            $this.removeClass('_stop');
+            $this.text('정지');
+          } else {
+            mainSwiper.autoplay.stop();
+            $this.addClass('_stop');
+            $this.text('재생');
+          }
+        });
+        //space-between="20" slides-per-view="auto" pagination="false"
+        const subSwiper = new Swiper('.row_scroll_box .swiper', {
+          slidesPerView: 'auto',
+          spaceBetween: 20
+        });
       }
-      // slickSlide();
-      // tabMove();
-      // bottomMenu();
+
+      function popOpen(target) {
+        $(target).addClass('open');
+      }
+      function popClose(target) {
+        $(target).removeClass('open');
+      }
+
+      function popUp() {
+        $('.sch_box .btn_sch a').click(function () {
+          popOpen('.head_count_popup');
+        });
+
+        $('.cd_popup .pop_close').click(function (e) {
+          e.preventDefault();
+          const $popup = $(this).closest('.cd_popup');
+          popClose($popup);
+        });
+      }
+      tabMove();
+      bottomMenu();
       swiperInit();
+      popUp();
     </script>
   </body>
 </html>
