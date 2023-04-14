@@ -391,8 +391,8 @@
                   </div>
                   <div class="spinner">
                     <button class="ico_minus"></button>
-                    <span class="num">0</span>
-                    <button class="ico_plus"></button>
+                    <input type="text" class="num" value="0" />
+                    <button class="ico_plus able"></button>
                   </div>
                 </div>
                 <div class="spinner_obj">
@@ -402,8 +402,8 @@
                   </div>
                   <div class="spinner">
                     <button class="ico_minus"></button>
-                    <span class="num">0</span>
-                    <button class="ico_plus"></button>
+                    <input type="text" class="num" value="0" />
+                    <button class="ico_plus able"></button>
                   </div>
                 </div>
                 <div class="spinner_obj">
@@ -413,8 +413,8 @@
                   </div>
                   <div class="spinner">
                     <button class="ico_minus"></button>
-                    <span class="num">0</span>
-                    <button class="ico_plus"></button>
+                    <input type="text" class="num" value="0" />
+                    <button class="ico_plus able"></button>
                   </div>
                 </div>
               </div>
@@ -422,7 +422,7 @@
                 <div class="age_calc">
                   <div>나이계산기</div>
                   <p>생년월일을 입력해주세요.</p>
-                  <input type="text" class="date" required maxlength="10" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                  <input type="text" class="date" placeholder="1999-11-04" required maxlength="10" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
                   <a href="#none" class="btn_c">계산하기</a>
                   <ul class="info_list">
                     <li>국내선의 경우, 소아/유아의 나이 구분은 각 항공편의 탑승일 기준입니다.</li>
@@ -545,6 +545,46 @@
         });
       }
 
+      function spinner() {
+        const $target = $('.spinner_box .spinner_obj .spinner');
+        const $plusBtn = $target.find('.ico_plus');
+        const $minusBtn = $target.find('.ico_minus');
+        let num = 0;
+
+        $plusBtn.click(function () {
+          num = parseInt($(this).closest('.spinner').find('input').val());
+
+          if (num < 9) {
+            $(this)
+              .prev()
+              .val(num + 1);
+          }
+          if ((num) => 1) {
+            $(this).closest('.spinner').find('.ico_minus').addClass('able');
+          }
+          if (num == 10) {
+            $(this).removeClass('able');
+          }
+        });
+        $minusBtn.click(function () {
+          num = parseInt($(this).closest('.spinner').find('input').val());
+          if (num == '0') {
+            $(this).prop('disabled', true);
+          }
+          if ((num) => '1') {
+            $(this)
+              .next()
+              .val(num - 1);
+            $(this).addClass('able');
+            $(this).prop('disabled', false);
+          }
+          if (num == '9') {
+            $(this).closest('.spinner').find('.ico_plus').addClass('able');
+            $(this).closest('.spinner').find('.ico_plus').prop('disabled', false);
+          }
+          console.log(num);
+        });
+      }
       function popOpen(target) {
         $(target).addClass('open');
       }
@@ -567,6 +607,7 @@
       bottomMenu();
       swiperInit();
       popUp();
+      spinner();
     </script>
   </body>
 </html>
