@@ -138,7 +138,7 @@
       display: none;
       &:checked {
         + label {
-          background: url(../images/icon_checkOn.png) no-repeat 0 0 / 2.4rem 2.4rem;
+          background-image: url(../images/icon_checkOn.png);
         }
       }
       + label {
