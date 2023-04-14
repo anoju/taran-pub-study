@@ -776,3 +776,81 @@
     }
   }
 }
+
+//인원선태 popup
+.passenger {
+  padding-top: 1.6rem;
+}
+.top {
+  .tit-h3 {
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    color: #002554;
+  }
+  .close {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 2.4rem;
+      height: 2.4rem;
+      background: url(../images/icon_close.png) no-repeat 0 0 / contain;
+    }
+  }
+}
+
+.items {
+  .list {
+    position: relative;
+    padding: 0.6rem 0;
+    strong {
+      display: block;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 23px;
+      color: #000000;
+    }
+    span {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      color: rgba(34, 34, 34, 0.4);
+    }
+  }
+  .select-passenger {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .btn-wrap {
+      width: 3.2rem;
+      height: 3.2rem;
+      &.minus {
+        background: url(../images/icon-passenger-minus.png) no-repeat 0 0 / contain;
+        &:hover {
+          background: url(../images/icon-passenger-minus-on.png) no-repeat 0 0 / contain;
+        }
+      }
+      &.plus {
+        background: url(../images/icon-passenger-plus.png) no-repeat 0 0 / contain;
+        &:hover {
+          background: url(../images/icon-passenger-plus-on.png) no-repeat 0 0 / contain;
+        }
+      }
+    }
+    .num {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.02em;
+      color: #000000;
+      margin: 0 2rem;
+    }
+  }
+}

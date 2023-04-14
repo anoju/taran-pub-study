@@ -10,6 +10,7 @@ function mainInit() {
   toggleSlide();
   sec4Slide();
   sreviceSlide();
+  passenger();
 }
 
 function mainBanner() {
@@ -43,7 +44,7 @@ function mainBanner() {
       $this.addClass('_stop').attr('aria-label', $stopTxt);
     }
   });
-}
+} //end mainBanner
 
 function toggleSlide() {
   var swiper = new Swiper('.hotel', {
@@ -67,16 +68,41 @@ function toggleSlide() {
   var swiper = new Swiper('.rental', {
     slidesPerView: 'auto'
   });
-}
+} //end toggleSlide
 
 function sec4Slide() {
   var swiper = new Swiper('.sec4-slide', {
     slidesPerView: 'auto'
   });
-}
+} //end sec4Slide
 
 function sreviceSlide() {
   var swiper = new Swiper('.srevice', {
     slidesPerView: 'auto'
+  });
+} //end sreviceSlide
+
+function passenger() {
+  let cnt = 0;
+  const $btnPlus = $('.plus');
+  const $btnMinus = $('.minus');
+  const $num = $('.num');
+
+  $num.text(cnt);
+
+  $btnPlus.click(function () {
+    cnt++;
+    if (cnt > 5) {
+      cnt = 0;
+    }
+    $num.text(cnt);
+  });
+
+  $btnMinus.click(function () {
+    cnt--;
+    if (cnt < 0) {
+      cnt = 5;
+    }
+    $num.text(cnt);
   });
 }
