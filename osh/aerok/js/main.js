@@ -47,7 +47,7 @@ function mainBanner() {
 } //end mainBanner
 
 function toggleSlide() {
-  var swiper = new Swiper('.hotel', {
+  new Swiper('.hotel', {
     slidesPerView: 'auto'
   });
 
@@ -65,19 +65,19 @@ function toggleSlide() {
     $('.hotel').hide();
   });
 
-  var swiper = new Swiper('.rental', {
+  new Swiper('.rental', {
     slidesPerView: 'auto'
   });
 } //end toggleSlide
 
 function sec4Slide() {
-  var swiper = new Swiper('.sec4-slide', {
+  new Swiper('.sec4-slide', {
     slidesPerView: 'auto'
   });
 } //end sec4Slide
 
 function sreviceSlide() {
-  var swiper = new Swiper('.srevice', {
+  new Swiper('.srevice', {
     slidesPerView: 'auto'
   });
 } //end sreviceSlide

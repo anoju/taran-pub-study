@@ -43,7 +43,6 @@
   .rv-wrap {
     position: relative;
     width: 100%;
-    height: 28.6rem;
     margin-top: 4.2rem;
     .schedule {
       display: flex;
@@ -145,54 +144,26 @@
       width: 100%;
       margin-top: 2rem;
       .round {
+        position: relative;
         width: 20%;
         margin-right: 2rem;
-        label {
-          font-size: 1.6rem;
-          font-weight: 500;
-          &::before {
-            content: '';
-            display: inline-block;
-            width: 2.4rem;
-            height: 2.4rem;
-            border: 0 none;
-            background: url(../images/icon_check.png) 0 0 / cover;
-            cursor: pointer;
-            border-radius: 0.4rem;
-            vertical-align: middle;
-            margin-right: 10px;
-          }
-        }
       }
       .oneway {
+        position: relative;
         width: 20%;
         margin-right: 3.5rem;
-        label {
-          font-size: 1.6rem;
-          &::before {
-            content: '';
-            display: inline-block;
-            width: 2.4rem;
-            height: 2.4rem;
-            border: 0 none;
-            background: url(../images/icon_check.png) 0 0 / cover;
-            cursor: pointer;
-            border-radius: 0.4rem;
-            vertical-align: middle;
-            margin-right: 10px;
-          }
-        }
       }
       .promo {
         .toggle-option {
           position: relative;
           font-size: 1.6em;
           line-height: 2.3rem;
+          padding-right: 2.7rem;
           &::before {
             content: '';
             display: inline-block;
             position: absolute;
-            right: -2.7rem;
+            right: 0;
             top: 0;
             width: 2.4rem;
             height: 2.4rem;
@@ -205,22 +176,7 @@
       }
     }
     //라디오 체크 박스
-    input[type='radio'] {
-      position: absolute;
-      left: -1000%;
-    }
-    input[type='radio']:checked {
-      & + label {
-        &::before {
-          content: '';
-          display: inline-block;
-          width: 2.4rem;
-          height: 2.4rem;
-          background: url(../images/icon_check_on.png) 0 0 / cover;
-          border: none;
-        }
-      }
-    }
+
     .rv-complete {
       width: 100%;
       height: 5.2rem;
@@ -650,7 +606,7 @@
     font-size: 1.6rem;
     line-height: 2.3rem;
     box-sizing: border-box;
-    color: rgba(0, 0, 0, 0.3);
+    // color: rgba(0, 0, 0, 0.3);
   }
   .srch-btn {
     .btn-search {
