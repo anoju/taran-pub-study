@@ -26,36 +26,36 @@
         <div class="select_wrap">
           <div class="select_box departure">
             <p class="airport_code fz-28">CJJ</p>
-            <select name="departure" class="selectbox">
-              <option value="청주" class="departure_option" selected>청주</option>
-              <option value="제주" class="departure_option">제주</option>
-              <option value="오사카" class="departure_option">오사카</option>
-              <option value="다낭" class="departure_option">다낭</option>
-              <option value="대만" class="departure_option">대만</option>
-              <option value="상하이" class="departure_option">상하이</option>
+            <select name="departure" class="departure">
+              <option value="청주" class="departure_option" data-airport="CJJ">청주</option>
+              <option value="제주" class="departure_option" data-airport="CJU">제주</option>
+              <option value="오사카" class="departure_option" data-airport="KIX">오사카</option>
+              <option value="다낭" class="departure_option" data-airport="DAD">다낭</option>
+              <option value="대만" class="departure_option" data-airport="TPE">대만</option>
+              <option value="상하이" class="departure_option" data-airport="SHA">상하이</option>
             </select>
           </div>
           <div class="switch_btn"></div>
           <div class="select_box destination">
             <p class="airport_code fz-28">CJU</p>
-            <select name="departure" class="destination">
-              <option value="청주" class="departure_option fz-18">청주</option>
-              <option value="제주" class="departure_option" selected>제주</option>
-              <option value="오사카" class="departure_option">오사카</option>
-              <option value="다낭" class="departure_option">다낭</option>
-              <option value="대만" class="departure_option">대만</option>
-              <option value="상하이" class="departure_option">상하이</option>
+            <select name="destination" class="destination">
+              <option value="제주" class="departure_option" data-airport="CJU">제주</option>
+              <option value="청주" class="departure_option" data-airport="CJJ">청주</option>
+              <option value="오사카" class="departure_option" data-airport="KIX">오사카</option>
+              <option value="다낭" class="departure_option" data-airport="DAD">다낭</option>
+              <option value="대만" class="departure_option" data-airport="TPE">대만</option>
+              <option value="상하이" class="departure_option" data-airport="SHA">상하이</option>
             </select>
           </div>
         </div>
         <div class="input_wrap">
           <div class="calendar_box">
             <div class="departure_day">
-              <input type="date" id="departure_day" class="fz-16 fw-500" name="departure_day" value="가는 날" data-placeholder="가는 날" required />
+              <input type="date" id="departure_day" class="fz-16 fw-500" name="departure_day" data-placeholder="가는 날" required />
               <label for="departure_day">가는 날</label>
             </div>
             <div class="arrival_day">
-              <input type="date" id="arrival_day" class="fz-16 fw-500" name="arrival_day" value="오는 날" data-placeholder="오는 날" required />
+              <input type="date" id="arrival_day" class="fz-16 fw-500" name="arrival_day" data-placeholder="오는 날" required />
               <label for="arrival_day">오는 날</label>
             </div>
           </div>
@@ -468,11 +468,11 @@
             </div>
             <div class="child">
               <p class="classify">소아</p>
-              <p><span class="num">1</span>명</p>
+              <p><span class="num"></span>명</p>
             </div>
             <div class="babe">
               <p class="classify">유아</p>
-              <p><span class="num">1</span>명</p>
+              <p><span class="num"></span>명</p>
             </div>
           </div>
         </div>

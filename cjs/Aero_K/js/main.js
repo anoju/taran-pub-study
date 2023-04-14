@@ -1,4 +1,31 @@
 $(document).ready(function () {
+  function observer() {
+    const bannerElems = document.querySelectorAll('.banner');
+    const sectionElems = document.querySelectorAll('section');
+    const patternElems = document.querySelectorAll('.pattern > div');
+    const imgboxElems = document.querySelectorAll('.img_box > div');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    });
+    patternElems.forEach((el) => {
+      io.observe(el);
+    });
+    bannerElems.forEach((el) => {
+      io.observe(el);
+    });
+    sectionElems.forEach((el) => {
+      io.observe(el);
+    });
+    imgboxElems.forEach((el) => {
+      io.observe(el);
+    });
+  }
+
   $(window).scroll(function () {
     var scrollAmt = $(window).scrollTop();
     if (scrollAmt > 0) {
@@ -8,20 +35,74 @@ $(document).ready(function () {
     }
   });
 
-  $('.popup').click(function (e) {
-    e.preventDefault;
-    $('.popup_num').css({ display: 'block' });
-  });
-  $('.close').click(function (e) {
-    e.preventDefault;
-    $('.popup_num').css({ display: 'none' });
-  });
-  $('.popfooter')
-    .find('button')
-    .click(function (e) {
-      e.preventDefault;
-      $('.popup_num').css({ display: 'none' });
+  function selection() {
+    $('select[name=departure]').change(function () {
+      const val = $(this).val();
+      const option = $(this).find($('option[value=' + val + ']'));
+      const selecteded = $(this).find($('option:selected'));
+      const dataAirport = option.data('airport');
+      const siblingValue = $(this).parent().siblings('.select_box').find('select').val();
+
+      if (val === siblingValue) {
+        alert('출발지와 목적지가 같습니다');
+        selecteded.prop('selected', false);
+        $(this).siblings('.airport_code').text('CJJ');
+      } else {
+        $(this).siblings('.airport_code').text(dataAirport);
+      }
     });
+
+    $('select[name=destination]').change(function () {
+      const val = $(this).val();
+      const option = $(this).find($('option[value=' + val + ']'));
+      const selecteded = $(this).find($('option:selected'));
+      const dataAirport = option.data('airport');
+      const siblingValue = $(this).parent().siblings('.select_box').find('select').val();
+
+      if (val === siblingValue) {
+        alert('출발지와 목적지가 같습니다');
+        selecteded.prop('selected', false);
+        $(this).siblings('.airport_code').text('CJU');
+      } else {
+        $(this).siblings('.airport_code').text(dataAirport);
+      }
+    });
+
+    $('.switch_btn').click(function (e) {
+      e.preventDefault;
+      $('.departure').toggleClass('orderTo');
+      $('.destination').toggleClass('orderTo');
+    });
+  }
+
+  function popupEvent() {
+    $('.popup').click(function (e) {
+      e.preventDefault;
+      $('.popup_num').addClass('slide');
+    });
+    $('.close').click(function (e) {
+      e.preventDefault;
+      $('.popup_num').removeClass('slide');
+    });
+    $('.popfooter .prev').click(function (e) {
+      e.preventDefault;
+      $('.popup_num').removeClass('slide');
+    });
+    $('.popfooter .finish').click(function (e) {
+      e.preventDefault;
+      const calculated = document.querySelector('.calculated').innerText;
+      $('.popup_num').removeClass('slide');
+      $('.input_wrap .number_box').text(calculated);
+      if (calculated == '') {
+        $('.input_wrap .number_box').html('<span class=' + 'classify' + '>' + '성인</span>' + '<span class=' + '"num"' + '>1</span>');
+      }
+      $('.input_wrap .number_box').append('<a href=' + '#none ' + 'class=' + '"popup"' + '></a>');
+      $('.popup').click(function (e) {
+        e.preventDefault;
+        $('.popup_num').addClass('slide');
+      });
+    });
+  }
 
   const plusBtn = $('.spin_box').find('.plus');
   const minusBtn = $('.spin_box').find('.minus');
@@ -94,8 +175,6 @@ $(document).ready(function () {
           .is('.adult') == true
       ) {
         $('.calculated').find('.adult .num').text(numberOfadult);
-
-        $('.calculated').find('.babe .num').text(numberOfbabe);
       } else if (
         $('.calculated')
           .children('.' + classes)
@@ -178,8 +257,10 @@ $(document).ready(function () {
       slidesOffsetAfter: 24
     });
   }
-
+  selection();
+  popupEvent();
   swiper();
   swiper1();
   tab1();
+  observer();
 });
