@@ -78,21 +78,20 @@ $(document).ready(function () {
   function popupEvent() {
     $('.popup').click(function (e) {
       e.preventDefault;
-      $('.popup_num').css({ display: 'block' });
+      $('.popup_num').addClass('slide');
     });
     $('.close').click(function (e) {
       e.preventDefault;
-      $('.popup_num').css({ display: 'none' });
+      $('.popup_num').removeClass('slide');
     });
     $('.popfooter .prev').click(function (e) {
       e.preventDefault;
-      $('.popup_num').css({ display: 'none' });
+      $('.popup_num').removeClass('slide');
     });
     $('.popfooter .finish').click(function (e) {
       e.preventDefault;
       const calculated = document.querySelector('.calculated').innerText;
-      console.log(calculated);
-      $('.popup_num').css({ display: 'none' });
+      $('.popup_num').removeClass('slide');
       $('.input_wrap .number_box').text(calculated);
       if (calculated == '') {
         $('.input_wrap .number_box').html('<span class=' + 'classify' + '>' + '성인</span>' + '<span class=' + '"num"' + '>1</span>');
@@ -100,7 +99,7 @@ $(document).ready(function () {
       $('.input_wrap .number_box').append('<a href=' + '#none ' + 'class=' + '"popup"' + '></a>');
       $('.popup').click(function (e) {
         e.preventDefault;
-        $('.popup_num').css({ display: 'block' });
+        $('.popup_num').addClass('slide');
       });
     });
   }
