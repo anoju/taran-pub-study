@@ -375,7 +375,7 @@
           <div class="copyright">Ⓒ2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</div>
         </div>
       </footer>
-      <div class="cd_popup head_count_popup">
+      <div class="cd_popup head_count_popup open">
         <div class="pop_container">
           <header class="pop_header">
             <h4 class="h4_tit">인원 선택</h4>
@@ -545,45 +545,41 @@
       }
 
       function spinner() {
-        const $target = $('.spinner_box .spinner_obj .spinner');
-        const $plusBtn = $target.find('.ico_plus');
-        const $minusBtn = $target.find('.ico_minus');
-        let num = 0;
-
-        $plusBtn.click(function () {
-          num = parseInt($(this).closest('.spinner').find('input').val());
-
-          if (num < 10) {
-            $(this)
-              .prev()
-              .val(num + 1);
+        const $spinner = $('.spinner_box .spinner_obj .spinner');
+        const $min = 0;
+        const $max = 10;
+        $spinner.find('button').click(function (e) {
+          e.preventDefault();
+          const $this = $(this);
+          const $wrap = $this.closest('.spinner');
+          const $input = $this.siblings('input');
+          const $inpVal = parseInt($input.val());
+          let $setVal = $inpVal;
+          if (!$this.hasClass('able')) return;
+          $wrap.find('button').addClass('able');
+          if ($this.hasClass('ico_plus')) {
+            //plus
+            $setVal += 1;
+            if ($setVal >= $max) $this.removeClass('able');
+          } else if ($this.hasClass('ico_minus')) {
+            //minus
+            $setVal -= 1;
+            if ($setVal <= $min) $this.removeClass('able');
           }
-          if ((num) => 0) {
-            $(this).closest('.spinner').find('.ico_minus').addClass('able');
-          }
-          if (num == 10) {
-            $(this).removeClass('able');
-          }
-          console.log(num);
+          $input.val($setVal);
         });
-        $minusBtn.click(function () {
-          num = parseInt($(this).closest('.spinner').find('input').val());
-          if (num == 1) {
-            $(this).prop('disabled', true);
-            $(this).removeClass('able');
+        $spinner.find('input').change(function () {
+          const $this = $(this);
+          const $wrap = $this.closest('.spinner');
+          const $val = parseInt($this.val());
+          $wrap.find('button').addClass('able');
+          if ($val > $max) {
+            $this.val($max);
+            $wrap.find('.ico_plus').removeClass('able');
+          } else if ($val < $min) {
+            $this.val($min);
+            $wrap.find('.ico_minus').removeClass('able');
           }
-          if ((num) => 2) {
-            $(this)
-              .next()
-              .val(num - 1);
-            $(this).addClass('able');
-            $(this).prop('disabled', false);
-          }
-          if (num == 10) {
-            $(this).closest('.spinner').find('.ico_plus').addClass('able');
-            $(this).closest('.spinner').find('.ico_plus').prop('disabled', false);
-          }
-          console.log(num);
         });
       }
       function popOpen(target) {
