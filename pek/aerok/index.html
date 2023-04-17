@@ -375,7 +375,7 @@
           <div class="copyright">Ⓒ2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</div>
         </div>
       </footer>
-      <div class="cd_popup head_count_popup">
+      <div class="cd_popup head_count_popup open">
         <div class="pop_container">
           <header class="pop_header">
             <h4 class="h4_tit">인원 선택</h4>
@@ -400,7 +400,7 @@
                     <strong>소아</strong>
                     <span>2세부터 만 13세 미만</span>
                   </div>
-                  <div class="spinner">
+                  <div class="spinner" data-min="1" data-max="5">
                     <button class="ico_minus" aria-label="인원삭제"></button>
                     <input type="text" class="num" value="0" title="인원" />
                     <button class="ico_plus able" aria-label="인원추가"></button>
@@ -556,13 +556,15 @@
           const $target = target;
           const $val = value;
           const $wrap = $target.closest('.spinner');
+          const $spMin = $wrap.data('min') ? parseInt($wrap.data('min')) : $min;
+          const $spMax = $wrap.data('max') ? parseInt($wrap.data('max')) : $max;
           const $input = $wrap.find('input');
           $wrap.find('button').addClass('able');
-          if ($val >= $max) {
-            $input.val($max);
+          if ($val >= $spMax) {
+            $input.val($spMax);
             $wrap.find('.ico_plus').removeClass('able');
-          } else if ($val <= $min) {
-            $input.val($min);
+          } else if ($val <= $spMin) {
+            $input.val($spMin);
             $wrap.find('.ico_minus').removeClass('able');
           } else {
             $input.val($val);
@@ -585,10 +587,16 @@
           setValue($this, $inpVal);
         });
 
-        $spinner.find('input').on('input', function () {
-          const $this = $(this);
+        function setInput(target) {
+          const $this = $(target);
           const $val = $this.val() == '' ? $this.val() : parseInt($this.val());
           setValue($this, $val);
+        }
+        $spinner.find('input').on('input', function () {
+          setInput(this);
+        });
+        $spinner.find('input').each(function () {
+          setInput(this);
         });
       }
 
