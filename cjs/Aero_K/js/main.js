@@ -36,6 +36,10 @@ $(document).ready(function () {
   });
 
   function selection() {
+    // $('select[name=departure]').change(function () {
+    // $('select[name=departure]').on('input', function () {
+    // 인풋박스 바로 반영
+
     $('select[name=departure]').change(function () {
       const val = $(this).val();
       const option = $(this).find($('option[value=' + val + ']'));
@@ -257,6 +261,21 @@ $(document).ready(function () {
       slidesOffsetAfter: 24
     });
   }
+  const swiper2 = new Swiper('.swiper', {
+    // slidesPerView: 1,
+    // spaceBetween: 20,
+    // slidesPerView: 'auto',
+    // slidesOffsetBefore: 24,
+    // slidesOffsetAfter: 24
+    // swiper2를 배열로 불러오기 때문에
+    // swiper2[0].slideTo(swiper Options)
+    // swiper2[1].slideTo(swiper Options)
+    // 이런 식으로 각각 컨트롤 가능
+    //
+    // $('').data('taran') //불러올 때
+    // $('').data('taran', 'lalala') //입력할 때
+    // $('').data('taran') //
+  });
   selection();
   popupEvent();
   swiper();
