@@ -46,7 +46,7 @@
       position: relative;
       width: 100%;
       max-height: calc(100% - 5.8rem);
-      overflow-y: scroll;
+      overflow-y: auto;
       margin-bottom: 12rem;
       .inner {
         height: 100%;

@@ -14,39 +14,23 @@
   <body>
     <div class="wrap">
       <header class="header_dox">
-        <h1 class="logo"><a href="#"></a></h1>
-        <div class="menu"><a href="#none" class="ico_menu"></a></div>
+        <h1 class="logo"><a href="#none" aria-label="메인로고"></a></h1>
+        <div class="menu"><a href="#none" class="ico_menu" rolo="button" aria-label="메뉴열기"></a></div>
       </header>
-      <aside class="fixed_menu bottom_menu">
-        <ul>
-          <li class="menu_li">
-            <a href="#none"><img src="./images/icon_zoom-in.png" alt="" /><span>예약조회</span></a>
-          </li>
-          <li class="menu_li">
-            <a href="#none"><img src="./images/icon_fileText.png" alt="" /><span>예매안내</span></a>
-          </li>
-          <li class="menu_li">
-            <a href="#none"><img src="./images/icon_gift.png" alt="" /><span>이벤트</span></a>
-          </li>
-          <li class="menu_li">
-            <a href="#none"><img src="./images/icon_info.png" alt="" /><span>고객센터</span></a>
-          </li>
-        </ul>
-      </aside>
       <section>
-        <h2 class="h2_tit"></h2>
+        <h2 class="h2_tit" aria-label="새로운 여정의 시작"></h2>
         <div class="sch_box">
           <div class="trip_path">
             <div class="leave">
-              <a href="#none">
+              <a href="#none" role="button" aria-label="출발지역">
                 <span class="code">CJJ</span>
                 <span class="city">청주</span>
                 <i class="ico_arr_down"></i>
               </a>
             </div>
-            <div class="ico_exchange"><a href="#none"></a></div>
+            <div class="ico_exchange"><a href="#none" role="button" aria-label="지정지역전환"></a></div>
             <div class="arrive">
-              <a href="#none">
+              <a href="#none" role="button" aria-label="도착지역">
                 <span class="code">CJU</span>
                 <span class="city">제주</span>
                 <i class="ico_arr_down"></i>
@@ -56,31 +40,31 @@
           <div class="date">
             <div class="leave_date">
               <i class="ico_cal"></i>
-              <input type="text" placeholder="가는 날" />
+              <input type="text" title="가는 날 선택" placeholder="가는 날" />
             </div>
             <div class="come_date">
               <i class="ico_cal"></i>
-              <input type="text" placeholder="오는 날" />
+              <input type="text" title="오는 날 선택" placeholder="오는 날" />
             </div>
           </div>
-          <div class="headcount"><i class="ico_human"></i><input type="text" placeholder="성인 1" /></div>
+          <div class="headcount"><i class="ico_human"></i><input type="text" title="인원선택" placeholder="성인 1" /></div>
           <div class="apply">
             <div class="check">
-              <input type="checkbox" id="trip_chk1" name="trip_chk1" value="왕복" />
+              <input type="checkbox" title="왕복권 선택" id="trip_chk1" name="trip_chk1" value="왕복" />
               <label for="trip_chk1">왕복</label>
-              <input type="checkbox" id="trip_chk2" name="trip_chk2" value="편도" />
+              <input type="checkbox" title="편도권 선택" id="trip_chk2" name="trip_chk2" value="편도" />
               <label for="trip_chk2">편도</label>
             </div>
             <div class="promo_code">
               <label for="code_select">프로모션코드 입력</label>
-              <select name="promo_code" id="code_select">
+              <select name="promo_code" title="프로모션선택입력" id="code_select">
                 <option value="">프로모션코드 입력</option>
                 <option value="code1">code1</option>
                 <option value="code2">code2</option>
               </select>
             </div>
           </div>
-          <div class="btn_sch"><a href="#none">항공편 조회</a></div>
+          <div class="btn_sch"><a href="#none" role="button" aria-label="항공편조회버튼">항공편 조회</a></div>
         </div>
         <div class="df_box">
           <h4 class="h4_tit">에어로케이의 특별한 소식</h4>
@@ -114,8 +98,8 @@
         <div class="tab_box">
           <div class="tab_menu_list tab_list_box">
             <ul>
-              <li class="tab_li"><a href="#tab_box00">숙소</a></li>
-              <li class="tab_li"><a href="#tab_box01">렌트카</a></li>
+              <li class="tab_li"><a href="#tab_box00" role="button" aria-label="숙소">숙소</a></li>
+              <li class="tab_li"><a href="#tab_box01" role="button" aria-label="렌트카">렌트카</a></li>
             </ul>
             <div class="underline"></div>
           </div>
@@ -125,7 +109,7 @@
                 <!-- space-between="20" slides-per-view="auto" pagination="false" -->
                 <div class="swiper-wrapper">
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="호텔바로보기">
                       <img src="./images/img_hotel.png" alt="" />
                       <span class="location">제주시</span>
                       <span class="place">그라벨호텔</span>
@@ -134,7 +118,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="호텔바로보기">
                       <img src="./images/img_hotel1.png" alt="" />
                       <span class="location">서귀포시</span>
                       <span class="place">파르나스 호텔제주</span>
@@ -143,7 +127,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="호텔바로보기">
                       <img src="./images/img_hotel2.png" alt="" />
                       <span class="location">서귀포시</span>
                       <span class="place">브라운 스위트 제주</span>
@@ -152,7 +136,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="호텔바로보기">
                       <img src="./images/img_hotel3.png" alt="" />
                       <span class="location">제주시</span>
                       <span class="place">호텔 난타</span>
@@ -170,7 +154,7 @@
                 <!-- space-between="20" slides-per-view="auto" pagination="false" -->
                 <div class="swiper-wrapper">
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="렌트카바로보기">
                       <img src="./images/img_car00.png" alt="" />
                       <span class="location fc_orange">제주도렌터카</span>
                       <span class="item">카니발</span>
@@ -179,7 +163,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="렌트카바로보기">
                       <img src="./images/img_car01.png" alt="" />
                       <span class="location fc_orange">제주도렌터카</span>
                       <span class="item">레이</span>
@@ -188,7 +172,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="렌트카바로보기">
                       <img src="./images/img_car02.png" alt="" />
                       <span class="location fc_orange">제주도렌터카</span>
                       <span class="item">모닝</span>
@@ -197,7 +181,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="렌트카바로보기">
                       <img src="./images/img_car03.png" alt="" />
                       <span class="location fc_orange">제주도렌터카</span>
                       <span class="item">아이오닉6</span>
@@ -206,7 +190,7 @@
                     </a>
                   </div>
                   <div class="swiper-slide scroll_list">
-                    <a href="">
+                    <a href="#none" aria-label="렌트카바로보기">
                       <img src="./images/img_car03.png" alt="" />
                       <span class="location fc_orange">제주도렌터카</span>
                       <span class="item">카니발</span>
@@ -220,12 +204,12 @@
           </div>
         </div>
         <div class="stc_banr_box">
-          <a class="stc_banr" href="#none"><img src="./images/img_banner_sales.png" alt="" /></a>
+          <a class="stc_banr" href="#none" role="button" aria-label="제주패스 렌트카 최대 10% 특별할인"><img src="./images/img_banner_sales.png" alt="" /></a>
         </div>
         <div class="df_box">
           <h3 class="h3_tit"><span class="fc_orange">더 설레게</span><br />추천 액티비티</h3>
           <div class="fr">
-            <div class="more"><a href="#none">더보기</a></div>
+            <div class="more"><a href="#none" role="button" aria-label="추천액티비티 더보기">더보기</a></div>
           </div>
         </div>
         <div class="row_scroll_box -card">
@@ -233,7 +217,7 @@
             <!--space-between="20" slides-per-view="auto" pagination="false"-->
             <div class="swiper-wrapper">
               <div class="swiper-slide scroll_list">
-                <a href="#none">
+                <a href="#none" role="button" aria-label="추천액티비티바로가기">
                   <div class="dim"><img src="./images/img_activity00.png" alt="" /></div>
                   <div class="txt_grp">
                     <span class="location bg_a_green">제주시</span>
@@ -244,7 +228,7 @@
                 </a>
               </div>
               <div class="swiper-slide scroll_list">
-                <a href="#none">
+                <a href="#none" role="button" aria-label="추천액티비티바로가기">
                   <div class="dim"><img src="./images/img_activity01.png" alt="" /></div>
                   <div class="txt_grp">
                     <span class="location bg_purple">서귀포시 서부</span>
@@ -255,7 +239,7 @@
                 </a>
               </div>
               <div class="swiper-slide scroll_list">
-                <a href="#none">
+                <a href="#none" role="button" aria-label="추천액티비티바로가기">
                   <div class="dim"><img src="./images/img_activity02.png" alt="" /></div>
                   <div class="txt_grp">
                     <span class="location bg_purple">서귀포시 서부</span>
@@ -266,7 +250,7 @@
                 </a>
               </div>
               <div class="swiper-slide scroll_list">
-                <a href="#none">
+                <a href="#none" role="button" aria-label="추천액티비티바로가기">
                   <div class="dim"><img src="./images/img_activity03.png" alt="" /></div>
                   <div class="txt_grp">
                     <span class="location bg_sky">서귀포시 동부</span>
@@ -313,16 +297,16 @@
           <div class="gallery_box mt20">
             <ul class="pic_list">
               <li class="pic">
-                <a href="#none"><img src="./images/img_sns00.png" alt="" /></a>
+                <a href="#none" role="button" aria-label="sns게시물바로가기"><img src="./images/img_sns00.png" alt="" /></a>
               </li>
               <li class="pic">
-                <a href="#none"><img src="./images/img_sns01.png" alt="" /></a>
+                <a href="#none" role="button" aria-label="sns게시물바로가기"><img src="./images/img_sns01.png" alt="" /></a>
               </li>
               <li class="pic">
-                <a href="#none"><img src="./images/img_sns02.png" alt="" /></a>
+                <a href="#none" role="button" aria-label="sns게시물바로가기"><img src="./images/img_sns02.png" alt="" /></a>
               </li>
               <li class="pic">
-                <a href="#none"><img src="./images/img_sns03.png" alt="" /></a>
+                <a href="#none" role="button" aria-label="sns게시물바로가기"><img src="./images/img_sns03.png" alt="" /></a>
               </li>
             </ul>
           </div>
@@ -334,31 +318,47 @@
           <div class="txt">
             <p>끊임없는 도전과 <br />신뢰할 수 있는 전문성으로<br />더 넓은 세상을 향해 나아가겠습니다.</p>
             <strong>당신의 더 넓은 세상을 책임질 우리는 에어로케이입니다.</strong>
-            <a href="#none" class="btn_link">Aero K Brand Story</a>
+            <a href="#none" role="button" aria-label="aeroK 브랜드스토리 바로가기" class="btn_link">Aero K Brand Story</a>
           </div>
         </div>
       </section>
+      <aside class="fixed_menu bottom_menu">
+        <ul>
+          <li class="menu_li">
+            <a href="#none" role="button" aria-label="예약조회"><img src="./images/icon_zoom-in.png" alt="" /><span>예약조회</span></a>
+          </li>
+          <li class="menu_li">
+            <a href="#none" role="button" aria-label="예매안내"><img src="./images/icon_fileText.png" alt="" /><span>예매안내</span></a>
+          </li>
+          <li class="menu_li">
+            <a href="#none" role="button" aria-label="이벤트"><img src="./images/icon_gift.png" alt="" /><span>이벤트</span></a>
+          </li>
+          <li class="menu_li">
+            <a href="#none" role="button" aria-label="고객센터"><img src="./images/icon_info.png" alt="" /><span>고객센터</span></a>
+          </li>
+        </ul>
+      </aside>
       <footer class="footer_box">
         <div class="social_box">
           <div class="news_letter">
-            <input type="text" placeholder="특가 및 소식을 확인하세요" />
+            <input type="text" title="특가 및 소식을 확인하세요" placeholder="특가 및 소식을 확인하세요" />
             <button class="btn_apply">구독신청</button>
           </div>
           <div class="sns_list">
-            <div class="sns"><a href="#none">페이스북</a></div>
-            <div class="sns"><a href="#none">인스타그램</a></div>
-            <div class="sns"><a href="#none">카카오</a></div>
+            <div class="sns"><a href="#none" role="button" aria-label="페이스북바로가기">페이스북</a></div>
+            <div class="sns"><a href="#none" role="button" aria-label="인스타그램바로가기">인스타그램</a></div>
+            <div class="sns"><a href="#none" role="button" aria-label="카카오챗바로가기">카카오</a></div>
           </div>
         </div>
         <div class="info">
-          <div class="logo"></div>
+          <a href="#none" class="logo" role="button" aria-label="areoK로고"></a>
           <strong class="company">에어로케이항공(주)</strong>
           <dl class="info_list">
             <dt>대표이사</dt>
             <dd>강병호</dd>
             <i class="letter_slash"></i>
             <dt>사업자등록번호</dt>
-            <dd><a href="#none">274-88-00540</a></dd>
+            <dd><a href="#none" role="button" aria-label="사업자등록번호">274-88-00540</a></dd>
             <dt>주소</dt>
             <dd><address>충청북도 청주시 흥덕구 오송읍 오송생명3로 154</address></dd>
             <dt>개인정보 보호 책임자</dt>
@@ -367,7 +367,7 @@
           <dl class="info_list">
             <dt>고객센터</dt>
             <dd>
-              <a href="#none"><strong>1899-2299</strong></a>
+              <a href="#none" role="button" aria-label="고객센터전화하기"><strong>1899-2299</strong></a>
             </dd>
             <dd>영업시간 08:00 ~ 20:00</dd>
           </dl>
@@ -379,7 +379,7 @@
         <div class="pop_container">
           <header class="pop_header">
             <h4 class="h4_tit">인원 선택</h4>
-            <button class="ico_closed pop_close"></button>
+            <button class="ico_closed pop_close" aria-label="닫기"></button>
           </header>
           <div class="pop_content">
             <div class="inner">
@@ -390,9 +390,9 @@
                     <span>만 13세 이상</span>
                   </div>
                   <div class="spinner">
-                    <button class="ico_minus"></button>
-                    <input type="text" class="num" value="0" />
-                    <button class="ico_plus able"></button>
+                    <button class="ico_minus" aria-label="인원삭제"></button>
+                    <input type="text" class="num" value="0" title="인원" />
+                    <button class="ico_plus able" aria-label="인원추가"></button>
                   </div>
                 </div>
                 <div class="spinner_obj">
@@ -401,9 +401,9 @@
                     <span>2세부터 만 13세 미만</span>
                   </div>
                   <div class="spinner">
-                    <button class="ico_minus"></button>
-                    <input type="text" class="num" value="0" />
-                    <button class="ico_plus able"></button>
+                    <button class="ico_minus" aria-label="인원삭제"></button>
+                    <input type="text" class="num" value="0" title="인원" />
+                    <button class="ico_plus able" aria-label="인원추가"></button>
                   </div>
                 </div>
                 <div class="spinner_obj">
@@ -412,9 +412,9 @@
                     <span>0세부터 만 2세 미만</span>
                   </div>
                   <div class="spinner">
-                    <button class="ico_minus"></button>
-                    <input type="text" class="num" value="0" />
-                    <button class="ico_plus able"></button>
+                    <button class="ico_minus" aria-label="인원삭제"></button>
+                    <input type="text" class="num" value="0" title="인원" />
+                    <button class="ico_plus able" aria-label="인원추가"></button>
                   </div>
                 </div>
               </div>
@@ -422,8 +422,8 @@
                 <div class="age_calc">
                   <div>나이계산기</div>
                   <p>생년월일을 입력해주세요.</p>
-                  <input type="text" class="date" placeholder="1999-11-04" required maxlength="10" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
-                  <a href="#none" class="btn_c">계산하기</a>
+                  <input type="text" class="date" title="생년월일입력" placeholder="1999-11-04" required maxlength="10" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
+                  <a href="#none" role="button" aria-label="계산하기" class="btn_c">계산하기</a>
                   <ul class="info_list">
                     <li>국내선의 경우, 소아/유아의 나이 구분은 각 항공편의 탑승일 기준입니다.</li>
                     <li>탑승 수속 시 생년월일 확인 가능한 서류 지참이 필수입니다.</li>
@@ -553,31 +553,33 @@
         $plusBtn.click(function () {
           num = parseInt($(this).closest('.spinner').find('input').val());
 
-          if (num < 9) {
+          if (num < 10) {
             $(this)
               .prev()
               .val(num + 1);
           }
-          if ((num) => 1) {
+          if ((num) => 0) {
             $(this).closest('.spinner').find('.ico_minus').addClass('able');
           }
           if (num == 10) {
             $(this).removeClass('able');
           }
+          console.log(num);
         });
         $minusBtn.click(function () {
           num = parseInt($(this).closest('.spinner').find('input').val());
-          if (num == '0') {
+          if (num == 1) {
             $(this).prop('disabled', true);
+            $(this).removeClass('able');
           }
-          if ((num) => '1') {
+          if ((num) => 2) {
             $(this)
               .next()
               .val(num - 1);
             $(this).addClass('able');
             $(this).prop('disabled', false);
           }
-          if (num == '9') {
+          if (num == 10) {
             $(this).closest('.spinner').find('.ico_plus').addClass('able');
             $(this).closest('.spinner').find('.ico_plus').prop('disabled', false);
           }
@@ -586,9 +588,19 @@
       }
       function popOpen(target) {
         $(target).addClass('open');
+        $(target).closest('.wrap').css({
+          position: 'fixed',
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden'
+        });
       }
       function popClose(target) {
         $(target).removeClass('open');
+        $(target).closest('.wrap').css({
+          position: 'relative',
+          overflow: 'auto'
+        });
       }
 
       function popUp() {
@@ -601,6 +613,9 @@
           const $popup = $(this).closest('.cd_popup');
           popClose($popup);
         });
+
+        if (popOpen == true) {
+        }
       }
       tabMove();
       bottomMenu();
