@@ -84,12 +84,13 @@
                   <label for="rad-oneway">편도</label>
                 </div>
                 <div class="promo">
-                  <button class="toggle-option">프로모션 코드 입력</button>
-                  <ul class="promo-selectibox">
-                    <li><button type="button" class="option-btn">ABCDEFG-1234</button></li>
-                    <li><button type="button" class="option-btn">HIJKLM-5678</button></li>
-                    <li><button type="button" class="option-btn">NOPQRS-9101</button></li>
-                  </ul>
+                  <select class="toggle-option" aria-label="프로모션 코드 입력">
+                    <option disabled selected>프로모션 코드 입력</option>
+                    <option value="code1">1234</option>
+                    <option value="code2">5678</option>
+                    <option value="code3">9101</option>
+                    <option value="code4">1112</option>
+                  </select>
                 </div>
               </div>
               <div class="rv-complete">
@@ -423,27 +424,6 @@
             </li>
           </ul>
         </div>
-
-        <!-- 팝업 -->
-        <div class="passenger">
-          <div class="inner">
-            <div class="top">
-              <h3 class="tit-h3">인원 선택</h3>
-              <span class="close"></span>
-            </div>
-            <div class="items">
-              <div class="list">
-                <strong>성인</strong>
-                <span>만 13세 이상</span>
-                <div class="select-passenger">
-                  <button class="btn-wrap minus" aria-label="인원 빼기"></button>
-                  <div class="num"></div>
-                  <button class="btn-wrap plus" aria-label="인원 더하기"></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </main>
 
       <footer id="footer">
@@ -488,6 +468,28 @@
           </div>
         </div>
       </footer>
+      <!-- //end footer -->
+
+      <!-- 팝업 -->
+      <div class="passenger">
+        <div class="inner">
+          <div class="top">
+            <h3 class="tit-h3">인원 선택</h3>
+            <span class="close"></span>
+          </div>
+          <div class="items">
+            <div class="list">
+              <strong>성인</strong>
+              <span>만 13세 이상</span>
+              <div class="select-passenger">
+                <button class="btn-wrap minus" aria-label="인원 빼기"></button>
+                <span class="num"></span>
+                <button class="btn-wrap plus" aria-label="인원 더하기"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/main.js"></script>

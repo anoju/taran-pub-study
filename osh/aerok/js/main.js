@@ -114,15 +114,6 @@ function sreviceSlide() {
     slidesPerView: 'auto'
   });
 
-이 스크립트를 
-
-
-function sreviceSlide() {
-  new Swiper('.srevice', {
-    slidesPerView: 'auto'
-  });
-} 
-
-이렇게 축약 가능
+이 스크립트 중  var swiper는 생략 가능
 
 */

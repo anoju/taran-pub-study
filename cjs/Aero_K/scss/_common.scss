@@ -332,7 +332,9 @@ section {
       display: flex;
       justify-content: center;
       gap: 0.4rem;
-
+      label {
+        visibility: hidden;
+      }
       > div {
         width: 50%;
       }
@@ -373,23 +375,25 @@ section {
         align-items: center;
         .for_order {
           display: flex;
+          position: relative;
           align-items: center;
+          width: 6.2rem;
+          height: 2.4rem;
           &:first-child {
             margin-right: 2rem;
           }
-          [type='checkbox'] {
-            display: none;
-          }
           label {
-            order: -1;
-            position: relative;
-            display: inline-block;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+          }
+          input[type='checkbox'] {
+            position: absolute;
+            left: 0;
+            top: 0;
             width: 2.4rem;
             height: 2.4rem;
-            margin-right: 0.8rem;
-            background: #f4f8fa url("data:image/svg+xml,%0A%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13 1L4.75 9L1 5.36364' stroke='black' stroke-opacity='0.12' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A") no-repeat center;
-            border-radius: 0.4rem;
           }
+
           input[type='checkbox']:checked + label::after {
             content: '';
             font-size: 2.5rem;
@@ -866,7 +870,7 @@ section.intro {
 .video_wrap {
   position: relative;
   margin: 0 -2.4rem;
-  &:before {
+  &:after {
     content: '';
     position: absolute;
     left: 0;
@@ -882,6 +886,7 @@ section.intro {
   }
   .text_wrap {
     position: absolute;
+    z-index: 1;
     top: 15.8rem;
     left: 0;
     right: 0;
@@ -944,16 +949,9 @@ section.intro {
         &.color {
           position: relative;
           width: 12rem;
-          padding-left: 3rem;
           background: var(--Aero_Navy);
+          border: none;
           color: #fff;
-          a {
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-          }
         }
       }
     }
@@ -1097,9 +1095,6 @@ input[type='date'] {
   &::-webkit-clear-buttonn,
   &::-webkit-clear-buttonn,
   &:valid::before,
-  + label {
-    display: none;
-  }
   &::-webkit-calendar-picker-indicator {
     position: absolute;
     left: 0;
