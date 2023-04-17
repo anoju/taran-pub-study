@@ -42,6 +42,44 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+
+      //js
+      function tab() {
+        const menu = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        for (let i = 0; i < menu.length; i++) {
+          menu[i].addEventListener('click', (e) => {
+            for (let j = 0; j < menu.length; j++) {
+              if (menu[j].classList.contains('active')) {
+                menu[j].classList.remove('active');
+              }
+              menu[i].classList.add('active');
+            }
+
+            for (let j = 0; j < panels.length; j++) {
+              panels[j].classList.remove('active');
+            }
+            panels[i].classList.add('active');
+          });
+        }
+      }
+      tab();
+
+      //jquery
+      $(function () {
+        const $Menu = $('.tab');
+        const $Panels = $('.tab-panel');
+        let cnt = 0;
+
+        $Menu.click(function () {
+          cnt = $(this).index();
+          $Menu.removeClass('active');
+          $(this).addClass('active');
+
+          $Panels.hide().eq(cnt).show();
+        });
+      });
     </script>
   </body>
 </html>
