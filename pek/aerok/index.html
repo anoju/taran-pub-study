@@ -375,7 +375,7 @@
           <div class="copyright">Ⓒ2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</div>
         </div>
       </footer>
-      <div class="cd_popup head_count_popup open">
+      <div class="cd_popup head_count_popup">
         <div class="pop_container">
           <header class="pop_header">
             <h4 class="h4_tit">인원 선택</h4>
@@ -509,9 +509,10 @@
           }
         });
       }
-
+      let mainSwiper;
+      let subSwiper;
       function swiperInit() {
-        const mainSwiper = new Swiper('.slide_box .swiper', {
+        mainSwiper = new Swiper('.slide_box .swiper', {
           // Optional parameters
           loop: true,
           autoplay: true,
@@ -537,8 +538,9 @@
             $this.text('재생');
           }
         });
+
         //space-between="20" slides-per-view="auto" pagination="false"
-        const subSwiper = new Swiper('.row_scroll_box .swiper', {
+        subSwiper = new Swiper('.row_scroll_box .swiper', {
           slidesPerView: 'auto',
           spaceBetween: 20
         });
