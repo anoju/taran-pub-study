@@ -106,3 +106,23 @@ function passenger() {
     $num.text(cnt);
   });
 }
+
+/* 
+
+function sreviceSlide() {
+  var swiper = new Swiper('.srevice', {
+    slidesPerView: 'auto'
+  });
+
+이 스크립트를 
+
+
+function sreviceSlide() {
+  new Swiper('.srevice', {
+    slidesPerView: 'auto'
+  });
+} 
+
+이렇게 축약 가능
+
+*/
