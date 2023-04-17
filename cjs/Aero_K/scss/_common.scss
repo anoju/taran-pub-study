@@ -64,8 +64,10 @@ body {
   padding-top: 1.6rem;
   background: #fff;
   transition: left 0.45s;
+  visibility: hidden;
   &.slide {
     left: 0;
+    visibility: visible;
   }
   .pophead {
     display: flex;

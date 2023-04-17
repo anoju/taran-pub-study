@@ -4,30 +4,16 @@ html {
   font-size: 62.5%;
   font-weight: 500;
 }
+
 body {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 500;
   line-height: math.div(26, 18);
   color: #222;
 }
-button {
-  font-family: 'Noto Sans KR';
-  font-weight: 500;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0;
-}
+
 #wrap {
   width: 100%;
-}
-#container {
-  .main {
-    margin: auto;
-  }
-  .section {
-    position: relative;
-  }
   .inner {
     position: relative;
     padding: 0 2.4rem;
@@ -36,49 +22,116 @@ button {
       margin-right: -2.4rem;
     }
   }
-}
 
-.ff-nanum {
-  font-family: 'NanumSquareNeo', sans-serif;
-}
-
-// 타이틀 폰트 설정
-.main-tit-1 {
-  font-size: 2rem;
-  font-family: 'NanumSquareNeo';
-  font-weight: 800;
-  line-height: 2.2rem;
-  color: #002554;
-  margin-bottom: 2rem;
-}
-.main-tit-2 {
-  font-size: 2.4rem;
-  line-height: 3.2rem;
-  font-family: 'NanumSquareNeo';
-  font-weight: 800;
-  margin-bottom: 2rem;
-  .point1 {
-    color: #0070ff;
-  }
-  .point2 {
-    color: #ff8024;
-  }
-  .point3 {
-    color: #1ba85c;
-  }
-  .point4 {
-    color: #8638ea;
-  }
-}
-
-.swiper-slide {
-  > a {
-    display: block;
-    img {
-      display: block;
+  #container {
+    padding-top: 6rem;
+    .main {
+      margin: auto;
+      .section {
+        position: relative;
+      }
     }
   }
-  img {
-    max-width: 100%;
+
+  button {
+    font-family: 'Noto Sans KR';
+    font-weight: 500;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  select {
+    appearance: none;
+    font-family: 'Noto Sans KR';
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .ff-nanum {
+    font-family: 'NanumSquareNeo', sans-serif;
+  }
+
+  // 타이틀 폰트 설정
+  .main-tit-1 {
+    font-size: 2rem;
+    font-family: 'NanumSquareNeo';
+    font-weight: 800;
+    line-height: 2.2rem;
+    color: #002554;
+    margin-bottom: 2rem;
+  }
+  .main-tit-2 {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+    font-family: 'NanumSquareNeo';
+    font-weight: 800;
+    margin-bottom: 2rem;
+    .point1 {
+      color: #0070ff;
+    }
+    .point2 {
+      color: #ff8024;
+    }
+    .point3 {
+      color: #1ba85c;
+    }
+    .point4 {
+      color: #8638ea;
+    }
+  }
+
+  .swiper-slide {
+    > a {
+      display: block;
+      img {
+        display: block;
+      }
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .checkbox {
+    position: relative;
+    display: inline-block;
+    padding-right: 1.2rem;
+    > input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.4rem;
+      height: 2.4rem;
+      z-index: 1;
+      opacity: 0;
+      &:checked {
+        & + label {
+          &::before {
+            background-image: url(../images/icon_check_on.png);
+            border: none;
+          }
+        }
+      }
+    }
+    > label {
+      position: relative;
+      display: block;
+      font-size: 1.6rem;
+      padding: 0.2rem 0 0.2rem 3.2rem;
+      line-height: 2rem;
+      &::before {
+        content: '';
+        display: block;
+        width: 2.4rem;
+        height: 2.4rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url(../images/icon_check.png) no-repeat center center / contain;
+      }
+    }
   }
 }

@@ -41,8 +41,10 @@
       <!-- //header -->
 
       <main id="container" class="main">
+        <!-- 단지 메인 컨텐츠인걸 표시하기 위해 넣은 클래스이면 사용하지 않도록 한다 (class="main")<< 사용하지 않는 클래스 이므로 필요 없음..) -->
         <div class="inner">
           <div class="section section1">
+            <!-- section1 같은 의미없는 클래스 말고 차라리 그 컨텐츠에 대한 내용으로 섹션명 지어주기 -->
             <div class="title-area">
               <img src="./images/img_title.png" alt="새로운 여정의 시작" />
             </div>
@@ -73,21 +75,22 @@
                 <input type="text" title="인원수를 입력하세요" placeholder="성인 1" />
               </div>
               <div class="select-wrap">
-                <div class="round">
+                <div class="round checkbox">
                   <input type="radio" id="rad-round" name="contact" value="round-tiket" checked />
                   <label for="rad-round">왕복</label>
                 </div>
-                <div class="oneway">
+                <div class="oneway checkbox">
                   <input type="radio" id="rad-oneway" name="contact" value="oneway-tiket" />
                   <label for="rad-oneway">편도</label>
                 </div>
                 <div class="promo">
-                  <button class="toggle-option">프로모션 코드 입력</button>
-                  <ul class="promo-selectibox">
-                    <li><button type="button" class="option-btn">ABCDEFG-1234</button></li>
-                    <li><button type="button" class="option-btn">HIJKLM-5678</button></li>
-                    <li><button type="button" class="option-btn">NOPQRS-9101</button></li>
-                  </ul>
+                  <select class="toggle-option" aria-label="프로모션 코드 입력">
+                    <option disabled selected>프로모션 코드 입력</option>
+                    <option value="code1">1234</option>
+                    <option value="code2">5678</option>
+                    <option value="code3">9101</option>
+                    <option value="code4">1112</option>
+                  </select>
                 </div>
               </div>
               <div class="rv-complete">
@@ -346,11 +349,9 @@
                   </div>
                 </div>
                 <div class="swiper-slide">
-                  <div class="swiper-slide">
-                    <div class="em-txt">
-                      <img src="./images/image10.png" alt="무민랜드제주" />
-                      <p class="sub">다양한<br />기내 콘텐츠</p>
-                    </div>
+                  <div class="em-txt">
+                    <img src="./images/image10.png" alt="무민랜드제주" />
+                    <p class="sub">다양한<br />기내 콘텐츠</p>
                   </div>
                 </div>
                 <div class="swiper-slide">
@@ -378,8 +379,9 @@
               <img src="./images/image15.png" alt="image4" />
             </div>
           </div>
-          <!-- end section6 -->
         </div>
+        <!-- end section6 -->
+
         <div class="section section7">
           <video src="./asset/aerok_video.mp4" class="video" autoplay muted loop></video>
           <div class="subtxt-wrap">
@@ -393,49 +395,6 @@
           </div>
         </div>
         <!-- end section7 -->
-
-        <footer id="footer">
-          <div class="inner">
-            <div class="srch-wrap">
-              <input type="text" class="srch-form" placeholder="특가 및 소식을 확인하세요" />
-              <div class="srch-btn">
-                <a href="#" class="btn-search">구독신청</a>
-              </div>
-            </div>
-            <div class="sns">
-              <ul>
-                <li>
-                  <a href="https://www.facebook.com/fly.aeroK/"><img src="./images/icon_facebook.png" alt="facebook" /></a>
-                </li>
-                <li>
-                  <a href="https://www.instagram.com/aerok.official/"><img src="./images/icon_insta.png" alt="insta" /></a>
-                </li>
-                <li>
-                  <a href="#"><img src="./images/icon_chat.png" alt="chat" /></a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer-logo">
-              <h1>
-                <a href="#">
-                  <img src="./images/footer_logo.png" alt="AeroK" />
-                </a>
-              </h1>
-            </div>
-            <div class="info">
-              <p>에어로케이항공(주)</p>
-              <div class="contact">
-                <a href="#" class="contact-link"><span class="bold">대표이사</span>강병호</a>
-                <a href="#" class="contact-link"><span class="bold">사업자등록번호</span>274-88-00540</a>
-                <a href="#" class="contact-link"><span class="bold">주소</span>충청북도 청주시 흥덕구 오송읍 오송생명3로 154</a>
-                <a href="#" class="contact-link"><span class="bold">개인정보 보호 책임자</span>이병호</a>
-                <a href="#" class="contact-link"><span class="bold">고객센터 1899-2299</span>영업시간 08:00 ~ 20:00</a>
-                <p class="company-reg">통신판매업신고번호 2020-충북청주-0518</p>
-                <p class="copy">Ⓒ2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</p>
-              </div>
-            </div>
-          </div>
-        </footer>
 
         <div id="btn-menu">
           <ul>
@@ -466,6 +425,71 @@
           </ul>
         </div>
       </main>
+
+      <footer id="footer">
+        <div class="inner">
+          <div class="srch-wrap">
+            <input type="text" class="srch-form" placeholder="특가 및 소식을 확인하세요" />
+            <div class="srch-btn">
+              <a href="#" class="btn-search">구독신청</a>
+            </div>
+          </div>
+          <div class="sns">
+            <ul>
+              <li>
+                <a href="https://www.facebook.com/fly.aeroK/"><img src="./images/icon_facebook.png" alt="facebook" /></a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/aerok.official/"><img src="./images/icon_insta.png" alt="insta" /></a>
+              </li>
+              <li>
+                <a href="#"><img src="./images/icon_chat.png" alt="chat" /></a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-logo">
+            <h1>
+              <a href="#">
+                <img src="./images/footer_logo.png" alt="AeroK" />
+              </a>
+            </h1>
+          </div>
+          <div class="info">
+            <p>에어로케이항공(주)</p>
+            <div class="contact">
+              <a href="#" class="contact-link"><span class="bold">대표이사</span>강병호</a>
+              <a href="#" class="contact-link"><span class="bold">사업자등록번호</span>274-88-00540</a>
+              <a href="#" class="contact-link"><span class="bold">주소</span>충청북도 청주시 흥덕구 오송읍 오송생명3로 154</a>
+              <a href="#" class="contact-link"><span class="bold">개인정보 보호 책임자</span>이병호</a>
+              <a href="#" class="contact-link"><span class="bold">고객센터 1899-2299</span>영업시간 08:00 ~ 20:00</a>
+              <p class="company-reg">통신판매업신고번호 2020-충북청주-0518</p>
+              <p class="copy">Ⓒ2023 Aero K Airlines Co. Ltd. ALL Right Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- //end footer -->
+
+      <!-- 팝업 -->
+      <div class="passenger">
+        <div class="inner">
+          <div class="top">
+            <h3 class="tit-h3">인원 선택</h3>
+            <span class="close"></span>
+          </div>
+          <div class="items">
+            <div class="list">
+              <strong>성인</strong>
+              <span>만 13세 이상</span>
+              <div class="select-passenger">
+                <button class="btn-wrap minus" aria-label="인원 빼기"></button>
+                <span class="num"></span>
+                <button class="btn-wrap plus" aria-label="인원 더하기"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/main.js"></script>
