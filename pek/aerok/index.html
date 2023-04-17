@@ -548,40 +548,48 @@
         const $spinner = $('.spinner_box .spinner_obj .spinner');
         const $min = 0;
         const $max = 10;
+
+        function setValue(target, value) {
+          if (value === '') return;
+          const $target = target;
+          const $val = value;
+          const $wrap = $target.closest('.spinner');
+          const $input = $wrap.find('input');
+          $wrap.find('button').addClass('able');
+          if ($val >= $max) {
+            $input.val($max);
+            $wrap.find('.ico_plus').removeClass('able');
+          } else if ($val <= $min) {
+            $input.val($min);
+            $wrap.find('.ico_minus').removeClass('able');
+          } else {
+            $input.val($val);
+          }
+        }
+
         $spinner.find('button').click(function (e) {
           e.preventDefault();
           const $this = $(this);
-          const $wrap = $this.closest('.spinner');
           const $input = $this.siblings('input');
-          const $inpVal = parseInt($input.val());
-          let $setVal = $inpVal;
+          let $inpVal = parseInt($input.val());
           if (!$this.hasClass('able')) return;
-          $wrap.find('button').addClass('able');
           if ($this.hasClass('ico_plus')) {
             //plus
-            $setVal += 1;
-            if ($setVal >= $max) $this.removeClass('able');
+            $inpVal += 1;
           } else if ($this.hasClass('ico_minus')) {
             //minus
-            $setVal -= 1;
-            if ($setVal <= $min) $this.removeClass('able');
+            $inpVal -= 1;
           }
-          $input.val($setVal);
+          setValue($this, $inpVal);
         });
-        $spinner.find('input').change(function () {
+
+        $spinner.find('input').on('input', function () {
           const $this = $(this);
-          const $wrap = $this.closest('.spinner');
-          const $val = parseInt($this.val());
-          $wrap.find('button').addClass('able');
-          if ($val > $max) {
-            $this.val($max);
-            $wrap.find('.ico_plus').removeClass('able');
-          } else if ($val < $min) {
-            $this.val($min);
-            $wrap.find('.ico_minus').removeClass('able');
-          }
+          const $val = $this.val() == '' ? $this.val() : parseInt($this.val());
+          setValue($this, $val);
         });
       }
+
       function popOpen(target) {
         $(target).addClass('open');
         $(target).closest('.wrap').css({
