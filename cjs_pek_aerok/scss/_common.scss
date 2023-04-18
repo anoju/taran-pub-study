@@ -7,7 +7,12 @@
   src: url('../font/AeroKSans2020-Bold.ttf');
 }
 @font-face {
+  font-family: 'subFontBold';
+  src: url('../font/AeroKSans2020-ExtraBold.ttf');
+}
+@font-face {
   font-family: 'Noto Sans KR';
+  src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 }
 
 :root {
@@ -34,6 +39,7 @@ button {
 .wrap {
   position: relative;
   width: 100%;
+  overflow: hidden;
   //height: auto;
 }
 .fr {
@@ -98,6 +104,12 @@ button {
 }
 
 /*bg color*/
+.bg_gray {
+  background-color: #eee;
+  > .df_box {
+    padding-top: 12.3rem;
+  }
+}
 
 /*title*/
 .h2_tit {
@@ -174,8 +186,7 @@ button {
   padding-top: 4rem;
   background-color: #fff;
 }
-.scroll_box {
-}
+
 /*componant*/
 select {
   outline: 0;

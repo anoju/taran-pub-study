@@ -13,7 +13,7 @@
         <div class="section">
           <h1 class="gd__h1">탭메뉴</h1>
 
-          <div class="tab-line-menu ui-tab">
+          <div class="tab-line-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -31,7 +31,7 @@
           <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-line-menu ui-tab">
+          <div class="tab-line-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -49,7 +49,7 @@
           <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-round-menu ui-tab">
+          <div class="tab-round-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -78,50 +78,55 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
-      // jqyery
-      function jqTab() {
-        $('.ui-tab a').click(function (e) {
-          e.preventDefault();
-          const $href = $(this).attr('href');
-          $(this).parent().addClass('active').siblings().removeClass('active');
-          $(this)
-            .parent()
-            .siblings()
-            .each(function (e) {
-              const $btn = $(this).find('a');
-              const $btnHref = $btn.attr('href');
-              $($btnHref).removeClass('active');
-            });
-          $($href).addClass('active');
-        });
-      }
-      // jqTab();
+      // 스크립트 작성이 여기에
+      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
 
-      // javascript
-      function jsTab() {
-        const $tabBtn = document.querySelectorAll('.ui-tab a');
-        function $tabReset(wrap) {
-          const $tabLi = wrap.querySelectorAll('.tab');
-          $tabLi.forEach((li) => {
-            li.classList.remove('active');
-            const $btn = li.querySelector('a');
-            const $href = $btn.getAttribute('href');
-            document.querySelector($href).classList.remove('active');
-          });
-        }
-        $tabBtn.forEach((tab) => {
-          const $btn = tab;
-          $btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const $href = $btn.getAttribute('href');
-            const $closest = $btn.closest('.ui-tab');
-            $tabReset($closest);
-            $btn.parentNode.classList.add('active');
-            document.querySelector($href).classList.add('active');
-          });
+      //jquery
+
+      $(function () {
+        const $taget = $(this).find('a').attr('href');
+        const $tabPanels = $('.tab-panel');
+        $('.tab').click(function (e) {
+          e.preventDefault();
+          $(this).addClass('active').siblings().removeClass('active');
+          // console.log($taget);
+
+          for (let i = 0; i < $tabPanels.length; i++) {
+            const $panel = $($tabPanels[i]);
+            if ($panel.hasClass('active')) {
+              $panel.show();
+            } else {
+              $panel.hide();
+            }
+          }
         });
-      }
-      jsTab();
+      });
+
+      // $(function () {
+      //   const $tabBtn = $('.tab');
+      //   const $panels = $('.tab-panel');
+
+      //   $tabBtn.click(function () {
+      //     if ($(this).hasClass('active')) {
+      //       return; // 이미 선택된 버튼인 경우 함수 종료
+      //     }
+      //     $tabBtn.removeClass('active');
+      //     $(this).addClass('active');
+
+      //     // 선택된 탭 버튼의 인덱스에 해당하는 탭 패널만 표시
+      //     const index = $tabBtn.index($(this));
+      //     $panels.hide();
+      //     $panels.eq(index).show();
+      //   });
+      // });
+
+      //js
+
+      // 힌트 제이쿼리함수:
+      // addClass(), removeClass(), toggleClass(), hasClass()
+      // parent(), closest(), siblings(), find(), children()
+      // outerWidth(), position()
+      // stop(), animate()
     </script>
   </body>
 </html>
