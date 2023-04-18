@@ -1,0 +1,10 @@
+.swipe {
+  .swiper-slide {
+    position: relative;
+    img {
+      height: 39.1rem;
+      object-fit: contain;
+    }
+    display: none;
+  }
+}
