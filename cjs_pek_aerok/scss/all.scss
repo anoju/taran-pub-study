@@ -41,6 +41,12 @@
       video {
         height: 100%;
       }
+      @media screen and (min-width: 1570px) {
+        video {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
     }
     .visual_typo {
       position: absolute;
@@ -241,13 +247,13 @@
         margin-left: 2rem;
       }
       &:first-of-type {
-        background: #6a7385 url(../images/icon_facebook.png) no-repeat center / 1.1rem 2rem;
+        background: #6a7385 url(../images/sns_facebook3x.png) no-repeat center / 1.1rem 2rem;
       }
       &:nth-of-type(2) {
-        background: #6a7385 url(../images/icon_ig.png) no-repeat center / 2.2rem 2.2rem;
+        background: #6a7385 url(../images/sns_insta3x.png) no-repeat center / 2.2rem 2.2rem;
       }
       &:last-of-type {
-        background: #6a7385 url(../images/icon_kakao.png) no-repeat center / 2.2rem 2.2rem;
+        background: #6a7385 url(../images/sns_kakao3x.png) no-repeat center / 3rem 3rem;
       }
     }
   }
