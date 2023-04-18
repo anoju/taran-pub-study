@@ -1,18 +1,17 @@
 $(document).ready(function () {
   function swipe() {
     const swiper2 = new Swiper('.swiper', {
-      slidesPerView: 'auto',
-      grabCursor: true,
+      slidesPerView: 'auto',               
       effect: 'creative',
       creativeEffect: {
         prev: {
-          shadow: true,
-          translate: ['-100%', 0, -1]
+          translate: ['0%', 0, 0],
         },
         next: {
-          translate: ['100%', 0, 0]
-        }
-      }
+          translate: ['100%', 0, 1],
+        },
+      },
+      
     });
   } //swipe
 

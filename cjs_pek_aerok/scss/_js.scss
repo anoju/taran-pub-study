@@ -1,10 +1,43 @@
-.swipe {
-  .swiper-slide {
-    position: relative;
-    img {
-      height: 39.1rem;
-      object-fit: contain;
+.wrap {
+  .contents_box{
+    .swiper.main {  
+      width: 100%;      
+      margin-left: 2.4rem;
+      .swiper-wrapper {
+        width: 50%;        
+        .swiper-slide {           
+          position: relative;        
+          width: auto;      
+          padding-right: 1.2rem;
+          flex-shrink: 0;
+          img {          
+            width: auto;
+            height: 39.1rem;
+            object-fit: contain;
+          }    
+        }
+        .txt_wrap {
+          position: absolute;
+          top: 8.15rem;
+          left: 3rem;
+          color: #fff;
+          font-weight: 700;
+          .txt {       
+            font-size: 1.4rem;
+            line-height: 1;
+            opacity: .8;
+          }
+          p {
+            margin-top: 1.5rem;
+            font-size: 2.4rem;        
+            line-height: 3rem;
+          }
+        }
+      }
+      
     }
-    display: none;
   }
+
+ 
+  
 }
