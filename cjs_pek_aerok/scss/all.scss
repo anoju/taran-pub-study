@@ -18,6 +18,14 @@
   z-index: 99;
   .header_logo {
     text-indent: -9999rem;
+    a {
+      width: 9.3rem;
+      height: 2rem;
+      background: url(../images/headerLogo_white3x.png) no-repeat 0 0 / cover;
+    }
+  }
+  .btn_menu {
+    background: url(../images/headerMenu_white3x.png) no-repeat center / 3.2rem 3.2rem;
   }
 }
 
@@ -47,6 +55,9 @@
       align-items: center;
       gap: 3.2rem;
       .h2_img {
+        width: 100%;
+        height: 8.4rem;
+        background: url(../images/maintitle3x.png) no-repeat center / contain;
         text-indent: -9999rem;
       }
       .sch_box {
@@ -55,6 +66,77 @@
         background: rgba(255, 255, 255, 0.6);
         backdrop-filter: blur(10px);
         box-sizing: border-box;
+        .tit {
+          display: block;
+          margin-bottom: 0.8rem;
+          font-size: 1.4rem;
+          font-weight: 500;
+          line-height: 1.7rem;
+          color: #222;
+          opacity: 0.8;
+        }
+        input {
+          font-weight: 700;
+          color: #222;
+        }
+        .location_box {
+          display: flex;
+          align-items: center;
+          gap: 2.4rem;
+          .city {
+            padding-right: 2rem;
+            background: transparent url(../images/pulldown3x.png) no-repeat 100% 30% / 1.6rem 1.6rem;
+            line-height: 2.5rem;
+            font-size: 2rem;
+          }
+          .btn_replace {
+            width: 2.6rem;
+            height: 2rem;
+            margin-top: 0.5rem;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            background: url(../images/circle3x.png) no-repeat center / 1.2rem 0.7rem;
+          }
+        }
+        .date_picker {
+          margin-top: 2.4rem;
+          .date_grp {
+            display: flex;
+            line-height: 2.3rem;
+            .ico_cal {
+              display: inline-block;
+              width: 2rem;
+              height: 2rem;
+              margin-right: 0.6rem;
+              background: url(../images/calender3x.png) no-repeat 0 0 / cover;
+            }
+            .date {
+              width: 9.1rem;
+              font-size: 1.7rem;
+              line-height: 2.1rem;
+              font-weight: 700;
+              color: #222;
+            }
+            .day {
+              width: 2.6rem;
+              font-size: 1.5rem;
+              line-height: 1.9rem;
+              font-weight: 700;
+              color: #222;
+            }
+          }
+        }
+        .head_count {
+          margin-top: 2.5rem;
+          input {
+            padding-left: 2.6rem;
+            background: url(../images/human3x.png) no-repeat left / 2rem 2rem;
+            font-size: 2rem;
+            line-height: 2.5rem;
+          }
+        }
+        .btn_sch {
+        }
       }
     }
   }

@@ -175,3 +175,23 @@ button {
 .scroll_box {
 }
 /*componant*/
+select {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  -o-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input {
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+}
+input[type='date']::-webkit-calendar-picker-indicator {
+  display: block;
+  background: transparent;
+  opacity: 0;
+}
