@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'subFont';
-  src: url('../font/AeroKSans2020-ExtraBold.ttf');
+  src: url('../font/AeroKSans2020-Bold.ttf');
 }
 @font-face {
   font-family: 'Noto Sans KR';
@@ -61,6 +61,10 @@ button {
   margin-top: 1rem !important;
 }
 
+.mt15 {
+  margin-top: 1.5rem !important;
+}
+
 .mt20 {
   margin-top: 2rem !important;
 }
@@ -84,6 +88,11 @@ button {
 }
 .fc_gray {
   color: var(--gray-color);
+}
+
+/*line height*/
+.lh24 {
+  line-height: 2.4rem;
 }
 
 /*bg color*/
@@ -111,7 +120,6 @@ button {
   text-transform: uppercase;
 }
 .h4_tit {
-  margin-bottom: 3.2rem;
   font-size: 2.8rem;
   font-weight: 700;
   line-height: 3.6rem;
@@ -135,11 +143,22 @@ button {
   padding: 1.6rem 2.4rem;
   border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
+.btn_more {
+  display: inline;
+  padding-right: 1.8rem;
+  background: url(../images/arrow_grey.png) no-repeat right / 1.8rem 1.8rem;
+  color: #999;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.7rem;
+  letter-spacing: -0.02em;
+}
 
 /*content box*/
 .df_box {
   width: 100%;
   height: auto;
+  margin-bottom: 3.2rem;
   padding: 0 2.4rem;
   box-sizing: border-box;
 }
@@ -149,4 +168,10 @@ button {
   box-sizing: border-box;
 }
 
+.border_box {
+  padding-top: 4rem;
+  background-color: #fff;
+}
+.scroll_box {
+}
 /*componant*/
