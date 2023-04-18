@@ -1,20 +1,24 @@
-.wrap {
-  .contents_box{
+
     .swiper.main {  
       width: 100%;      
-      margin-left: 2.4rem;
+      margin-left: 2.4rem;      
       .swiper-wrapper {
         width: 50%;        
         .swiper-slide {           
           position: relative;        
           width: auto;      
           padding-right: 1.2rem;
-          flex-shrink: 0;
-          img {          
-            width: auto;
-            height: 39.1rem;
-            object-fit: contain;
-          }    
+          flex-shrink: 0;      
+          a {
+            width: 100%;
+            height: 100%;
+            img {                   
+              width: auto;
+              height: 39.1rem;
+              object-fit: contain;
+              vertical-align: bottom;
+            }    
+          }   
         }
         .txt_wrap {
           position: absolute;
@@ -34,10 +38,55 @@
           }
         }
       }
-      
+      .swiper-pagination {
+        position: relative;
+        bottom: auto;
+        margin-top: 2.1rem;
+        text-align: left;
+        font-family: var(--sub-font);
+        color: #aaaaaa;
+        .swiper-pagination-current {     
+          margin-right: .6rem;
+          font-size: 4rem;
+          font-weight: 700;
+          line-height: 4.8rem;
+          color: #222222;
+        }
+        .swiper-pagination-total {          
+          margin-left: .6rem;
+          font-weight: 400;
+          font-size: 2rem;
+          line-height: 2.4rem;
+        }
+      }
+    }
+    .pass_banner {
+      position: relative;
+      width: 100%;
+      height: 16rem;
+      margin: 6rem 0;
+      background: url(../images/banner3x.png) center / 100% no-repeat;
+      a {
+        width: 100%;
+        height: 100%;
+      .txt_wrap{
+        position: absolute;
+        top: 50%;
+        left: 2.4rem;
+        transform: translateY(-50%);
+        .jeju_pass {
+          width: 6.8rem;
+          height: 1.2rem;
+          margin-bottom: 1.6rem;
+          background: url(../images/jejupass3x.png) center / 100%  no-repeat;
+        }
+        p {
+          font-size: 2.2rem;
+          font-weight: 700;
+          line-height: 2.6rem;
+          color: #fff;
+        }        
+      }
     }
   }
 
- 
-  
-}
