@@ -24,7 +24,6 @@
               </ul>
             </div>
           </div>
-          <br />
           <div id="tab1-1" class="tab-panel active"><h2>탭내용입니다. 111</h2></div>
           <div id="tab1-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
           <div id="tab1-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
@@ -42,7 +41,6 @@
               </ul>
             </div>
           </div>
-          <br />
           <div id="tab2-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
           <div id="tab2-2" class="tab-panel active"><h2>탭내용입니다. 222</h2></div>
           <div id="tab2-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
@@ -60,7 +58,6 @@
               </ul>
             </div>
           </div>
-          <br />
           <div id="tab3-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
           <div id="tab3-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
           <div id="tab3-3" class="tab-panel active"><h2>탭내용입니다. 333</h2></div>
@@ -78,36 +75,47 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
-      // 스크립트 작성이 여기에
-      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      //js
-      // function jstab() {
-      //   const tabButton = document.querySelectorAll('.tab');
-      //   const tabpanel = document.querySelectorAll('.tab-panel');
-      //   const $href = document.querySelector('a').getAttribute('href');
+      // javascript
+      function jsTab() {
+        const $tabBtn = document.querySelectorAll('.ui-tab a');
+        if (!$tabBtn.length) return; // 버튼이 있는지 여부 확인
 
-      //   tabButton.forEach(function (button) {
-      //     button.addEventListener('click', function () {
-      //       tabButton.forEach(function (tab) {
-      //         tab.classList.remove('active');
-      //       });
-      //       button.classList.add('active');
+        // 탭 버튼과 패널 초기화
+        function resetTab(wrap) {
+          const $tabs = wrap.querySelectorAll('.tab');
+          $tabs.forEach(function (tab) {
+            tab.classList.remove('active');
+            const $href = tab.querySelector('a').getAttribute('href');
+            const $panel = document.querySelector($href);
+            if ($panel) $panel.classList.remove('active');
+          });
+        }
 
-      //       const target = button.querySelector('a').getAttribute('href');
-      //       tabpanel.forEach(function (panel) {
-      //         panel.classList.remove('active');
-      //       });
-      //       document.querySelector(target).classList.add('active');
-      //     });
-      //   });
-      // }
-      // jstab();
+        $tabBtn.forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const $this = this;
+            const $tab = $this.closest('.tab');
+            const $wrap = $this.closest('.ui-tab');
+            const $href = $this.getAttribute('href');
+            const $panel = document.querySelector($href);
+
+            if (!$panel) return; // 보여줘야할 tab-panel이 있는지 확인
+            resetTab($wrap);
+            $tab.classList.add('active');
+            $panel.classList.add('active');
+          });
+        });
+      }
+      jsTab();
 
       // jquery;
       function jqTab() {
         $('.ui-tab a').click(function (e) {
           e.preventDefault();
           const $tab = $(this).closest('.tab');
+
+          // href 속성 활용
           $tab
             .addClass('active')
             .siblings()
@@ -118,12 +126,18 @@
               $($href2).removeClass('active');
             });
 
+          // nextUntil 활용(좋은진 잘모르겠음)
+          // const $wrap = $(this).closest('.ui-tab');
+          // $tab.addClass('active').siblings().removeClass('active');
+          // const $nextUntil = $wrap.nextUntil('br', '.tab-panel');
+          // $nextUntil.removeClass('active');
+
           // href 속성값으로 tab-panel 보여주기
           const $href = $(this).attr('href');
           $($href).addClass('active');
         });
       }
-      jqTab();
+      // jqTab();
     </script>
   </body>
 </html>
