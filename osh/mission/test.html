@@ -5,26 +5,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../js_static/css/front.min.css" />
-    <link rel="stylesheet" href="../css/style.min.css" />
+    <link rel="stylesheet" href="../css/test.min.css" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css" />
   </head>
-  <style>
-    .setBox {
-      background-color: pink;
-      width: 100px;
-      height: 50px;
-      transition: all 1000ms linear 500ms;
-    }
-    .setBox:hover {
-      background-color: gold;
-      width: 200px;
-      height: 100px;
-      transition: all 300ms ease;
-    }
-  </style>
+  <style></style>
   <body>
-    <div class="setBox"></div>
-    <script src="../js/test.js"></script>
+    <main>
+      <div class="tabs">
+        <ul class="tabs--list">
+          <li>
+            <a href="javascript:;" title="TABS 1" data-content="tabs1" class="actived">TABS 1</a>
+          </li>
+          <!--
+          -->
+          <li>
+            <a href="javascript:;" title="TABS 2" data-content="tabs2">TABS 2</a>
+          </li>
+          <!--
+          -->
+          <li>
+            <a href="javascript:;" title="TABS 3" data-content="tabs3">TABS 3</a>
+          </li>
+          <!--
+          -->
+          <li>
+            <a href="javascript:;" title="TABS 4" data-content="tabs4">TABS 4</a>
+          </li>
+          <!--
+          -->
+          <li class="moving-tab moving-tab--interaction"></li>
+        </ul>
+        <ul class="tabs--content">
+          <li data-content="tabs1" class="actived">Tabs 1</li>
+          <li data-content="tabs2">Tabs 2</li>
+          <li data-content="tabs3">Tabs 3</li>
+          <li data-content="tabs4">Tabs 4</li>
+        </ul>
+      </div>
+    </main>
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script>
+      /*
+Asep Irman
+UI/UX Designer & Front End Developer
+
+E : sibaturaspirman@gmail.com
+W : asepirman.com
+B : behance.net/sibaturasepirman 
+D : dribbble.com/sibaturaspirman
+*/
+
+      var tabs = $('.tabs'),
+        tabsLists = $('.tabs ul.tabs--list li');
+      tabs.each(function () {
+        var tab = $(this),
+          tabItems = tab.find('ul.tabs--list'),
+          tabContentWrapper = tab.children('ul.tabs--content');
+
+        tabItems.on('click', 'a', function (event) {
+          event.preventDefault();
+          var activedItem = $(this);
+          if (!activedItem.hasClass('actived')) {
+            var activedTab = activedItem.data('content'),
+              activedContent = tabContentWrapper.find('li[data-content="' + activedTab + '"]');
+
+            tabItems.find('a.actived').removeClass('actived');
+            activedItem.addClass('actived');
+            activedContent.addClass('actived').siblings('li').removeClass('actived');
+          }
+        });
+      });
+
+      tabsLists.click(function (e) {
+        if ($(this).hasClass('moving-tab')) {
+          return;
+        }
+        var whatTab = $(this).index();
+        var howFar = 25 * whatTab;
+        $('.moving-tab').css({
+          left: howFar + '%'
+        });
+      });
+    </script>
   </body>
 </html>
