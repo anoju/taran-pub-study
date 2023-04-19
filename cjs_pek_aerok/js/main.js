@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-  function swipe() {
-    const swiper1 = new Swiper('.swiper', {
+  function mainSwipe() {
+    const swiper1 = new Swiper('.main-swiper', {
       slidesPerView: 'auto',     
       loop: true,          
       effect: 'creative',  
@@ -32,5 +32,24 @@ $(document).ready(function () {
     });   
   } //swipe
 
-  swipe();
+  function subSwipe(){
+    const swiper2 = new Swiper('.swiper', {       
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      slidesOffsetBefore: 24,
+      slidesOffsetAfter: 24
+    })
+  } //subswipe
+
+  function selectBox(){    
+    $('select[name=recommend]').change(function () {
+      const val = $(this).val();
+      const option = $(this).find($('option[value=' + val + ']')).attr('class');
+      $('#' + option).addClass('active').siblings().removeClass('active')
+    });
+  } //selectBox
+
+  mainSwipe();
+  subSwipe();
+  selectBox();
 }); //document.ready

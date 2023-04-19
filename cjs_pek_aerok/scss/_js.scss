@@ -1,92 +1,261 @@
-
-    .swiper.main {  
-      width: 100%;      
-      margin-left: 2.4rem;      
-      .swiper-wrapper {
-        width: 50%;        
-        .swiper-slide {           
-          position: relative;        
-          width: auto;      
-          padding-right: 1.2rem;
-          flex-shrink: 0;      
-          a {
-            width: 100%;
-            height: 100%;
-            img {                   
-              width: auto;
-              height: 39.1rem;
-              object-fit: contain;
-              vertical-align: bottom;
-            }    
-          }   
-        }
-        .txt_wrap {
-          position: absolute;
-          top: 8.15rem;
-          left: 3rem;
-          color: #fff;
-          font-weight: 700;
-          .txt {       
-            font-size: 1.4rem;
-            line-height: 1;
-            opacity: .8;
-          }
-          p {
-            margin-top: 1.5rem;
-            font-size: 2.4rem;        
-            line-height: 3rem;
-          }
-        }
-      }
-      .swiper-pagination {
-        position: relative;
-        bottom: auto;
-        margin-top: 2.1rem;
-        text-align: left;
-        font-family: var(--sub-font);
-        color: #aaaaaa;
-        .swiper-pagination-current {     
-          margin-right: .6rem;
-          font-size: 4rem;
-          font-weight: 700;
-          line-height: 4.8rem;
-          color: #222222;
-        }
-        .swiper-pagination-total {          
-          margin-left: .6rem;
-          font-weight: 400;
-          font-size: 2rem;
-          line-height: 2.4rem;
-        }
-      }
-    }
-    .pass_banner {
-      position: relative;
-      width: 100%;
-      height: 16rem;
-      margin: 6rem 0;
-      background: url(../images/banner3x.png) center / 100% no-repeat;
+.txt_wrap {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  .h4_tit {
+    margin-top: .4rem;  }
+  .recommend {                    
+    padding: .9rem 3rem .6rem 1.2rem;
+    color: #fff;  
+    font-size: 2.2rem;
+    font-weight: 700;   
+    background: var(--sub-color) url(../images/icon_off3x.png) calc(100% - 1.2rem) center /1.2rem .6rem no-repeat;        
+    box-sizing: border-box;  
+    border-radius: .8rem;    
+  }
+}
+.main-swiper {  
+  width: 100%;      
+  margin-left: 2.4rem;      
+  .swiper-wrapper {
+    width: 50%;        
+    .swiper-slide {           
+      position: relative;        
+      width: auto;      
+      padding-right: 1.2rem;
+      flex-shrink: 0;      
       a {
         width: 100%;
         height: 100%;
-      .txt_wrap{
-        position: absolute;
-        top: 50%;
-        left: 2.4rem;
-        transform: translateY(-50%);
-        .jeju_pass {
-          width: 6.8rem;
-          height: 1.2rem;
-          margin-bottom: 1.6rem;
-          background: url(../images/jejupass3x.png) center / 100%  no-repeat;
-        }
-        p {
-          font-size: 2.2rem;
-          font-weight: 700;
-          line-height: 2.6rem;
-          color: #fff;
-        }        
+        img {                   
+          width: auto;
+          height: 39.1rem;
+          object-fit: contain;
+          vertical-align: bottom;
+        }    
+      }   
+    }
+    .txt_wrap {
+      position: absolute;
+      top: 8.15rem;
+      left: 3rem;
+      color: #fff;
+      font-weight: 700;
+      .txt {       
+        font-size: 1.4rem;
+        line-height: 1;
+        opacity: .8;
+      }
+      p {
+        margin-top: 1.5rem;
+        font-size: 2.4rem;        
+        line-height: 3rem;
       }
     }
   }
-
+  .swiper-pagination {
+    position: relative;
+    bottom: auto;
+    margin-top: 2.1rem;
+    text-align: left;
+    font-family: var(--sub-font);
+    color: #aaaaaa;
+    .swiper-pagination-current {     
+      margin-right: .6rem;
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 4.8rem;
+      color: #222222;
+    }
+    .swiper-pagination-total {          
+      margin-left: .6rem;
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 2.4rem;
+    }
+  }
+}
+.pass_banner {
+  position: relative;
+  width: 100%;
+  height: 16rem;
+  margin: 6rem 0;
+  background: url(../images/banner3x.png) center / 100% no-repeat;
+  a {
+    width: 100%;
+    height: 100%;
+  .txt_wrap{
+    position: absolute;
+    top: 50%;
+    left: 2.4rem;
+    transform: translateY(-50%);
+    .jeju_pass {
+      width: 6.8rem;
+      height: 1.2rem;
+      margin-bottom: 1.6rem;
+      background: url(../images/jejupass3x.png) center / 100%  no-repeat;
+    }
+    p {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 2.6rem;
+      color: #fff;
+    }        
+  }
+}
+}
+.tab_panel {
+  display: none;
+  margin-bottom: 6rem;  
+  &.active {
+    display: block;
+  }
+  .swiper-slide{
+    width: 25.1rem !important;      
+    margin-bottom: 1.2rem;
+    a{            
+      display: block;    
+      width:100%;
+      height: 100%;
+      .card_txt {
+        position: absolute;
+        z-index: 1;
+        top: 15rem;   
+        left: 2.6rem;   
+        color: #fff;
+        font-weight: 700;
+        .classify{
+          display:inline-block;                              
+          height: 2.4rem;
+          margin-bottom: .8rem;
+          padding: .2rem .8rem .2rem .8rem;
+          font-size: 1.2rem;
+          line-height: 2.4rem;
+          background: rgba($color: #ffffff, $alpha: .3);
+          border-radius: .6rem;
+          text-align: center;
+          box-sizing: border-box;
+        }
+        .product_name{
+          margin-bottom: 1.2rem;
+          font-size: 2.6rem;
+          line-height: 3.3rem;
+        }
+        .product_cost{
+          strong {
+            margin-right: .2rem;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 2.88rem;
+          }
+          font-size: 2rem;
+          font-weight: 500;
+          line-height: 2.4rem;
+        }
+      }
+      .card_image {
+        position: relative;         
+        height: 28rem;
+        border-radius: 1.6rem; 
+        overflow: hidden;
+        img {
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(calc(-50% + 1.1rem));
+          width: 100%;          
+          height: 100%;
+          object-fit: contain;
+        }  
+        @at-root #activity, #hotel {
+          .card_image img {
+            object-fit: cover;
+            top: 0;
+            transform: none;
+          }
+        }
+        &::before {
+          content: '';
+          display: block;
+          width: 100%;
+          height: 100%;
+          background: var(--gray-color);
+          opacity: .4;
+        }  
+        &::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(to top, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%); 
+          opacity: .5;
+        }
+      }       
+    }
+  }
+  .seemore {    
+    display: flex;    
+    align-items: end;
+    width:fit-content;    
+    margin-left: auto;
+    margin-right: 2.4rem;
+    text-align: right;
+    font-size: 1.4rem;
+    font-weight: 500;    
+    color: var(--gray-color);    
+    &::after {
+      content: '';
+      display: inline-block;   
+      width: 1.8rem;
+      height: 1.8rem;
+      background: url(../images/arrow_grey.png) center / cover no-repeat;
+    }
+  }
+}
+.visual_typo {
+  animation: wheel 4s infinite;  
+  animation-timing-function: cubic-bezier(1, 1, 1, 1);
+  @keyframes wheel {
+    0%{
+      transform: rotate(0);
+    }     
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+}
+.tape {
+  position: relative;  
+  &:after {
+    content: '';  
+    position: absolute;
+    left: -1000rem;
+    right: -1000rem;
+    top: 0;    
+    bottom: 0;    
+    animation: move 4s infinite;  
+    animation-timing-function: cubic-bezier(1, 1, 1, 1);
+    @at-root .-yellow:after {
+      background: url(../images/pattern1_3x.png) center / auto 3.4rem repeat-x;
+    }
+    @at-root .-navy:after {
+      background: url(../images/pattern2_3x.png) center / auto 3.4rem repeat-x;
+    }
+  }
+  span {
+    display: none;
+  }
+  .text {
+    display: none !important;
+  }
+  @keyframes move {
+    0%{
+      left:-150rem;
+    }        
+    100%{
+      left:0rem;
+    }
+  }
+}
