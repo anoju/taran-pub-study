@@ -214,6 +214,7 @@
     }
   }
 }
+
 .visual_typo {
   animation: wheel 4s infinite;  
   animation-timing-function: cubic-bezier(1, 1, 1, 1);
@@ -235,13 +236,14 @@
     right: -1000rem;
     top: 0;    
     bottom: 0;    
-    animation: move 4s infinite;  
-    animation-timing-function: cubic-bezier(1, 1, 1, 1);
+    // animation: move 4s infinite;
     @at-root .-yellow:after {
-      background: url(../images/pattern1_3x.png) center / auto 3.4rem repeat-x;
+      background: url(../images/pattern1_3x.png) 0 center / 31.4rem auto repeat-x;
+      animation: bg-move2 4s linear infinite;
     }
     @at-root .-navy:after {
-      background: url(../images/pattern2_3x.png) center / auto 3.4rem repeat-x;
+      background: url(../images/pattern2_3x.png) 0 center / 31.4rem auto repeat-x;
+      animation: bg-move 4s linear infinite;
     }
   }
   span {
@@ -256,6 +258,22 @@
     }        
     100%{
       left:0rem;
+    }
+  }
+  @keyframes bg-move {
+    0%{
+      left: -31.4rem;
+    }        
+    100%{
+      left: 0;
+    }
+  }
+  @keyframes bg-move2 {
+    0%{
+      background-position: 0 center;
+    }        
+    100%{
+      background-position: -31.4rem center;
     }
   }
 }
