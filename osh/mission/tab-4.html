@@ -79,42 +79,84 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
-      // 스크립트 작성이 여기에
-      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      //탭 라인 크기 잡기
+      // javascript
+      function jsTab() {
+        const $tabBtn = document.querySelectorAll('.ui-tab a');
+        if (!$tabBtn.length) return; // 버튼이 있는지 여부 확인
 
-      function tab() {
-        $('.ui-tab a').click(function (e) {
-          e.preventDefault();
-          const $href = $(this).attr('href');
-          $(this).parent().addClass('active').siblings().removeClass('active');
-          $(this)
-            .parent()
-            .siblings()
-            .each(function (e) {
-              const $btn = $(this).find('a');
-              const $btnHref = $btn.attr('href');
-              $($btnHref).removeClass('active');
-            });
-          $($href).addClass('active');
+        // 탭 버튼과 패널 초기화
+        function resetTab(wrap) {
+          const $tabs = wrap.querySelectorAll('.tab');
+          $tabs.forEach(function (tab) {
+            tab.classList.remove('active');
+            const $href = tab.querySelector('a').getAttribute('href');
+            const $panel = document.querySelector($href);
+            if ($panel) $panel.classList.remove('active');
+          });
+        }
+
+        $tabBtn.forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const $this = this;
+            const $tab = $this.closest('.tab');
+            const $wrap = $this.closest('.ui-tab');
+            const $href = $this.getAttribute('href');
+            const $panel = document.querySelector($href);
+
+            if (!$panel) return;
+            resetTab($wrap);
+            $tab.classList.add('active');
+            $panel.classList.add('active');
+          });
         });
       }
-      tab();
+      // jsTab();
 
-      function actvieTab() {
-        //탭메뉴 누르면 tab-line이 따라서 위치 이동
-        //탭메뉴 크기 구하고 left로 크기 만큼 움직이기
-        const $tabLine = $('.tab-line');
-        const $li = $('.tab');
-        const $tabWidth = $tabLine.outerWidth();
-        const $posX = $tabLine.position();
+      // jquery;
+      function jqTab() {
+        function tabLine(wrap) {
+          const $wrap = $(wrap);
+          const $line = $wrap.find('.tab-line');
+          const $active = $wrap.find('.tab.active');
+          const $tabLeft = $active.position().left;
+          const $tabWidth = $active.outerWidth();
+          // $line.css({ left: $tabLeft, width: $tabWidth });
+          $line.stop().animate({ left: $tabLeft, width: $tabWidth }, 300);
+        }
+
+        function tabLineChk() {
+          $('.ui-tab').each(function () {
+            tabLine(this);
+          });
+        }
+
+        function tabClick(btn) {
+          const $wrap = $(btn).closest('.ui-tab');
+          const $tab = $(btn).closest('.tab');
+          $tab
+            .addClass('active')
+            .siblings()
+            .removeClass('active')
+            .find('a')
+            .each(function () {
+              const $href2 = $(this).attr('href');
+              $($href2).removeClass('active');
+            });
+          const $href = $(btn).attr('href');
+          $($href).addClass('active');
+          tabLine($wrap);
+        }
+
+        $('.ui-tab a').click(function (e) {
+          e.preventDefault();
+          tabClick(this);
+        });
+
+        tabLineChk();
+        $(window).resize(tabLineChk);
       }
-
-      // 힌트 제이쿼리함수:
-      // addClass(), removeClass(), toggleClass(), hasClass()
-      // parent(), closest(), siblings(), find(), children()
-      // outerWidth(), position()
-      // stop(), animate()
+      jqTab();
     </script>
   </body>
 </html>
