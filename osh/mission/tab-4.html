@@ -49,7 +49,7 @@
           <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-round-menu ui-tab">
+          <div class="tab-box-menu ui-tab">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -71,7 +71,8 @@
           <p>.tab 영역에 .active 클래스로 활성화 할 수 있습니다.</p>
           <p>하나의 탭메뉴만 활성화 되어야합니다.</p>
           <p>다수의 탭메뉴가 있지만 클릭 시 서로 영향이 없어야합니다.</p>
-          <p><u>1개의 스크립트로 모든 탭을 서로 영향없이 작동해야합니다.</u></p>
+          <p>1개의 스크립트로 모든 탭을 서로 영향없이 작동해야합니다.</p>
+          <p><u>.tab-line 을 컨트롤 하여 좀 더 액티브하게 만들어보세요.</u></p>
         </div>
       </div>
     </div>
@@ -80,50 +81,40 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-      //js
-      // function jstab() {
-      //   const tabButton = document.querySelectorAll('.tab');
-      //   const tabpanel = document.querySelectorAll('.tab-panel');
-      //   const $href = document.querySelector('a').getAttribute('href');
+      //탭 라인 크기 잡기
 
-      //   tabButton.forEach(function (button) {
-      //     button.addEventListener('click', function () {
-      //       tabButton.forEach(function (tab) {
-      //         tab.classList.remove('active');
-      //       });
-      //       button.classList.add('active');
-
-      //       const target = button.querySelector('a').getAttribute('href');
-      //       tabpanel.forEach(function (panel) {
-      //         panel.classList.remove('active');
-      //       });
-      //       document.querySelector(target).classList.add('active');
-      //     });
-      //   });
-      // }
-      // jstab();
-
-      // jquery;
-      function jqTab() {
+      function tab() {
         $('.ui-tab a').click(function (e) {
           e.preventDefault();
-          const $tab = $(this).closest('.tab');
-          $tab
-            .addClass('active')
-            .siblings()
-            .removeClass('active')
-            .find('a')
-            .each(function () {
-              const $href2 = $(this).attr('href');
-              $($href2).removeClass('active');
-            });
-
-          // href 속성값으로 tab-panel 보여주기
           const $href = $(this).attr('href');
+          $(this).parent().addClass('active').siblings().removeClass('active');
+          $(this)
+            .parent()
+            .siblings()
+            .each(function (e) {
+              const $btn = $(this).find('a');
+              const $btnHref = $btn.attr('href');
+              $($btnHref).removeClass('active');
+            });
           $($href).addClass('active');
         });
       }
-      jqTab();
+      tab();
+
+      function actvieTab() {
+        //탭메뉴 누르면 tab-line이 따라서 위치 이동
+        //탭메뉴 크기 구하고 left로 크기 만큼 움직이기
+        const $tabLine = $('.tab-line');
+        const $li = $('.tab');
+        const $tabWidth = $tabLine.outerWidth();
+        const $posX = $tabLine.position();
+      }
+
+      // 힌트 제이쿼리함수:
+      // addClass(), removeClass(), toggleClass(), hasClass()
+      // parent(), closest(), siblings(), find(), children()
+      // outerWidth(), position()
+      // stop(), animate()
     </script>
   </body>
 </html>
