@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
     <title>테스트</title>
     <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      #box {
+        border: 5px solid #ddd;
+        padding: 10px;
+        width: 200px;
+        height: 200px;
+        box-sizing: content-box;
+        overflow: auto;
+      }
+      #box div {
+        height: 600px;
+      }
+    </style>
   </head>
   <body>
     <div class="page">
@@ -17,7 +30,7 @@
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
-                <li class="tab active"><a href="#tab1-1">텝메뉴1</a></li>
+                <li class="tab"><a href="#tab1-1">텝메뉴1</a></li>
                 <li class="tab"><a href="#tab1-2">텝메뉴2</a></li>
                 <li class="tab"><a href="#tab1-3">텝메뉴3</a></li>
                 <li class="tab"><a href="#tab1-4">텝메뉴4</a></li>
@@ -25,7 +38,7 @@
             </div>
           </div>
           <br />
-          <div id="tab1-1" class="tab-panel active"><h2>탭내용입니다. 111</h2></div>
+          <div id="tab1-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
           <div id="tab1-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
           <div id="tab1-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
           <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
@@ -44,7 +57,7 @@
           </div>
           <br />
           <div id="tab2-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
-          <div id="tab2-2" class="tab-panel active"><h2>탭내용입니다. 222</h2></div>
+          <div id="tab2-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
           <div id="tab2-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
           <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
@@ -63,10 +76,13 @@
           <br />
           <div id="tab3-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
           <div id="tab3-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
-          <div id="tab3-3" class="tab-panel active"><h2>탭내용입니다. 333</h2></div>
+          <div id="tab3-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
           <div id="tab3-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
+          <div id="box">
+            <div></div>
+          </div>
           <p>탭메뉴(.tab-line-menu)를 클릭하여 해당메뉴를 활성화 시켜보세요.</p>
           <p>.tab 영역에 .active 클래스로 활성화 할 수 있습니다.</p>
           <p>하나의 탭메뉴만 활성화 되어야합니다.</p>
@@ -82,9 +98,8 @@
       // javascript
       function jsTab() {
         const $tabBtn = document.querySelectorAll('.ui-tab a');
-        if (!$tabBtn.length) return; // 버튼이 있는지 여부 확인
+        if (!$tabBtn.length) return;
 
-        // 탭 버튼과 패널 초기화
         function resetTab(wrap) {
           const $tabs = wrap.querySelectorAll('.tab');
           $tabs.forEach(function (tab) {
@@ -95,30 +110,77 @@
           });
         }
 
+        function tabLine(wrap) {
+          const $line = wrap.querySelector('.tab-line');
+          if (!$line) return;
+          const $active = wrap.querySelector('.tab.active');
+          if (!$active) return;
+          const $tabLeft = $active.offsetLeft;
+          const $tabWidth = $active.offsetWidth;
+          $line.style.transition = 'left 0.3s, width 0.3s';
+          $line.style.left = $tabLeft + 'px';
+          $line.style.width = $tabWidth + 'px';
+          function lineMoveEnd() {
+            $line.style.transition = '';
+            $line.removeEventListener('transitionend', lineMoveEnd);
+          }
+          $line.addEventListener('transitionend', lineMoveEnd);
+        }
+
+        function tabLineChk() {
+          const $tabs = document.querySelectorAll('.ui-tab');
+          if (!$tabs.length) return;
+          $tabs.forEach(function (tab) {
+            tabLine(tab);
+          });
+        }
+
+        function tabClick(btn) {
+          const $this = btn;
+          const $tab = $this.closest('.tab');
+          const $wrap = $this.closest('.ui-tab');
+          const $href = $this.getAttribute('href');
+          const $panel = document.querySelector($href);
+
+          if (!$panel) return;
+          resetTab($wrap);
+          $tab.classList.add('active');
+          $panel.classList.add('active');
+          tabLine($wrap);
+        }
+
         $tabBtn.forEach(function (btn) {
           btn.addEventListener('click', function (e) {
             e.preventDefault();
-            const $this = this;
-            const $tab = $this.closest('.tab');
-            const $wrap = $this.closest('.ui-tab');
-            const $href = $this.getAttribute('href');
-            const $panel = document.querySelector($href);
-
-            if (!$panel) return;
-            resetTab($wrap);
-            $tab.classList.add('active');
-            $panel.classList.add('active');
+            tabClick(this);
           });
         });
+
+        tabLineChk();
+        window.addEventListener('resize', tabLineChk);
       }
       // jsTab();
+
+      // get width - javascript
+      function getWidth() {
+        const $box = document.querySelector('#box');
+        let $boxW = $box.offsetWidth;
+        console.log($boxW);
+        $boxW = $box.clientWidth;
+        console.log($boxW);
+        const $boxSclH = $box.scrollHeight;
+        console.log($boxSclH);
+      }
+      getWidth();
 
       // jquery;
       function jqTab() {
         function tabLine(wrap) {
           const $wrap = $(wrap);
           const $line = $wrap.find('.tab-line');
+          if (!$line.length) return;
           const $active = $wrap.find('.tab.active');
+          if (!$active.length) return;
           const $tabLeft = $active.position().left;
           const $tabWidth = $active.outerWidth();
           // $line.css({ left: $tabLeft, width: $tabWidth });
@@ -129,6 +191,20 @@
           $('.ui-tab').each(function () {
             tabLine(this);
           });
+        }
+
+        function tabReady() {
+          $('.ui-tab').each(function () {
+            let $active = $(this).find('.tab.active');
+            if (!$active.length) {
+              const $first = $(this).find('.tab').first();
+              $first.addClass('active');
+              $active = $first;
+            }
+            const $href = $active.find('a').attr('href');
+            $($href).addClass('active');
+          });
+          tabLineChk();
         }
 
         function tabClick(btn) {
@@ -153,7 +229,7 @@
           tabClick(this);
         });
 
-        tabLineChk();
+        tabReady();
         $(window).resize(tabLineChk);
       }
       jqTab();
