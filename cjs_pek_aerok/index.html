@@ -475,27 +475,15 @@
       }
       function scrollFixMain() {
         $(window).scroll(function () {
-          const $scroll = $(this).scrollTop();
-
-          $('.main_visual_box').css({
-            position: 'fixed',
-            zIndex: -1
-          });
-          $('.border_box').css({
-            top: 100 + 'vh'
-          });
-
-          if ($scroll == 500) {
-            $('.border_box')
-              .stop()
-              .animate({
-                top: 0 + 'vh'
-              });
-          } else if ($scroll > 1000) {
+          const $scroll = $(this).scrollTop();         
+          if ($scroll > 0) {
+            $('.main_visual_box').css({
+              position: 'fixed',
+              zIndex: -1
+            });         
             $('.border_box').css({
-              position: 'initial'
-            });
-            $('.main_visual_box').css({ display: 'none' });
+              top: 100 + 'vh'
+            });         
           }
         });
       }
