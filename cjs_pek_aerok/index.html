@@ -453,13 +453,16 @@
       }
       function accordianCard() {
         $('.acc_move .card_box').mouseover(function () {
-          //$(this).addClass('on', 1000, 'linear');
+          if ($(window).width() <= 900) return;
           $(this).addClass('on').siblings().removeClass('on');
-          $(this).find('.txt_box .on_ctrl').hide();
         });
-        $('.acc_move .card_box').mouseout(function () {
-          $(this).removeClass('on');
-          $(this).find('.txt_box .on_ctrl').show();
+        $('.acc_move .card_box').click(function () {
+          if ($(window).width() > 900) return;
+          if ($(this).hasClass('on')) {
+            $(this).removeClass('on');
+          } else {
+            $(this).addClass('on').siblings().removeClass('on');
+          }
         });
       }
       function scrollActionBanner() {
