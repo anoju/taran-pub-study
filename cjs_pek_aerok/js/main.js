@@ -1,6 +1,22 @@
 $(document).ready(function () {
   //최재석
 
+  function scrollActionBanner(){
+    $(window).on('scroll', function() {
+      const boxOffset = $('.letter_box').offset().top;
+      const y = $(window).height() / 3;
+      const x = $(window).scrollTop();
+      
+      console.log(x+y, boxOffset) 
+      if(x+y > boxOffset)  {     
+        $('.letter_box').stop().animate({backgroundSize: `${100 + parseInt(x / 100, 0)}%`}, 400);
+        $('.letter_box p').stop().animate({fontSize: parseInt(x / 180, 0)}, 400);      
+      }else{
+        $('.letter_box').stop().animate({backgroundSize: `${100 + parseInt(x / 200, 0)}%`}, 400);      
+      }
+    });
+  }
+ 
   function mainSwipe() {
     const swiper1 = new Swiper('.main-swiper', {
       slidesPerView: 'auto',     
@@ -53,7 +69,7 @@ $(document).ready(function () {
   mainSwipe();
   subSwipe();
   selectBox();
-
+  scrollActionBanner()
 
   // 박은교
 
