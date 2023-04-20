@@ -37,6 +37,7 @@
     }
     .txt_wrap {
       position: absolute;
+      display: block;
       top: 8.15rem;
       left: 3rem;
       color: #fff;
@@ -86,6 +87,8 @@
     height: 100%;
   .txt_wrap{
     position: absolute;
+    flex-direction: column;
+    align-items:baseline;
     top: 50%;
     left: 2.4rem;
     transform: translateY(-50%);
@@ -119,7 +122,7 @@
       .card_txt {
         position: absolute;
         z-index: 1;
-        bottom: 2.6rem;   
+        bottom: 2.6rem; //여기 수정
         left: 2.6rem;   
         color: #fff;
         font-weight: 700;
@@ -193,25 +196,7 @@
         }
       }       
     }
-  }
-  .seemore {    
-    display: flex;    
-    align-items: end;
-    width:fit-content;    
-    margin-left: auto;
-    margin-right: 2.4rem;
-    text-align: right;
-    font-size: 1.4rem;
-    font-weight: 500;    
-    color: var(--gray-color);    
-    &::after {
-      content: '';
-      display: inline-block;   
-      width: 1.8rem;
-      height: 1.8rem;
-      background: url(../images/arrow_grey.png) center / cover no-repeat;
-    }
-  }
+  } 
 }
 
 .visual_typo {
@@ -250,7 +235,7 @@
   .text {
     display: none !important;
   } 
-  @keyframes bg-move {
+  @keyframes bg-move2 {
     0%{
       left: -22.5rem;
     }        
@@ -258,12 +243,12 @@
       left: 0;
     }
   }
-  @keyframes bg-move2 {
+  @keyframes bg-move {
     0%{
-      background-position: 0 center;
+      left: 0;
     }        
     100%{
-      background-position: -17.2rem center;
+      left: -17.2rem;
     }
   }
 }

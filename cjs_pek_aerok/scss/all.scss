@@ -248,7 +248,7 @@
       border-radius: 1.2rem;
       padding: 1.6rem 1.6rem 1.2rem 2.4rem;
       background-color: #fff;
-      transition: all 3000;
+      transition: all 0.2s;
       box-sizing: border-box;
       .sub_tit {
         width: 12rem;
@@ -288,6 +288,9 @@
         flex-direction: column;
         padding: 3.2rem;
         height: auto;
+        .on_ctrl {
+          display: none;
+        }
         .sub_tit {
           margin-bottom: 0.8rem;
           font-weight: 500;
@@ -379,6 +382,7 @@
           padding: 6.4rem 6.1rem;
           width: 70%;
           overflow: hidden;
+          height: 37rem;
           .txt_box {
             width: 65%;
           }
@@ -423,7 +427,7 @@
     width: 100%;
     padding: 6rem 0;
     background: url(../images/newsLetter3x.png) no-repeat center;
-    background-size: 100%;
+    background-size: cover;
     color: #fff;
     p {
       width: 60%;
@@ -559,6 +563,9 @@
       text-indent: -9999em;
       + .sns {
         margin-left: 2rem;
+      }
+      a {
+        height: 100%;
       }
       &:first-of-type {
         background: #6a7385 url(../images/sns_facebook3x.png) no-repeat center / 1.1rem 2rem;
