@@ -86,6 +86,8 @@
     height: 100%;
   .txt_wrap{
     position: absolute;
+    flex-direction: column;
+    align-items:baseline;
     top: 50%;
     left: 2.4rem;
     transform: translateY(-50%);
