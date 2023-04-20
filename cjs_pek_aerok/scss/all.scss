@@ -344,11 +344,6 @@
         }
       }
     }
-    .btn_area {
-      margin-top: 1.2rem;
-      padding: 0 2.4rem;
-      text-align: right;
-    }
     @media screen and (min-width: 900px) {
       .inner_box {
         flex-direction: row;
@@ -496,6 +491,7 @@
 /********footer*******/
 .footer {
   padding-top: 6rem;
+  background-color: #fff;
   .inner {
     padding: 0 2.4rem;
   }

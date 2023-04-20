@@ -13,7 +13,7 @@
         <div class="section">
           <h1 class="gd__h1">탭메뉴</h1>
 
-          <div class="tab-line-menu ui-tab">
+          <div class="tab-line-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -40,59 +40,46 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
-      //javascript
-      function jsTab() {
-        const $tabBtn = document.querySelectorAll('.ui-tab a');
-        if (!$tabBtn.length) return; // 버튼이 있는지 여부 확인
+      // 스크립트 작성이 여기에
+      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
 
-        // 탭 버튼과 패널 초기화
-        function resetTab() {
-          const $tabs = document.querySelectorAll('.tab');
-          $tabs.forEach(function (tab) {
-            tab.classList.remove('active');
-          });
-          const $panels = document.querySelectorAll('.tab-panel');
-          $panels.forEach(function (panel) {
-            panel.classList.remove('active');
+      //js
+      function tab() {
+        const menu = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        for (let i = 0; i < menu.length; i++) {
+          menu[i].addEventListener('click', (e) => {
+            for (let j = 0; j < menu.length; j++) {
+              if (menu[j].classList.contains('active')) {
+                menu[j].classList.remove('active');
+              }
+              menu[i].classList.add('active');
+            }
+
+            for (let j = 0; j < panels.length; j++) {
+              panels[j].classList.remove('active');
+            }
+            panels[i].classList.add('active');
           });
         }
-
-        $tabBtn.forEach(function (btn) {
-          btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            const $this = this;
-            const $tab = $this.closest('.tab');
-            const $href = $this.getAttribute('href');
-            const $panel = document.querySelector($href);
-
-            if (!$panel) return; // 보여줘야할 tab-panel이 있는지 확인
-            resetTab();
-            $tab.classList.add('active');
-            $panel.classList.add('active');
-          });
-        });
       }
-      jsTab();
+      tab();
 
       //jquery
-      function jqTab() {
-        $('.ui-tab a').click(function (e) {
-          e.preventDefault();
-          const $tab = $(this).closest('.tab');
-          $tab.addClass('active').siblings().removeClass('active');
+      $(function () {
+        const $Menu = $('.tab');
+        const $Panels = $('.tab-panel');
+        let cnt = 0;
 
-          // index로 tab-panel 보여주기
-          // const $idx = $tab.index();
-          // $('.tab-panel').eq($idx).addClass('active').siblings('.tab-panel').removeClass('active');
+        $Menu.click(function () {
+          cnt = $(this).index();
+          $Menu.removeClass('active');
+          $(this).addClass('active');
 
-          // href 속성값으로 tab-panel 보여주기
-          const $href = $(this).attr('href');
-          $($href).addClass('active').siblings('.tab-panel').removeClass('active');
-
-          // return false; //e.preventDefault();(권장) 대신 return false를 쓸수도 있음
+          $Panels.hide().eq(cnt).show();
         });
-      }
-      // jqTab();
+      });
     </script>
   </body>
 </html>

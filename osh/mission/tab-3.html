@@ -13,7 +13,7 @@
         <div class="section">
           <h1 class="gd__h1">탭메뉴</h1>
 
-          <div class="tab-line-menu ui-tab">
+          <div class="tab-line-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -24,13 +24,14 @@
               </ul>
             </div>
           </div>
+          <br />
           <div id="tab1-1" class="tab-panel active"><h2>탭내용입니다. 111</h2></div>
           <div id="tab1-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
           <div id="tab1-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
           <div id="tab1-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-line-menu ui-tab">
+          <div class="tab-line-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -41,13 +42,14 @@
               </ul>
             </div>
           </div>
+          <br />
           <div id="tab2-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
           <div id="tab2-2" class="tab-panel active"><h2>탭내용입니다. 222</h2></div>
           <div id="tab2-3" class="tab-panel"><h2>탭내용입니다. 333</h2></div>
           <div id="tab2-4" class="tab-panel"><h2>탭내용입니다. 444</h2></div>
           <br />
           <br />
-          <div class="tab-round-menu ui-tab">
+          <div class="tab-round-menu">
             <div class="tab-inner">
               <i class="tab-line" aria-hidden="true"></i>
               <ul class="tab-list">
@@ -58,6 +60,7 @@
               </ul>
             </div>
           </div>
+          <br />
           <div id="tab3-1" class="tab-panel"><h2>탭내용입니다. 111</h2></div>
           <div id="tab3-2" class="tab-panel"><h2>탭내용입니다. 222</h2></div>
           <div id="tab3-3" class="tab-panel active"><h2>탭내용입니다. 333</h2></div>
@@ -75,69 +78,55 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
-      // javascript
-      function jsTab() {
-        const $tabBtn = document.querySelectorAll('.ui-tab a');
-        if (!$tabBtn.length) return; // 버튼이 있는지 여부 확인
+      // 스크립트 작성이 여기에
+      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
 
-        // 탭 버튼과 패널 초기화
-        function resetTab(wrap) {
-          const $tabs = wrap.querySelectorAll('.tab');
-          $tabs.forEach(function (tab) {
-            tab.classList.remove('active');
-            const $href = tab.querySelector('a').getAttribute('href');
-            const $panel = document.querySelector($href);
-            if ($panel) $panel.classList.remove('active');
-          });
-        }
+      //jquery
 
-        $tabBtn.forEach(function (btn) {
-          btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            const $this = this;
-            const $tab = $this.closest('.tab');
-            const $wrap = $this.closest('.ui-tab');
-            const $href = $this.getAttribute('href');
-            const $panel = document.querySelector($href);
-
-            if (!$panel) return; // 보여줘야할 tab-panel이 있는지 확인
-            resetTab($wrap);
-            $tab.classList.add('active');
-            $panel.classList.add('active');
-          });
-        });
-      }
-      jsTab();
-
-      // jquery;
-      function jqTab() {
-        $('.ui-tab a').click(function (e) {
+      $(function () {
+        const $taget = $(this).find('a').attr('href');
+        const $tabPanels = $('.tab-panel');
+        $('.tab').click(function (e) {
           e.preventDefault();
-          const $tab = $(this).closest('.tab');
+          $(this).addClass('active').siblings().removeClass('active');
+          // console.log($taget);
 
-          // href 속성 활용
-          $tab
-            .addClass('active')
-            .siblings()
-            .removeClass('active')
-            .find('a')
-            .each(function () {
-              const $href2 = $(this).attr('href');
-              $($href2).removeClass('active');
-            });
-
-          // nextUntil 활용(좋은진 잘모르겠음)
-          // const $wrap = $(this).closest('.ui-tab');
-          // $tab.addClass('active').siblings().removeClass('active');
-          // const $nextUntil = $wrap.nextUntil('br', '.tab-panel');
-          // $nextUntil.removeClass('active');
-
-          // href 속성값으로 tab-panel 보여주기
-          const $href = $(this).attr('href');
-          $($href).addClass('active');
+          for (let i = 0; i < $tabPanels.length; i++) {
+            const $panel = $($tabPanels[i]);
+            if ($panel.hasClass('active')) {
+              $panel.show();
+            } else {
+              $panel.hide();
+            }
+          }
         });
-      }
-      // jqTab();
+      });
+
+      // $(function () {
+      //   const $tabBtn = $('.tab');
+      //   const $panels = $('.tab-panel');
+
+      //   $tabBtn.click(function () {
+      //     if ($(this).hasClass('active')) {
+      //       return; // 이미 선택된 버튼인 경우 함수 종료
+      //     }
+      //     $tabBtn.removeClass('active');
+      //     $(this).addClass('active');
+
+      //     // 선택된 탭 버튼의 인덱스에 해당하는 탭 패널만 표시
+      //     const index = $tabBtn.index($(this));
+      //     $panels.hide();
+      //     $panels.eq(index).show();
+      //   });
+      // });
+
+      //js
+
+      // 힌트 제이쿼리함수:
+      // addClass(), removeClass(), toggleClass(), hasClass()
+      // parent(), closest(), siblings(), find(), children()
+      // outerWidth(), position()
+      // stop(), animate()
     </script>
   </body>
 </html>

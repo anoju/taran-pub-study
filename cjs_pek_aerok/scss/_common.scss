@@ -186,8 +186,15 @@ button {
 }
 
 .border_box {
+  position: relative;
   padding-top: 4rem;
   background-color: #fff;
+}
+
+.btn_area {
+  margin-top: 1.2rem;
+  padding: 0 2.4rem;
+  text-align: right;
 }
 
 /*componant*/
