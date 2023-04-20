@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
     <title>테스트</title>
     <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      strong.active::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 1.6rem;
+        right: var(--base-padding);
+        width: 2.4rem;
+        height: 2.4rem;
+        z-index: 1;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='24' height='24' fill='%23C8C8C8'/%3E%3Cg id='&%23235;&%23139;&%23164;&%23236;&%23154;&%23180;&%23235;&%23161;&%23156;&%23235;&%23147;&%23156; 1'%3E%3Crect width='24' height='24' transform='matrix(1 0 0 -1 0 24)' fill='white'/%3E%3Cpath id='Vector' d='M7 14L12 9L17 14' stroke='%23B0B0B0' stroke-width='1.5' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+      }
+    </style>
   </head>
   <body>
     <div class="page">
@@ -37,6 +50,20 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+
+      function jqAcrdn() {
+        $('.folding-list a').click(function (e) {
+          e.preventDefault;
+          if ($('.folding-panel').hasClass('open')) {
+            $('.folding-panel').css('display', 'none').removeClass('open');
+            $('strong').removeClass('active');
+          } else {
+            $('.folding-panel').css('display', 'block').addClass('open');
+            $('strong').addClass('active');
+          }
+        });
+      }
+      jqAcrdn();
     </script>
   </body>
 </html>
