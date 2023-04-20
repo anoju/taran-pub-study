@@ -475,27 +475,25 @@
       }
       function scrollFixMain() {
         $(window).scroll(function () {
-          const $scroll = $(this).scrollTop();      
-          const $vdHeight = $('.main_visual_box').height();          
+          const $scroll = $(this).scrollTop();
+          const $vdHeight = $('.main_visual_box').height();
           if ($scroll > 0) {
-            $('.contents_box').addClass('fixed');
             $('.main_visual_box').css({
               position: 'fixed',
               zIndex: -1
-            });         
+            });
             $('.border_box').css({
               top: 100 + 'vh'
-            });         
+            });
           }
-          if ($scroll > $vdHeight){
-            $('.contents_box').removeClass('fixed');
+          if ($scroll > $vdHeight) {
             $('.main_visual_box').css({
               position: 'relative',
               zIndex: 0
-            });         
+            });
             $('.border_box').css({
               top: 'auto'
-            });   
+            });
           }
         });
       }
