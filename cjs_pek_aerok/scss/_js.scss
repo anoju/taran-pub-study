@@ -235,7 +235,7 @@
   .text {
     display: none !important;
   } 
-  @keyframes bg-move {
+  @keyframes bg-move2 {
     0%{
       left: -22.5rem;
     }        
@@ -243,12 +243,12 @@
       left: 0;
     }
   }
-  @keyframes bg-move2 {
+  @keyframes bg-move {
     0%{
-      background-position: 0 center;
+      left: 0;
     }        
     100%{
-      background-position: -17.2rem center;
+      left: -17.2rem;
     }
   }
 }
