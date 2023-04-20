@@ -193,25 +193,7 @@
         }
       }       
     }
-  }
-  .seemore {    
-    display: flex;    
-    align-items: end;
-    width:fit-content;    
-    margin-left: auto;
-    margin-right: 2.4rem;
-    text-align: right;
-    font-size: 1.4rem;
-    font-weight: 500;    
-    color: var(--gray-color);    
-    &::after {
-      content: '';
-      display: inline-block;   
-      width: 1.8rem;
-      height: 1.8rem;
-      background: url(../images/arrow_grey.png) center / cover no-repeat;
-    }
-  }
+  } 
 }
 
 .visual_typo {
