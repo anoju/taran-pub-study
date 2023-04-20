@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //최재석
 
   function mainSwipe() {
     const swiper1 = new Swiper('.main-swiper', {
@@ -52,4 +53,8 @@ $(document).ready(function () {
   mainSwipe();
   subSwipe();
   selectBox();
+
+
+  // 박은교
+
 }); //document.ready
