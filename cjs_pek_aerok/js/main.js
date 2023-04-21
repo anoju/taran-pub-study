@@ -56,14 +56,28 @@ $(document).ready(function () {
   } //swipe
 
   function subSwipe() {
+    
     const swiper2 = new Swiper('.swiper', {
       slidesPerView: 'auto',
       spaceBetween: 20,
       slidesOffsetBefore: 24,
-      slidesOffsetAfter: 24
+      slidesOffsetAfter: 24,
+      on: {        
+        slideChange: function () {
+          if(swiper2.activeIndex < 4){ 
+            $("select[name=recommend] option:eq(0)").prop("selected", true);
+          }
+          if(swiper2.activeIndex > 3 && swiper2.activeIndex < 8){ 
+            $("select[name=recommend] option:eq(1)").prop("selected", true);
+          }
+          if(swiper2.activeIndex > 7 && swiper2.activeIndex < 12){ 
+            $("select[name=recommend] option:eq(2)").prop("selected", true);
+          }
+        }
+      }
     });
-
-    $('select[name=recommend]').change(function () {
+    
+    $('select[name=recommend]').change(function () {      
       const val = $(this).val();
       const option = $(this)
         .find($('option[value=' + val + ']'))
@@ -91,6 +105,11 @@ $(document).ready(function () {
     });   
   } //selectBox
 
+  $('.btn_replace').click(function (e) {
+    e.preventDefault;
+    const selection = $('.location_box div');        
+    selection.toggleClass('orderTo')    
+  });
  
   mainSwipe();
   subSwipe();

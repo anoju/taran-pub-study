@@ -1,3 +1,20 @@
+.location_box {
+  .btn_replace {
+    order: 2;
+  }
+  .location:first-child {
+    order: 1;
+    &.orderTo {
+      order: 3;
+    }
+  }
+  .location:last-child {
+    order: 3;
+    &.orderTo {
+      order: 1;
+    }    
+  }  
+}
 .txt_wrap {
   display: flex;
   align-items: center;
