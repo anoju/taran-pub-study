@@ -435,7 +435,8 @@
     <script>
       function bottomMenu() {
         $(window).scroll(function () {
-          if ($(this).scrollTop() > 200) {
+          const $vdHeight = $('.main_visual_box').height() - $('.header').height();
+          if ($(this).scrollTop() > $vdHeight) {
             $('.fixed_menu').addClass('on');
           } else {
             $('.fixed_menu').removeClass('on');
@@ -444,7 +445,8 @@
       }
       function headerFix() {
         $(window).scroll(function () {
-          if ($(this).scrollTop() > 200) {
+          const $vdHeight = $('.main_visual_box').height() - $('.header').height();
+          if ($(this).scrollTop() > $vdHeight) {
             $('.header').addClass('scroll', 300, 'all');
           } else {
             $('.header').removeClass('scroll', 300, 'all');
@@ -462,17 +464,6 @@
             $(this).removeClass('on');
           } else {
             $(this).addClass('on').siblings().removeClass('on');
-          }
-        });
-      }
-      function scrollActionBanner() {
-        $(window).scroll(function () {
-          const $scrollTop = $(document).scrollTop();
-          const $bg = $('.letter_box').css('background-size');
-          if ($scrollTop > 2577) {
-            $('.letter_box').css({
-              backgroundSize: i++
-            });
           }
         });
       }
@@ -509,7 +500,6 @@
       headerFix();
       accordianCard();
       scrollFixMain();
-      //scrollActionBanner();
     </script>
   </body>
 </html>
