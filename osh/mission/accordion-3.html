@@ -6,19 +6,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
     <title>테스트</title>
     <link href="../../js_static/css/front.min.css" rel="stylesheet" />
-    <style>
-      .folding-btn .open::after {
-        content: '';
-        display: inline-block;
-        position: absolute;
-        top: 1.6rem;
-        right: var(--base-padding);
-        width: 2.4rem;
-        height: 2.4rem;
-        z-index: 1;
-        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='24' height='24' fill='%23C8C8C8'/%3E%3Cg id='&%23235;&%23139;&%23164;&%23236;&%23154;&%23180;&%23235;&%23161;&%23156;&%23235;&%23147;&%23156; 1'%3E%3Crect width='24' height='24' transform='matrix(1 0 0 -1 0 24)' fill='white'/%3E%3Cpath id='Vector' d='M7 14L12 9L17 14' stroke='%23B0B0B0' stroke-width='1.5' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
-      }
-    </style>
   </head>
   <body>
     <div class="page">
@@ -141,7 +128,7 @@
           <p>.folding-btn에 open 클래스로 꺽새 방향이 바뀝니다.</p>
           <p>한번에 연속으로 다중 클릭 시를 고려해서 만들어주세요</p>
           <p>상당 리스트는 해당리스트안에 숨김 컨텐츠들 상관없이 클릭하면 클릭한 영역의 숨김 컨텐츠를 제어하고, 하단 리스트는 클릭한 영역의 숨김 컨텐츠는 보여줄때는 보여지는 다른 숨김컨텐츠가 있다면 숨겨주세요</p>
-          <p><u>위내용을 하나의 함수로 리스트 모두를 컨트롤 하세요. 추가 클래스나 다른 속성을 보여해도 무관합니다.</u></p>
+          <p><u>위내용을 하나의 함ㄱ 수로 리스트 모두를 컨트롤 하세요. 추가 클래스나 다른 속성을 보여해도 무관합니다.</u></p>
         </div>
       </div>
     </div>
@@ -152,42 +139,62 @@
     <script>
       // jquery
       function jqAcrdn() {
-        $('._unfold .folding-btn').click(function (e) {
+        $('.ui-folding .folding-btn').click(function (e) {
           e.preventDefault();
-          $(this).parent().siblings('.folding-panel').slideToggle();
+          const $panel = $(this).parent().siblings('.folding-panel');
+          const $a = $(this).closest('ul');
+          console.log($a);
+
           if ($(this).hasClass('open')) {
+            $panel.slideUp();
             $(this).removeClass('open');
+            if ($a.hasClass('._toggle')) {
+            }
           } else {
+            $panel.slideDown();
             $(this).addClass('open');
           }
         });
       }
       jqAcrdn();
 
-      function jqToggleAcrdn() {
-        $('._toggle .folding-btn').click(function (e) {
-          e.preventDefault();
-          const $panel = $(this).parent().next();
-          if ($panel.is(':visible')) {
-            $panel.slideUp();
-            $(this).removeClass('open');
-            console.log(this);
-          } else {
-            $('.folding-panel').not($panel).slideUp();
-            $panel.slideDown();
-            $('._toggle a').removeClass('open');
-            $(this).addClass('open');
-          }
-        });
-      }
-      jqToggleAcrdn();
+      // function jqAcrdn() {
+      //   $('._unfold .folding-btn').click(function (e) {
+      //     e.preventDefault();
+      //     $(this).parent().siblings('.folding-panel').slideToggle();
+      //     if ($(this).hasClass('open')) {
+      //       $(this).removeClass('open');
+      //     } else {
+      //       $(this).addClass('open');
+      //     }
+      //   });
+      // }
+      // jqAcrdn();
+
+      // function jqToggleAcrdn() {
+      //   $('._toggle .folding-btn').click(function (e) {
+      //     e.preventDefault();
+      //     const $panel = $(this).parent().next();
+      //     if ($panel.is(':visible')) {
+      //       $panel.slideUp();
+      //       $(this).removeClass('open');
+      //       console.log(this);
+      //     } else {
+      //       $('.folding-panel').not($panel).slideUp();
+      //       $panel.slideDown();
+      //       $('._toggle a').removeClass('open');
+      //       $(this).addClass('open');
+      //     }
+      //   });
+      // }
+      // jqToggleAcrdn();
 
       /* 질문
       1. ::after 같은 가상요소를 스크립트로 제어해야할때는 새로운 클래스를 부여하고 부여한 클래스에
           적용될 css를 추가하는 방법이 제일 좋은 것 같아서 사용했는데 문제는
           바뀔 드롭다운 이미지에 백그라운드로 하얀색을 넣어주지 않으면 기존 ::after 랑 겹쳐 보이는데
           이것을 해결할 방법을 모르겠습니다ㅜㅜ...
-          ㄴ 만약 그럴 일은 적겠지만 레이아웃 전체의 bg색을 바꾸면 그 이미지들의 bg도 그에 맞게 항상 바꿔줘야하는 번거로움이 생길텐데.. 제가 짠 코드는 좋은 방법이 아닌거 같다는 생각이 들었습니다.  
+          ㄴ 만약 그럴 일은 적겠지만 레이아웃 전체의 bg색을 바꾸면 그 이미지들의 bg도 그에 맞게 항상 바꿔줘야하는 번거로움이 생길텐데.. 제가 짠 코드는 좋은 방법이 아닌거 같다는 생각이 들었습니다.
       2.
       */
 
