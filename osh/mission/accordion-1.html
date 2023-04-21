@@ -51,9 +51,10 @@
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
 
+      //슬라이드 되게 수정
       function jqAcrdn() {
         $('.folding-list a').click(function (e) {
-          e.preventDefault;
+          e.preventDefault();
           if ($('.folding-panel').hasClass('open')) {
             $('.folding-panel').css('display', 'none').removeClass('open');
             $('strong').removeClass('active');
