@@ -62,6 +62,20 @@ $(document).ready(function () {
       slidesOffsetBefore: 24,
       slidesOffsetAfter: 24
     });
+
+    $('select[name=recommend]').change(function () {
+      const val = $(this).val();
+      const option = $(this)
+        .find($('option[value=' + val + ']'))
+        .attr('class');        
+      if(option == 'hotel'){
+        swiper2.slideTo(8, 1000, false)
+      }else if ((option == 'activity')){
+        swiper2.slideTo(4, 1000, false)
+      }else {
+        swiper2.slideTo(0, 1000, false)
+      }            
+    });  
   } //subswipe
 
   function selectBox() {
@@ -74,13 +88,14 @@ $(document).ready(function () {
         .addClass('active')
         .siblings()
         .removeClass('active');
-    });
+    });   
   } //selectBox
 
+ 
   mainSwipe();
   subSwipe();
-  selectBox();
-  scrollActionBanner();
+  // selectBox();  
+  scrollActionBanner();  
 
   // 박은교
 }); //document.ready
