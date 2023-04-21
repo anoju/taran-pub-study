@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
     <title>테스트</title>
     <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      .folding-btn .open::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        top: 1.6rem;
+        right: var(--base-padding);
+        width: 2.4rem;
+        height: 2.4rem;
+        z-index: 1;
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='24' height='24' fill='%23C8C8C8'/%3E%3Cg id='&%23235;&%23139;&%23164;&%23236;&%23154;&%23180;&%23235;&%23161;&%23156;&%23235;&%23147;&%23156; 1'%3E%3Crect width='24' height='24' transform='matrix(1 0 0 -1 0 24)' fill='white'/%3E%3Cpath id='Vector' d='M7 14L12 9L17 14' stroke='%23B0B0B0' stroke-width='1.5' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E");
+      }
+    </style>
   </head>
   <body>
     <div class="page">
@@ -13,7 +26,7 @@
         <div class="section">
           <h1 class="gd__h1">아코디언</h1>
           <h2 class="gd__h2">토글 없이</h2>
-          <ul class="folding-list ui-folding" id="list">
+          <ul class="folding-list ui-folding _unfold" id="list">
             <li>
               <div class="folding-head">
                 <a href="#" class="folding-btn">제목제목 제목제목 제목제목 제목제목</a>
@@ -139,28 +152,46 @@
     <script>
       // jquery
       function jqAcrdn() {
-        $('.ui-folding a').click(function (e) {
-          e.preventDefault;
-          let $thisBtn = $(this).find('a');
-          if ($('.folding-panel').hasClass('open')) {
-            $($thisBtn).css('display', 'none').removeClass('open');
-            $('strong').removeClass('active');
+        $('._unfold .folding-btn').click(function (e) {
+          e.preventDefault();
+          $(this).parent().siblings('.folding-panel').slideToggle();
+          if ($(this).hasClass('open')) {
+            $(this).removeClass('open');
           } else {
-            $($thisBtn).css('display', 'block').addClass('open');
-            $('strong').addClass('active');
+            $(this).addClass('open');
           }
         });
       }
       jqAcrdn();
 
       function jqToggleAcrdn() {
-        $('._toggle .folding-head').click(function (e) {
+        $('._toggle .folding-btn').click(function (e) {
           e.preventDefault();
-          $('.folding-panel').stop().slideUp();
-          $(this).next().stop().slideDown();
+          const $panel = $(this).parent().next();
+          if ($panel.is(':visible')) {
+            $panel.slideUp();
+            $(this).removeClass('open');
+            console.log(this);
+          } else {
+            $('.folding-panel').not($panel).slideUp();
+            $panel.slideDown();
+            $('._toggle a').removeClass('open');
+            $(this).addClass('open');
+          }
         });
       }
       jqToggleAcrdn();
+
+      /* 질문
+      1. ::after 같은 가상요소를 스크립트로 제어해야할때는 새로운 클래스를 부여하고 부여한 클래스에
+          적용될 css를 추가하는 방법이 제일 좋은 것 같아서 사용했는데 문제는
+          바뀔 드롭다운 이미지에 백그라운드로 하얀색을 넣어주지 않으면 기존 ::after 랑 겹쳐 보이는데
+          이것을 해결할 방법을 모르겠습니다ㅜㅜ...
+          ㄴ 만약 그럴 일은 적겠지만 레이아웃 전체의 bg색을 바꾸면 그 이미지들의 bg도 그에 맞게 항상 바꿔줘야하는 번거로움이 생길텐데.. 제가 짠 코드는 좋은 방법이 아닌거 같다는 생각이 들었습니다.  
+      2.
+      */
+
+      // 코드펜 https://codepen.io/maesi/details/nBXPXG을 참고해서 jquery에 :visible qpi를 사용했습니다.
     </script>
   </body>
 </html>
