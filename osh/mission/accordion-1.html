@@ -46,10 +46,14 @@
           const $panel = $this.closest('.folding-head').next('.folding-panel');
           if (!$panel.length) return console.log('패널 없음');
           if ($this.hasClass('open')) {
-            $panel.stop().slideUp(300);
+            $panel.stop().slideUp(300, function () {
+              console.log('slideUp End');
+            });
             $this.removeClass('open');
           } else {
-            $panel.stop().slideDown(300);
+            $panel.stop().slideDown(300, function () {
+              console.log('slideDown End');
+            });
             $this.addClass('open');
           }
         });
