@@ -43,7 +43,6 @@
         $('.btn-scroll').click(function (e) {
           e.preventDefault();
           const $inputVal = $('.scroll-val').val();
-          console.log($inputVal);
           $('html, body')
             .stop()
             .animate({ scrollTop: '+=' + $inputVal }, 500);

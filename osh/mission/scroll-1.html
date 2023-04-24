@@ -56,13 +56,9 @@
       function jqScroll() {
         $('.btn-scroll').click(function (e) {
           e.preventDefault();
-          const $this = $(this);
-          $('html, body')
-            .stop()
-            .animate({ scrollTop: $(document).height() }, 500);
-          if ($this.hasClass('to-top')) {
-            $('html, body').stop().animate({ scrollTop: 0 }, 500);
-          }
+          console.log($(document).height());
+          const move = $(this).hasClass('to-top') ? 0 : $(document).height() - $(window).height();
+          $('html, body').stop().animate({ scrollTop: move }, 500);
         });
       }
       jqScroll();
@@ -80,7 +76,6 @@
       //   });
       // }
       // jsScroll();
-      //자바스크립트는 정말... 모르겠어요...
     </script>
   </body>
 </html>
