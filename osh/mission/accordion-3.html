@@ -141,23 +141,30 @@
       function jqAcrdn() {
         $('.ui-folding .folding-btn').click(function (e) {
           e.preventDefault();
-          const $panel = $(this).parent().siblings('.folding-panel');
-          const $a = $(this).closest('ul');
-          console.log($a);
+          const $duaration = 400;
+          const $activeClass = 'open';
+          const $this = $(this);
+          const $panel = $this.parent().siblings('.folding-panel');
+          const $ul = $this.closest('.ui-folding');
+          const $li = $this.closest('li');
 
-          if ($(this).hasClass('open')) {
-            $panel.slideUp();
-            $(this).removeClass('open');
-            if ($a.hasClass('._toggle')) {
-            }
+          if ($this.hasClass($activeClass)) {
+            $panel.stop().slideUp($duaration);
+            $this.removeClass($activeClass);
           } else {
-            $panel.slideDown();
-            $(this).addClass('open');
+            $panel.stop().slideDown($duaration);
+            $this.addClass($activeClass);
+            if ($ul.hasClass('_toggle')) {
+              const $siblings = $li.siblings();
+              $siblings.find('.folding-btn').removeClass($activeClass);
+              $siblings.find('.folding-panel').stop().slideUp($duaration);
+            }
           }
         });
       }
       jqAcrdn();
 
+      //이전 작성 코드
       // function jqAcrdn() {
       //   $('._unfold .folding-btn').click(function (e) {
       //     e.preventDefault();
@@ -188,17 +195,6 @@
       //   });
       // }
       // jqToggleAcrdn();
-
-      /* 질문
-      1. ::after 같은 가상요소를 스크립트로 제어해야할때는 새로운 클래스를 부여하고 부여한 클래스에
-          적용될 css를 추가하는 방법이 제일 좋은 것 같아서 사용했는데 문제는
-          바뀔 드롭다운 이미지에 백그라운드로 하얀색을 넣어주지 않으면 기존 ::after 랑 겹쳐 보이는데
-          이것을 해결할 방법을 모르겠습니다ㅜㅜ...
-          ㄴ 만약 그럴 일은 적겠지만 레이아웃 전체의 bg색을 바꾸면 그 이미지들의 bg도 그에 맞게 항상 바꿔줘야하는 번거로움이 생길텐데.. 제가 짠 코드는 좋은 방법이 아닌거 같다는 생각이 들었습니다.
-      2.
-      */
-
-      // 코드펜 https://codepen.io/maesi/details/nBXPXG을 참고해서 jquery에 :visible qpi를 사용했습니다.
     </script>
   </body>
 </html>
