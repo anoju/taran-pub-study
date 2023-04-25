@@ -178,16 +178,51 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
       function jqAcrdn() {
+        /*
+        위에 붙게 : li의 위치값 - 메뉴&헤더 높이
+        밑에 붙게 : li의 위치값 + li의 높이값 - 디바이스 크기
+        */
+        $('.ui-folding .folding-btn').click(function (e) {
+          e.preventDefault();
+          const $this = $(this);
+          const $panel = $this.parent().siblings('.folding-panel');
+          const $li = $this.closest('li');
+          const $menuHeight = $('.tab-list').outerHeight();
+          const $headHeight = $('.page-head').outerHeight();
+          const $excld = $menuHeight + $headHeight;
+          // console.log($panelHeight);
+          if ($this.hasClass('open')) {
+            $this.removeClass('open');
+            $($panel).stop().slideUp();
+          } else {
+            $this.addClass('open');
+            $($panel)
+              .stop()
+              .slideDown(function () {
+                const $scrMove = $li.offset().top - $excld;
+                const $scrMove2 = $li.outerHeight() + $li.offset().top - $(window).height();
+                if ($li.outerHeight() > $(window).height()) {
+                  $('html, body').stop().animate({ scrollTop: $scrMove }, 500);
+                } else {
+                  $('html, body').stop().animate({ scrollTop: $scrMove2 }, 500);
+                }
+              });
+          }
+        });
+      }
+      jqAcrdn();
+
+      //변수로 처리
+      function jqAcrdn() {
         $('.ui-folding .folding-btn').click(function (e) {
           e.preventDefault();
           const $duaration = 400;
           const $activeClass = 'open';
           const $this = $(this);
           const $panel = $this.parent().siblings('.folding-panel');
-          const $ul = $this.closest('.ui-folding');
           const $li = $this.closest('li');
-          const $headHght = $('.page-head').outerHeight(); //헤더 높이값
-          const $menuHght = $('.tab-line-menu').outerHeight(); //탭 메뉴 높이값
+          const $headHght = $('.page-head').outerHeight();
+          const $menuHght = $('.tab-line-menu').outerHeight();
           const $excld = $headHght + $menuHght;
 
           if ($this.hasClass($activeClass)) {
@@ -207,59 +242,13 @@
           }
         });
       }
-      jqAcrdn();
+      // jqAcrdn();
 
       /*
       offset : document 안에서의 위치 값을 반환한다. 쉽게 말해 페이지 전체를 기준으로 위치값을 반환한다. 절대좌표를 반환한다고 표현하기도 한다.
-      
+
       position : DOM 안에서의 위치 값을 반환한다. 부모 태그가 감싸져 있다면 부모태그를 기준으로 위치값을 반환한다. 상대좌표를 반환한다고 표현하기도 한다.
       */
-
-      //
-      // test
-      // function test() {
-      //   let accordion = (function () {
-      //     let $accordion = $('.section');
-      //     let $accordion_header = $accordion.find('.folding-head');
-      //     let $accordion_item = $('li');
-      //     let settings = {
-      //       speed: 400
-      //     };
-
-      //     return {
-      //       // 구성 가능한 객체 리터럴 전달
-      //       init: function ($settings) {
-      //         $accordion_header.on('click', function () {
-      //           accordion.toggle($(this));
-
-      //           setTimeout(() => {
-      //             $('body, html').animate(
-      //               {
-      //                 scrollTop: $(this).offset().top
-      //               },
-      //               500
-      //             );
-      //           }, 400);
-      //         });
-      //         $.extend(settings, $settings);
-      //       },
-
-      //       toggle: function ($this) {
-      //         if (settings.oneOpen && $this[0] != $this.closest('.section').find('> li >.folding-head')[0]) {
-      //           $this.closest('.section').find('> .folding-btn').removeClass('open').find('.folding-panel').slideUp();
-      //         }
-
-      //         $this.closest('> .folding-btn').toggleClass('open');
-      //         $this.next().stop().slideToggle(settings.speed);
-      //       }
-      //     };
-      //   })();
-
-      //   $(document).ready(function () {
-      //     accordion.init({ speed: 300 });
-      //   });
-      // }
-      // test();
     </script>
   </body>
 </html>
