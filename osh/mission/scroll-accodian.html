@@ -197,7 +197,12 @@
             $this.addClass($activeClass);
             $panel.stop().slideDown($duaration, function () {
               const $moveScl = $li.offset().top + $li.outerHeight() - $(window).height();
-              $('body, html').stop().animate({ scrollTop: $moveScl }, $duaration);
+              const $moveScl2 = $li.offset().top - $excld;
+              if ($li.outerHeight() > $(window).height()) {
+                $('body, html').stop().animate({ scrollTop: $moveScl2 }, $duaration);
+              } else {
+                $('body, html').stop().animate({ scrollTop: $moveScl }, $duaration);
+              }
             });
           }
         });
@@ -210,8 +215,7 @@
       position : DOM 안에서의 위치 값을 반환한다. 부모 태그가 감싸져 있다면 부모태그를 기준으로 위치값을 반환한다. 상대좌표를 반환한다고 표현하기도 한다.
       */
 
-      // const $moveScl2 = $li.offset().top - $excld;
-      // $('body, html').stop().animate({ scrollTop: $moveScl2 }, $duaration);
+      //
       // test
       // function test() {
       //   let accordion = (function () {
