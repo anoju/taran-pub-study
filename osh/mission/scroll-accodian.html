@@ -190,7 +190,7 @@
           const $menuHeight = $('.tab-list').outerHeight();
           const $headHeight = $('.page-head').outerHeight();
           const $excld = $menuHeight + $headHeight;
-          // console.log($panelHeight);
+          // console.log($li);
           if ($this.hasClass('open')) {
             $this.removeClass('open');
             $($panel).stop().slideUp();
@@ -199,12 +199,12 @@
             $($panel)
               .stop()
               .slideDown(function () {
-                const $scrMove = $li.offset().top - $excld;
-                const $scrMove2 = $li.outerHeight() + $li.offset().top - $(window).height();
+                const $scrMoveTop = $li.offset().top - $excld;
+                const $scrMoveBtm = $li.outerHeight() + $li.offset().top - $(window).height();
                 if ($li.outerHeight() > $(window).height()) {
-                  $('html, body').stop().animate({ scrollTop: $scrMove }, 500);
+                  $('html, body').stop().animate({ scrollTop: $scrMoveTop }, 500);
                 } else {
-                  $('html, body').stop().animate({ scrollTop: $scrMove2 }, 500);
+                  $('html, body').stop().animate({ scrollTop: $scrMoveBtm }, 500);
                 }
               });
           }
