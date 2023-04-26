@@ -245,9 +245,26 @@
       // jqAcrdn();
 
       /*
-      offset : document 안에서의 위치 값을 반환한다. 쉽게 말해 페이지 전체를 기준으로 위치값을 반환한다. 절대좌표를 반환한다고 표현하기도 한다.
+      ◈ 절대좌표, 상대좌표
+        *offset : document 안에서의 위치 값을 반환한다. 쉽게 말해 페이지 전체를 기준으로 위치값을 반환한다. 절대좌표를 반환한다고 표현하기도 한다.
 
-      position : DOM 안에서의 위치 값을 반환한다. 부모 태그가 감싸져 있다면 부모태그를 기준으로 위치값을 반환한다. 상대좌표를 반환한다고 표현하기도 한다.
+        *position : DOM 안에서의 위치 값을 반환한다. 부모 태그가 감싸져 있다면 부모태그를 기준으로 위치값을 반환한다. 상대좌표를 반환한다고 표현하기도 한다.
+
+
+      ◈ 높이 구하기 
+        $(select).height();             //요소(element)의 높이 
+        $(select).innerHeight();        //요소(element)의 padding을 포함한 높이
+        $(select).outerHeight();        //요소(element)의 border, padding을 포함한 높이
+        $(select).outerHeight(true);    //요소(element)의 margin, border, padding을 포함한 높이
+        $(select).height(val);          //요소(element)의 높이를 설정함
+
+
+      ◈ 윈도우 사이즈 높이
+        *window.innerWidth() / window.innerHeight() : 메뉴바 + 툴바 + 스크롤바를 제외한 화면의 크기를 구하기
+
+        *window.outerWidth() / window.outerHeight() : 기본크기 + 메뉴바 + 툴바 + 스크롤바 영역이 포함된 크기 구하기
+
+        *window.height() : 엘리먼트의 높이
       */
     </script>
   </body>
