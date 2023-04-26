@@ -47,6 +47,42 @@
 /******contents*******/
 .contents_box {
   .main_visual_box {
+    @media screen and (max-width: 325px) {
+      .df_box {
+        h2 {
+          font-size: 2rem;
+          .h2_img {
+            background-size: 70%;
+          }
+        }
+      }
+      .sch_box {
+        padding: 1.8rem !important;
+        .date_picker,
+        .head_count {
+          margin-top: 2rem !important;
+        }
+        .location_box {
+          gap: 2rem !important;
+        }
+        .tit {
+          font-size: 1.2rem !important;
+        }
+        input,
+        select {
+          font-size: 1.5rem !important;
+        }
+        .day {
+          width: 2.4rem !important;
+        }
+        .date {
+          width: 7.9rem !important;
+        }
+        .btn_sch {
+          margin: 2rem auto 0 !important;
+        }
+      }
+    }
     position: relative;
     width: 100%;
     height: 100vh;
@@ -92,6 +128,7 @@
       }
       .sch_box {
         padding: 3rem;
+        margin: 0 auto;
         border-radius: 1.6rem;
         background: rgba(255, 255, 255, 0.6);
         backdrop-filter: blur(10px);
