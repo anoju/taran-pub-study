@@ -100,7 +100,7 @@
             left: $activeLeft,
             width: $activeWidth
           },
-          300
+          100
         );
       }
 
@@ -112,9 +112,28 @@
 
           $('html').stop().animate({ scrollTop: targetTop }, 300);
         });
+        function menuMove($menu) {
+          //스크롤 왼쪽 끝부터 메뉴 왼쪽 끝값 + 메뉴 넓이의 반 - 디바이스 넓이의 반
+          const $menu = $('.tab-line-menu .tab a.active');
+          const deviceWidth = $(window).width();
+          const menuLeft = $menu.offset().left - $(document).scrollLeft();
+          const menuWidth = $menu.outerWidth();
+          const menuCenter = menuLeft + menuWidth / 2;
+          const centerPos = deviceWidth / 2;
+          const moveDistance = centerPos - menuCenter;
+
+          $('.tab-line')
+            .stop()
+            .animate(
+              {
+                left: `+=${moveDistance}`
+              },
+              100
+            );
+        } //menuMove
 
         function Page__updateIndicatorActive() {
-          const scrollTop = $(window).scrollTop();
+          let scrollTop = $(window).scrollTop();
 
           // 역순으로 검색해야 편하다
           $($('.box').get().reverse()).each(function (index, node) {
@@ -128,9 +147,9 @@
 
               const currentPageIndex = $node.index();
               $('.tab-line-menu .tab').eq(currentPageIndex).addClass('active');
-              jqTabLine($('.tab-line-menu .tab a').closest('.tab-line-menu'));
               $('html').attr('data-current-page-index', currentPageIndex);
-
+              jqTabLine($('.tab-line-menu .tab a').closest('.tab-line-menu'));
+              menuMove('.tab-line-menu .tab-inner');
               return false; // 더 이상 다른 페이지를 검사하지 않는다.
             }
           });
@@ -166,10 +185,12 @@
 
       /*
       $(window).scroll() : 브라우저 창(window)에 대한 스크롤 이벤트를 처리
-      
+
       $(document).scroll() : 문서(document) 전체에 대한 스크롤 이벤트를 처리
 
       .scrollTop() : 선택한 요소의 스크롤바 수직 위치를 반환하거나 스크롤바 수직 위치를 정함
+
+
        */
     </script>
   </body>
