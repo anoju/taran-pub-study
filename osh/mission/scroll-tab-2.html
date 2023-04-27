@@ -48,13 +48,13 @@
           <div class="tab-inner">
             <i class="tab-line" aria-hidden="true"></i>
             <ul class="tab-list">
-              <li class="tab"><a href="#">red</a></li>
-              <li class="tab"><a href="#">orange</a></li>
-              <li class="tab"><a href="#">yellow</a></li>
-              <li class="tab"><a href="#">green</a></li>
-              <li class="tab"><a href="#">blue</a></li>
-              <li class="tab"><a href="#">darkblue</a></li>
-              <li class="tab"><a href="#">purple</a></li>
+              <li class="tab"><a href="#page-1">red</a></li>
+              <li class="tab"><a href="#page-2">orange</a></li>
+              <li class="tab"><a href="#page-3">yellow</a></li>
+              <li class="tab"><a href="#page-4">green</a></li>
+              <li class="tab"><a href="#page-5">blue</a></li>
+              <li class="tab"><a href="#page-6">darkblue</a></li>
+              <li class="tab"><a href="#page-7">purple</a></li>
             </ul>
           </div>
         </div>
@@ -68,13 +68,13 @@
           </ul>
           <br />
           <div>
-            <div class="box box1"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+            <div class="box box-1" id="page-1"></div>
+            <div class="box box-2" id="page-2"></div>
+            <div class="box box-3" id="page-3"></div>
+            <div class="box box-4" id="page-4"></div>
+            <div class="box box-5" id="page-5"></div>
+            <div class="box box-6" id="page-6"></div>
+            <div class="box box-7" id="page-7"></div>
           </div>
           <br />
           <br />
@@ -90,53 +90,85 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
+      function jqTabLine(wrap) {
+        const $active = $(wrap).find('.tab.active');
+        const $activeLeft = $active.position().left;
+        const $activeWidth = $active.outerWidth();
+        const $line = $(wrap).find('.tab-line');
+        $line.stop().animate(
+          {
+            left: $activeLeft,
+            width: $activeWidth
+          },
+          300
+        );
+      }
+
       function jqSlide() {
-        const $tab = $('.tab');
-        let $posY = [];
-        let cnt = 0;
-
-        function updatePosY() {
-          $posY = [];
-          for (let i = 0; i < $tab.length; i++) {
-            $posY[i] = $('.box').eq(i).offset().top;
-          }
-        } //posY 값 구하기
-
-        updatePosY();
-
-        $(window).resize(function () {
-          updatePosY();
-        });
-
-        $('.tab-line-menu .tab').click(function (e) {
+        $('.tab-line-menu .tab a').click(function (e) {
           e.preventDefault();
-          cnt = $(this).index();
-          $('html,body').animate({ scrollTop: $posY[cnt] }, 500);
+          const href = $(this).attr('href');
+          const targetTop = $(href).offset().top;
+
+          $('html').stop().animate({ scrollTop: targetTop }, 300);
         });
 
-        const bodyOffset = $('.box').offset().top;
-        $(window).scroll(function () {
-          if ($(document).scrollTop() > bodyOffset.top) {
-            $('.tab-line-menu .tab').addClass('scroll');
-          } else {
-            $('.tab-line-menu .tab').removeClass('scroll');
-          }
-        });
-        // $(document).scroll(function () {
-        //   // 스크롤할 때마다 각 섹션의 꼭대기 좌표와 현재 스크롤 위치를 받고 비교한다.
-        //   // 그 차이가 20 이하면 모든 .dot의 active 클래스를 삭제한 뒤
-        //   // 처음 .dot에 부여했던 속성인 data-scroll 이 해당 id인 곳을 찾아 active 클래스를 부여한다.
-        //   if ($('.tab-line-menu .tab').offset().top - $(window).scrollTop() < 20) {
-        //     $(this).removeClass('active');
-        //   } else {
-        //     $(this).addClass('active');
-        //   }
-        // });
+        function Page__updateIndicatorActive() {
+          const scrollTop = $(window).scrollTop();
+
+          // 역순으로 검색해야 편하다
+          $($('.box').get().reverse()).each(function (index, node) {
+            const $node = $(this);
+            const offsetTop = parseInt($node.attr('data-offset-top'));
+
+            if (scrollTop >= offsetTop) {
+              // 기존 녀석에게 활성화 풀고
+              $('.tab-line-menu .tab').removeClass('active');
+              // 해당하는 녀석에게 활성화 넣고
+
+              const currentPageIndex = $node.index();
+              $('.tab-line-menu .tab').eq(currentPageIndex).addClass('active');
+              jqTabLine($('.tab-line-menu .tab a').closest('.tab-line-menu'));
+              $('html').attr('data-current-page-index', currentPageIndex);
+
+              return false; // 더 이상 다른 페이지를 검사하지 않는다.
+            }
+          });
+        }
+
+        // 각 페이지의 offsetTop 속성을 업데이트
+        function Page__updateOffsetTop() {
+          $('.box').each(function (index, node) {
+            const $page = $(node);
+            const offsetTop = $page.offset().top;
+
+            $page.attr('data-offset-top', offsetTop);
+          });
+
+          // 계산이 바뀌었으니까, 다시 상태 업데이트
+          Page__updateIndicatorActive();
+        }
+
+        function Page__init() {
+          Page__updateOffsetTop();
+        }
+
+        // 초기화
+        Page__init();
+
+        // 화면이 리사이즈 할 때 마다, offsetTop을 다시계산
+        $(window).resize(Page__updateOffsetTop);
+
+        // 스크롤이 될 때 마다, 인디케이터의 상태를 갱신
+        $(window).scroll(Page__updateIndicatorActive);
       }
       jqSlide();
+
       /*
       $(window).scroll() : 브라우저 창(window)에 대한 스크롤 이벤트를 처리
+      
       $(document).scroll() : 문서(document) 전체에 대한 스크롤 이벤트를 처리
+
       .scrollTop() : 선택한 요소의 스크롤바 수직 위치를 반환하거나 스크롤바 수직 위치를 정함
        */
     </script>
