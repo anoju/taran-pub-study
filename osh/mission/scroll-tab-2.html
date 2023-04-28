@@ -90,10 +90,15 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
+      /* ◈ 위치 메서드
+      .position() : 현재 요소를 기준으로 상위 요소 중 가장 가까운 position: relative, position: absolute 또는 position: fixed를 가진 요소의 상대적인 위치를 반환. 이 메서드는 상위 요소의 위치에 따라 반환값이 달라지므로, 상위 요소의 위치가 변경될 경우 메서드 호출 결과도 변경
+
+      .offset() : 메서드는 문서 전체를 기준으로 요소의 위치를 반환. 즉, ★★★★스크롤 위치에 영향을 받지 않습니다.★★★★ 이 메서드는 문서 전체의 좌상단 모서리를 기준으로 해당 요소의 위치를 반환하므로, 문서 구조의 변경에도 영향을 받지 않습니다. */
+
       function jqTabLine(wrap) {
         const $inner = $(wrap).find('.tab-inner');
         const $active = $(wrap).find('.tab.active');
-        const $activeLeft = $active.position().left;
+        const $activeLeft = $active.position().left; //offset XX 오프셋 값으로 가져오면 위치 제대로 못찾음 가려져서 보이지 않는 ul끝에서 부터 라인이 이동해야 하는데 문서의 좌측을 기준으로 움직여서 라인이 안맞았던거
         const $activeWidth = $active.outerWidth();
         const $line = $(wrap).find('.tab-line');
 
@@ -102,20 +107,17 @@
             left: $activeLeft,
             width: $activeWidth
           },
-          100
+          500
         );
-        // 액티브가 될 때
-
-        //액티브 된 메뉴의까지
 
         //메뉴 전체 길이 중 메뉴 첫 시작 점 + 중앙에 있을 메뉴의 왼쪽 끝 값 - 디바이스 넓이 반
-        //메뉴 시작 값 / 메뉴 넓이 반 / 디바이스 넓이 반
-        //ul이 li길이 만큼 -left 되기
         const $deviceWidth = $(window).width(); // 디바이스 크기
         const $activeCenter = $activeLeft + $activeWidth / 2;
         const $centerPos = $deviceWidth / 2;
         const $moveDistance = $activeCenter - $centerPos;
-        $inner.stop().animate({ scrollLeft: $moveDistance }, 100);
+
+        $inner.stop().animate({ scrollLeft: $moveDistance }, 300);
+        //.tab-list(ul)을 가져오면 안되고 그 영역을 담고있고 넘치는 부분을 보이지 않게 해주는 (overflow속성이 있어서 가로 스크롤이 존재하는) 그 대상한테 애니메이트를 넣어줘야함<<ul을 담고 있던 div.inner
       } //end jqline
 
       let lineTimer;
@@ -146,8 +148,8 @@
               $('.tab-line-menu .tab').eq(currentPageIndex).addClass('active');
               clearTimeout(lineTimer);
               lineTimer = setTimeout(function () {
-                jqTabLine('.tab-line-menu');
-              }, 100);
+                jqTabLine('.tab-line-menu'); //그 대상을 담고 있는 최상위 부모
+              }, 300);
               return false; // 더 이상 다른 페이지를 검사하지 않는다.
             }
           });
