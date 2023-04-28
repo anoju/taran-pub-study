@@ -91,10 +91,12 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script>
       function jqTabLine(wrap) {
+        const $inner = $(wrap).find('.tab-inner');
         const $active = $(wrap).find('.tab.active');
         const $activeLeft = $active.position().left;
         const $activeWidth = $active.outerWidth();
         const $line = $(wrap).find('.tab-line');
+
         $line.stop().animate(
           {
             left: $activeLeft,
@@ -102,35 +104,29 @@
           },
           100
         );
-      }
+        // 액티브가 될 때
 
+        //액티브 된 메뉴의까지
+
+        //메뉴 전체 길이 중 메뉴 첫 시작 점 + 중앙에 있을 메뉴의 왼쪽 끝 값 - 디바이스 넓이 반
+        //메뉴 시작 값 / 메뉴 넓이 반 / 디바이스 넓이 반
+        //ul이 li길이 만큼 -left 되기
+        const $deviceWidth = $(window).width(); // 디바이스 크기
+        const $activeCenter = $activeLeft + $activeWidth / 2;
+        const $centerPos = $deviceWidth / 2;
+        const $moveDistance = $activeCenter - $centerPos;
+        $inner.stop().animate({ scrollLeft: $moveDistance }, 100);
+      } //end jqline
+
+      let lineTimer;
       function jqSlide() {
         $('.tab-line-menu .tab a').click(function (e) {
           e.preventDefault();
           const href = $(this).attr('href');
           const targetTop = $(href).offset().top;
 
-          $('html').stop().animate({ scrollTop: targetTop }, 300);
+          $('html , body').stop().animate({ scrollTop: targetTop }, 300);
         });
-        function menuMove($menu) {
-          //스크롤 왼쪽 끝부터 메뉴 왼쪽 끝값 + 메뉴 넓이의 반 - 디바이스 넓이의 반
-          const $menu = $('.tab-line-menu .tab a.active');
-          const deviceWidth = $(window).width();
-          const menuLeft = $menu.offset().left - $(document).scrollLeft();
-          const menuWidth = $menu.outerWidth();
-          const menuCenter = menuLeft + menuWidth / 2;
-          const centerPos = deviceWidth / 2;
-          const moveDistance = centerPos - menuCenter;
-
-          $('.tab-line')
-            .stop()
-            .animate(
-              {
-                left: `+=${moveDistance}`
-              },
-              100
-            );
-        } //menuMove
 
         function Page__updateIndicatorActive() {
           let scrollTop = $(window).scrollTop();
@@ -143,13 +139,15 @@
             if (scrollTop >= offsetTop) {
               // 기존 녀석에게 활성화 풀고
               $('.tab-line-menu .tab').removeClass('active');
-              // 해당하는 녀석에게 활성화 넣고
 
+              // 해당하는 녀석에게 활성화 넣고
               const currentPageIndex = $node.index();
+
               $('.tab-line-menu .tab').eq(currentPageIndex).addClass('active');
-              $('html').attr('data-current-page-index', currentPageIndex);
-              jqTabLine($('.tab-line-menu .tab a').closest('.tab-line-menu'));
-              menuMove('.tab-line-menu .tab-inner');
+              clearTimeout(lineTimer);
+              lineTimer = setTimeout(function () {
+                jqTabLine('.tab-line-menu');
+              }, 100);
               return false; // 더 이상 다른 페이지를 검사하지 않는다.
             }
           });
