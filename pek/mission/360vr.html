@@ -40,7 +40,7 @@
       <div class="page-body">
         <div class="section">
           <!-- 이미지출처 https://www.hyundai.com/kr/ko/e/vehicles/the-all-new-grandeur/intro -->
-          <div class="img-area"><img src="../js_static/images/360/001.png" alt="" /></div>
+          <div class="img-area"><img src="../../js_static/images/360/001.png" data-url="../../js_static/images/360/" data-image-type=".png" alt="" /></div>
           <!-- 이미지는 001부터 061까지 -->
           <div class="range-slider">
             <div class="range-wrap">
@@ -53,11 +53,32 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="../js_static/js/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="../js_static/js/jquery-ui.1.12.1.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+      let value;
+      value = '3';
+      function zerofill(value, fillCount) {
+        var result = value;
+        if (typeof value === 'number') result = value.toString();
+        return result.padStart(fillCount, '0');
+      }
+      function Rotator() {
+        const imageUrl = $('.img-area img').data('url');
+        const imageType = $('.img-area img').attr('data-image-type');
+        $('.range_bar').on('input', function () {
+          const inputVal = $(this).val();
+          const imagePath = imageUrl + zerofill(inputVal, 3) + imageType;
+
+          $(this).prop('min', 1);
+          $(this).prop('max', 61);
+
+          $('.img-area img').attr('src', imagePath);
+        });
+      }
+      Rotator();
     </script>
   </body>
 </html>
