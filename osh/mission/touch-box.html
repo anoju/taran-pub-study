@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <title>테스트</title>
+    <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      .touch-wrap {
+        position: relative;
+        height: 80vh;
+        border: 3px solid #000;
+      }
+      .touch-wrap .box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #ffff00;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-body">
+        <div class="section">
+          <div class="touch-wrap">
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
+    <script>
+      function touchBox() {
+        const img_L = 0;
+        const img_T = 0;
+        let targetObj;
+
+        function getLeft(o) {
+          return parseInt(o.style.left.replace('px', ''));
+        }
+        function getTop(o) {
+          return parseInt(o.style.top.replace('px', ''));
+        }
+
+        // 이미지 움직이기
+        function moveDrag(e) {
+          const e_obj = window.event ? window.event : e;
+          const dmvx = parseInt(e_obj.clientX + img_L);
+          const dmvy = parseInt(e_obj.clientY + img_T);
+          targetObj.style.left = dmvx + 'px';
+          targetObj.style.top = dmvy + 'px';
+          return false;
+        }
+
+        // 드래그 시작
+        function startDrag(e, obj) {
+          targetObj = obj;
+          const e_obj = window.event ? window.event : e;
+          img_L = getLeft(obj) - e_obj.clientX;
+          img_T = getTop(obj) - e_obj.clientY;
+
+          document.onmousemove = moveDrag;
+          document.onmouseup = stopDrag;
+          if (e_obj.preventDefault) e_obj.preventDefault();
+        }
+
+        // 드래그 멈추기
+        function stopDrag() {
+          document.onmousemove = null;
+          document.onmouseup = null;
+        }
+      }
+    </script>
+  </body>
+</html>
