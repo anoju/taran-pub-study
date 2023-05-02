@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <title>테스트</title>
+    <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      .box {
+        height: 100vh;
+      }
+      .box:nth-child(1) {
+        background: red;
+      }
+      .box:nth-child(2) {
+        background: orange;
+      }
+      .box:nth-child(3) {
+        background: yellow;
+      }
+      .box:nth-child(4) {
+        background: green;
+      }
+      .box:nth-child(5) {
+        background: blue;
+      }
+      .box:nth-child(6) {
+        background: darkblue;
+      }
+      .box:nth-child(7) {
+        background: purple;
+      }
+      .tab-line {
+        transition: 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-head">
+        <div>
+          <h1>scroll animate</h1>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="tab-line-menu tab-fixed">
+          <div class="tab-inner">
+            <i class="tab-line" aria-hidden="true"></i>
+            <ul class="tab-list">
+              <li class="tab"><a href="#page-1">red</a></li>
+              <li class="tab"><a href="#page-2">orange</a></li>
+              <li class="tab"><a href="#page-3">yellow</a></li>
+              <li class="tab"><a href="#page-4">green</a></li>
+              <li class="tab"><a href="#page-5">blue</a></li>
+              <li class="tab"><a href="#page-6">darkblue</a></li>
+              <li class="tab"><a href="#page-7">purple</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <ul class="txt-list">
+            <li class="dot">탭을 클릭하면 해당하는 box까지 스크롤</li>
+            <li class="dot">단, header나 tab에 box의상단이 가려지면 안됨</li>
+            <li class="dot">해당 박스에 이동하면 탭도 활성화표시</li>
+            <li class="dot">꼭 1개는 탭이 활성화되야하며, 1개만 활성화되야함(2개이상 안됨)</li>
+            <li class="dot">힌트. 클릭 이벤트로 활성화해서는 안된다</li>
+          </ul>
+          <br />
+          <div>
+            <div class="box box-1" id="page-1"></div>
+            <div class="box box-2" id="page-2"></div>
+            <div class="box box-3" id="page-3"></div>
+            <div class="box box-4" id="page-4"></div>
+            <div class="box box-5" id="page-5"></div>
+            <div class="box box-6" id="page-6"></div>
+            <div class="box box-7" id="page-7"></div>
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script>
+      /* 
+      ◈ 위치 메서드
+      .position() : 현재 요소를 기준으로 상위 요소 중 가장 가까운 position: relative, position: absolute 또는 position: fixed를 가진 요소의 상대적인 위치를 반환. 이 메서드는 상위 요소의 위치에 따라 반환값이 달라지므로, 상위 요소의 위치가 변경될 경우 메서드 호출 결과도 변경
+
+      .offset() : 메서드는 문서 전체를 기준으로 요소의 위치를 반환. 즉, ★★★★스크롤 위치에 영향을 받지 않습니다.★★★★ 이 메서드는 문서 전체의 좌상단 모서리를 기준으로 해당 요소의 위치를 반환하므로, 문서 구조의 변경에도 영향을 받지 않습니다. 
+      */
+
+      function jqTabLine(wrap) {
+        const $inner = $(wrap).find('.tab-inner');
+        const $active = $(wrap).find('.tab.active');
+        const $activeLeft = $active.position().left; //offset XX 오프셋 값으로 가져오면 위치 제대로 못찾음 가려져서 보이지 않는 ul끝에서 부터 라인이 이동해야 하는데 문서의 좌측을 기준으로 움직여서 라인이 안맞았던거
+        const $activeWidth = $active.outerWidth();
+        const $line = $(wrap).find('.tab-line');
+
+        $line.stop().animate(
+          {
+            left: $activeLeft,
+            width: $activeWidth
+          },
+          100
+        );
+
+        //메뉴 전체 길이 중 메뉴 첫 시작 점 + 중앙에 있을 메뉴의 왼쪽 끝 값 - 디바이스 넓이 반
+        const $deviceWidth = $(window).width(); // 디바이스 크기
+        const $activeCenter = $activeLeft + $activeWidth / 2;
+        const $centerPos = $deviceWidth / 2;
+        const $moveDistance = $activeCenter - $centerPos;
+
+        $inner.stop().animate({ scrollLeft: $moveDistance }, 300);
+        //.tab-list(ul)을 가져오면 안되고 그 영역을 담고있고 넘치는 부분을 보이지 않게 해주는 (overflow속성이 있어서 가로 스크롤이 존재하는) 그 대상한테 애니메이트를 넣어줘야함<<ul을 담고 있던 div.inner
+      } //end jqline
+
+      let lineTimer;
+      function jqSlide() {
+        $('.tab-line-menu .tab a').click(function (e) {
+          console.log('a');
+          e.preventDefault();
+          const href = $(this).attr('href');
+          const targetTop = $(href).offset().top;
+
+          $('html , body').stop().animate({ scrollTop: targetTop }, 100);
+        });
+
+        function Page__updateIndicatorActive() {
+          let scrollTop = $(window).scrollTop();
+
+          // 역순으로 검색해야 편하다
+          $($('.box').get().reverse()).each(function (index, node) {
+            const $node = $(this);
+            const offsetTop = parseInt($node.attr('data-offset-top'));
+
+            if (scrollTop >= offsetTop) {
+              // 기존 녀석에게 활성화 풀고
+              $('.tab-line-menu .tab').removeClass('active');
+
+              // 해당하는 녀석에게 활성화 넣고
+              const currentPageIndex = $node.index();
+
+              $('.tab-line-menu .tab').eq(currentPageIndex).addClass('active');
+              clearTimeout(lineTimer);
+              lineTimer = setTimeout(function () {
+                jqTabLine('.tab-line-menu'); //그 대상을 담고 있는 최상위 부모
+              }, 10);
+              return false; // 더 이상 다른 페이지를 검사하지 않는다.
+            }
+          });
+        }
+
+        // 각 페이지의 offsetTop 속성을 업데이트
+        function Page__updateOffsetTop() {
+          $('.box').each(function (index, node) {
+            const $page = $(node);
+            const offsetTop = $page.offset().top;
+
+            $page.attr('data-offset-top', offsetTop);
+          });
+
+          // 계산이 바뀌었으니까, 다시 상태 업데이트
+          Page__updateIndicatorActive();
+        }
+
+        function Page__init() {
+          Page__updateOffsetTop();
+        }
+
+        // 초기화
+        Page__init();
+
+        // 화면이 리사이즈 할 때 마다, offsetTop을 다시계산
+        $(window).resize(Page__updateOffsetTop);
+
+        // 스크롤이 될 때 마다, 인디케이터의 상태를 갱신
+        $(window).scroll(Page__updateIndicatorActive);
+      }
+      jqSlide();
+
+      /*
+      $(window).scroll() : 브라우저 창(window)에 대한 스크롤 이벤트를 처리
+
+      $(document).scroll() : 문서(document) 전체에 대한 스크롤 이벤트를 처리
+
+      .scrollTop() : 선택한 요소의 스크롤바 수직 위치를 반환하거나 스크롤바 수직 위치를 정함
+       */
+    </script>
+  </body>
+</html>

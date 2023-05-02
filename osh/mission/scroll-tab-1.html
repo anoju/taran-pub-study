@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <title>테스트</title>
+    <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      .box {
+        height: 100vh;
+      }
+      .box:nth-child(1) {
+        background: red;
+      }
+      .box:nth-child(2) {
+        background: orange;
+      }
+      .box:nth-child(3) {
+        background: yellow;
+      }
+      .box:nth-child(4) {
+        background: green;
+      }
+      .box:nth-child(5) {
+        background: blue;
+      }
+      .box:nth-child(6) {
+        background: darkblue;
+      }
+      .box:nth-child(7) {
+        background: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-head">
+        <div>
+          <h1>scroll animate</h1>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="tab-line-menu tab-fixed">
+          <div class="tab-inner">
+            <i class="tab-line" aria-hidden="true"></i>
+            <ul class="tab-list">
+              <li class="tab"><a href="#">red</a></li>
+              <li class="tab"><a href="#">orange</a></li>
+              <li class="tab"><a href="#">yellow</a></li>
+              <li class="tab"><a href="#">green</a></li>
+              <li class="tab"><a href="#">blue</a></li>
+              <li class="tab"><a href="#">darkblue</a></li>
+              <li class="tab"><a href="#">purple</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <ul class="txt-list">
+            <li class="dot">탭을 클릭하면 해당하는 box까지 스크롤</li>
+            <li class="dot">단, header나 tab에 box의상단이 가려지면 안됨</li>
+          </ul>
+          <br />
+          <div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script>
+      //메뉴의 버튼을 누르면 해당하는 영역의 상단이 메뉴 아래로 부드럽게 붙어야함
+      //내가 선택한 메뉴를 누르면 그 박스의 인덱스 값에 따라 이동
+      function jqSlide() {
+        const $tab = $('.tab');
+        let $posY = [];
+        let cnt = 0;
+
+        function updatePosY() {
+          $posY = [];
+          for (let i = 0; i < $tab.length; i++) {
+            $posY[i] = $('.box').eq(i).offset().top;
+          }
+        } //posY 값 구하기
+
+        updatePosY();
+
+        $(window).resize(function () {
+          updatePosY();
+        });
+
+        $tab.click(function (e) {
+          e.preventDefault();
+          cnt = $(this).index();
+          $('html,body').animate({ scrollTop: $posY[cnt] }, 500);
+        });
+      }
+      jqSlide();
+
+      // $('.tab-line-menu a').click(function (e) {
+      //   e.preventDefault();
+      //   const $this = $(this);
+      //   const $clickMenu = $this.find('.tab a');
+      //   const $menuindex = $('.tab').index();
+      //   const $boxindex = $('.box').index();
+      //   const $headHeight = $('.page-head').outerHeight();
+      //   const $menuHeight = $('.tab-line-menu').outerHeight();
+      //   const $excld = $headHeight + $menuHeight;
+      //   const $boxOst = $('.box').offset().top;
+      //   const $posY = $boxOst - $excld;
+      //   // console.log($offTop);
+
+      //   $('html, body')
+      //     .stop()
+      //     .animate(
+      //       {
+      //         scrollTop: $menuindex == $boxindex
+      //         //클릭한 메뉴랑 동일한 인덱스의 박스 영역 보여주기
+      //       },
+      //       300
+      //     );
+      // });
+
+      /*
+            ◈ 상위 요소 찾기
+              * .closest() : 선택한 요소를 포함하여 상위 요소 중 가장 가까운 요소
+             */
+    </script>
+  </body>
+</html>
