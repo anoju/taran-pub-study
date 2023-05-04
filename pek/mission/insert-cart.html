@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <title>테스트</title>
+    <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      .img__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 16px;
+      }
+      .img__grid li {
+        width: 50vh;
+      }
+      .img {
+        width: 100%;
+        height: 30rem;
+        object-fit: cover;
+      }
+      .space {
+        background: #fdfdfd;
+        height: 60vh;
+      }
+      .img__clone {
+        position: fixed;
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-head">
+        <div>
+          <h1>장바구니 담기 효과</h1>
+          <div class="head-right">
+            <button class="button">장바구니</button>
+          </div>
+        </div>
+      </div>
+      <div class="page-body">
+        <div class="section">
+          <div class="space"></div>
+          <ul class="img__grid">
+            <li>
+              <img src="../../js_static/images/thumb-temp.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+            <li>
+              <img src="../../js_static/images/thumb-temp2.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+            <li>
+              <img src="../../js_static/images/thumb-temp3.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+            <li>
+              <img src="../../js_static/images/thumb-temp4.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+            <li>
+              <img src="../../js_static/images/thumb-temp4-2.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+            <li>
+              <img src="../../js_static/images/thumb-temp4-3.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+            <li>
+              <img src="../../js_static/images/thumb-temp5.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+            <li>
+              <img src="../../js_static/images/thumb-temp5-2.jpg" alt="" class="img" />
+              <p class="t-center mt-5"><button class="button line h24">담기</button></p>
+            </li>
+          </ul>
+          <div class="space"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/anime-3.2.1.min.js"></script>
+    <script>
+      // 스크립트 작성이 여기에
+      // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+      function addMotion() {
+        let count = 0;
+
+        $('.img__grid .button').on('click', function () {
+          let cart = $('.head-right .button');
+
+          let imgtodrag = $(this).closest('li').find('.img').eq(0);
+          if (imgtodrag) {
+            const imgclone = imgtodrag
+              .clone()
+              .offset({
+                top: imgtodrag.offset().top,
+                left: imgtodrag.offset().left
+              })
+              .css({
+                opacity: '1',
+                position: 'absolute',
+                width: '50vh',
+                height: '30rem',
+                objectFit: 'cover',
+                'z-index': '100'
+              })
+              .appendTo($('body'))
+              .animate(
+                {
+                  top: cart.offset().top + 20,
+                  left: cart.offset().left + 25,
+                  width: '10vh',
+                  height: '8%',
+                  objectFit: 'cover',
+                  opacity: '0.5'
+                },
+                1000,
+                'easeInOutExpo'
+              );
+
+            imgclone.animate(
+              {
+                width: 0,
+                height: 0
+              },
+              function () {
+                $(this).detach();
+              }
+            );
+          }
+        });
+      }
+      addMotion();
+    </script>
+  </body>
+</html>

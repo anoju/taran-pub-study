@@ -55,21 +55,33 @@
 
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
       let value;
       value = '3';
+      const num = 61;
+
+      const swipeOptions = {
+        triggerOnTouchEnd: true,
+        swipeStatus: swipeStatus,
+        allowPageScroll: 'vertical',
+        threshold: 61
+      };
+
       function zerofill(value, fillCount) {
         var result = value;
         if (typeof value === 'number') result = value.toString();
         return result.padStart(fillCount, '0');
       }
+
       function Rotator() {
         const imageUrl = $('.img-area img').data('url');
         const imageType = $('.img-area img').attr('data-image-type');
         $('.range_bar').on('input', function () {
-          const inputVal = $(this).val();
+          let inputVal = $(this).val();
+          inputVal = 61 - parseInt(inputVal) + 1; // Subtract inputVal from 61 and add 1
           const imagePath = imageUrl + zerofill(inputVal, 3) + imageType;
 
           $(this).prop('min', 1);
@@ -78,7 +90,55 @@
           $('.img-area img').attr('src', imagePath);
         });
       }
+
+      function swipeable() {
+        imgs = $('.img-area img'); // the element that will be swipeable
+        imgs.swipe(swipeOptions);
+      }
+
+      function swipeStatus(event, phase, direction, distance) {
+        const duration = 0;
+        if (direction == 'left') {
+          changeImg(distance);
+        } else if (direction == 'right') {
+          changeImgR(-distance);
+        }
+      }
+
+      function changeImg(imgNum) {
+        // spread it out so it doesn't load new img every single px of swipe distance
+        imgNum = Math.floor(imgNum / 12);
+
+        if (imgNum < 1) {
+          imgNum += num;
+        }
+        if (imgNum > num) {
+          imgNum -= num;
+        }
+
+        // change the image src
+        document.querySelector('.img-area img').src = '../../js_static/images/360/' + zerofill(imgNum, 3) + '.png';
+        $('.range_bar').val(num - imgNum + 1);
+      }
+
+      function changeImgR(imgNum) {
+        // spread it out so it doesn't load new img every single px of swipe distance
+        imgNum = Math.floor(imgNum / 12);
+
+        let num2 = -Math.abs(num);
+        if (imgNum > num2) {
+          imgNum += num;
+        }
+        if (imgNum <= num2) {
+          imgNum += num * 2;
+        }
+        // change the image src
+        document.querySelector('.img-area img').src = '../../js_static/images/360/' + zerofill(imgNum, 3) + '.png';
+        $('.range_bar').val(num - imgNum + 1);
+      }
+
       Rotator();
+      swipeable();
     </script>
   </body>
 </html>
