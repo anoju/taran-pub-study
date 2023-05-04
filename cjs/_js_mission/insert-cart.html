@@ -24,6 +24,16 @@
         position: fixed;
         z-index: 999;
       }
+      .clone {
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        transition: transform 0.4s ease;
+      }
+      body {
+        overflow-x: hidden;
+      }
     </style>
   </head>
   <body>
@@ -83,6 +93,47 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+
+      $('.button').on('click', function () {
+        const btParents = $(this).closest('li').find('.img-area');
+        const firstBt = btParents.find('img:first-child');
+        $(this).closest('li').find('img').clone().addClass('clone').appendTo(btParents);
+
+        $('.clone').css('opacity', 1);
+        firstBt.css('opacity', 0);
+
+        const goalOleft = $('.head-right').offset().left;
+        const goalOtop = $('.head-right').offset().top;
+        const offsetLeft = $('.clone').offset().left;
+        const offsetTop = $('.clone').offset().top;
+        const cloneWidth = ($('.clone').outerWidth() / 100) * 40;
+        const cloneHeight = ($('.clone').outerHeight() / 100) * 40;
+
+        console.log(goalOleft, offsetLeft, cloneWidth);
+        $('.clone').animate(
+          {
+            left: goalOleft - offsetLeft - cloneWidth,
+            top: goalOtop - offsetTop - cloneHeight
+          },
+          500,
+          function () {
+            $('.clone').css('transform', 'scale(.1)');
+            firstBt.animate(
+              {
+                opacity: 1
+              },
+              500
+            );
+            $('.clone').animate({
+              opacity: 0
+            });
+          }
+        );
+
+        setTimeout(function () {
+          $('.clone').remove();
+        }, 1000);
+      });
     </script>
   </body>
 </html>
