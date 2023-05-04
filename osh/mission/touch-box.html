@@ -36,46 +36,71 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
     <script>
-      function touchBox() {
-        const img_L = 0;
-        const img_T = 0;
-        let targetObj;
+      function TouchBox() {
+        const touchWrap = document.querySelector('.touch-wrap');
+        const box = document.querySelector('.box');
+        const state = { distX: 0, distY: 0 };
 
-        function getLeft(o) {
-          return parseInt(o.style.left.replace('px', ''));
-        }
-        function getTop(o) {
-          return parseInt(o.style.top.replace('px', ''));
-        }
+        function onDown(e) {
+          e.preventDefault();
 
-        // 이미지 움직이기
-        function moveDrag(e) {
-          const e_obj = window.event ? window.event : e;
-          const dmvx = parseInt(e_obj.clientX + img_L);
-          const dmvy = parseInt(e_obj.clientY + img_T);
-          targetObj.style.left = dmvx + 'px';
-          targetObj.style.top = dmvy + 'px';
-          return false;
+          const evt = e.type === 'touchstart' ? e.changedTouches[0] : e;
+
+          state.distX = Math.abs(box.offsetLeft - evt.clientX);
+          state.distY = Math.abs(box.offsetTop - evt.clientY);
+          box.style.pointerEvents = 'none';
+          isTocuh = true;
+
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onUp);
         }
 
-        // 드래그 시작
-        function startDrag(e, obj) {
-          targetObj = obj;
-          const e_obj = window.event ? window.event : e;
-          img_L = getLeft(obj) - e_obj.clientX;
-          img_T = getTop(obj) - e_obj.clientY;
+        function onMove(e) {
+          if (box.style.pointerEvents === 'none') {
+            const evt = e.type === 'touchmove' ? e.changedTouches[0] : e;
+            const left = evt.clientX - state.distX;
+            const top = evt.clientY - state.distY;
+            const maxWidth = touchWrap.clientWidth - box.clientWidth;
+            const maxHeight = touchWrap.clientHeight - box.clientHeight;
 
-          document.onmousemove = moveDrag;
-          document.onmouseup = stopDrag;
-          if (e_obj.preventDefault) e_obj.preventDefault();
+            if (left < 0) {
+              box.style.left = '0px';
+            } else if (left > maxWidth) {
+              box.style.left = `${maxWidth}px`;
+            } else {
+              box.style.left = `${left}px`;
+            }
+
+            if (top < 0) {
+              box.style.top = '0px';
+            } else if (top > maxHeight) {
+              box.style.top = `${maxHeight}px`;
+            } else {
+              box.style.top = `${top}px`;
+            }
+          }
         }
 
-        // 드래그 멈추기
-        function stopDrag() {
-          document.onmousemove = null;
-          document.onmouseup = null;
+        function onUp(e) {
+          box.style.pointerEvents = 'initial';
+
+          document.removeEventListener('mousemove', onMove);
+          document.removeEventListener('mouseup', onUp);
         }
+
+        // 마우스
+        box.addEventListener('mousedown', onDown);
+
+        // 터치
+        box.addEventListener('touchstart', onDown);
+        touchWrap.addEventListener('touchmove', onMove);
+        touchWrap.addEventListener('touchend', onUp);
       }
+      TouchBox();
+
+      //클릭을 한 상태로 화면 밖으로 나가면 이벤트가 멈춰야 한다 xxxx
+      // 그러나 드래그는 지속 되어야 한다
+      //화면 밖으로 나가면 클릭이 멈춰야 한다
     </script>
   </body>
 </html>
