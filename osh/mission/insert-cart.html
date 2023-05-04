@@ -21,8 +21,11 @@
         height: 60vh;
       }
       .img__clone {
-        position: fixed;
+        position: absolute;
         z-index: 999;
+        width: 100%;
+        /* top: 0;
+        left: 0; */
       }
     </style>
   </head>
@@ -41,35 +44,35 @@
           <div class="space"></div>
           <ul class="img__grid">
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp2.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp2.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp3.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp3.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp4.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp4.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp4-2.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp4-2.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp4-3.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp4-3.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp5.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp5.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
             <li>
-              <div class="img-area"><img src="../../js_static/images/thumb-temp5-2.jpg" alt="" /></div>
+              <div class="img-area"><img src="../../js_static/images/thumb-temp5-2.jpg" alt="" class="article-img" /></div>
               <p class="t-center mt-5"><button class="button line h24">담기</button></p>
             </li>
           </ul>
@@ -83,6 +86,55 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
+
+      //버튼을 클릭하면 이미지가 장바구니로 간다
+      //버튼을 누르는 순간 이미지 클론이 생성되고 장바구니로 이동 - 아래있던 이미지는 show hide
+      //클론 이미지가 이동하는 위치 구하기 : 내 이미지 위치에서 장바구니 좌표로
+      function cartAnimation() {
+        $('li button').on('click', function () {
+          const $img = $(this).closest('li').find('.article-img');
+          const $imgW = $img.width();
+          const $clone = $img.clone().addClass('img__clone');
+          $clone.css({
+            width: $imgW,
+            position: 'absolute',
+            left: $img.offset().left,
+            top: $img.offset().top
+            // left: $img.offset().left,
+            // top: $img.offset().top
+          });
+
+          $('body').append($clone);
+
+          //왜 클론이 밑에서 부터 생성이 될까....?
+          //기본에 있는 이미지의 위치에서 장바구니로 이동
+          //기본 이미지의 위치를 알아야하고 장바구니의 위치를 알아야함
+
+          const $target = $('.head-right .button');
+          console.log($target);
+
+          $clone.animate(
+            {
+              width: 20,
+              top: $target.offset().top,
+              left: $target.offset().left
+            },
+            300,
+            'easeInOutQuad',
+            function () {
+              $clone.remove();
+              $img.animate(
+                {
+                  opacity: '0'
+                },
+                $img.animate({ opacity: '1' }, 500),
+                300
+              );
+            }
+          );
+        });
+      }
+      cartAnimation();
     </script>
   </body>
 </html>
