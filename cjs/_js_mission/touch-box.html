@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+    <title>테스트</title>
+    <link href="../../js_static/css/front.min.css" rel="stylesheet" />
+    <style>
+      .touch-wrap {
+        position: relative;
+        height: 80vh;
+        border: 3px solid #000;
+      }
+      .touch-wrap .box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: #ffff00;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="page-body">
+        <div class="section">
+          <div class="touch-wrap">
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
+    <script>
+      $(function () {
+        $('.box').draggable({
+          containment: 'parent'
+        });
+      });
+      // function handleEventStart(e) {
+      //   let startX = e.originalEvent.changedTouches[0].clientX;
+      //   let startY = e.originalEvent.changedTouches[0].clientY;
+      // }
+      // function handleEventStart(e) {
+      //   let startX = e.originalEvent.clientX;
+      //   let startY = e.originalEvent.clientY;
+      //   e.target.classList.add('active');
+      //   var rect = e.target.getBoundingClientRect();
+      //   var x = e.clientX - rect.left; //x position within the element.
+      //   var y = e.clientY - rect.top; //y position within the element.
+      //   console.log('Left? : ' + x + ' ; Top? : ' + y + '.');
+      // }
+
+      // function handleEventMove(e) {
+      //   // const boxW = $('.box').outerWidth();
+      //   // const boxH = $('.box').outerHeight();
+      //   let docWidth = window.innerWidth;
+      //   if (docWidth <= 1024) {
+      //     let movexM = e.originalEvent.changedTouches[0].clientX;
+      //     let movexY = e.originalEvent.changedTouches[0].clientY;
+      //     $('.box.active').css('left', movexM);
+      //     $('.box.active').css('top', movexY);
+      //   } else {
+      //     let moveX = e.originalEvent.clientX;
+      //     let moveY = e.originalEvent.clientY;
+      //     $('.box.active').css('left', moveX);
+      //     $('.box.active').css('top', moveY);
+      //   }
+      // }
+
+      // function handleEventEnd(e) {
+      //   let endX = e.originalEvent.clientX;
+      //   let endY = e.originalEvent.clientY;
+      //   $('.active').removeClass('active');
+      // }
+
+      // const touchWrap = $('.touch-wrap');
+      // touchWrap.on('mousedown touchstart', handleEventStart);
+      // touchWrap.on('mousemove touchmove', handleEventMove);
+      // touchWrap.on('mouseup touchend touchcancel', handleEventEnd);
+
+      // let docWidth = window.innerWidth;
+      // if (docWidth <= 1024) {
+      //   touchWrap.on('mousedown touchstart', handleEventStartM);
+      //   touchWrap.on('mousemove touchmove', handleEventMoveM);
+      //   touchWrap.on('mouseup touchend touchcancel', handleEventEndM);
+      // } else {
+      //   touchWrap.on('mousedown touchstart', handleEventStart);
+      //   touchWrap.on('mousemove touchmove', handleEventMove);
+      //   touchWrap.on('mouseup touchend touchcancel', handleEventEnd);
+      // }
+
+      // theBox
+      //   .on('touchstart', function (e) {
+      //     console.log('hey');
+      //     e.preventDefault();
+      //     $(this).mousemove(function (e) {
+      //       const sliderRect = element.getBoundingClientRect();
+      //       const sliderWidth = sliderRect.width;
+      //       const mouseX = e.clientX - sliderRect.left;
+
+      //       let strPercentage = percentage.toString();
+
+      //       if (strPercentage.length == 1) value = '00' + percentage;
+      //       else if (strPercentage.length == 2) value = '0' + percentage;
+      //       if (percentage == 0) value = '001';
+
+      //       imgAttr[5] = value + '.png';
+      //       let newImgUrl = imgAttr.join('/');
+      //       $('#img-area img').attr('src', newImgUrl);
+
+      //       $('.input_range').val(percentageVal);
+      //     });
+      //   })
+
+      //   .mouseup(function () {
+      //     $(this).off('mousemove');
+      //   })
+      //   .mouseout(function () {
+      //     $(this).off('mousemove');
+      //   });
+
+      // moveOn();
+    </script>
+  </body>
+</html>
