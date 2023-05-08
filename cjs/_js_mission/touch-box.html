@@ -36,95 +36,51 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
     <script>
-      $(function () {
-        $('.box').draggable({
-          containment: 'parent'
+      function touchBox() {
+        const container = document.querySelector('.touch-wrap');
+        const box = container.querySelector('.box');
+
+        const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
+        const { width: boxWidth, height: boxHeight } = box.getBoundingClientRect();
+        let isDragging = null;
+        let originLeft = null;
+        let originTop = null;
+        let originX = null;
+        let originY = null;
+
+        $('.box').on('mousedown touchstart', function (e) {
+          isDragging = true;
+          originX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+          originY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+          originLeft = box.offsetLeft;
+          originTop = box.offsetTop;
         });
-      });
-      // function handleEventStart(e) {
-      //   let startX = e.originalEvent.changedTouches[0].clientX;
-      //   let startY = e.originalEvent.changedTouches[0].clientY;
-      // }
-      // function handleEventStart(e) {
-      //   let startX = e.originalEvent.clientX;
-      //   let startY = e.originalEvent.clientY;
-      //   e.target.classList.add('active');
-      //   var rect = e.target.getBoundingClientRect();
-      //   var x = e.clientX - rect.left; //x position within the element.
-      //   var y = e.clientY - rect.top; //y position within the element.
-      //   console.log('Left? : ' + x + ' ; Top? : ' + y + '.');
-      // }
 
-      // function handleEventMove(e) {
-      //   // const boxW = $('.box').outerWidth();
-      //   // const boxH = $('.box').outerHeight();
-      //   let docWidth = window.innerWidth;
-      //   if (docWidth <= 1024) {
-      //     let movexM = e.originalEvent.changedTouches[0].clientX;
-      //     let movexY = e.originalEvent.changedTouches[0].clientY;
-      //     $('.box.active').css('left', movexM);
-      //     $('.box.active').css('top', movexY);
-      //   } else {
-      //     let moveX = e.originalEvent.clientX;
-      //     let moveY = e.originalEvent.clientY;
-      //     $('.box.active').css('left', moveX);
-      //     $('.box.active').css('top', moveY);
-      //   }
-      // }
+        $(document).on('mouseup touchend', function (e) {
+          isDragging = false;
+        });
 
-      // function handleEventEnd(e) {
-      //   let endX = e.originalEvent.clientX;
-      //   let endY = e.originalEvent.clientY;
-      //   $('.active').removeClass('active');
-      // }
-
-      // const touchWrap = $('.touch-wrap');
-      // touchWrap.on('mousedown touchstart', handleEventStart);
-      // touchWrap.on('mousemove touchmove', handleEventMove);
-      // touchWrap.on('mouseup touchend touchcancel', handleEventEnd);
-
-      // let docWidth = window.innerWidth;
-      // if (docWidth <= 1024) {
-      //   touchWrap.on('mousedown touchstart', handleEventStartM);
-      //   touchWrap.on('mousemove touchmove', handleEventMoveM);
-      //   touchWrap.on('mouseup touchend touchcancel', handleEventEndM);
-      // } else {
-      //   touchWrap.on('mousedown touchstart', handleEventStart);
-      //   touchWrap.on('mousemove touchmove', handleEventMove);
-      //   touchWrap.on('mouseup touchend touchcancel', handleEventEnd);
-      // }
-
-      // theBox
-      //   .on('touchstart', function (e) {
-      //     console.log('hey');
-      //     e.preventDefault();
-      //     $(this).mousemove(function (e) {
-      //       const sliderRect = element.getBoundingClientRect();
-      //       const sliderWidth = sliderRect.width;
-      //       const mouseX = e.clientX - sliderRect.left;
-
-      //       let strPercentage = percentage.toString();
-
-      //       if (strPercentage.length == 1) value = '00' + percentage;
-      //       else if (strPercentage.length == 2) value = '0' + percentage;
-      //       if (percentage == 0) value = '001';
-
-      //       imgAttr[5] = value + '.png';
-      //       let newImgUrl = imgAttr.join('/');
-      //       $('#img-area img').attr('src', newImgUrl);
-
-      //       $('.input_range').val(percentageVal);
-      //     });
-      //   })
-
-      //   .mouseup(function () {
-      //     $(this).off('mousemove');
-      //   })
-      //   .mouseout(function () {
-      //     $(this).off('mousemove');
-      //   });
-
-      // moveOn();
+        $(document).on('mousemove touchmove', function (e) {
+          if (isDragging) {
+            const endOfXPoint = containerWidth - boxWidth;
+            const endOfYPoint = containerHeight - boxHeight;
+            console.log(e.type);
+            if (e.type === 'mousemove') {
+              const diffX = e.clientX - originX;
+              const diffY = e.clientY - originY;
+              box.style.left = `${Math.min(Math.max(0, originLeft + diffX), endOfXPoint)}px`;
+              box.style.top = `${Math.min(Math.max(0, originTop + diffY), endOfYPoint)}px`;
+            }
+            if (e.type === 'touchmove') {
+              const diffXinM = e.touches[0].clientX - originX;
+              const diffYinM = e.touches[0].clientY - originY;
+              box.style.left = `${Math.min(Math.max(0, originLeft + diffXinM), endOfXPoint)}px`;
+              box.style.top = `${Math.min(Math.max(0, originTop + diffYinM), endOfYPoint)}px`;
+            }
+          }
+        });
+      }
+      touchBox();
     </script>
   </body>
 </html>
