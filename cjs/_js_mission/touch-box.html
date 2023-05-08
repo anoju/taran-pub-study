@@ -39,6 +39,7 @@
       function touchBox() {
         const container = document.querySelector('.touch-wrap');
         const box = container.querySelector('.box');
+
         const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
         const { width: boxWidth, height: boxHeight } = box.getBoundingClientRect();
         let isDragging = null;
@@ -47,7 +48,7 @@
         let originX = null;
         let originY = null;
 
-        $(box).on('mousedown touchstart', function (e) {
+        $('.box').on('mousedown touchstart', function (e) {
           isDragging = true;
           originX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
           originY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
