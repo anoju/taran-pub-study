@@ -79,77 +79,62 @@
       }
       inputRange();
 
-      const sliderRect = document.getElementById('img-area');
-      const sliderRectWidth = sliderRect.getBoundingClientRect().width;
-      const sliderRectLeft = sliderRect.getBoundingClientRect().left;
-
-      let isDragging = null;
-      let originX = null;
-
-      $('#img-area img').on('mousedown touchstart', function (e) {
-        e.preventDefault();
-        isDragging = true;
-
-        $(this).on('mousemove touchmove', function (e) {
+      function inputDragging() {
+        const sliderRect = document.getElementById('img-area');
+        const sliderRectWidth = sliderRect.getBoundingClientRect().width;
+        const sliderRectLeft = sliderRect.getBoundingClientRect().left;
+        let isDragging = null;
+        let originX = null;
+        $('#img-area img').on('mousedown touchstart', function (e) {
           e.preventDefault();
-          function mapNumberToRange(number, inMin, inMax, outMin, outMax) {
-            return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
-          }
-
-          if (isDragging) {
-            const endOfXPoint = sliderRectWidth;
-            if (e.type === 'mousemove') {
-              const diffX = e.clientX;
-              const percentage = Math.min(Math.max(0, originX + diffX), endOfXPoint) - sliderRectLeft;
-
-              function mapNumberToRange(number, inMin, inMax, outMin, outMax) {
-                return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+          isDragging = true;
+          $(this).on('mousemove touchmove', function (e) {
+            e.preventDefault();
+            function mapNumberToRange(number, inMin, inMax, outMin, outMax) {
+              return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+            }
+            if (isDragging) {
+              const endOfXPoint = sliderRectWidth;
+              if (e.type === 'mousemove') {
+                const diffX = e.clientX;
+                const percentage = Math.min(Math.max(0, originX + diffX), endOfXPoint) - sliderRectLeft;
+                const result = Math.floor(mapNumberToRange(percentage, 1, sliderRectWidth - sliderRectLeft, 1, maxAttr));
+                const resultMinus = Math.abs(result - maxAttr - 1);
+                console.log(resultMinus);
+                let strPercentage = resultMinus.toString();
+                if (strPercentage.length == 1) value = '00' + resultMinus;
+                else if (strPercentage.length == 2) value = '0' + resultMinus;
+                if (resultMinus == 0) value = '001';
+                if (resultMinus > 61) value = '061';
+                imgAttr[5] = value + '.png';
+                let newImgUrl = imgAttr.join('/');
+                $('#img-area img').attr('src', newImgUrl);
+                $('.input_range').val(result);
               }
-              const result = Math.floor(mapNumberToRange(percentage, 1, sliderRectWidth - sliderRectLeft, 1, maxAttr));
-              const resultMinus = Math.abs(result - maxAttr - 1);
-              console.log(resultMinus);
-
-              let strPercentage = resultMinus.toString();
-
-              if (strPercentage.length == 1) value = '00' + resultMinus;
-              else if (strPercentage.length == 2) value = '0' + resultMinus;
-              if (resultMinus == 0) value = '001';
-              if (resultMinus > 61) value = '061';
-
-              imgAttr[5] = value + '.png';
-              let newImgUrl = imgAttr.join('/');
-              $('#img-area img').attr('src', newImgUrl);
-
-              $('.input_range').val(result);
+              if (e.type === 'touchmove') {
+                const diffX = e.touches[0].clientX;
+                const percentage = Math.min(Math.max(0, originX + diffX), endOfXPoint) - sliderRectLeft;
+                const result = Math.floor(mapNumberToRange(percentage, 1, sliderRectWidth - sliderRectLeft, 1, maxAttr));
+                const resultMinus = Math.abs(result - maxAttr - 1);
+                console.log(resultMinus);
+                let strPercentage = resultMinus.toString();
+                if (strPercentage.length == 1) value = '00' + resultMinus;
+                else if (strPercentage.length == 2) value = '0' + resultMinus;
+                if (resultMinus == 0) value = '001';
+                if (resultMinus > 61) value = '061';
+                imgAttr[5] = value + '.png';
+                let newImgUrl = imgAttr.join('/');
+                $('#img-area img').attr('src', newImgUrl);
+                $('.input_range').val(result);
+              }
             }
-            if (e.type === 'touchmove') {
-              const diffX = e.touches[0].clientX;
-              const percentage = Math.min(Math.max(0, originX + diffX), endOfXPoint) - sliderRectLeft;
-
-              const result = Math.floor(mapNumberToRange(percentage, 1, sliderRectWidth - sliderRectLeft, 1, maxAttr));
-              const resultMinus = Math.abs(result - maxAttr - 1);
-              console.log(resultMinus);
-
-              let strPercentage = resultMinus.toString();
-
-              if (strPercentage.length == 1) value = '00' + resultMinus;
-              else if (strPercentage.length == 2) value = '0' + resultMinus;
-              if (resultMinus == 0) value = '001';
-              if (resultMinus > 61) value = '061';
-
-              imgAttr[5] = value + '.png';
-              let newImgUrl = imgAttr.join('/');
-              $('#img-area img').attr('src', newImgUrl);
-
-              $('.input_range').val(result);
-            }
-          }
+          });
         });
-      });
-
-      $(document).on('mouseup touchend', function (e) {
-        isDragging = false;
-      });
+        $(document).on('mouseup touchend', function (e) {
+          isDragging = false;
+        });
+      }
+      inputDragging();
     </script>
   </body>
 </html>
