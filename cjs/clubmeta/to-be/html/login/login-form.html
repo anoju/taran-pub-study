@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script class="__include" src="../include/head.js"></script>
+    <title>CLUBMETA | 클럽메타</title>
+  </head>
+  <body>
+    <article class="page">
+      <!-- 헤더 -->
+      <header class="page-head">
+        <div class="head-inner">
+          <div class="head-left">
+            <button type="button" class="head-back head-btn" aria-label="이전으로"></button>
+          </div>
+          <div class="head-title">
+            <h1>로그인</h1>
+          </div>
+        </div>
+      </header>
+      <!-- //헤더 -->
+
+      <!-- 컨테이너(컨텐츠) -->
+      <main class="page-body">
+        <div class="tab-line-menu ui-tab">
+          <div class="tab-inner">
+            <i class="tab-line" aria-hidden="true"></i>
+            <ul class="tab-list">
+              <li class="tab">
+                <a href="#tabCont1"><span>전화</span></a>
+              </li>
+              <li class="tab">
+                <a href="#tabCont2"><span>이메일</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <div class="tab-panels">
+            <div id="tabCont1" class="tab-panel">
+              <label for="inpPhone" class="form-lbl">전화번호</label>
+              <div class="form-item">
+                <div class="flex full">
+                  <div class="select w-100 fz-14">
+                    <select title="국가번호 선택">
+                      <option value="82">KR +82</option>
+                    </select>
+                  </div>
+                  <div class="input input-phone">
+                    <input type="tel" id="inpPhone" placeholder="전화번호 입력" title="전화번호 입력" maxlength="13" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tabCont2" class="tab-panel">
+              <label for="inpMail" class="form-lbl">이메일</label>
+              <div class="form-item">
+                <div class="flex full">
+                  <div class="input-mail">
+                    <div class="input">
+                      <input type="mail" id="inpMail" placeholder="이메일 입력" title="이메일 입력" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <label for="inpPassword" class="form-lbl mt-24">비밀번호</label>
+          <div class="form-item">
+            <div class="flex full">
+              <div class="input password">
+                <input type="password" id="inpPassword" placeholder="비밀번호 입력" title="비밀번호 입력" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- 컨테이너(컨텐츠) -->
+
+      <!-- 하단고정 -->
+      <div class="btn-wrap bottom-fixed">
+        <div>
+          <div><a href="#popChangePassword" class="btn-txt ui-pop-open">비밀번호를 잊으셨나요?</a></div>
+          <div class="flex mt-8">
+            <button type="button" class="button h60 primary" disabled>로그인</button>
+          </div>
+        </div>
+      </div>
+      <!-- //하단고정 -->
+    </article>
+
+    <div id="popChangePassword" class="popup modal">
+      <article class="page">
+        <header class="page-head">
+          <div class="head-inner">
+            <div class="head-left full">
+              <h1>비밀번호 재설정 방법</h1>
+            </div>
+            <div class="head-right">
+              <button type="button" class="head-close head-btn ui-pop-close" aria-label="닫기"></button>
+            </div>
+          </div>
+        </header>
+        <main class="page-body">
+          <div class="section">
+            <div class="btn-wrap vertical mt-0">
+              <button type="button" class="button line primary" onclick="passwordFind('phone')">전화번호</button>
+              <button type="button" class="button line primary" onclick="passwordFind('mail')">이메일</button>
+            </div>
+          </div>
+        </main>
+      </article>
+    </div>
+
+    <script>
+      //탭 클릭시 입력값 초기화
+      $('.ui-tab a').click(function (e) {
+        e.preventDefault();
+        $('#inpPhone').val('').change();
+        $('#inpMail').val('').change();
+        $('#inpPassword').val('').change();
+      });
+
+      // 메인버튼 활성화
+      $('.input input').on('input change', function () {
+        const $mainBtn = $('.bottom-fixed .primary');
+        let $mainBtnActive = true;
+        if ($('#inpPassword').val() === '') $mainBtnActive = false;
+        if ($('#inpPhone').val() === '' && $('#inpMail').val() === '') $mainBtnActive = false;
+
+        if ($mainBtnActive) $mainBtn.prop('disabled', false);
+        else $mainBtn.prop('disabled', true);
+      });
+
+      function passwordFind(type) {
+        const $setObj = {
+          title: '비밀번호 재설정 본인인증',
+          pageType: type
+        };
+        uiStorage.set('userCheckType', JSON.stringify($setObj));
+        location.href = '../common/user-check.html';
+      }
+    </script>
+  </body>
+</html>
