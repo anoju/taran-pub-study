@@ -158,43 +158,39 @@
 
           <div class="btn-wrap mt-24">
             <div class="flex">
-              <button class="button line disabled" role="button">다음</button>
+              <button class="primary button" role="button" disabled>다음</button>
             </div>
           </div>
         </div>
       </main>
       <!-- 컨테이너(컨텐츠) -->
     </article>
-    <script>
-      function buttonAble() {
-        $('.button').removeClass('disabled');
-        $('.button').switchClass('line', 'primary');
-      }
-      function buttonDisable() {
-        $('.button').addClass('disabled');
-        $('.button').switchClass('primary', 'line');
-      }
+    <script>       
 
       function selectTerms() {
         $('input').on('input change', function () {
-          if ($('#chk2').prop('checked') == true && $('#chk3').prop('checked') == true) {
-            buttonAble();
+          if ($('#chk2').prop('checked') && $('#chk3').prop('checked')) {
+            $('.button').attr('disabled', false);    
           } else {
-            buttonDisable();
+            $('.button').attr('disabled', true);        
+          }          
+          if($('#chk2').prop('checked') && $('#chk3').prop('checked') && $('#chk4').prop('checked')){
+            $('#chk1').prop('checked', true) 
+          }else {
+            $('#chk1').prop('checked', false) 
           }
         });
 
         $('#chk1').on('click', function () {
           if ($(this).prop('checked') == true) {
             $("input[type='checkbox']").prop('checked', true);
-            buttonAble();
+            $('.button').attr('disabled', false);    
           } else {
             $("input[type='checkbox']").prop('checked', false);
-            buttonDisable();
+            $('.button').attr('disabled', true);        
           }
         });
       }
-
       selectTerms();
     </script>
   </body>
