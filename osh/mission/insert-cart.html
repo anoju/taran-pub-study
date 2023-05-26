@@ -86,10 +86,6 @@
     <script>
       // 스크립트 작성이 여기에
       // 제이쿼리로 작성가능, 자바스크립트로 작성하면 더 짱짱
-
-      //버튼을 클릭하면 이미지가 장바구니로 간다
-      //버튼을 누르는 순간 이미지 클론이 생성되고 장바구니로 이동 - 아래있던 이미지는 show hide
-      //클론 이미지가 이동하는 위치 구하기 : 내 이미지 위치에서 장바구니 좌표로
       function cartAnimation() {
         $('li button').on('click', function () {
           const $img = $(this).closest('li').find('.article-img');
@@ -100,9 +96,8 @@
             position: 'absolute',
             left: $img.offset().left,
             top: $img.offset().top
-            // left: $img.offset().left,
-            // top: $img.offset().top
           });
+          $img.css('opacity', '0');
 
           $('body').append($clone);
 
@@ -117,19 +112,14 @@
             {
               width: 20,
               top: $target.offset().top,
-              left: $target.offset().left
+              left: $target.offset().left + $target.width()
             },
             300,
             'easeInOutQuad',
+
             function () {
               $clone.remove();
-              $img.animate(
-                {
-                  opacity: '0'
-                },
-                $img.animate({ opacity: '1' }, 500),
-                300
-              );
+              $img.stop().animate({ opacity: '1' }, 700);
             }
           );
         });

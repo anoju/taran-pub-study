@@ -36,49 +36,54 @@
     <script type="text/javascript" src="../../js_static/js/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../js_static/js/jquery-ui.1.12.1.min.js"></script>
     <script>
-      const container = document.querySelector('.touch-wrap');
-      const box = container.querySelector('.box');
+      function touchBox() {
+        const container = document.querySelector('.touch-wrap');
+        const box = container.querySelector('.box');
 
-      const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
-      const { width: boxWidth, height: boxHeight } = box.getBoundingClientRect();
-      let isDragging = null;
-      let originLeft = null;
-      let originTop = null;
-      let originX = null;
-      let originY = null;
+        const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
+        const { width: boxWidth, height: boxHeight } = box.getBoundingClientRect();
+        let isDragging = null;
+        let originLeft = null;
+        let originTop = null;
+        let originX = null;
+        let originY = null;
 
-      $(box).on('mousedown touchstart', function (e) {
-        isDragging = true;
-        originX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
-        originY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
-        originLeft = box.offsetLeft;
-        originTop = box.offsetTop;
-      });
+        $('.box').on('mousedown touchstart', function (e) {
+          isDragging = true;
+          originX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+          originY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+          originLeft = box.offsetLeft;
+          originTop = box.offsetTop;
+        });
 
-      $(document).on('mouseup touchend', function (e) {
-        isDragging = false;
-      });
+        $(document).on('mouseup touchend', function (e) {
+          isDragging = false;
+        });
 
-      $(document).on('mousemove', function (e) {
-        if (isDragging) {
-          const diffX = e.clientX - originX;
-          const diffY = e.clientY - originY;
-          const endOfXPoint = containerWidth - boxWidth;
-          const endOfYPoint = containerHeight - boxHeight;
-          box.style.left = `${Math.min(Math.max(0, originLeft + diffX), endOfXPoint)}px`;
-          box.style.top = `${Math.min(Math.max(0, originTop + diffY), endOfYPoint)}px`;
-        }
-      });
+        $(document).on('mousemove touchmove', function (e) {
+          if (isDragging) {
+            const endOfXPoint = containerWidth - boxWidth;
+            const endOfYPoint = containerHeight - boxHeight;
+            console.log(e.type);
+            if (e.type === 'mousemove') {
+              const diffX = e.clientX - originX;
+              const diffY = e.clientY - originY;
+              box.style.left = `${Math.min(Math.max(0, originLeft + diffX), endOfXPoint)}px`;
+              box.style.top = `${Math.min(Math.max(0, originTop + diffY), endOfYPoint)}px`;
+            }
+            if (e.type === 'touchmove') {
+              const diffXinM = e.touches[0].clientX - originX;
+              const diffYinM = e.touches[0].clientY - originY;
+              box.style.left = `${Math.min(Math.max(0, originLeft + diffXinM), endOfXPoint)}px`;
+              box.style.top = `${Math.min(Math.max(0, originTop + diffYinM), endOfYPoint)}px`;
+            }
+          }
+        });
+      }
+      touchBox();
 
-      $(document).on('touchmove', function (e) {
-        if (isDragging) {
-          const diffX = e.touches[0].clientX - originX;
-          const diffY = e.touches[0].clientY - originY;
-          const endOfXPoint = containerWidth - boxWidth;
-          const endOfYPoint = containerHeight - boxHeight;
-          box.style.left = `${Math.min(Math.max(0, originLeft + diffX), endOfXPoint)}px`;
-          box.style.top = `${Math.min(Math.max(0, originTop + diffY), endOfYPoint)}px`;
-        }
+      $(window).resize(function () {
+        touchBox();
       });
     </script>
   </body>
