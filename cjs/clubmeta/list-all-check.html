@@ -40,97 +40,97 @@
       <main class="page-body">
         <div class="section">
           <label class="checkbox large">
-            <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+            <input type="checkbox" class="ui-chk ui-all-chk" /><i aria-hidden="true"></i>
             <strong class="lbl">전체선택</strong>
           </label>
           <ul class="sample-list mt-20">
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트1</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트2</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트3</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트4</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트5</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트6</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트7</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트8</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트9</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트10</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트11</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트12</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트13</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트14</span>
               </label>
             </li>
             <li>
               <label class="checkbox">
-                <input type="checkbox" class="terms" /><i aria-hidden="true"></i>
+                <input type="checkbox" class="ui-chk" /><i aria-hidden="true"></i>
                 <span class="lbl">리스트15</span>
               </label>
             </li>
@@ -147,30 +147,31 @@
     </article>
     <script>
       function selectAll() {
-        $('.terms').on('change', function () {
-          const checkdOne = $('.terms:checked').length;
-          const length = $('.terms').not($('.terms').eq(0)).length;
-          const checked = $('.terms:checked').not($('.terms').eq(0)).length;
+        $('.ui-chk').on('change', function () {
+          const $chk = $('.ui-chk').not('.ui-all-chk');
+          const length = $chk.length;
+          const checked = $('.ui-chk:checked').not('.ui-all-chk').length;
+          let isAllChk = false;
 
-          if (checkdOne) {
-            $('.button').attr('disabled', false);
-          } else {
-            $('.button').attr('disabled', true);
-          }
-
-          if ($(this).is($('.terms').eq(0))) {
+          if ($(this).hasClass('ui-all-chk')) {
             if ($(this).prop('checked')) {
-              $('.terms').prop('checked', true);
+              $chk.prop('checked', true);
+              isAllChk = true;
             } else {
-              $('.terms').prop('checked', false);
-              $('.button').attr('disabled', true);
+              $chk.prop('checked', false);
             }
           } else {
             if (length === checked) {
-              $('.terms').eq(0).prop('checked', true);
+              $('.ui-all-chk').prop('checked', true);
             } else {
-              $('.terms').eq(0).prop('checked', false);
+              $('.ui-all-chk').prop('checked', false);
             }
+          }
+
+          if (checked || isAllChk) {
+            $('.button').prop('disabled', false);
+          } else {
+            $('.button').prop('disabled', true);
           }
         });
       }
