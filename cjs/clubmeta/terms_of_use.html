@@ -173,10 +173,16 @@
           if (this.id === 'chk1') {
             if ($('#chk1').prop('checked')) {
               $('.terms').prop('checked', true);
-              $('.button').attr('disabled', false);
             } else {
               $('.terms').prop('checked', false);
-              $('.button').attr('disabled', true);
+            }
+          } else {
+            const length = $('.terms').not('#chk1').length;
+            const checked = $('.terms:checked').not('#chk1').length;
+            if (length === checked) {
+              $('#chk1').prop('checked', true);
+            } else {
+              $('#chk1').prop('checked', false);
             }
           }
 
@@ -184,11 +190,6 @@
             $('.button').attr('disabled', false);
           } else {
             $('.button').attr('disabled', true);
-          }
-          if ($('#chk2').prop('checked') && $('#chk3').prop('checked') && $('#chk4').prop('checked')) {
-            $('#chk1').prop('checked', true);
-          } else {
-            $('#chk1').prop('checked', false);
           }
         });
       }
