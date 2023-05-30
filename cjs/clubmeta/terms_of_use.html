@@ -170,6 +170,16 @@
     <script>
       function selectTerms() {
         $('.terms').on('change', function () {
+          if (this.id === 'chk1') {
+            if ($('#chk1').prop('checked')) {
+              $('.terms').prop('checked', true);
+              $('.button').attr('disabled', false);
+            } else {
+              $('.terms').prop('checked', false);
+              $('.button').attr('disabled', true);
+            }
+          }
+
           if ($('#chk2').prop('checked') && $('#chk3').prop('checked')) {
             $('.button').attr('disabled', false);
           } else {
@@ -179,16 +189,6 @@
             $('#chk1').prop('checked', true);
           } else {
             $('#chk1').prop('checked', false);
-          }
-        });
-
-        $('#chk1').on('click', function () {
-          if ($(this).prop('checked') == true) {
-            $("input[type='checkbox']").prop('checked', true);
-            $('.button').attr('disabled', false);
-          } else {
-            $("input[type='checkbox']").prop('checked', false);
-            $('.button').attr('disabled', true);
           }
         });
       }
